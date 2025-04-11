@@ -10,6 +10,7 @@ interface ImageScrollStackProps {
 const ImageScrollStack: React.FC<ImageScrollStackProps> = ({ images }) => {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
+  const scrollSpeedMultiplier = 20; // Reduced multiplier for even slower scrolling
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +24,8 @@ const ImageScrollStack: React.FC<ImageScrollStackProps> = ({ images }) => {
         // Calculate scroll position relative to container
         const relativeScroll = Math.max(0, scrollTop - containerTop);
         const maxScroll = containerHeight - windowHeight;
-        const scrollPercent = Math.min(1, relativeScroll / maxScroll);
+        // Apply the scroll speed multiplier to slow down the effect
+        const scrollPercent = Math.min(1, (relativeScroll / maxScroll) * scrollSpeedMultiplier);
         
         setScrollPosition(scrollPercent);
       }
