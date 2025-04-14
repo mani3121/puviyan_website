@@ -37,14 +37,14 @@ const AnimatedSplitImages = () => {
     offset: ["start end", "end start"],
   });
 
-  // Left Image: vertical movement - from top to bottom
-  const verticalY = useTransform(scrollYProgress, [0, 1], ["-50%", "50%"]);
+  // Left Image: vertical movement - stop in the center
+  const verticalY = useTransform(scrollYProgress, [0, 0.5, 1], ["-50%", "0%", "0%"]);
   
   // Zoom out effect for the image
   const imageScale = useTransform(scrollYProgress, [0, 1], [0.8, 0.5]);
 
-  // Right Content: horizontal movement
-  const horizontalX = useTransform(scrollYProgress, [0, 1], ["-400px", "80px"]);
+  // Right Content: horizontal movement - stop in the center
+  const horizontalX = useTransform(scrollYProgress, [0, 0.5, 1], ["-400px", "0px", "0px"]);
   
   // Heading text: opacity and position animation
   const headingOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
@@ -122,7 +122,10 @@ const AnimatedSplitImages = () => {
       {/* Right - Content with Form */}
       <div className="w-full h-[60vh] md:h-full md:w-1/2 flex justify-center items-center bg-white-50 px-4 md:px-8 py-8 md:py-0 overflow-y-auto">
         <motion.div
-          style={{ x: horizontalX }}
+          style={{ 
+            x: horizontalX,
+            fontFamily: 'Arial Black' // Added font-family
+          }}
           className="p-4 md:p-8 w-full max-w-md mx-auto text-left"
         >
           <motion.h2 
@@ -130,7 +133,7 @@ const AnimatedSplitImages = () => {
             style={{ 
               opacity: headingOpacity,
               x: headingX,
-              fontFamily: '-apple-system, BlinkMacSystemFont, "SF Pro Display", "Helvetica Neue", sans-serif',
+              fontFamily: 'Arial Black', // Updated font-family
               fontWeight: '600',
               letterSpacing: '-0.02em'
             }}
@@ -142,7 +145,11 @@ const AnimatedSplitImages = () => {
             submitStatus === 'idle' ? (
               <button
                 onClick={() => setShowForm(true)}
-                className="w-full md:w-auto bg-gray-900 text-white px-6 md:px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:bg-gray-800 transition-colors text-left"
+                className="w-full md:w-auto px-6 md:px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:opacity-90 transition-opacity text-left"
+                style={{
+                  background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+                  color: 'white',
+                }}
               >
                 SHARE YOUR IDEAS
               </button>
