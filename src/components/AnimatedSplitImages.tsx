@@ -108,7 +108,7 @@ const AnimatedSplitImages = () => {
       <div className="w-full h-[60vh] md:h-full md:w-1/2 flex justify-center items-center bg-white-50 overflow-hidden">
         <div className="relative w-full h-full">
           <motion.img
-            src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/mobile-trans.png?raw=true"
+            src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/mobile.png?raw=true"
             alt="Vertical Parallax"
             style={{ 
               y: verticalY,

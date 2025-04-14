@@ -17,7 +17,7 @@ const Header = () => {
             onClick={scrollToTop}
           >
             <img 
-              src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Puviyan.ico?raw=true" 
+              src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan_logo.jpeg?raw=true" 
               alt="Puviyan Logo" 
               className="h-8 w-auto"
             />
