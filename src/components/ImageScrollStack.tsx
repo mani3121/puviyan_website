@@ -10,7 +10,7 @@ interface ImageScrollStackProps {
 const ImageScrollStack: React.FC<ImageScrollStackProps> = ({ images }) => {
   const [scrollPosition, setScrollPosition] = useState<number>(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const scrollSpeedMultiplier = 20; // Reduced multiplier for even slower scrolling
+  const scrollSpeedMultiplier = 5; // Reduced multiplier for even slower scrolling
 
   useEffect(() => {
     const handleScroll = () => {
