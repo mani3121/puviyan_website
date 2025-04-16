@@ -15,7 +15,6 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isTransitionComplete && e.deltaY > 0) {
-        // Allow normal scroll if transition is complete and scrolling down
         return;
       }
 
@@ -26,7 +25,6 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (delta > 0 ? 5 : -5)));
         setScrollProgress(newProgress);
 
-        // Set transition complete when reaching 100%
         if (newProgress === 100) {
           setIsTransitionComplete(true);
         } else if (newProgress < 100) {
@@ -53,7 +51,6 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 5 : -5)));
         setScrollProgress(newProgress);
 
-        // Set transition complete when reaching 100%
         if (newProgress === 100) {
           setIsTransitionComplete(true);
         } else if (newProgress < 100) {

@@ -6,7 +6,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           {/* Logo and Why Us */}
-          <div className="flex items-center space-x-10"> {/* Increased spacing */}
+          <div className="flex items-center space-x-10">
             <div 
               className="cursor-pointer"
               onClick={() => (window.location.href = "/")} // Redirect to the home page
@@ -19,7 +19,7 @@ const Header = () => {
             </div>
             <a 
               href="#about-us" // Scroll to the About Us section
-              className="text-lg font-semibold text-blue-600 hover:text-blue-800 transition-colors" // Updated font color to seablue
+              className="hidden md:block text-lg font-semibold text-black-600 hover:text-green-800 transition-colors" // Show only on desktop
             >
               About
             </a>
