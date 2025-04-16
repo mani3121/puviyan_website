@@ -20,12 +20,12 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
       }
 
       e.preventDefault();
-      
+
       if (!isScrolling) {
         const delta = e.deltaY;
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (delta > 0 ? 5 : -5)));
         setScrollProgress(newProgress);
-        
+
         // Set transition complete when reaching 100%
         if (newProgress === 100) {
           setIsTransitionComplete(true);
@@ -40,14 +40,46 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
       }
     };
 
+    const handleTouchMove = (e: TouchEvent) => {
+      if (isTransitionComplete) {
+        return;
+      }
+
+      const touch = e.touches[0];
+      const deltaY = touch.clientY - (parseFloat(containerRef.current?.dataset.lastTouchY || '0'));
+
+      if (!isScrolling) {
+        const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 5 : -5)));
+        setScrollProgress(newProgress);
+
+        // Set transition complete when reaching 100%
+        if (newProgress === 100) {
+          setIsTransitionComplete(true);
+        } else if (newProgress < 100) {
+          setIsTransitionComplete(false);
+        }
+
+        if (newProgress > 0 && newProgress < 100) {
+          setIsScrolling(true);
+          setTimeout(() => setIsScrolling(false), 50);
+        }
+      }
+
+      if (containerRef.current) {
+        containerRef.current.dataset.lastTouchY = `${touch.clientY}`;
+      }
+    };
+
     const container = containerRef.current;
     if (container) {
       container.addEventListener('wheel', handleWheel, { passive: false });
+      container.addEventListener('touchmove', handleTouchMove, { passive: false });
     }
 
     return () => {
       if (container) {
         container.removeEventListener('wheel', handleWheel);
+        container.removeEventListener('touchmove', handleTouchMove);
       }
     };
   }, [scrollProgress, isScrolling, isTransitionComplete]);
@@ -82,4 +114,4 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
   );
 };
 
-export default ParallaxImages; 
+export default ParallaxImages;
