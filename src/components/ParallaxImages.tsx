@@ -46,7 +46,8 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
       }
 
       const touch = e.touches[0];
-      const deltaY = touch.clientY - (parseFloat(containerRef.current?.dataset.lastTouchY || '0'));
+      const lastTouchY = parseFloat(containerRef.current?.dataset.lastTouchY || '0');
+      const deltaY = touch.clientY - lastTouchY;
 
       if (!isScrolling) {
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 5 : -5)));
@@ -61,7 +62,7 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
 
         if (newProgress > 0 && newProgress < 100) {
           setIsScrolling(true);
-          setTimeout(() => setIsScrolling(false), 50);
+          setTimeout(() => setIsScrolling(false), 50); // Match the delay with the wheel event
         }
       }
 
