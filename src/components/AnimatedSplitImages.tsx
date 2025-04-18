@@ -1,6 +1,7 @@
 import emailjs from '@emailjs/browser';
 import { motion, useScroll, useTransform } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import Header from "./Header"; // Import your Header component
 
 const AnimatedSplitImages = () => {
   const containerRef = useRef(null);
@@ -104,6 +105,7 @@ const AnimatedSplitImages = () => {
         minHeight: '100vh'
       }}
     >
+      <Header/>
       {/* Left - Vertical Parallax */}
       <div className="w-full h-[60vh] md:h-full md:w-1/2 flex justify-center items-center overflow-hidden">
         <div className="relative w-full h-full">
@@ -134,11 +136,15 @@ const AnimatedSplitImages = () => {
               opacity: headingOpacity,
               x: headingX,
               fontFamily: 'Arial Black', // Updated font-family
-              fontWeight: '600',
+              fontWeight: '800',
               letterSpacing: '-0.02em'
             }}
           >
-            COMING SOON TO REWRITE YOUR ECO STORY
+            {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(' ').map((word, index) => (
+              <span key={index} className="block">
+                {word}
+              </span>
+            ))}
           </motion.h2>
           
           {!showForm ? (
@@ -158,25 +164,23 @@ const AnimatedSplitImages = () => {
             )
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4 text-left">
-              <div>
+              <div className="flex flex-col md:flex-row md:space-x-4">
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="Your Name"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
+                  className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
                   required
                 />
-              </div>
-              <div>
                 <input
                   type="email"
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Your Email"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
+                  className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
                   required
                 />
               </div>
@@ -196,6 +200,10 @@ const AnimatedSplitImages = () => {
                   type="submit"
                   disabled={isLoading}
                   className="w-full md:w-auto bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed text-left"
+                  style={{
+                    background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+                    color: 'white',
+                  }}
                 >
                   {isLoading ? 'Sending...' : 'Submit'}
                 </button>
@@ -207,6 +215,10 @@ const AnimatedSplitImages = () => {
                     setFormData({ name: '', email: '', message: '' });
                   }}
                   className="w-full md:w-auto bg-gray-200 text-gray-900 px-6 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors text-left"
+                  style={{
+                    background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+                    color: 'white',
+                  }}
                 >
                   Back
                 </button>

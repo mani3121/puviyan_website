@@ -37,16 +37,16 @@ const Index = () => {
         </section>
 
         {/* Next section that appears after scroll */}
-        <section className="min-h-screen w-full bg-white">
+        <section id="animated-split-images" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
             <AnimatedSplitImages />
           </div>
         </section>
 
-        {/* About Us Section */}
+        {/* About Us Section
         <section id="about-us">
           <AboutUs />
-        </section>
+        </section> */}
 
         {/* Carbon Footprint Banner section */}
         <section className="w-full">
