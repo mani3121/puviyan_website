@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Linkedin, Menu, X } from 'lucide-react';
+import { motion } from 'framer-motion'; // Import framer-motion
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -36,9 +37,9 @@ const Header = () => {
 
           {/* Navigation Links */}
           <div
-            className={`${
+            className={`absolute top-16 left-0 w-full bg-white shadow-md md:static md:flex md:items-center md:space-x-10 md:bg-transparent md:shadow-none ${
               isMenuOpen ? 'block' : 'hidden'
-            } absolute top-16 left-0 w-full bg-white shadow-md md:static md:flex md:items-center md:space-x-10 md:bg-transparent md:shadow-none`}
+            }`}
           >
             <a 
               href="/animated-split-images" 

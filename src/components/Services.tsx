@@ -45,6 +45,13 @@ const Services = () => {
         {/* Animated Header */}
         <motion.h1
           className="text-4xl font-bold text-gray-800 text-center mb-12"
+          style={{
+            fontFamily: 'MuseoSans-700',
+            fontWeight: 600,
+            fontStyle: 'normal',
+            lineHeight: '1.3',
+            color: '#000000', // Retain the black color if needed
+          }}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -77,21 +84,33 @@ const Services = () => {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2, duration: 0.8 }}
               >
-                <h2
+                <h1
                   className="text-2xl font-bold mb-4"
+                  style={{
+                    fontFamily: 'MuseoSans-700',
+                    fontWeight: 600,
+                    fontStyle: 'normal',
+                    lineHeight: '1.3',
+                    color: '#808080', // Updated to grey color
+                    marginBottom: '.5em',
+                  }}
+                >
+                  {service.title}
+                </h1>
+                <p
+                  className="text-lg"
                   style={{
                     fontFamily: 'MuseoSans-300',
                     fontSize: '1.4em',
-                    fontWeight: 700,
+                    fontWeight: 400,
                     fontStyle: 'normal',
-                    color: '#000000',
+                    color: '#808080', // Updated to grey color
                     marginBottom: '.5em',
                     lineHeight: '1.4',
                   }}
                 >
-                  {service.title}
-                </h2>
-                <p className="text-lg text-gray-600">{service.description}</p>
+                  {service.description}
+                </p>
               </motion.div>
             </motion.div>
           ))}
