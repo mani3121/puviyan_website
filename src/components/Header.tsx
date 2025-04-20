@@ -47,6 +47,7 @@ const Header = () => {
                   ? 'text-green-800 underline' 
                   : 'text-black-600 hover:text-green-800'
               }`}
+              style={{ fontFamily: 'MuseoSans' }}
             >
               Product
             </a>
@@ -57,6 +58,7 @@ const Header = () => {
                   ? 'text-green-800 underline' 
                   : 'text-black-600 hover:text-green-800'
               }`}
+              style={{ fontFamily: 'MuseoSans' }}
             >
               Services
             </a>
@@ -67,6 +69,7 @@ const Header = () => {
                   ? 'text-green-800 underline' 
                   : 'text-black-600 hover:text-green-800'
               }`}
+              style={{ fontFamily: 'MuseoSans' }}
             >
               About
             </a>
@@ -77,6 +80,7 @@ const Header = () => {
                   ? 'text-green-800 underline' 
                   : 'text-black-600 hover:text-green-800'
               }`}
+              style={{ fontFamily: 'MuseoSans' }}
             >
               Unite with Us
             </a>
