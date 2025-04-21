@@ -1,15 +1,16 @@
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Linkedin, Menu, X } from 'lucide-react';
-import { motion } from 'framer-motion'; // Import framer-motion
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Get the current path
   const currentPath = window.location.pathname;
 
   return (
@@ -36,56 +37,25 @@ const Header = () => {
           </div>
 
           {/* Navigation Links */}
-          <div
-            className={`absolute top-16 left-0 w-full bg-white shadow-md md:static md:flex md:items-center md:space-x-10 md:bg-transparent md:shadow-none ${
-              isMenuOpen ? 'block' : 'hidden'
-            }`}
-          >
-            <a 
-              href="/animated-split-images" 
-              className={`block px-4 py-2 text-lg font-semibold transition-colors md:inline md:ml-10 ${
-                currentPath === '/animated-split-images' 
-                  ? 'text-green-800 underline' 
-                  : 'text-black-600 hover:text-green-800'
-              }`}
-              style={{ fontFamily: 'MuseoSans' }}
-            >
-              Product
-            </a>
-            <a 
-              href="/services" 
-              className={`block px-4 py-2 text-lg font-semibold transition-colors md:inline ${
-                currentPath === '/services' 
-                  ? 'text-green-800 underline' 
-                  : 'text-black-600 hover:text-green-800'
-              }`}
-              style={{ fontFamily: 'MuseoSans' }}
-            >
-              Services
-            </a>
-            <a 
-              href="/about-us" 
-              className={`block px-4 py-2 text-lg font-semibold transition-colors md:inline ${
-                currentPath === '/about-us' 
-                  ? 'text-green-800 underline' 
-                  : 'text-black-600 hover:text-green-800'
-              }`}
-              style={{ fontFamily: 'MuseoSans' }}
-            >
-              About
-            </a>
-            <a 
-              href="/unite-with-us" 
-              className={`block px-4 py-2 text-lg font-semibold transition-colors md:inline ${
-                currentPath === '/unite-with-us' 
-                  ? 'text-green-800 underline' 
-                  : 'text-black-600 hover:text-green-800'
-              }`}
-              style={{ fontFamily: 'MuseoSans' }}
-            >
-              Unite with Us
-            </a>
-          </div>
+          {isMobile ? (
+            <AnimatePresence>
+              {isMenuOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-start px-4 py-2 z-50"
+                >
+                  {renderLinks(currentPath)}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          ) : (
+            <div className="hidden md:flex md:items-center md:space-x-10">
+              {renderLinks(currentPath)}
+            </div>
+          )}
 
           {/* Social Links */}
           <div className="hidden md:flex items-center space-x-4">
@@ -103,5 +73,50 @@ const Header = () => {
     </header>
   );
 };
+
+const renderLinks = (currentPath) => (
+  <>
+    <a
+      href="/animated-split-images"
+      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+        currentPath === '/animated-split-images'
+          ? 'text-green-800 underline'
+          : 'text-black-600 hover:text-green-800'
+      }`}
+    >
+      Product
+    </a>
+    <a
+      href="/services"
+      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+        currentPath === '/services'
+          ? 'text-green-800 underline'
+          : 'text-black-600 hover:text-green-800'
+      }`}
+    >
+      Services
+    </a>
+    <a
+      href="/about-us"
+      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+        currentPath === '/about-us'
+          ? 'text-green-800 underline'
+          : 'text-black-600 hover:text-green-800'
+      }`}
+    >
+      About
+    </a>
+    <a
+      href="/unite-with-us"
+      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+        currentPath === '/unite-with-us'
+          ? 'text-green-800 underline'
+          : 'text-black-600 hover:text-green-800'
+      }`}
+    >
+      Unite with Us
+    </a>
+  </>
+);
 
 export default Header;

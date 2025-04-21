@@ -57,7 +57,7 @@ const CarbonFootprintBanner = () => {
                 <Leaf className="text-emerald-600" size={24} />
               </div>
               <div>
-                <h3 className="text-xl font-bold text-emerald-800 font-serif">Carbon Footprint</h3>
+                <h3 className="text-xl font-bold text-emerald-800">Carbon Footprint</h3>
                 <p className="text-sm text-emerald-600">This page's environmental impact</p>
               </div>
             </div>

@@ -46,7 +46,6 @@ const Services = () => {
         <motion.h1
           className="text-4xl font-bold text-gray-800 text-center mb-12"
           style={{
-            fontFamily: 'MuseoSans-700',
             fontWeight: 600,
             fontStyle: 'normal',
             lineHeight: '1.3',
@@ -87,7 +86,6 @@ const Services = () => {
                 <h1
                   className="text-2xl font-bold mb-4"
                   style={{
-                    fontFamily: 'MuseoSans-700',
                     fontWeight: 600,
                     fontStyle: 'normal',
                     lineHeight: '1.3',
@@ -100,7 +98,6 @@ const Services = () => {
                 <p
                   className="text-lg"
                   style={{
-                    fontFamily: 'MuseoSans-300',
                     fontSize: '1.4em',
                     fontWeight: 400,
                     fontStyle: 'normal',
