@@ -44,9 +44,9 @@ const Index = () => {
         </section> */}
 
         {/* Carbon Footprint Banner section */}
-        <section className="w-full">
+        {/* <section className="w-full">
           <CarbonFootprintBanner />
-        </section>
+        </section> */}
       </main>
       <Footer />
     </div>

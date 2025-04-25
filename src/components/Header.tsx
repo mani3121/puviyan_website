@@ -14,7 +14,7 @@ const Header = () => {
   const currentPath = window.location.pathname;
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] bg-transparent backdrop-blur-sm shadow-sm">
+    <header className="fixed top-0 left-0 w-full z-[100] bg-transparent shadow-sm"> {/* Removed backdrop-blur-sm */}
       <div className="container mx-auto px-4 py-1"> {/* Reduced padding-y from py-4 to py-2 */}
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -71,7 +71,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
-      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
+      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
     >
       Product
     </a>
@@ -82,7 +82,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
-      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
+      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
     >
       Services
     </a>
@@ -93,7 +93,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
-      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
+      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
     >
       About
     </a>
@@ -104,7 +104,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
-      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
+      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
     >
       Unite with Us
     </a>
