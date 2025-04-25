@@ -7,7 +7,7 @@ const UniteWithUs = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4 py-8">
       <Header />
       {/* Add padding to push content below the header */}
-      <div className="mt-16 w-full flex flex-col items-center">
+      <div className="mt-8 w-full flex flex-col items-center"> {/* Reduced margin-top from mt-16 to mt-8 */}
         <h1 className="text-4xl font-bold text-gray-800 mb-6">Unite with Puviyan</h1>
         <p className="text-lg text-gray-600 mb-8 text-center">
           Inviting partners, CSR funders, investors, and aspiring job seekers to build a sustainable future together
@@ -97,9 +97,7 @@ const UniteWithUs = () => {
             Submit
           </button>
         </form>
-        
       </div>
-     
     </div>
   );
 };

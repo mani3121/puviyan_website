@@ -13,6 +13,15 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
   const [isTransitionComplete, setIsTransitionComplete] = useState(false);
 
   useEffect(() => {
+    // Toggle the scrollbar visibility based on transition completion
+    if (isTransitionComplete) {
+      document.body.style.overflow = ''; // Restore scrollbar
+    } else {
+      document.body.style.overflow = 'hidden'; // Hide scrollbar
+    }
+  }, [isTransitionComplete]);
+
+  useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isTransitionComplete && e.deltaY > 0) {
         return;

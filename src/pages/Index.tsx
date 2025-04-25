@@ -6,14 +6,9 @@ import ParallaxImages from '@/components/ParallaxImages';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 
-const images: string[] = [
-  'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan000.png?raw=true',
-  'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan118.png?raw=true'
-];
-
 const parallaxImages = {
-  first: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan000.png?raw=true',
-  second: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan118.png?raw=true'
+  first: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Puviyanworld2.jpeg?raw=true',
+  second: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Puviyanworld1.jpeg?raw=true'
 };
 
 const Index = () => {

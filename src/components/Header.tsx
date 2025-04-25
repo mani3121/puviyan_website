@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Linkedin, Menu, X } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,7 +15,7 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] bg-transparent backdrop-blur-sm shadow-sm">
-      <div className="container mx-auto px-4 py-4">
+      <div className="container mx-auto px-4 py-1"> {/* Reduced padding-y from py-4 to py-2 */}
         <div className="flex items-center justify-between">
           {/* Logo */}
           <div 
@@ -56,18 +56,6 @@ const Header = () => {
               {renderLinks(currentPath)}
             </div>
           )}
-
-          {/* Social Links */}
-          <div className="hidden md:flex items-center space-x-4">
-            <a 
-              href="https://www.linkedin.com/company/puviyan/" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-gray-700 hover:text-green-600 transition-colors"
-            >
-              <Linkedin size={20} />
-            </a>
-          </div>
         </div>
       </div>
     </header>
@@ -83,6 +71,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
+      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
     >
       Product
     </a>
@@ -93,6 +82,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
+      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
     >
       Services
     </a>
@@ -103,6 +93,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
+      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
     >
       About
     </a>
@@ -113,6 +104,7 @@ const renderLinks = (currentPath) => (
           ? 'text-green-800 underline'
           : 'text-black-600 hover:text-green-800'
       }`}
+      style={{ fontFamily: 'Arial Rounded' }} // Applied font-family
     >
       Unite with Us
     </a>
