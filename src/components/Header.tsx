@@ -13,8 +13,12 @@ const Header = () => {
 
   const currentPath = window.location.pathname;
 
+  // Determine header background based on the current path
+  const headerBackground =
+    currentPath === '/' ? 'bg-transparent' : 'bg-gray-800 text-white';
+
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] bg-transparent shadow-sm"> {/* Removed backdrop-blur-sm */}
+    <header className={`fixed top-0 left-0 w-full z-[100] shadow-sm ${headerBackground}`}>
       <div className="container mx-auto px-4 py-1"> {/* Reduced padding-y from py-4 to py-2 */}
         <div className="flex items-center justify-between">
           {/* Logo */}

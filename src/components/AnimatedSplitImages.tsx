@@ -1,10 +1,13 @@
 import emailjs from '@emailjs/browser';
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
-import Header from "./Header"; // Import your Header component
+import Header from "./Header";
 
 const AnimatedSplitImages = () => {
   const containerRef = useRef(null);
+  const h1Ref = useRef(null);
+  const controls = useAnimation();
+  const isInView = useInView(h1Ref, { once: true }); // Trigger animation once when in view
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -15,7 +18,6 @@ const AnimatedSplitImages = () => {
   });
   const [containerHeight, setContainerHeight] = useState('100vh');
 
-  // Update container height based on viewport
   useEffect(() => {
     const updateHeight = () => {
       const vh = window.innerHeight * 0.01;
@@ -32,24 +34,11 @@ const AnimatedSplitImages = () => {
     };
   }, []);
 
-  // Hook into scroll inside this section
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"],
-  });
-
-  // Left Image: vertical movement - stop in the center
-  const verticalY = useTransform(scrollYProgress, [0, 0.5, 1], ["-50%", "0%", "0%"]);
-  
-  // Zoom out effect for the image
-  const imageScale = useTransform(scrollYProgress, [0, 1], [0.8, 0.5]);
-
-  // Right Content: horizontal movement - stop in the center
-  const horizontalX = useTransform(scrollYProgress, [0, 0.5, 1], ["-400px", "0px", "0px"]);
-  
-  // Heading text: opacity and position animation
-  const headingOpacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
-  const headingX = useTransform(scrollYProgress, [0, 0.2], ["-100px", "0px"]);
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -65,13 +54,11 @@ const AnimatedSplitImages = () => {
     setSubmitStatus('idle');
 
     try {
-      // Initialize EmailJS with your public key
-      emailjs.init("d1YGFS1dDCmPJB0N4"); // Replace with your actual public key
+      emailjs.init("d1YGFS1dDCmPJB0N4");
 
-      // Send email using EmailJS
       await emailjs.send(
-        "service_m73cz7e", // Replace with your EmailJS service ID
-        "template_mxugw58", // Replace with your EmailJS template ID
+        "service_m73cz7e",
+        "template_mxugw58",
         {
           from_name: formData.name,
           from_email: formData.email,
@@ -82,8 +69,7 @@ const AnimatedSplitImages = () => {
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
         setShowForm(false);
         setSubmitStatus('idle');
@@ -93,30 +79,33 @@ const AnimatedSplitImages = () => {
       setSubmitStatus('error');
     } finally {
       setIsLoading(false);
-    }
+    };
   };
 
   return (
     <div
       ref={containerRef}
       className="flex flex-col md:flex-row w-full overflow-hidden"
-      style={{ 
+      style={{
         height: containerHeight,
-        minHeight: '100vh'
+        minHeight: "100vh",
       }}
     >
-      <Header/>
-      {/* Left - Vertical Parallax */}
-      <div className="w-full h-[60vh] md:h-full md:w-1/2 flex justify-center items-center overflow-hidden">
-        <div className="relative w-full h-full">
-          <motion.img
+      <Header />
+
+      {/* Left - Static Image */}
+      <div className="w-full h-[40vh] md:h-3/4 md:w-1/2 flex justify-center items-center overflow-hidden mt-16">
+        <div className="relative">
+          <img
             src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/mobile_hd.png?raw=true"
             alt="Vertical Parallax"
-            style={{ 
-              y: verticalY,
-              scale: imageScale
+            className="rounded-none md:rounded-2xl shadow-2xl"
+            style={{
+              width: "auto",
+              height: "50%",
+              transform: "scale(0.4)",
+              transition: "transform 0.3s ease-in-out",
             }}
-            className="absolute inset-0 w-full h-full fill rounded-none md:rounded-2xl shadow-2xl"
           />
         </div>
       </div>
@@ -124,37 +113,41 @@ const AnimatedSplitImages = () => {
       {/* Right - Content with Form */}
       <div className="w-full h-[60vh] md:h-full md:w-1/2 flex justify-center items-center bg-white-50 px-4 md:px-8 py-8 md:py-0 overflow-y-auto">
         <motion.div
-          style={{ 
-            x: horizontalX,
-            fontFamily: 'Arial Black' // Added font-family
+          style={{
+            fontFamily: "Arial Black",
           }}
-          className="p-4 md:p-8 w-full max-w-md mx-auto text-left"
+          className="p-4 md:p-8 w-full max-w-md mx-auto text-left -mt-10"
         >
-          <motion.h2 
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-4 md:mb-6 tracking-tight text-left"
-            style={{ 
-              opacity: headingOpacity,
-              x: headingX,
-              fontFamily: 'Arial Black', // Updated font-family
-              fontWeight: '800',
-              letterSpacing: '-0.02em'
+          <motion.h1
+            ref={h1Ref}
+            className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-6 tracking-tight text-left"
+            style={{
+              fontFamily: "Arial Black",
+              fontWeight: "1000",
+              letterSpacing: "-0.02em",
+            }}
+            initial="hidden"
+            animate={controls}
+            variants={{
+              hidden: { opacity: 0, x: -100 }, // Start off-screen to the left
+              visible: { opacity: 1, x: 0, transition: { duration: 1 } }, // Animate to visible
             }}
           >
-            {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(' ').map((word, index) => (
+            {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
               <span key={index} className="block">
                 {word}
               </span>
             ))}
-          </motion.h2>
-          
+          </motion.h1>
+
           {!showForm ? (
-            submitStatus === 'idle' ? (
+            submitStatus === "idle" ? (
               <button
                 onClick={() => setShowForm(true)}
                 className="w-full md:w-auto px-6 md:px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:opacity-90 transition-opacity text-left"
                 style={{
-                  background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
-                  color: 'white',
+                  background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
+                  color: "white",
                 }}
               >
                 SHARE YOUR IDEAS
