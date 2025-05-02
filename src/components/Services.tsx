@@ -14,29 +14,29 @@ const services = [
     title: 'Eco-Intelligent Digital Operations',
     description:
       'Transform your digital and IT landscape with an eco-conscious approach. We identify practical, high-impact opportunities to improve energy efficiency, reduce waste, and conserve resources—minimizing your environmental footprint while optimizing performance and productivity.',
-    image: '/src/assets/img/Eco-digital.jpg', // Replace with actual image URL
+    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Eco-digital.jpg?raw=true', // Replace with actual image URL
   },
   {
     title: 'ESG Data, Reporting & Automation',
     description:
       'Elevate ESG from a compliance task to a strategic asset. Our solutions simplify data collection, streamline reporting, and automate key processes—ensuring transparency, regulatory alignment, and a clear narrative of your sustainability progress to all stakeholders.',
-    image: '/src/assets/img/Esg.jpg', // Replace with actual image URL
+    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Esg.jpg?raw=true', // Replace with actual image URL
   },
   {
     title: 'Sustainable IT Infrastructure',
     description:
       'Redesign your technology ecosystem for efficiency and lasting environmental benefit. We help you adopt energy-efficient, low-impact IT solutions that reduce emissions and resource use—supporting your business objectives while advancing meaningful sustainability outcomes.',
-    image: '/src/assets/img/Sustainable.jpg', // Replace with actual image URL
+    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Sustainable.jpg?raw=true', // Replace with actual image URL
   },
   {
     title: 'Sustainable Value Chains',
     description:
       'Extend your sustainability impact across your entire ecosystem. We work with you to build responsible, future-ready value chains that engage partners and suppliers—fostering collaboration, reducing risks, and ensuring that progress and preservation move forward together.',
-    image: '/src/assets/img/ValueChain.jpg', // Replace with actual image URL
+    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/ValueChain.jpg?raw=true', // Replace with actual image URL
   },
 ];
 
-const Services = () => {
+const Services = () => {  
   return (
     <div className="min-h-screen bg-white">
       <Header />
