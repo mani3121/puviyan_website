@@ -20,7 +20,7 @@ const App = () => (
       <Router>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/animated-split-images" element={<AnimatedSplitImages />} />
+          {/* <Route path="/animated-split-images" element={<AnimatedSplitImages />} /> */}
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/unite-with-us" element={<UniteWithUs />} />
           <Route path="/services" element={<Services />} />

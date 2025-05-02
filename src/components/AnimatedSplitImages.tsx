@@ -19,7 +19,9 @@ const AnimatedSplitImages = () => {
   const [containerHeight, setContainerHeight] = useState('100vh');
 
   useEffect(() => {
+    
     const updateHeight = () => {
+      //document.body.style.overflowY = "scroll";
       const vh = window.innerHeight * 0.01;
       setContainerHeight(`${vh}px`);
     };
@@ -97,7 +99,7 @@ const AnimatedSplitImages = () => {
       <div className="w-full h-[40vh] md:h-3/4 md:w-1/2 flex justify-center items-center overflow-hidden mt-16">
         <div className="relative">
           <img
-            src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/mobile_hd.png?raw=true"
+            src="/src/assets/img/mobile_hd.png"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             style={{

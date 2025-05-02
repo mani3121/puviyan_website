@@ -4,7 +4,7 @@ import Footer from './Footer';
 
 const UniteWithUs = () => {
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-center px-4 py-8">
       <Header />
       {/* Add padding to push content below the header */}
       <div className="mt-8 w-full flex flex-col items-center"> {/* Reduced margin-top from mt-16 to mt-8 */}

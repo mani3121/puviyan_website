@@ -11,6 +11,13 @@ const Header = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const currentPath = window.location.pathname;
 
   // Determine header background based on the current path
@@ -27,7 +34,7 @@ const Header = () => {
             onClick={() => (window.location.href = "/")} // Redirect to the home page
           >
             <img 
-              src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan_logo.png?raw=true" 
+              src="/src/assets/img/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 w-auto"
             />
@@ -51,13 +58,13 @@ const Header = () => {
                   transition={{ duration: 0.3 }}
                   className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-start px-4 py-2 z-50"
                 >
-                  {renderLinks(currentPath)}
+                  {renderLinks(currentPath, scrollToSection)}
                 </motion.div>
               )}
             </AnimatePresence>
           ) : (
             <div className="hidden md:flex md:items-center md:space-x-10">
-              {renderLinks(currentPath)}
+              {renderLinks(currentPath, scrollToSection)}
             </div>
           )}
         </div>
@@ -66,49 +73,70 @@ const Header = () => {
   );
 };
 
-const renderLinks = (currentPath) => (
+const renderLinks = (currentPath, scrollToSection) => (
   <>
     <a
       href="/animated-split-images"
+      onClick={(e) => {
+        e.preventDefault();
+        // Enable the browser scrollbar
+        document.body.style.overflowY = "scroll";
+        scrollToSection("animated-split-images");
+      }}
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
-        currentPath === '/animated-split-images'
-          ? 'text-green-800 underline'
-          : 'text-black-600 hover:text-green-800'
+        currentPath === "/animated-split-images"
+          ? "text-green-800 underline"
+          : "text-black-600 hover:text-green-800"
       }`}
-      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
     >
-      Product
+      Products
     </a>
     <a
       href="/services"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("services");
+      }}
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
-        currentPath === '/services'
-          ? 'text-green-800 underline'
-          : 'text-black-600 hover:text-green-800'
+        currentPath === "/services"
+          ? "text-green-800 underline"
+          : "text-black-600 hover:text-green-800"
       }`}
-      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
     >
       Services
     </a>
     <a
       href="/about-us"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("about-us");
+      }}
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
-        currentPath === '/about-us'
-          ? 'text-green-800 underline'
-          : 'text-black-600 hover:text-green-800'
+        currentPath === "/about-us"
+          ? "text-green-800 underline"
+          : "text-black-600 hover:text-green-800"
       }`}
-      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
     >
       About
     </a>
     <a
       href="/unite-with-us"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("unite-with-us");
+      }}
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
-        currentPath === '/unite-with-us'
-          ? 'text-green-800 underline'
-          : 'text-black-600 hover:text-green-800'
+        currentPath === "/unite-with-us"
+          ? "text-green-800 underline"
+          : "text-black-600 hover:text-green-800"
       }`}
-      style={{ fontFamily: 'Arial Rounded MT Bold' }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
     >
       Unite with Us
     </a>

@@ -14,7 +14,7 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
 
   return (
-    <section className="w-full bg-gray-100 py-16">
+    <section className="w-full bg-white py-16">
       <Header />
       {/* Add padding or margin to push content below the header */}
       <div className="container mx-auto px-4 text-center mt-16">
