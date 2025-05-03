@@ -83,27 +83,23 @@ const Header = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[100] shadow-sm transition-colors duration-300 ${
-      isScrolled ? 'bg-gray-800 text-white' : 'bg-transparent text-black-900'
-    }`}>
-      <div className="container mx-auto px-3 py-0.5">
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-gray-800 text-white transition-colors duration-300">
+      <div className="container mx-auto px-3 py-0">
         <div className="flex items-center justify-between">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-2"
+            className="cursor-pointer flex items-center gap-1"
             onClick={() => (window.location.href = "/")}
           >
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-5 w-auto"
+              className="h-4 w-auto"
             />
             <span 
               ref={textRef}
-              className={`text-lg font-bold opacity-0 -translate-x-5 ${
-                isScrolled ? 'text-white' : 'text-gray-900'
-              }`}
+              className="text-sm font-bold opacity-0 -translate-x-5 text-white flex items-center"
               style={{ fontFamily: "Arial Rounded MT Bold" }}
             >
               Puviyan
@@ -128,7 +124,7 @@ const Header = () => {
                   transition={{ duration: 0.3 }}
                   className="absolute top-16 left-0 w-full bg-gray-800 shadow-md flex flex-col items-start px-4 py-2 z-50"
                 >
-                  {renderLinks(currentPath, scrollToSection, isScrolled)}
+                  {renderLinks(currentPath, scrollToSection, true)}
                 </motion.div>
               )}
             </AnimatePresence>
@@ -152,10 +148,10 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
-      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/animated-split-images"
           ? "text-green-800 underline"
-          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
       style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
@@ -168,10 +164,10 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("services");
       }}
-      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/services"
           ? "text-green-800 underline"
-          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
       style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
@@ -184,10 +180,10 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
-      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/about-us"
           ? "text-green-800 underline"
-          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
       style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
@@ -200,10 +196,10 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
-      className={`block px-4 py-2 text-lg font-semibold transition-colors ${
+      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/unite-with-us"
           ? "text-green-800 underline"
-          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
       style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
