@@ -101,7 +101,7 @@ const AnimatedSplitImages = () => {
       <Header />
 
       {/* Left - Static Image */}
-      <div className="w-full h-[40vh] md:h-3/4 md:w-1/2 flex justify-center items-center overflow-hidden mt-16">
+      <div className="w-full h-[40vh] md:h-3/4 md:w-1/2 flex justify-center items-center overflow-hidden mt-8">
         <div className="relative">
           <img
             src="https://puviyan-website.vercel.app/images/mobile_hd.png"
@@ -112,6 +112,16 @@ const AnimatedSplitImages = () => {
               transform: "scale(0.44)",
             }}
           />
+          <motion.div
+            className="absolute left-0 top-1/2 transform -translate-y-1/2"
+            initial={{ x: "-100%", opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+            transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          >
+            <span className="text-2xl md:text-4xl font-bold text-gray-900" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+              Coming Soon
+            </span>
+          </motion.div>
         </div>
       </div>
 

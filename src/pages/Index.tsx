@@ -1,12 +1,10 @@
 import AboutUs from '@/components/AboutUs';
-import AnimatedSplitImages from '@/components/AnimatedSplitImages';
-import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
-import ImageScrollStack from '@/components/ImageScrollStack';
+import Header from '@/components/Header';
 import ParallaxImages from '@/components/ParallaxImages';
-import Footer from '../components/Footer';
 import Services from '@/components/Services';
 import UniteWithUs from '@/components/UniteWithUs';
-import Header from '@/components/Header';
+import Footer from '../components/Footer';
+import Product from './Product';
 
 
 const parallaxImages = {
@@ -37,7 +35,7 @@ const Index = () => {
         {/* Next section that appears after scroll */}
         <section id="animated-split-images" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
-            <AnimatedSplitImages />
+            <Product />
           </div>
         </section>
         <section id="services" className="min-h-screen w-full bg-white">
