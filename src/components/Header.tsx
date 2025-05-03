@@ -34,7 +34,7 @@ const Header = () => {
             onClick={() => (window.location.href = "/")} // Redirect to the home page
           >
             <img 
-              src="https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/puviyan_logo.png?raw=true" 
+              src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 w-auto"
             />

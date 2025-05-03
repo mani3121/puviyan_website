@@ -10,8 +10,8 @@ import Header from '@/components/Header';
 
 
 const parallaxImages = {
-  first: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Puviyanworld2.jpeg?raw=true',
-  second: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Puviyanworld1.jpeg?raw=true',
+  first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
+  second: 'https://puviyan-website.vercel.app/images/Puviyanworld1.jpeg',
 };
 
 const Index = () => {
