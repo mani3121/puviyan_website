@@ -52,8 +52,8 @@ const AnimatedSplitImages = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    e.stopPropagation();
     setIsLoading(true);
-    setSubmitStatus('idle');
 
     try {
       emailjs.init("d1YGFS1dDCmPJB0N4");
@@ -71,18 +71,23 @@ const AnimatedSplitImages = () => {
 
       setSubmitStatus('success');
       setFormData({ name: '', email: '', message: '' });
-
-      setTimeout(() => {
-        setShowForm(false);
-        setSubmitStatus('idle');
-      }, 3000);
+      setShowForm(false);
     } catch (error) {
       console.error('Error:', error);
       setSubmitStatus('error');
     } finally {
       setIsLoading(false);
-    };
+    }
   };
+
+  useEffect(() => {
+    if (submitStatus === 'success') {
+      const timer = setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 50000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   return (
     <div
@@ -103,10 +108,8 @@ const AnimatedSplitImages = () => {
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             style={{
-              width: "auto",
-              height: "50%",
-              transform: "scale(0.4)",
-              transition: "transform 0.3s ease-in-out",
+              objectFit: "contain",
+              transform: "scale(0.44)",
             }}
           />
         </div>
@@ -122,7 +125,7 @@ const AnimatedSplitImages = () => {
         >
           <motion.h1
             ref={h1Ref}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-2 md:mb-6 tracking-tight text-left"
+            className="text-4xl md:text-6xl font-bold text-gray-900 mb-2 md:mb-6 tracking-tight text-left -mt-16 md:-mt-20"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -132,7 +135,7 @@ const AnimatedSplitImages = () => {
             animate={controls}
             variants={{
               hidden: { opacity: 0, x: -100 }, // Start off-screen to the left
-              visible: { opacity: 1, x: 0, transition: { duration: 1 } }, // Animate to visible
+              visible: { opacity: 1, x: 0, transition: { duration: 2 } }, // Animate to visible
             }}
           >
             {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
@@ -146,16 +149,25 @@ const AnimatedSplitImages = () => {
             submitStatus === "idle" ? (
               <button
                 onClick={() => setShowForm(true)}
-                className="w-full md:w-auto px-6 md:px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:opacity-90 transition-opacity text-left"
+                disabled={submitStatus !== "idle"}
+                className="w-full md:w-auto px-6 md:px-8 py-3 rounded-lg text-base md:text-lg font-semibold hover:opacity-90 transition-opacity text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 style={{
                   background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
                   color: "white",
                 }}
               >
-                SHARE YOUR IDEAS
+                {submitStatus === "idle" ? "SHARE YOUR IDEAS" : "WITH YOUR IDEAS"}
               </button>
             ) : (
-              <p className="text-xl font-semibold text-gray-900 text-left">YOUR IDEAS</p>
+              <p style={{
+                background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
+                color: "white",
+                padding: "0.75rem 2rem",
+                borderRadius: "0.5rem",
+                fontSize: "1.125rem",
+                fontWeight: "600",
+                textAlign: "left",
+              }}> WITH YOUR IDEAS</p>
             )
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3 md:space-y-4 text-left">
@@ -166,7 +178,7 @@ const AnimatedSplitImages = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   placeholder="Your Name"
-                  className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
+                  className="w-full md:w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm text-left"
                   required
                 />
                 <input
@@ -175,7 +187,7 @@ const AnimatedSplitImages = () => {
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Your Email"
-                  className="w-full md:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
+                  className="w-full md:w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm text-left"
                   required
                 />
               </div>
@@ -184,9 +196,9 @@ const AnimatedSplitImages = () => {
                   name="message"
                   value={formData.message}
                   onChange={handleInputChange}
-                  placeholder="Your Message"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-base text-left"
-                  rows={4}
+                  placeholder="Your Idea"
+                  className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm text-left"
+                  rows={3}
                   required
                 />
               </div>
@@ -218,9 +230,7 @@ const AnimatedSplitImages = () => {
                   Back
                 </button>
               </div>
-              {submitStatus === 'success' && (
-                <p className="text-green-600 mt-2 text-left">Message sent successfully!</p>
-              )}
+              {submitStatus === 'success' }
               {submitStatus === 'error' && (
                 <p className="text-red-600 mt-2 text-left">Failed to send message. Please try again.</p>
               )}

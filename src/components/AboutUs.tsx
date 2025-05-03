@@ -1,7 +1,5 @@
 import { motion } from 'framer-motion';
-import React from 'react';
 import Header from './Header';
-import Footer from './Footer';
 const AboutUs = () => {
   const description = `
 “How can I contribute to a sustainable future while pursuing my dreams and honoring my priorities—and how can we, as a collective, align our efforts to create meaningful change?”
@@ -24,7 +22,7 @@ Real change begins with individual action, but its true strength lies in the sha
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          Why Puviyan
+          About Puviyan
         </motion.h2>
         <motion.p
           className="text-lg md:text-xl text-gray-700"

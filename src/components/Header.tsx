@@ -1,11 +1,15 @@
-import { useState } from 'react';
-import { useMediaQuery } from 'react-responsive';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
+import gsap from 'gsap';
 import { Menu, X } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
+  const [isScrolled, setIsScrolled] = useState(false);
+  const logoRef = useRef(null);
+  const textRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -20,24 +24,90 @@ const Header = () => {
 
   const currentPath = window.location.pathname;
 
-  // Determine header background based on the current path
-  const headerBackground =
-    currentPath === '/' ? 'bg-transparent' : 'bg-gray-800 text-white';
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const logo = logoRef.current;
+    const text = textRef.current;
+
+    const handleMouseEnter = () => {
+      gsap.to(logo, {
+        scale: 1.1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+      gsap.to(text, {
+        opacity: 1,
+        x: 0,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    };
+
+    const handleMouseLeave = () => {
+      gsap.to(logo, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+      gsap.to(text, {
+        opacity: 0,
+        x: -20,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    };
+
+    if (logo) {
+      logo.addEventListener('mouseenter', handleMouseEnter);
+      logo.addEventListener('mouseleave', handleMouseLeave);
+    }
+
+    return () => {
+      if (logo) {
+        logo.removeEventListener('mouseenter', handleMouseEnter);
+        logo.removeEventListener('mouseleave', handleMouseLeave);
+      }
+    };
+  }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-[100] shadow-sm ${headerBackground}`}>
-      <div className="container mx-auto px-4 py-1"> {/* Reduced padding-y from py-4 to py-2 */}
+    <header className={`fixed top-0 left-0 w-full z-[100] shadow-sm transition-colors duration-300 ${
+      isScrolled ? 'bg-gray-800 text-white' : 'bg-transparent text-black-900'
+    }`}>
+      <div className="container mx-auto px-3 py-0.5">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Logo with Text */}
           <div 
-            className="cursor-pointer"
-            onClick={() => (window.location.href = "/")} // Redirect to the home page
+            ref={logoRef}
+            className="cursor-pointer flex items-center gap-2"
+            onClick={() => (window.location.href = "/")}
           >
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 w-auto"
             />
+            <span 
+              ref={textRef}
+              className={`text-lg font-bold opacity-0 -translate-x-5 ${
+                isScrolled ? 'text-white' : 'text-gray-900'
+              }`}
+              style={{ fontFamily: "Arial Rounded MT Bold" }}
+            >
+              Puviyan
+            </span>
           </div>
 
           {/* Hamburger Menu for Mobile */}
@@ -56,15 +126,15 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-16 left-0 w-full bg-white shadow-md flex flex-col items-start px-4 py-2 z-50"
+                  className="absolute top-16 left-0 w-full bg-gray-800 shadow-md flex flex-col items-start px-4 py-2 z-50"
                 >
-                  {renderLinks(currentPath, scrollToSection)}
+                  {renderLinks(currentPath, scrollToSection, isScrolled)}
                 </motion.div>
               )}
             </AnimatePresence>
           ) : (
             <div className="hidden md:flex md:items-center md:space-x-10">
-              {renderLinks(currentPath, scrollToSection)}
+              {renderLinks(currentPath, scrollToSection, isScrolled)}
             </div>
           )}
         </div>
@@ -73,24 +143,23 @@ const Header = () => {
   );
 };
 
-const renderLinks = (currentPath, scrollToSection) => (
+const renderLinks = (currentPath, scrollToSection, isScrolled) => (
   <>
     <a
       href="/animated-split-images"
       onClick={(e) => {
         e.preventDefault();
-        // Enable the browser scrollbar
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
         currentPath === "/animated-split-images"
           ? "text-green-800 underline"
-          : "text-black-600 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
-      Products
+      Product
     </a>
     <a
       href="/services"
@@ -102,9 +171,9 @@ const renderLinks = (currentPath, scrollToSection) => (
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
         currentPath === "/services"
           ? "text-green-800 underline"
-          : "text-black-600 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
       Services
     </a>
@@ -118,11 +187,11 @@ const renderLinks = (currentPath, scrollToSection) => (
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
         currentPath === "/about-us"
           ? "text-green-800 underline"
-          : "text-black-600 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
-      About
+      About Puviyan
     </a>
     <a
       href="/unite-with-us"
@@ -134,9 +203,9 @@ const renderLinks = (currentPath, scrollToSection) => (
       className={`block px-4 py-2 text-lg font-semibold transition-colors ${
         currentPath === "/unite-with-us"
           ? "text-green-800 underline"
-          : "text-black-600 hover:text-green-800"
+          : isScrolled ? "text-white hover:text-green-400" : "text-gray-900 hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }} // Updated font-family
+      style={{ fontFamily: "Arial Rounded MT Bold" }}
     >
       Unite with Us
     </a>
