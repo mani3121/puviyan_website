@@ -83,13 +83,13 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-gray-800 text-white transition-colors duration-300">
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
       <div className="container mx-auto px-3 py-0">
         <div className="flex items-center justify-between">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-1"
+            className="cursor-pointer flex items-center gap-1 ml-16"
             onClick={() => (window.location.href = "/")}
           >
             <img 
@@ -129,7 +129,7 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-10">
+            <div className="hidden md:flex md:items-center md:space-x-6">
               {renderLinks(currentPath, scrollToSection, isScrolled)}
             </div>
           )}
@@ -148,7 +148,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
-      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/animated-split-images"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
@@ -164,7 +164,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("services");
       }}
-      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/services"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
@@ -180,7 +180,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
-      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/about-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
@@ -196,7 +196,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
-      className={`block px-4 py-2 text-sm font-semibold transition-colors ${
+      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
         currentPath === "/unite-with-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
