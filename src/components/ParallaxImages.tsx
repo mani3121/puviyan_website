@@ -13,15 +13,6 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
   const [isTransitionComplete, setIsTransitionComplete] = useState(false);
 
   useEffect(() => {
-    // Toggle the scrollbar visibility based on transition completion
-    if (isTransitionComplete) {
-      document.body.style.overflow = ''; // Restore scrollbar
-    } else {
-      document.body.style.overflow = 'hidden'; // Hide scrollbar
-    }
-  }, [isTransitionComplete]);
-
-  useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
       if (isTransitionComplete && e.deltaY > 0) {
         return;
@@ -33,6 +24,22 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         const delta = e.deltaY;
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (delta > 0 ? 5 : -5)));
         setScrollProgress(newProgress);
+
+        // Calculate the scroll position based on progress
+        const container = containerRef.current;
+        if (container) {
+          const containerTop = container.offsetTop;
+          const containerHeight = container.offsetHeight;
+          const windowHeight = window.innerHeight;
+          const maxScroll = containerHeight - windowHeight;
+          const targetScroll = containerTop + (maxScroll * (newProgress / 100));
+          
+          // Smoothly scroll to the calculated position
+          window.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+          });
+        }
 
         if (newProgress === 100) {
           setIsTransitionComplete(true);
@@ -60,6 +67,22 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 5 : -5)));
         setScrollProgress(newProgress);
 
+        // Calculate the scroll position based on progress
+        const container = containerRef.current;
+        if (container) {
+          const containerTop = container.offsetTop;
+          const containerHeight = container.offsetHeight;
+          const windowHeight = window.innerHeight;
+          const maxScroll = containerHeight - windowHeight;
+          const targetScroll = containerTop + (maxScroll * (newProgress / 100));
+          
+          // Smoothly scroll to the calculated position
+          window.scrollTo({
+            top: targetScroll,
+            behavior: 'smooth'
+          });
+        }
+
         if (newProgress === 100) {
           setIsTransitionComplete(true);
         } else if (newProgress < 100) {
@@ -68,7 +91,7 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
 
         if (newProgress > 0 && newProgress < 100) {
           setIsScrolling(true);
-          setTimeout(() => setIsScrolling(false), 50); // Match the delay with the wheel event
+          setTimeout(() => setIsScrolling(false), 50);
         }
       }
 
