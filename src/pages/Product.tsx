@@ -29,7 +29,7 @@ const Product = () => {
       const tl = gsap.timeline();
       
       tl.to(image, {
-        y: "35%",
+        y: "20%",
         opacity: 1,
         duration: 1,
         ease: "power2.out"
@@ -102,7 +102,7 @@ const Product = () => {
         <div className="relative -translate-x-3/4 w-[28vw]">
           <img
             ref={imageRef}
-            src="https://puviyan-website.vercel.app/images/mobile_hd.png"
+            src="https://puviyan-website.vercel.app/images/mobile_hd1.png"
             alt="Product Image"
             className="rounded-2xl shadow-2xl w-full h-[100vh]"
             style={{
