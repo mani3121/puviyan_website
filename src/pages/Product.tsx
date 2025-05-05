@@ -40,6 +40,58 @@ const Product = () => {
         duration: 1,
         ease: "power2.out"
       }, "-=0.5");
+
+      // Add touch event handling
+      let touchStartY = 0;
+      let touchEndY = 0;
+
+      const handleTouchStart = (e: TouchEvent) => {
+        touchStartY = e.touches[0].clientY;
+      };
+
+      const handleTouchMove = (e: TouchEvent) => {
+        touchEndY = e.touches[0].clientY;
+        const touchDiff = touchStartY - touchEndY;
+        
+        // Only trigger if touch movement is significant
+        if (Math.abs(touchDiff) > 50) {
+          if (touchDiff > 0) {
+            // Scrolling down
+            gsap.to(image, {
+              y: "+=20",
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          } else {
+            // Scrolling up
+            gsap.to(image, {
+              y: "-=20",
+              duration: 0.3,
+              ease: "power2.out"
+            });
+          }
+          touchStartY = touchEndY;
+        }
+      };
+
+      const handleTouchEnd = () => {
+        // Reset position with animation
+        gsap.to(image, {
+          y: "20%",
+          duration: 0.5,
+          ease: "power2.out"
+        });
+      };
+
+      image.addEventListener('touchstart', handleTouchStart);
+      image.addEventListener('touchmove', handleTouchMove);
+      image.addEventListener('touchend', handleTouchEnd);
+
+      return () => {
+        image.removeEventListener('touchstart', handleTouchStart);
+        image.removeEventListener('touchmove', handleTouchMove);
+        image.removeEventListener('touchend', handleTouchEnd);
+      };
     }
   }, []);
 
