@@ -3,9 +3,9 @@ import Header from '@/components/Header';
 import ParallaxImages from '@/components/ParallaxImages';
 import Services from '@/components/Services';
 import UniteWithUs from '@/components/UniteWithUs';
+import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import Product from './Product';
-
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
@@ -21,56 +21,61 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col w-full">
-      <Header />
-      <main className="flex-grow w-full">
-        {/* Parallax Images section */}
-        <section className="w-full h-screen">
-          <ParallaxImages 
-            image1={parallaxImages.first}
-            image2={parallaxImages.second}
-          />
-        </section>
+    <>
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      </Helmet>
+      <div className="w-full overflow-x-hidden">
+        <Header />
+        <main className="w-full">
+          {/* Parallax Images section */}
+          <section className="w-full h-screen">
+            <ParallaxImages 
+              image1={parallaxImages.first}
+              image2={parallaxImages.second}
+            />
+          </section>
 
-        {/* Separator */}
-        <div className="w-full h-1 bg-black"></div>
+          {/* Separator */}
+          <div className="w-full h-1 bg-black"></div>
 
-        {/* Next section that appears after scroll */}
-        <section id="animated-split-images" className="min-h-screen w-full bg-white">
-          <div className="container mx-auto px-4 py-16">
-            <Product />
-          </div>
-        </section>
+          {/* Next section that appears after scroll */}
+          <section id="animated-split-images" className="w-full bg-white">
+            <div className="w-full px-4 py-16">
+              <Product />
+            </div>
+          </section>
 
-        {/* Separator */}
-        <div className="w-full h-1 bg-black"></div>
+          {/* Separator */}
+          <div className="w-full h-1 bg-black"></div>
 
-        <section id="services" className="min-h-screen w-full bg-white">
-          <div className="container mx-auto px-4 py-16">
-            <Services />
-          </div>
-        </section>
+          <section id="services" className="w-full bg-white">
+            <div className="w-full px-4 py-16">
+              <Services />
+            </div>
+          </section>
 
-        {/* Separator */}
-        <div className="w-full h-1 bg-black"></div>
+          {/* Separator */}
+          <div className="w-full h-1 bg-black"></div>
 
-        <section id="about-us" className="min-h-screen w-full bg-white">
-          <div className="container mx-auto px-4 py-16">
-            <AboutUs />
-          </div>
-        </section>
+          <section id="about-us" className="w-full bg-white">
+            <div className="w-full px-4 py-16">
+              <AboutUs />
+            </div>
+          </section>
 
-        {/* Separator */}
-        <div className="w-full h-1 bg-black"></div>
+          {/* Separator */}
+          <div className="w-full h-1 bg-black"></div>
 
-        <section id="unite-with-us" className="min-h-screen w-full bg-white">
-          <div className="container mx-auto px-4 py-16">
-            <UniteWithUs />
-          </div>
-        </section>
-      </main>
-      <Footer />
-    </div>
+          <section id="unite-with-us" className="w-full bg-white">
+            <div className="w-full px-4 py-16">
+              <UniteWithUs />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    </>
   );
 };
 

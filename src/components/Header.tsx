@@ -19,6 +19,9 @@ const Header = () => {
     const section = document.getElementById(id);
     if (section) {
       section.scrollIntoView({ behavior: 'smooth' });
+      if (isMobile) {
+        setIsMenuOpen(false);
+      }
     }
   };
 
@@ -84,22 +87,22 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
-      <div className="container mx-auto px-3 py-0">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto px-2 md:px-3 py-1.5 md:py-0">
+        <div className="flex items-center justify-between h-10 md:h-auto">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-1 ml-16"
+            className="cursor-pointer flex items-center gap-1 ml-4 md:ml-16"
             onClick={() => (window.location.href = "/")}
           >
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-4 w-auto"
+              className="h-6 md:h-4 w-auto"
             />
             <span 
               ref={textRef}
-              className="text-sm font-bold opacity-0 -translate-x-5 text-white flex items-center"
+              className="hidden md:block text-sm font-bold opacity-0 -translate-x-5 text-white flex items-center"
               style={{ fontFamily: "Arial Rounded MT Bold" }}
             >
               Puviyan
@@ -108,8 +111,15 @@ const Header = () => {
 
           {/* Hamburger Menu for Mobile */}
           <div className="md:hidden">
-            <button onClick={toggleMenu} className="text-gray-700 hover:text-green-600">
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            <button 
+              onClick={toggleMenu} 
+              className="p-2 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300"
+            >
+              {isMenuOpen ? (
+                <X size={24} className="text-white hover:text-green-400 transition-colors duration-300" />
+              ) : (
+                <Menu size={24} className="text-white hover:text-green-400 transition-colors duration-300" />
+              )}
             </button>
           </div>
 
@@ -122,7 +132,7 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-16 left-0 w-full bg-gray-800 shadow-md flex flex-col items-start px-4 py-2 z-50"
+                  className="absolute top-10 left-0 w-full bg-black shadow-md flex flex-col items-start px-4 py-2 z-50"
                 >
                   {renderLinks(currentPath, scrollToSection, true)}
                 </motion.div>
