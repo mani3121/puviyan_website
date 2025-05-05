@@ -17,6 +17,7 @@ const Product = () => {
     email: '',
     message: ''
   });
+  const [lastTouchY, setLastTouchY] = useState(0);
 
   useEffect(() => {
     const image = imageRef.current;
@@ -41,41 +42,26 @@ const Product = () => {
         ease: "power2.out"
       }, "-=0.5");
 
-      // Add touch event handling
-      let touchStartY = 0;
-      let touchEndY = 0;
-
-      const handleTouchStart = (e: TouchEvent) => {
-        touchStartY = e.touches[0].clientY;
+      const handleTouchMove = (e: TouchEvent) => {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const deltaY = touch.clientY - lastTouchY;
+        
+        if (Math.abs(deltaY) > 5) {
+          gsap.to(image, {
+            y: `+=${deltaY * 0.5}`,
+            duration: 0.1,
+            ease: "power2.out"
+          });
+        }
+        setLastTouchY(touch.clientY);
       };
 
-      const handleTouchMove = (e: TouchEvent) => {
-        touchEndY = e.touches[0].clientY;
-        const touchDiff = touchStartY - touchEndY;
-        
-        // Only trigger if touch movement is significant
-        if (Math.abs(touchDiff) > 50) {
-          if (touchDiff > 0) {
-            // Scrolling down
-            gsap.to(image, {
-              y: "+=20",
-              duration: 0.3,
-              ease: "power2.out"
-            });
-          } else {
-            // Scrolling up
-            gsap.to(image, {
-              y: "-=20",
-              duration: 0.3,
-              ease: "power2.out"
-            });
-          }
-          touchStartY = touchEndY;
-        }
+      const handleTouchStart = (e: TouchEvent) => {
+        setLastTouchY(e.touches[0].clientY);
       };
 
       const handleTouchEnd = () => {
-        // Reset position with animation
         gsap.to(image, {
           y: "20%",
           duration: 0.5,
@@ -84,7 +70,7 @@ const Product = () => {
       };
 
       image.addEventListener('touchstart', handleTouchStart);
-      image.addEventListener('touchmove', handleTouchMove);
+      image.addEventListener('touchmove', handleTouchMove, { passive: false });
       image.addEventListener('touchend', handleTouchEnd);
 
       return () => {
@@ -93,7 +79,7 @@ const Product = () => {
         image.removeEventListener('touchend', handleTouchEnd);
       };
     }
-  }, []);
+  }, [lastTouchY]);
 
   useEffect(() => {
     if (isInView) {
