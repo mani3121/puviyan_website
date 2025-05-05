@@ -8,31 +8,31 @@ const services = [
     title: 'Sustainable Digital Strategy',
     description:
       'Shape your digital transformation with sustainability at its core. We align your business goals with global ESG standards, embedding responsible practices into your growth journey without compromising innovation or agility—making your future bold, resilient, and accountable.',
-    image: 'https://www.amdhservicesltd.com/wp-content/uploads/2022/08/Digital-Sustainability-Hi-Res-scaled.jpeg', // Replace with actual image URL
+    image: 'https://puviyan-website.vercel.app/images/Digital-Sustainability.jpeg', // Replace with actual image URL
   },
   {
     title: 'Eco-Intelligent Digital Operations',
     description:
       'Transform your digital and IT landscape with an eco-conscious approach. We identify practical, high-impact opportunities to improve energy efficiency, reduce waste, and conserve resources—minimizing your environmental footprint while optimizing performance and productivity.',
-    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Eco-digital.jpg?raw=true', // Replace with actual image URL
+    image: 'https://puviyan-website.vercel.app/images/Eco-digital.jpg', // Replace with actual image URL
   },
   {
     title: 'ESG Data, Reporting & Automation',
     description:
       'Elevate ESG from a compliance task to a strategic asset. Our solutions simplify data collection, streamline reporting, and automate key processes—ensuring transparency, regulatory alignment, and a clear narrative of your sustainability progress to all stakeholders.',
-    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Esg.jpg?raw=true', // Replace with actual image URL
+    image: 'https://puviyan-website.vercel.app/images/Esg.jpg', // Replace with actual image URL
   },
   {
     title: 'Sustainable IT Infrastructure',
     description:
       'Redesign your technology ecosystem for efficiency and lasting environmental benefit. We help you adopt energy-efficient, low-impact IT solutions that reduce emissions and resource use—supporting your business objectives while advancing meaningful sustainability outcomes.',
-    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/Sustainable.jpg?raw=true', // Replace with actual image URL
+    image: 'https://puviyan-website.vercel.app/images/Sustainable.jpg', // Replace with actual image URL
   },
   {
     title: 'Sustainable Value Chains',
     description:
       'Extend your sustainability impact across your entire ecosystem. We work with you to build responsible, future-ready value chains that engage partners and suppliers—fostering collaboration, reducing risks, and ensuring that progress and preservation move forward together.',
-    image: 'https://github.com/mani3121/puviyan_website/blob/main/src/assets/img/ValueChain.jpg?raw=true', // Replace with actual image URL
+    image: 'https://puviyan-website.vercel.app/images/ValueChain.jpg', // Replace with actual image URL
   },
 ];
 

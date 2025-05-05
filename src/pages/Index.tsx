@@ -32,29 +32,42 @@ const Index = () => {
           />
         </section>
 
+        {/* Separator */}
+        <div className="w-full h-1 bg-black"></div>
+
         {/* Next section that appears after scroll */}
         <section id="animated-split-images" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
             <Product />
           </div>
         </section>
+
+        {/* Separator */}
+        <div className="w-full h-1 bg-black"></div>
+
         <section id="services" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
             <Services />
           </div>
         </section>
+
+        {/* Separator */}
+        <div className="w-full h-1 bg-black"></div>
+
         <section id="about-us" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
             <AboutUs />
           </div>
         </section>
+
+        {/* Separator */}
+        <div className="w-full h-1 bg-black"></div>
+
         <section id="unite-with-us" className="min-h-screen w-full bg-white">
           <div className="container mx-auto px-4 py-16">
             <UniteWithUs />
           </div>
         </section>
-        
-
       </main>
       <Footer />
     </div>
