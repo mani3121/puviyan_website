@@ -2,8 +2,11 @@ import emailjs from '@emailjs/browser';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import AnimatedSplitImages from '../components/AnimatedSplitImages';
 
 const Product = () => {
+  const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
   const imageRef = useRef<HTMLImageElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
   const h1Ref = useRef(null);
@@ -134,6 +137,12 @@ const Product = () => {
     }
   }, [submitStatus]);
 
+  // Return AnimatedSplitImages for mobile view
+  if (isMobile) {
+    return <AnimatedSplitImages />;
+  }
+
+  // Return original Product component for desktop view
   return (
     <div className="w-full h-screen flex justify-center items-center overflow-hidden">
       <div className="relative w-full h-full flex justify-center items-center">
@@ -142,7 +151,7 @@ const Product = () => {
             ref={imageRef}
             src="https://puviyan-website.vercel.app/images/mobile_hd1.png"
             alt="Product Image"
-            className="rounded-2xl shadow-2xl w-full h-[40vh] md:h-[100vh]"
+            className="rounded-2xl shadow-2xl w-full h-[100vh]"
             style={{
               transform: "scale(1.3)",
               backgroundColor: "transparent"
@@ -150,7 +159,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-2xl md:text-6xl font-bold text-gray-900"
+            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-900"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -169,7 +178,7 @@ const Product = () => {
               </span>
             ))}
           </motion.h1>
-          <div className="absolute left-[36vw] top-[80%] -translate-y-1/2 w-[200px] md:w-[300px]">
+          <div className="absolute left-[36vw] top-[80%] -translate-y-1/2 w-[300px]">
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -180,7 +189,7 @@ const Product = () => {
                   <button
                     onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
-                    className="px-4 py-2 rounded-lg text-sm md:text-lg font-semibold hover:opacity-90 transition-opacity min-w-[200px] md:min-w-[300px]"
+                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[300px]"
                     style={{
                       background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
                       color: "white",
