@@ -20,6 +20,7 @@ const AnimatedSplitImages = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isTransitionComplete, setIsTransitionComplete] = useState(false);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -28,24 +29,37 @@ const AnimatedSplitImages = () => {
     };
 
     const handleTouchStart = (e: TouchEvent) => {
-      setTouchStart(e.touches[0].clientY);
+      if (!isTransitionComplete) {
+        e.preventDefault();
+        setTouchStart(e.touches[0].clientY);
+      }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      e.preventDefault(); // Prevent default scroll
-      setTouchEnd(e.touches[0].clientY);
+      if (!isTransitionComplete) {
+        e.preventDefault();
+        setTouchEnd(e.touches[0].clientY);
+      }
     };
 
     const handleTouchEnd = () => {
-      if (touchStart - touchEnd > 50) {
-        // Swipe up
-        if (scrollProgress < 100) {
-          setScrollProgress(prev => Math.min(100, prev + 20));
-        }
-      } else if (touchStart - touchEnd < -50) {
-        // Swipe down
-        if (scrollProgress > 0) {
-          setScrollProgress(prev => Math.max(0, prev - 20));
+      if (!isTransitionComplete) {
+        if (touchStart - touchEnd > 50) {
+          // Swipe up
+          if (scrollProgress < 100) {
+            setScrollProgress(prev => {
+              const newProgress = Math.min(100, prev + 20);
+              if (newProgress === 100) {
+                setIsTransitionComplete(true);
+              }
+              return newProgress;
+            });
+          }
+        } else if (touchStart - touchEnd < -50) {
+          // Swipe down
+          if (scrollProgress > 0) {
+            setScrollProgress(prev => Math.max(0, prev - 20));
+          }
         }
       }
     };
@@ -70,7 +84,7 @@ const AnimatedSplitImages = () => {
         container.removeEventListener('touchend', handleTouchEnd);
       }
     };
-  }, [touchStart, touchEnd, scrollProgress]);
+  }, [touchStart, touchEnd, scrollProgress, isTransitionComplete]);
 
   useEffect(() => {
     if (isInView) {
@@ -134,7 +148,7 @@ const AnimatedSplitImages = () => {
       style={{
         height: containerHeight,
         minHeight: "100vh",
-        touchAction: "none" // Prevent default touch actions
+        touchAction: isTransitionComplete ? "auto" : "none"
       }}
     >
       <Header />
