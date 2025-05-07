@@ -17,24 +17,60 @@ const AnimatedSplitImages = () => {
     message: ''
   });
   const [containerHeight, setContainerHeight] = useState('100vh');
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    
     const updateHeight = () => {
-      //document.body.style.overflowY = "scroll";
       const vh = window.innerHeight * 0.01;
       setContainerHeight(`${vh}px`);
+    };
+
+    const handleTouchStart = (e: TouchEvent) => {
+      setTouchStart(e.touches[0].clientY);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      e.preventDefault(); // Prevent default scroll
+      setTouchEnd(e.touches[0].clientY);
+    };
+
+    const handleTouchEnd = () => {
+      if (touchStart - touchEnd > 50) {
+        // Swipe up
+        if (scrollProgress < 100) {
+          setScrollProgress(prev => Math.min(100, prev + 20));
+        }
+      } else if (touchStart - touchEnd < -50) {
+        // Swipe down
+        if (scrollProgress > 0) {
+          setScrollProgress(prev => Math.max(0, prev - 20));
+        }
+      }
     };
 
     updateHeight();
     window.addEventListener('resize', updateHeight);
     window.addEventListener('orientationchange', updateHeight);
 
+    const container = containerRef.current;
+    if (container) {
+      container.addEventListener('touchstart', handleTouchStart, { passive: false });
+      container.addEventListener('touchmove', handleTouchMove, { passive: false });
+      container.addEventListener('touchend', handleTouchEnd);
+    }
+
     return () => {
       window.removeEventListener('resize', updateHeight);
       window.removeEventListener('orientationchange', updateHeight);
+      if (container) {
+        container.removeEventListener('touchstart', handleTouchStart);
+        container.removeEventListener('touchmove', handleTouchMove);
+        container.removeEventListener('touchend', handleTouchEnd);
+      }
     };
-  }, []);
+  }, [touchStart, touchEnd, scrollProgress]);
 
   useEffect(() => {
     if (isInView) {
@@ -98,6 +134,7 @@ const AnimatedSplitImages = () => {
       style={{
         height: containerHeight,
         minHeight: "100vh",
+        touchAction: "none" // Prevent default touch actions
       }}
     >
       <Header />
