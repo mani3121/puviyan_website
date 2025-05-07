@@ -10,6 +10,8 @@ import Product from './Product';
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
   second: 'https://puviyan-website.vercel.app/images/Puviyanworld1.jpeg',
+  mobileFirst: 'https://puviyan-website.vercel.app/images/Puv_mob2.jpeg',
+  mobileSecond: 'https://puviyan-website.vercel.app/images/Puv_mob1.jpeg',
 };
 
 const Index = () => {
@@ -33,6 +35,8 @@ const Index = () => {
             <ParallaxImages 
               image1={parallaxImages.first}
               image2={parallaxImages.second}
+              mobileImage1={parallaxImages.mobileFirst}
+              mobileImage2={parallaxImages.mobileSecond}
             />
           </section>
 

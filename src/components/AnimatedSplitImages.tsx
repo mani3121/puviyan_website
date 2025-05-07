@@ -128,10 +128,10 @@ const AnimatedSplitImages = () => {
         >
           <motion.h1
             ref={h1Ref}
-            className="text-2xl md:text-4xl font-bold text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
+            className="text-2xl md:text-4xl font-extrabold text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
             style={{
               fontFamily: "Arial Black",
-              fontWeight: "900",
+              fontWeight: "950",
               letterSpacing: "-0.02em",
               borderBottom: "none"
             }}

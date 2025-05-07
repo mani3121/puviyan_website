@@ -4,13 +4,29 @@ import './ParallaxImages.css';
 interface ParallaxImagesProps {
   image1: string;
   image2: string;
+  mobileImage1?: string;
+  mobileImage2?: string;
 }
 
-const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
+const ParallaxImages = ({ image1, image2, mobileImage1, mobileImage2 }: ParallaxImagesProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);
   const [isTransitionComplete, setIsTransitionComplete] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
+    return () => {
+      window.removeEventListener('resize', checkMobile);
+    };
+  }, []);
 
   useEffect(() => {
     const handleWheel = (e: WheelEvent) => {
@@ -123,7 +139,7 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         <div 
           className="parallax-image"
           style={{ 
-            backgroundImage: `url(${image1})`
+            backgroundImage: `url(${isMobile && mobileImage1 ? mobileImage1 : image1})`
           }}
         />
       </div>
@@ -136,7 +152,7 @@ const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
         <div 
           className="parallax-image"
           style={{ 
-            backgroundImage: `url(${image2})`
+            backgroundImage: `url(${isMobile && mobileImage2 ? mobileImage2 : image2})`
           }}
         />
       </div>
