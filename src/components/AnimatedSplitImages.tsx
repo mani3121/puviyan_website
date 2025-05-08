@@ -7,7 +7,7 @@ const AnimatedSplitImages = () => {
   const containerRef = useRef(null);
   const h1Ref = useRef(null);
   const controls = useAnimation();
-  const isInView = useInView(h1Ref, { once: true }); // Trigger animation once when in view
+  const isInView = useInView(h1Ref, { once: true });
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
@@ -17,10 +17,6 @@ const AnimatedSplitImages = () => {
     message: ''
   });
   const [containerHeight, setContainerHeight] = useState('100vh');
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
-  const [scrollProgress, setScrollProgress] = useState(0);
-  const [isTransitionComplete, setIsTransitionComplete] = useState(false);
 
   useEffect(() => {
     const updateHeight = () => {
@@ -28,63 +24,15 @@ const AnimatedSplitImages = () => {
       setContainerHeight(`${vh}px`);
     };
 
-    const handleTouchStart = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        setTouchStart(e.touches[0].clientY);
-      }
-    };
-
-    const handleTouchMove = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        setTouchEnd(e.touches[0].clientY);
-      }
-    };
-
-    const handleTouchEnd = () => {
-      if (!isTransitionComplete) {
-        if (touchStart - touchEnd > 50) {
-          // Swipe up
-          if (scrollProgress < 100) {
-            setScrollProgress(prev => {
-              const newProgress = Math.min(100, prev + 20);
-              if (newProgress === 100) {
-                setIsTransitionComplete(true);
-              }
-              return newProgress;
-            });
-          }
-        } else if (touchStart - touchEnd < -50) {
-          // Swipe down
-          if (scrollProgress > 0) {
-            setScrollProgress(prev => Math.max(0, prev - 20));
-          }
-        }
-      }
-    };
-
     updateHeight();
     window.addEventListener('resize', updateHeight);
     window.addEventListener('orientationchange', updateHeight);
 
-    const container = containerRef.current;
-    if (container) {
-      container.addEventListener('touchstart', handleTouchStart, { passive: false });
-      container.addEventListener('touchmove', handleTouchMove, { passive: false });
-      container.addEventListener('touchend', handleTouchEnd);
-    }
-
     return () => {
       window.removeEventListener('resize', updateHeight);
       window.removeEventListener('orientationchange', updateHeight);
-      if (container) {
-        container.removeEventListener('touchstart', handleTouchStart);
-        container.removeEventListener('touchmove', handleTouchMove);
-        container.removeEventListener('touchend', handleTouchEnd);
-      }
     };
-  }, [touchStart, touchEnd, scrollProgress, isTransitionComplete]);
+  }, []);
 
   useEffect(() => {
     if (isInView) {
@@ -130,8 +78,6 @@ const AnimatedSplitImages = () => {
     }
   };
 
-  
- 
   useEffect(() => {
     if (submitStatus === 'success') {
       const timer = setTimeout(() => {
@@ -147,8 +93,7 @@ const AnimatedSplitImages = () => {
       className="flex flex-col md:flex-row w-full overflow-hidden"
       style={{
         height: containerHeight,
-        minHeight: "100vh",
-        touchAction: isTransitionComplete ? "auto" : "none"
+        minHeight: "100vh"
       }}
     >
       <Header />
@@ -179,15 +124,11 @@ const AnimatedSplitImages = () => {
         >
           <motion.h1
             ref={h1Ref}
-            className="text-2xl md:text-4xl font-extrabold text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
+            className="text-2xl md:text-4xl text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
             style={{
-              fontFamily: "'Arial Black', 'Arial Bold', Arial, sans-serif",
-              fontWeight: "900",
+              fontFamily: "Arial Black",
               letterSpacing: "-0.02em",
-              borderBottom: "none",
-              WebkitFontSmoothing: "antialiased",
-              MozOsxFontSmoothing: "grayscale",
-              textRendering: "optimizeLegibility"
+              borderBottom: "none"
             }}
             initial="hidden"
             animate={controls}
@@ -197,7 +138,7 @@ const AnimatedSplitImages = () => {
             }}
           >
             {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
-              <span key={index} className="block" style={{ fontFamily: "inherit" }}>
+              <span key={index} className="block">
                 {word}
               </span>
             ))}
@@ -212,10 +153,7 @@ const AnimatedSplitImages = () => {
                   transition={{ duration: 1, delay: 0.2 }}
                 >
                   <button
-                    onClick={() => {
-                      setShowForm(true);
-                      setSubmitStatus('idle');
-                    }}
+                    onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
                     className="w-auto md:w-auto px-2 md:px-3 py-1.5 rounded-lg text-[10px] font-semibold hover:opacity-90 transition-opacity text-left disabled:opacity-50 disabled:cursor-not-allowed ml-16 cursor-pointer"
                     style={{
