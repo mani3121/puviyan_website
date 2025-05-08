@@ -98,7 +98,7 @@ const Header = () => {
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-7 md:h-4 w-auto"
+              className="h-6 md:h-4 w-auto"
             />
             <span 
               ref={textRef}
@@ -113,7 +113,7 @@ const Header = () => {
           <div className="md:hidden -mr-2">
             <button 
               onClick={toggleMenu} 
-              className="p-2 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300"
+              className="p-2 rounded-md hover:bg-white/10 transition-all duration-300"
             >
               {isMenuOpen ? (
                 <X size={24} className="text-white hover:text-green-400 transition-colors duration-300" />
