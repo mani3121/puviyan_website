@@ -87,21 +87,19 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
-      <div className="container mx-auto px-2 md:px-3 py-1.5 md:py-0">
+      <div className="container mx-auto px-4 py-1.5 md:py-0">
         <div className="flex items-center justify-between h-10 md:h-auto">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-1 ml-4 md:ml-16"
+            className="cursor-pointer flex items-center gap-1"
             onClick={() => (window.location.href = "/")}
           >
-            <div className="p-2 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300">
-              <img 
-                src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
-                alt="Puviyan Logo" 
-                className="h-6 md:h-4 w-auto"
-              />
-            </div>
+            <img 
+              src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
+              alt="Puviyan Logo" 
+              className="h-6 md:h-4 w-auto"
+            />
             <span 
               ref={textRef}
               className="hidden md:block text-sm font-bold opacity-0 -translate-x-5 text-white flex items-center"
@@ -112,7 +110,7 @@ const Header = () => {
           </div>
 
           {/* Hamburger Menu for Mobile */}
-          <div className="md:hidden">
+          <div className="md:hidden -mr-2">
             <button 
               onClick={toggleMenu} 
               className="p-2 rounded-md border border-white/20 hover:border-white/40 hover:bg-white/10 transition-all duration-300"
