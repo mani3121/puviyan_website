@@ -174,7 +174,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Black" }}
+      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
     >
       Product
     </a>
@@ -190,7 +190,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Black" }}
+      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
     >
       Services
     </a>
@@ -206,7 +206,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Black" }}
+      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
     >
       About Puviyan
     </a>
@@ -222,7 +222,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Black" }}
+      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
     >
       Unite with Us
     </a>

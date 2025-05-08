@@ -2,7 +2,7 @@ import Header from './Header';
 
 const UniteWithUs = () => {
   return (
-    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-center px-4">
+    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-start px-4">
       <Header />
       <div className="w-full flex flex-col items-center">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
