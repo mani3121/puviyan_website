@@ -98,7 +98,7 @@ const Header = () => {
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-6 md:h-4 w-auto"
+              className="h-8 md:h-4 w-auto"
             />
             <span 
               ref={textRef}
@@ -107,14 +107,9 @@ const Header = () => {
             >
               Puviyan
             </span>
-          </div>
-
-          {/* Center Text */}
-          <div className="md:hidden">
             <span 
-              className="text-white text-lg font-bold ml-4 cursor-pointer" 
+              className="md:hidden text-white text-xs font-bold mt-4 tracking-tighter"
               style={{ fontFamily: "Arial Rounded MT Bold" }}
-              onClick={() => (window.location.href = "/")}
             >
               Puviyan
             </span>
@@ -143,7 +138,7 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-12 left-0 w-full bg-black shadow-md flex flex-col items-center px-4 py-2 z-50"
+                  className="absolute top-12 left-0 w-full bg-black shadow-md flex flex-col items-center px-0 py-2 z-50"
                 >
                   {renderLinks(currentPath, scrollToSection, true, isMobile)}
                 </motion.div>
@@ -169,9 +164,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
-      className={`block px-3 py-2 text-sm transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm transition-colors ${
         isMobile 
-          ? "w-full text-center font-normal border-b border-white/20" 
+          ? "font-normal border-b border-white/20" 
           : "font-semibold"
       } ${
         currentPath === "/animated-split-images"
@@ -189,9 +184,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("services");
       }}
-      className={`block px-3 py-2 text-sm transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm transition-colors ${
         isMobile 
-          ? "w-full text-center font-normal border-b border-white/20" 
+          ? "font-normal border-b border-white/20" 
           : "font-semibold"
       } ${
         currentPath === "/services"
@@ -209,9 +204,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
-      className={`block px-3 py-2 text-sm transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm transition-colors ${
         isMobile 
-          ? "w-full text-center font-normal border-b border-white/20" 
+          ? "font-normal border-b border-white/20" 
           : "font-semibold"
       } ${
         currentPath === "/about-us"
@@ -229,9 +224,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
-      className={`block px-3 py-2 text-sm transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm transition-colors ${
         isMobile 
-          ? "w-full text-center font-normal" 
+          ? "font-normal" 
           : "font-semibold"
       } ${
         currentPath === "/unite-with-us"

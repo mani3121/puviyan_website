@@ -34,80 +34,74 @@ const services = [
   },
 ];
 
-const Services = () => {  
+const Services = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <div className="container mx-auto px-4 py-1">
-        <motion.h1
-          className="text-4xl font-bold text-gray-800 text-center mb-12"
-          style={{
-            fontWeight: 600,
-            fontStyle: 'normal',
-            lineHeight: '1.3',
-            color: '#000000',
-          }}
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
+      <div className="container mx-auto px-4 py-16 md:py-24">
+        <motion.div
+          className="max-w-4xl mx-auto"
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          Our Services
-        </motion.h1>
-        <div className="space-y-16">
-          {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className={`flex flex-col ${
-                index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
-              } items-center`}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-            >
-              <motion.img
-                src={service.image}
-                alt={service.title}
-                className="w-full md:w-1/2 rounded-lg shadow-lg"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.3 }}
-              />
-              <motion.div
-                className="md:w-1/2 md:pl-8"
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                <h1
-                  className="text-2xl font-bold mb-4"
-                  style={{
-                    fontWeight: 600,
-                    fontStyle: 'normal',
-                    lineHeight: '1.3',
-                    color: '#808080', // Updated to grey color
-                    marginBottom: '.5em',
-                  }}
-                >
-                  {service.title}
-                </h1>
-                <p
-                  className="text-lg"
-                  style={{
-                    fontSize: '1.4em',
-                    fontWeight: 400,
-                    fontStyle: 'normal',
-                    color: '#808080', // Updated to grey color
-                    marginBottom: '.5em',
-                    lineHeight: '1.4',
-                  }}
-                >
-                  {service.description}
-                </p>
-              </motion.div>
-            </motion.div>
-          ))}
-        </div>
+          <motion.h1 
+            className="text-4xl md:text-5xl font-bold text-gray-800 mb-8 text-center"
+            variants={itemVariants}
+            style={{ fontFamily: "Arial Rounded MT Bold" }}
+          >
+            Empower Ambition. Advance Sustainability. Create Collective Impact.
+          </motion.h1>
+
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+            variants={itemVariants}
+          >
+            Progress demands more-more innovation, more responsibility, more meaningful impact. Real change happens when these forces move forward together. By embedding sustainability into every digital transformation, vision aligns with the United Nations Sustainable Development Goals and global ESG standards-setting a new benchmark for what technology can achieve.
+          </motion.p>
+
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+            variants={itemVariants}
+          >
+            Our services empower governments, businesses, and communities to drive sustainable progress. Leveraging advanced analytics, automation, and cloud technologies, we unlock efficiency, transparency, and measurable outcomes-reducing environmental footprints and creating long-term value.
+          </motion.p>
+
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed"
+            variants={itemVariants}
+          >
+            Sustainability isn't an add-on; it's essential. From energy-efficient infrastructure and circular IT to real-time ESG insights and responsible value chains, our solutions enable purposeful leadership and deliver results that matter-for all stakeholders and for the planet.
+          </motion.p>
+
+          <motion.p 
+            className="text-lg md:text-xl text-gray-600 leading-relaxed"
+            variants={itemVariants}
+          >
+            This is progress, reimagined. Technology that's not just smart, but right. For everyone. For the future.
+          </motion.p>
+        </motion.div>
       </div>
     </div>
   );
