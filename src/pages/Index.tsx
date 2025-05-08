@@ -6,6 +6,7 @@ import UniteWithUs from '@/components/UniteWithUs';
 import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import Product from './Product';
+import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
@@ -32,7 +33,7 @@ const Index = () => {
         <main className="w-full">
           {/* Parallax Images section */}
           <section className="w-full h-screen">
-            <ParallaxImages 
+            <ParallaxImageWrapper 
               image1={parallaxImages.first}
               image2={parallaxImages.second}
               mobileImage1={parallaxImages.mobileFirst}
