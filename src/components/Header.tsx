@@ -98,7 +98,7 @@ const Header = () => {
             <img 
               src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-6 md:h-4 w-auto"
+              className="h-7 md:h-4 w-auto"
             />
             <span 
               ref={textRef}
