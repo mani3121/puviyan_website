@@ -181,10 +181,13 @@ const AnimatedSplitImages = () => {
             ref={h1Ref}
             className="text-2xl md:text-4xl font-extrabold text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
             style={{
-              fontFamily: "Arial Black",
-              fontWeight: "950",
+              fontFamily: "'Arial Black', 'Arial Bold', Arial, sans-serif",
+              fontWeight: "900",
               letterSpacing: "-0.02em",
-              borderBottom: "none"
+              borderBottom: "none",
+              WebkitFontSmoothing: "antialiased",
+              MozOsxFontSmoothing: "grayscale",
+              textRendering: "optimizeLegibility"
             }}
             initial="hidden"
             animate={controls}
@@ -194,7 +197,7 @@ const AnimatedSplitImages = () => {
             }}
           >
             {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
-              <span key={index} className="block">
+              <span key={index} className="block" style={{ fontFamily: "inherit" }}>
                 {word}
               </span>
             ))}
@@ -209,13 +212,18 @@ const AnimatedSplitImages = () => {
                   transition={{ duration: 1, delay: 0.2 }}
                 >
                   <button
-                    onClick={() => setShowForm(true)}
+                    onClick={() => {
+                      setShowForm(true);
+                      setSubmitStatus('idle');
+                    }}
                     disabled={submitStatus !== "idle"}
-                    className="w-auto md:w-auto px-2 md:px-3 py-1.5 rounded-lg text-[10px] font-semibold hover:opacity-90 transition-opacity text-left disabled:opacity-50 disabled:cursor-not-allowed ml-16"
+                    className="w-auto md:w-auto px-2 md:px-3 py-1.5 rounded-lg text-[10px] font-semibold hover:opacity-90 transition-opacity text-left disabled:opacity-50 disabled:cursor-not-allowed ml-16 cursor-pointer"
                     style={{
                       background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
                       color: "white",
-                      maxWidth: "150px"
+                      maxWidth: "150px",
+                      WebkitTapHighlightColor: "transparent",
+                      touchAction: "manipulation"
                     }}
                   >
                     {submitStatus === "idle" ? "SHARE YOUR IDEAS" : "WITH YOUR IDEAS"}
@@ -237,7 +245,7 @@ const AnimatedSplitImages = () => {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3 }}
-                className="mt-10 w-[60%] ml-8"
+                className="mt-4 w-[60%] ml-8"
               >
                 <form onSubmit={handleSubmit} className="space-y-2 md:space-y-3 text-left">
                   <div className="flex flex-row space-x-2">
