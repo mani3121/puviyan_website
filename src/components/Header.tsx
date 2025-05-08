@@ -145,13 +145,13 @@ const Header = () => {
                   transition={{ duration: 0.3 }}
                   className="absolute top-12 left-0 w-full bg-black shadow-md flex flex-col items-center px-4 py-2 z-50"
                 >
-                  {renderLinks(currentPath, scrollToSection, true)}
+                  {renderLinks(currentPath, scrollToSection, true, isMobile)}
                 </motion.div>
               )}
             </AnimatePresence>
           ) : (
             <div className="hidden md:flex md:items-center md:space-x-6">
-              {renderLinks(currentPath, scrollToSection, isScrolled)}
+              {renderLinks(currentPath, scrollToSection, isScrolled, isMobile)}
             </div>
           )}
         </div>
@@ -160,7 +160,7 @@ const Header = () => {
   );
 };
 
-const renderLinks = (currentPath, scrollToSection, isScrolled) => (
+const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
   <>
     <a
       href="/animated-split-images"
@@ -169,12 +169,16 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
-      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
+      className={`block px-3 py-2 text-sm transition-colors ${
+        isMobile 
+          ? "w-full text-center font-normal border-b border-white/20" 
+          : "font-semibold"
+      } ${
         currentPath === "/animated-split-images"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
     >
       Product
     </a>
@@ -185,12 +189,16 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("services");
       }}
-      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
+      className={`block px-3 py-2 text-sm transition-colors ${
+        isMobile 
+          ? "w-full text-center font-normal border-b border-white/20" 
+          : "font-semibold"
+      } ${
         currentPath === "/services"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
     >
       Services
     </a>
@@ -201,12 +209,16 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
-      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
+      className={`block px-3 py-2 text-sm transition-colors ${
+        isMobile 
+          ? "w-full text-center font-normal border-b border-white/20" 
+          : "font-semibold"
+      } ${
         currentPath === "/about-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
     >
       About Puviyan
     </a>
@@ -217,12 +229,16 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
-      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors ${
+      className={`block px-3 py-2 text-sm transition-colors ${
+        isMobile 
+          ? "w-full text-center font-normal" 
+          : "font-semibold"
+      } ${
         currentPath === "/unite-with-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "'Arial Black', 'Arial Bold', Gadget, sans-serif" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
     >
       Unite with Us
     </a>
