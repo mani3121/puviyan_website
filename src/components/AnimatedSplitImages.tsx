@@ -122,7 +122,7 @@ const AnimatedSplitImages = () => {
           }}
           className="p-4 md:p-8 w-full max-w-md mx-auto text-left -mt-10"
         >
-          <motion.h1
+          <h1
             ref={h1Ref}
             className="text-2xl md:text-4xl text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
             style={{
@@ -131,19 +131,13 @@ const AnimatedSplitImages = () => {
               borderBottom: "none",
               fontWeight: "900"
             }}
-            initial="hidden"
-            animate={controls}
-            variants={{
-              hidden: { opacity: 0, x: -50 },
-              visible: { opacity: 1, x: 0, transition: { duration: 1 } },
-            }}
           >
             {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
               <span key={index} className="block">
                 {word}
               </span>
             ))}
-          </motion.h1>
+          </h1>
 
           <div className="flex flex-col">
             {!showForm ? (

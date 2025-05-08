@@ -109,6 +109,17 @@ const Header = () => {
             </span>
           </div>
 
+          {/* Center Text */}
+          <div className="md:hidden">
+            <span 
+              className="text-white text-lg font-bold ml-4 cursor-pointer" 
+              style={{ fontFamily: "Arial Rounded MT Bold" }}
+              onClick={() => (window.location.href = "/")}
+            >
+              Puviyan
+            </span>
+          </div>
+
           {/* Hamburger Menu for Mobile */}
           <div className="md:hidden">
             <button 
@@ -132,7 +143,7 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-10 left-0 w-full bg-black shadow-md flex flex-col items-start px-4 py-2 z-50"
+                  className="absolute top-12 left-0 w-full bg-black shadow-md flex flex-col items-center px-4 py-2 z-50"
                 >
                   {renderLinks(currentPath, scrollToSection, true)}
                 </motion.div>
@@ -158,12 +169,12 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
-      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
         currentPath === "/animated-split-images"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }}
+      style={{ fontFamily: "Arial Black" }}
     >
       Product
     </a>
@@ -174,12 +185,12 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("services");
       }}
-      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
         currentPath === "/services"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }}
+      style={{ fontFamily: "Arial Black" }}
     >
       Services
     </a>
@@ -190,12 +201,12 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
-      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors border-b border-white/20 ${
         currentPath === "/about-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }}
+      style={{ fontFamily: "Arial Black" }}
     >
       About Puviyan
     </a>
@@ -206,12 +217,12 @@ const renderLinks = (currentPath, scrollToSection, isScrolled) => (
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
-      className={`block px-3 py-2 text-sm font-semibold transition-colors ${
+      className={`block w-full text-center px-3 py-2 text-sm font-normal transition-colors ${
         currentPath === "/unite-with-us"
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: "Arial Rounded MT Bold" }}
+      style={{ fontFamily: "Arial Black" }}
     >
       Unite with Us
     </a>

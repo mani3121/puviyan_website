@@ -1,14 +1,11 @@
-import React from 'react';
-import Header from './Header'; 
-import Footer from './Footer';
+import Header from './Header';
 
 const UniteWithUs = () => {
   return (
-    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-center px-4 py-8">
+    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-center px-4">
       <Header />
-      {/* Add padding to push content below the header */}
-      <div className="mt-8 w-full flex flex-col items-center"> {/* Reduced margin-top from mt-16 to mt-8 */}
-        <h1 className="text-4xl font-bold text-gray-800 mb-6">Unite with Puviyan</h1>
+      <div className="w-full flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
         <p className="text-lg text-gray-600 mb-8 text-center">
           Inviting partners, CSR funders, investors, and aspiring job seekers to build a sustainable future together
         </p>
@@ -35,50 +32,7 @@ const UniteWithUs = () => {
               placeholder="Your Email"
             />
           </div>
-          {/* Question Section */}
-          <fieldset className="mb-4">
-            <legend className="block text-gray-700 text-sm font-bold mb-2">
-              How would you like to contribute?
-            </legend>
-            <div className="flex flex-col space-y-2">
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="contribution"
-                  value="partner"
-                  className="mr-2"
-                />
-                Partner with us
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="contribution"
-                  value="csr"
-                  className="mr-2"
-                />
-                CSR Funding
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="contribution"
-                  value="investor"
-                  className="mr-2"
-                />
-                Investor
-              </label>
-              <label className="flex items-center">
-                <input
-                  type="radio"
-                  name="contribution"
-                  value="job-seeker"
-                  className="mr-2"
-                />
-                Job Seeker
-              </label>
-            </div>
-          </fieldset>
+          
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
               Message

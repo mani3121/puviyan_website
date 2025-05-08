@@ -1,7 +1,5 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import Header from './Header'; // Import the Header component
-import Footer from './Footer'; // Import the Footer component
 
 const services = [
   {
@@ -40,16 +38,14 @@ const Services = () => {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      {/* Add margin to push content below the header */}
-      <div className="container mx-auto px-4 py-16 mt-7">
-        {/* Animated Header */}
+      <div className="container mx-auto px-4 py-1">
         <motion.h1
           className="text-4xl font-bold text-gray-800 text-center mb-12"
           style={{
             fontWeight: 600,
             fontStyle: 'normal',
             lineHeight: '1.3',
-            color: '#000000', // Retain the black color if needed
+            color: '#000000',
           }}
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
