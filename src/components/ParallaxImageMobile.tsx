@@ -14,45 +14,79 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [lastTouchY, setLastTouchY] = useState(0);
+  const [isTouchingContainer, setIsTouchingContainer] = useState(false);
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        setTouchStart(touch.clientY);
-        setLastTouchY(touch.clientY);
+      const touch = e.touches[0];
+      const container = containerRef.current;
+      
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        const isWithinContainer = 
+          touch.clientX >= rect.left && 
+          touch.clientX <= rect.right && 
+          touch.clientY >= rect.top && 
+          touch.clientY <= rect.bottom;
+        
+        setIsTouchingContainer(isWithinContainer);
+        
+        if (isWithinContainer && !isTransitionComplete) {
+          e.preventDefault();
+          setTouchStart(touch.clientY);
+          setLastTouchY(touch.clientY);
+        }
       }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const currentY = touch.clientY;
-        const deltaY = lastTouchY - currentY;
+      const touch = e.touches[0];
+      const container = containerRef.current;
+      
+      if (container) {
+        const rect = container.getBoundingClientRect();
+        const isWithinContainer = 
+          touch.clientX >= rect.left && 
+          touch.clientX <= rect.right && 
+          touch.clientY >= rect.top && 
+          touch.clientY <= rect.bottom;
         
-        setLastTouchY(currentY);
-        
-        if (!isScrolling) {
-          const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
-          setScrollProgress(newProgress);
-
-          if (newProgress === 100) {
-            setIsTransitionComplete(true);
-          } else if (newProgress < 100) {
-            setIsTransitionComplete(false);
+        if (isWithinContainer !== isTouchingContainer) {
+          setIsTouchingContainer(isWithinContainer);
+          if (isWithinContainer) {
+            setTouchStart(touch.clientY);
+            setLastTouchY(touch.clientY);
           }
+        }
+        
+        if (isWithinContainer && !isTransitionComplete) {
+          e.preventDefault();
+          const currentY = touch.clientY;
+          const deltaY = lastTouchY - currentY;
+          
+          setLastTouchY(currentY);
+          
+          if (!isScrolling) {
+            const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+            setScrollProgress(newProgress);
 
-          if (newProgress > 0 && newProgress < 100) {
-            setIsScrolling(true);
-            setTimeout(() => setIsScrolling(false), 50);
+            if (newProgress === 100) {
+              setIsTransitionComplete(true);
+            } else if (newProgress < 100) {
+              setIsTransitionComplete(false);
+            }
+
+            if (newProgress > 0 && newProgress < 100) {
+              setIsScrolling(true);
+              setTimeout(() => setIsScrolling(false), 50);
+            }
           }
         }
       }
     };
 
     const handleTouchEnd = () => {
+      setIsTouchingContainer(false);
       if (!isTransitionComplete) {
         const deltaY = touchStart - lastTouchY;
         if (Math.abs(deltaY) > 50) {
@@ -82,7 +116,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         container.removeEventListener('touchend', handleTouchEnd);
       }
     };
-  }, [scrollProgress, isScrolling, isTransitionComplete, touchStart, lastTouchY]);
+  }, [scrollProgress, isScrolling, isTransitionComplete, touchStart, lastTouchY, isTouchingContainer]);
 
   return (
     <div 
