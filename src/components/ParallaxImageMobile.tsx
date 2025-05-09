@@ -119,13 +119,21 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
     <div 
       ref={containerRef}
       className={`parallax-container ${isTransitionComplete ? 'transition-complete' : ''}`}
-      style={{ touchAction: isTransitionComplete ? 'auto' : 'none' }}
+      style={{ 
+        touchAction: isTransitionComplete ? 'auto' : 'none',
+        position: 'relative',
+        top: '40px', // Height of the header
+        height: 'calc(100vh - 40px)', // Subtract header height from viewport height
+        width: '100%'
+      }}
     >
       <div className="parallax-image-wrapper">
         <div 
           className="parallax-image"
           style={{ 
-            backgroundImage: `url(${image1})`
+            backgroundImage: `url(${image1})`,
+            height: '100%',
+            width: '100%'
           }}
         />
       </div>
@@ -133,13 +141,17 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         className="parallax-image-wrapper second-image"
         style={{
           clipPath: `inset(${100 - scrollProgress}% 0 0 0)`,
-          transition: 'clip-path 0.1s ease-out'
+          transition: 'clip-path 0.1s ease-out',
+          height: '100%',
+          width: '100%'
         }}
       >
         <div 
           className="parallax-image"
           style={{ 
-            backgroundImage: `url(${image2})`
+            backgroundImage: `url(${image2})`,
+            height: '100%',
+            width: '100%'
           }}
         />
       </div>
