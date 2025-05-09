@@ -50,9 +50,12 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         setLastTouchY(currentY);
         
         if (!isScrolling) {
-          const newProgress = isReversing
-            ? Math.max(0, Math.min(100, scrollProgress + (deltaY < 0 ? 2 : -2)))
-            : Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+          let newProgress;
+          if (isReversing) {
+            newProgress = Math.max(0, Math.min(100, scrollProgress - (deltaY > 0 ? 2 : -2)));
+          } else {
+            newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+          }
           
           setScrollProgress(newProgress);
 
@@ -79,9 +82,12 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       if (!isTransitionComplete) {
         const deltaY = touchStart - lastTouchY;
         if (Math.abs(deltaY) > 50) {
-          const newProgress = isReversing
-            ? Math.max(0, Math.min(100, scrollProgress + (deltaY < 0 ? 20 : -20)))
-            : Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
+          let newProgress;
+          if (isReversing) {
+            newProgress = Math.max(0, Math.min(100, scrollProgress - (deltaY > 0 ? 20 : -20)));
+          } else {
+            newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
+          }
           
           setScrollProgress(newProgress);
 
@@ -122,8 +128,8 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       style={{ 
         touchAction: isTransitionComplete ? 'auto' : 'none',
         position: 'relative',
-        top: '40px', // Height of the header
-        height: 'calc(100vh - 40px)', // Subtract header height from viewport height
+        top: '40px',
+        height: 'calc(100vh - 40px)',
         width: '100%'
       }}
     >
