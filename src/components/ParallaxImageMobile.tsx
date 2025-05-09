@@ -45,8 +45,16 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
 
         if (newProgress === 100) {
           setIsTransitionComplete(true);
+          // Allow scrolling after transition is complete
+          if (containerRef.current) {
+            containerRef.current.style.touchAction = 'auto';
+          }
         } else if (newProgress === 0) {
           setIsTransitionComplete(false);
+          // Prevent scrolling during transition
+          if (containerRef.current) {
+            containerRef.current.style.touchAction = 'none';
+          }
         }
 
         if (newProgress > 0 && newProgress < 100) {
@@ -72,8 +80,16 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
 
         if (newProgress === 100) {
           setIsTransitionComplete(true);
+          // Allow scrolling after transition is complete
+          if (containerRef.current) {
+            containerRef.current.style.touchAction = 'auto';
+          }
         } else if (newProgress === 0) {
           setIsTransitionComplete(false);
+          // Prevent scrolling during transition
+          if (containerRef.current) {
+            containerRef.current.style.touchAction = 'none';
+          }
         }
       }
     };
@@ -98,7 +114,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
     <div 
       ref={containerRef}
       className={`parallax-container ${isTransitionComplete ? 'transition-complete' : ''}`}
-      style={{ touchAction: 'none' }}
+      style={{ touchAction: isTransitionComplete ? 'auto' : 'none' }}
     >
       <div className="parallax-image-wrapper">
         <div 
