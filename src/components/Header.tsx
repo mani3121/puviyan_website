@@ -52,6 +52,17 @@ const Header = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
+    const handleTouch = () => {
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    window.addEventListener('touchstart', handleTouch, { passive: true });
+    return () => window.removeEventListener('touchstart', handleTouch);
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     const logo = logoRef.current;
     const text = textRef.current;
 
