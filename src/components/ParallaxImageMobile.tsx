@@ -64,9 +64,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
             setIsReversing(false);
           } else if (newProgress === 100 && !isReversing) {
             setIsTransitionComplete(true);
-          } else if (newProgress < 100 && !isReversing) {
-            setIsTransitionComplete(false);
-          } else if (newProgress > 0 && isReversing) {
+          } else {
             setIsTransitionComplete(false);
           }
 
@@ -96,9 +94,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
             setIsReversing(false);
           } else if (newProgress === 100 && !isReversing) {
             setIsTransitionComplete(true);
-          } else if (newProgress < 100 && !isReversing) {
-            setIsTransitionComplete(false);
-          } else if (newProgress > 0 && isReversing) {
+          } else {
             setIsTransitionComplete(false);
           }
         }
