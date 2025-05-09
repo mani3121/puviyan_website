@@ -34,11 +34,15 @@ const Header = () => {
       } else {
         setIsScrolled(false);
       }
+      // Close menu when scrolling
+      if (isMenuOpen) {
+        setIsMenuOpen(false);
+      }
     };
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMenuOpen]); // Add isMenuOpen to dependency array
 
   useEffect(() => {
     const logo = logoRef.current;
