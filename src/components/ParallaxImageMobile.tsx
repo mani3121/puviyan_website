@@ -17,53 +17,62 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        setTouchStart(touch.clientY);
-        setLastTouchY(touch.clientY);
-      }
+      const touch = e.touches[0];
+      setTouchStart(touch.clientY);
+      setLastTouchY(touch.clientY);
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isTransitionComplete) {
-        e.preventDefault();
-        const touch = e.touches[0];
-        const currentY = touch.clientY;
-        const deltaY = lastTouchY - currentY;
+      e.preventDefault();
+      const touch = e.touches[0];
+      const currentY = touch.clientY;
+      const deltaY = lastTouchY - currentY;
+      
+      setLastTouchY(currentY);
+      
+      if (!isScrolling) {
+        let newProgress;
+        if (isTransitionComplete) {
+          // When on second image and scrolling down (deltaY < 0), reverse the transition
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 2 : -2)));
+        } else {
+          // Normal forward transition
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+        }
         
-        setLastTouchY(currentY);
-        
-        if (!isScrolling) {
-          const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
-          setScrollProgress(newProgress);
+        setScrollProgress(newProgress);
 
-          if (newProgress === 100) {
-            setIsTransitionComplete(true);
-          } else if (newProgress < 100) {
-            setIsTransitionComplete(false);
-          }
+        if (newProgress === 100) {
+          setIsTransitionComplete(true);
+        } else if (newProgress === 0) {
+          setIsTransitionComplete(false);
+        }
 
-          if (newProgress > 0 && newProgress < 100) {
-            setIsScrolling(true);
-            setTimeout(() => setIsScrolling(false), 50);
-          }
+        if (newProgress > 0 && newProgress < 100) {
+          setIsScrolling(true);
+          setTimeout(() => setIsScrolling(false), 50);
         }
       }
     };
 
     const handleTouchEnd = () => {
-      if (!isTransitionComplete) {
-        const deltaY = touchStart - lastTouchY;
-        if (Math.abs(deltaY) > 50) {
-          const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
-          setScrollProgress(newProgress);
+      const deltaY = touchStart - lastTouchY;
+      if (Math.abs(deltaY) > 50) {
+        let newProgress;
+        if (isTransitionComplete) {
+          // When on second image and scrolling down (deltaY < 0), reverse the transition
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 20 : -20)));
+        } else {
+          // Normal forward transition
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
+        }
+        
+        setScrollProgress(newProgress);
 
-          if (newProgress === 100) {
-            setIsTransitionComplete(true);
-          } else if (newProgress < 100) {
-            setIsTransitionComplete(false);
-          }
+        if (newProgress === 100) {
+          setIsTransitionComplete(true);
+        } else if (newProgress === 0) {
+          setIsTransitionComplete(false);
         }
       }
     };
@@ -88,7 +97,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
     <div 
       ref={containerRef}
       className={`parallax-container ${isTransitionComplete ? 'transition-complete' : ''}`}
-      style={{ touchAction: isTransitionComplete ? 'auto' : 'none' }}
+      style={{ touchAction: 'none' }}
     >
       <div className="parallax-image-wrapper">
         <div 
