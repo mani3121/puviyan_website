@@ -52,12 +52,26 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         if (!isScrolling) {
           let newProgress;
           if (isReversing) {
-            newProgress = Math.max(0, Math.min(100, scrollProgress - (deltaY > 0 ? 2 : -2)));
+            newProgress = Math.max(0, Math.min(100, scrollProgress - (deltaY > 0 ? 5 : -5)));
           } else {
-            newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+            newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 5 : -5)));
           }
           
           setScrollProgress(newProgress);
+
+          const container = containerRef.current;
+          if (container) {
+            const containerTop = container.offsetTop;
+            const containerHeight = container.offsetHeight;
+            const windowHeight = window.innerHeight;
+            const maxScroll = containerHeight - windowHeight;
+            const targetScroll = containerTop + (maxScroll * (newProgress / 100));
+            
+            window.scrollTo({
+              top: targetScroll,
+              behavior: 'smooth'
+            });
+          }
 
           if (newProgress === 0 && isReversing) {
             setIsTransitionComplete(true);
@@ -143,7 +157,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         className="parallax-image-wrapper second-image"
         style={{
           clipPath: `inset(${100 - scrollProgress}% 0 0 0)`,
-          transition: 'clip-path 0.1s ease-out',
+          transition: 'clip-path 0.3s ease-out',
           height: '100%',
           width: '100%'
         }}
