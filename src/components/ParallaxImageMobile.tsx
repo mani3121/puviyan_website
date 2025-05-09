@@ -26,13 +26,21 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       }
     };
 
+    // Check initial scroll position on mount
+    const currentPath = window.location.pathname;
+    if (currentPath === '/animated-split-images' && window.scrollY === 0) {
+      setIsReversing(true);
+      setIsTransitionComplete(false);
+      setScrollProgress(100);
+    }
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
-      if (!isTransitionComplete || isReversing) {
+      if (!isTransitionComplete) {
         e.preventDefault();
         const touch = e.touches[0];
         setTouchStart(touch.clientY);
@@ -41,7 +49,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      if (!isTransitionComplete || isReversing) {
+      if (!isTransitionComplete) {
         e.preventDefault();
         const touch = e.touches[0];
         const currentY = touch.clientY;
@@ -77,7 +85,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
     };
 
     const handleTouchEnd = () => {
-      if (!isTransitionComplete || isReversing) {
+      if (!isTransitionComplete) {
         const deltaY = touchStart - lastTouchY;
         if (Math.abs(deltaY) > 50) {
           let newProgress;
@@ -120,9 +128,9 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
   return (
     <div 
       ref={containerRef}
-      className={`parallax-container ${isTransitionComplete && !isReversing ? 'transition-complete' : ''}`}
+      className={`parallax-container ${isTransitionComplete ? 'transition-complete' : ''}`}
       style={{ 
-        touchAction: isTransitionComplete && !isReversing ? 'auto' : 'none',
+        touchAction: isTransitionComplete ? 'auto' : 'none',
         position: 'relative',
         top: '40px',
         height: 'calc(100vh - 40px)',
