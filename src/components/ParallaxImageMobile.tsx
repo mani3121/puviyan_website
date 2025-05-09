@@ -14,88 +14,85 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [lastTouchY, setLastTouchY] = useState(0);
-  const [isTouchingContainer, setIsTouchingContainer] = useState(false);
+  const [isReversing, setIsReversing] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentPath = window.location.pathname;
+      if (currentPath === '/animated-split-images' && window.scrollY === 0) {
+        setIsReversing(true);
+        setIsTransitionComplete(false);
+        setScrollProgress(100);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   useEffect(() => {
     const handleTouchStart = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      const container = containerRef.current;
-      
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        const isWithinContainer = 
-          touch.clientX >= rect.left && 
-          touch.clientX <= rect.right && 
-          touch.clientY >= rect.top && 
-          touch.clientY <= rect.bottom;
-        
-        setIsTouchingContainer(isWithinContainer);
-        
-        if (isWithinContainer && !isTransitionComplete) {
-          e.preventDefault();
-          setTouchStart(touch.clientY);
-          setLastTouchY(touch.clientY);
-        }
+      if (!isTransitionComplete) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        setTouchStart(touch.clientY);
+        setLastTouchY(touch.clientY);
       }
     };
 
     const handleTouchMove = (e: TouchEvent) => {
-      const touch = e.touches[0];
-      const container = containerRef.current;
-      
-      if (container) {
-        const rect = container.getBoundingClientRect();
-        const isWithinContainer = 
-          touch.clientX >= rect.left && 
-          touch.clientX <= rect.right && 
-          touch.clientY >= rect.top && 
-          touch.clientY <= rect.bottom;
+      if (!isTransitionComplete) {
+        e.preventDefault();
+        const touch = e.touches[0];
+        const currentY = touch.clientY;
+        const deltaY = lastTouchY - currentY;
         
-        if (isWithinContainer !== isTouchingContainer) {
-          setIsTouchingContainer(isWithinContainer);
-          if (isWithinContainer) {
-            setTouchStart(touch.clientY);
-            setLastTouchY(touch.clientY);
+        setLastTouchY(currentY);
+        
+        if (!isScrolling) {
+          const newProgress = isReversing
+            ? Math.max(0, Math.min(100, scrollProgress + (deltaY < 0 ? 2 : -2)))
+            : Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
+          
+          setScrollProgress(newProgress);
+
+          if (newProgress === 0 && isReversing) {
+            setIsTransitionComplete(true);
+            setIsReversing(false);
+          } else if (newProgress === 100 && !isReversing) {
+            setIsTransitionComplete(true);
+          } else if (newProgress < 100 && !isReversing) {
+            setIsTransitionComplete(false);
+          } else if (newProgress > 0 && isReversing) {
+            setIsTransitionComplete(false);
           }
-        }
-        
-        if (isWithinContainer && !isTransitionComplete) {
-          e.preventDefault();
-          const currentY = touch.clientY;
-          const deltaY = lastTouchY - currentY;
-          
-          setLastTouchY(currentY);
-          
-          if (!isScrolling) {
-            const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
-            setScrollProgress(newProgress);
 
-            if (newProgress === 100) {
-              setIsTransitionComplete(true);
-            } else if (newProgress < 100) {
-              setIsTransitionComplete(false);
-            }
-
-            if (newProgress > 0 && newProgress < 100) {
-              setIsScrolling(true);
-              setTimeout(() => setIsScrolling(false), 50);
-            }
+          if ((newProgress > 0 && newProgress < 100) || (isReversing && newProgress > 0)) {
+            setIsScrolling(true);
+            setTimeout(() => setIsScrolling(false), 50);
           }
         }
       }
     };
 
     const handleTouchEnd = () => {
-      setIsTouchingContainer(false);
       if (!isTransitionComplete) {
         const deltaY = touchStart - lastTouchY;
         if (Math.abs(deltaY) > 50) {
-          const newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
+          const newProgress = isReversing
+            ? Math.max(0, Math.min(100, scrollProgress + (deltaY < 0 ? 20 : -20)))
+            : Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
+          
           setScrollProgress(newProgress);
 
-          if (newProgress === 100) {
+          if (newProgress === 0 && isReversing) {
             setIsTransitionComplete(true);
-          } else if (newProgress < 100) {
+            setIsReversing(false);
+          } else if (newProgress === 100 && !isReversing) {
+            setIsTransitionComplete(true);
+          } else if (newProgress < 100 && !isReversing) {
+            setIsTransitionComplete(false);
+          } else if (newProgress > 0 && isReversing) {
             setIsTransitionComplete(false);
           }
         }
@@ -116,7 +113,7 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
         container.removeEventListener('touchend', handleTouchEnd);
       }
     };
-  }, [scrollProgress, isScrolling, isTransitionComplete, touchStart, lastTouchY, isTouchingContainer]);
+  }, [scrollProgress, isScrolling, isTransitionComplete, touchStart, lastTouchY, isReversing]);
 
   return (
     <div 
