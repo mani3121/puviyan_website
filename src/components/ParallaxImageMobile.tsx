@@ -34,11 +34,11 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       if (!isScrolling) {
         let newProgress;
         if (isTransitionComplete) {
-          // When on second image, scrolling up (deltaY > 0) transitions back to first image
-          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? -2 : 2)));
+          // When on second image, scrolling down (deltaY < 0) transitions back to first image
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? -2 : 2)));
         } else {
-          // When on first image, scrolling down (deltaY < 0) transitions to second image
-          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 2 : -2)));
+          // When on first image, scrolling up (deltaY > 0) transitions to second image
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 2 : -2)));
         }
         
         setScrollProgress(newProgress);
@@ -61,11 +61,11 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       if (Math.abs(deltaY) > 50) {
         let newProgress;
         if (isTransitionComplete) {
-          // When on second image, scrolling up (deltaY > 0) transitions back to first image
-          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? -20 : 20)));
+          // When on second image, scrolling down (deltaY < 0) transitions back to first image
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? -20 : 20)));
         } else {
-          // When on first image, scrolling down (deltaY < 0) transitions to second image
-          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY < 0 ? 20 : -20)));
+          // When on first image, scrolling up (deltaY > 0) transitions to second image
+          newProgress = Math.min(100, Math.max(0, scrollProgress + (deltaY > 0 ? 20 : -20)));
         }
         
         setScrollProgress(newProgress);
