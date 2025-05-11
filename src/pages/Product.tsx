@@ -261,7 +261,7 @@ STORY`.split(" ").map((word, index) => (
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="bg-gray-900 text-white px-6 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
                       style={{
                         background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
                         color: 'white',
@@ -276,7 +276,7 @@ STORY`.split(" ").map((word, index) => (
                         setSubmitStatus('idle');
                         setFormData({ name: '', email: '', message: '' });
                       }}
-                      className="bg-gray-200 text-gray-900 px-6 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors"
+                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[180px]"
                       style={{
                         background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
                         color: 'white',
