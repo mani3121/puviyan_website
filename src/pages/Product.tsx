@@ -159,7 +159,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-600"
+            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-600 w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -172,18 +172,16 @@ const Product = () => {
               visible: { opacity: 1, x: 0, transition: { duration: 2 } },
             }}
           >
-            {`COMING
-SOON
-TO REWRITE
-YOUR
-ECO
-STORY`.split(" ").map((word, index) => (
+            {`COMING SOON
+TO
+REWRITE YOUR
+ECOSTORY`.split("\n").map((line, index) => (
               <span key={index} className="block">
-                {word === "TO" ? "TO REWRITE" : word === "REWRITE" ? "" : word}
+                {line}
               </span>
             ))}
           </motion.h1>
-          <div className="absolute left-[36vw] top-[73%] -translate-y-1/2 w-[400px]">
+          <div className={`absolute left-[36vw] ${showForm ? 'top-[65%]' : 'top-[60%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -194,7 +192,7 @@ STORY`.split(" ").map((word, index) => (
                   <button
                     onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
-                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[400px]"
+                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
                     style={{
                       background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
                       color: "white",
@@ -209,14 +207,16 @@ STORY`.split(" ").map((word, index) => (
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                 >
-                  <p style={{
-                    background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
-                    color: "white",
-                    padding: "0.75rem 2rem",
-                    borderRadius: "0.5rem",
-                    fontSize: "1.125rem",
-                    fontWeight: "600",
-                  }}> WITH YOUR IDEAS</p>
+                  <button
+                    disabled={true}
+                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
+                    style={{
+                      background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
+                      color: "white",
+                    }}
+                  >
+                    WITH YOUR IDEAS
+                  </button>
                 </motion.div>
               )
             ) : (
@@ -225,7 +225,7 @@ STORY`.split(" ").map((word, index) => (
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="flex flex-row space-x-4">
                     <input
                       type="text"
@@ -253,7 +253,7 @@ STORY`.split(" ").map((word, index) => (
                       onChange={handleInputChange}
                       placeholder="Your Idea"
                       className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
-                      rows={3}
+                      rows={2}
                       required
                     />
                   </div>

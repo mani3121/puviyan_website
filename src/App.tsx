@@ -1,4 +1,3 @@
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
@@ -6,6 +5,9 @@ import Services from "./components/Services";
 import UniteWithUs from "./components/UniteWithUs";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import Product from "./pages/Product";
+import TermsConditions from './pages/TermsConditions';
 
 const queryClient = new QueryClient();
 
@@ -15,6 +17,9 @@ const App = () => (
       <Router>
         <Routes>
           <Route path="/" element={<Index />} />
+          <Route path="/animated-split-images" element={<Product />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsConditions />} />
           {/* <Route path="/animated-split-images" element={<AnimatedSplitImages />} /> */}
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/unite-with-us" element={<UniteWithUs />} />

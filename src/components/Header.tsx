@@ -114,7 +114,7 @@ const Header = () => {
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-1"
+            className="cursor-pointer flex items-center gap-2"
             onClick={() => (window.location.href = "/")}
           >
             <img 
