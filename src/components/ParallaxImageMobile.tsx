@@ -26,14 +26,6 @@ const ParallaxImageMobile = ({ image1, image2 }: ParallaxImageMobileProps) => {
       }
     };
 
-    // Check initial scroll position on mount
-    const currentPath = window.location.pathname;
-    if (currentPath === '/animated-split-images' && window.scrollY === 0) {
-      setIsReversing(true);
-      setIsTransitionComplete(false);
-      setScrollProgress(100);
-    }
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);

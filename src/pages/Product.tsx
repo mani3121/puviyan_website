@@ -146,7 +146,7 @@ const Product = () => {
   return (
     <div className="w-full h-screen flex justify-center items-center overflow-hidden">
       <div className="relative w-full h-full flex justify-center items-center">
-        <div className="relative -translate-x-3/4 w-[28vw]">
+        <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
             src="https://puviyan-website.vercel.app/images/mobile_hd1.png"
@@ -159,7 +159,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-900"
+            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-600"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -172,13 +172,18 @@ const Product = () => {
               visible: { opacity: 1, x: 0, transition: { duration: 2 } },
             }}
           >
-            {`COMING SOON TO\tREWRITE YOUR ECO STORY`.split(" ").map((word, index) => (
+            {`COMING
+SOON
+TO REWRITE
+YOUR
+ECO
+STORY`.split(" ").map((word, index) => (
               <span key={index} className="block">
-                {word}
+                {word === "TO" ? "TO REWRITE" : word === "REWRITE" ? "" : word}
               </span>
             ))}
           </motion.h1>
-          <div className="absolute left-[36vw] top-[80%] -translate-y-1/2 w-[300px]">
+          <div className="absolute left-[36vw] top-[73%] -translate-y-1/2 w-[400px]">
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -189,7 +194,7 @@ const Product = () => {
                   <button
                     onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
-                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[300px]"
+                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[400px]"
                     style={{
                       background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
                       color: "white",

@@ -124,7 +124,7 @@ const Header = () => {
             />
             <span 
               ref={textRef}
-              className="hidden md:block text-sm font-bold opacity-0 -translate-x-5 text-white flex items-center"
+              className="hidden md:block text-xs font-bold opacity-0 -translate-x-5 text-white flex items-center"
               style={{ fontFamily: "Arial Rounded MT Bold" }}
             >
               Puviyan
@@ -161,7 +161,7 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-16">
+            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-4">
               {renderLinks(currentPath, scrollToSection, isScrolled, isMobile)}
             </div>
           )}
