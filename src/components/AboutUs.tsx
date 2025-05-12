@@ -23,13 +23,17 @@ Real change begins with individual action, but its true strength lies in the sha
         >
           About Puviyan
         </motion.h2>
-        <div className="flex flex-col md:flex-row items-center md:items-start">
+        <div className="flex flex-col md:flex-row items-stretch">
           {/* Left side - Image */}
-          <div className="md:w-1/2 flex justify-center mb-8 md:mb-0 md:mr-8">
-            <img src="https://puviyan-website.vercel.app/images/People_Planet_Technology.png" alt="About Puviyan" className="w-64 h-64 object-contain" />
+          <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8">
+            <img
+              src="https://puviyan-website.vercel.app/images/People_Planet_Technology.png"
+              alt="About Puviyan"
+              className="w-full object-cover max-h-[650px]"
+            />
           </div>
           {/* Right side - Description */}
-          <div className="md:w-1/2">
+          <div className="md:w-1/2 h-full">
             <motion.p
               className="text-lg md:text-xl text-gray-700 text-justify"
               style={{ whiteSpace: 'pre-line' }}
