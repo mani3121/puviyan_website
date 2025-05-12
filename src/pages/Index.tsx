@@ -52,7 +52,6 @@ const Index = () => {
           </section>
 
           {/* Separator */}
-          <div className="w-full h-1 bg-black"></div>
 
           <section id="services" className="w-full bg-white">
             <div className="w-full px-4 py-16">
@@ -60,8 +59,7 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Separator */}
-          <div className="w-full h-1 bg-black"></div>
+  
 
           <section id="about-us" className="w-full bg-white">
             <div className="w-full px-4 py-16">
@@ -69,8 +67,6 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Separator */}
-          <div className="w-full h-1 bg-black"></div>
 
           <section id="unite-with-us" className="w-full bg-white">
             <div className="w-full px-4 py-16">
