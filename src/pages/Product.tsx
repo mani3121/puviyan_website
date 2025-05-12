@@ -164,6 +164,7 @@ const Product = () => {
               fontFamily: "Arial Black",
               fontWeight: "1000",
               letterSpacing: "-0.02em",
+              lineHeight: 1.1,
             }}
             initial="hidden"
             animate={controls}
@@ -172,7 +173,8 @@ const Product = () => {
               visible: { opacity: 1, x: 0, transition: { duration: 2 } },
             }}
           >
-            {`COMING SOON
+            {`COMING 
+            SOON
 TO
 REWRITE YOUR
 ECOSTORY`.split("\n").map((line, index) => (
@@ -181,7 +183,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
-          <div className={`absolute left-[36vw] ${showForm ? 'top-[65%]' : 'top-[60%]'} -translate-y-1/2 w-[400px]`}>
+          <div className={`absolute left-[36vw] ${showForm ? 'top-[78%]' : 'top-[70%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -253,11 +255,11 @@ ECOSTORY`.split("\n").map((line, index) => (
                       onChange={handleInputChange}
                       placeholder="Your Idea"
                       className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
-                      rows={2}
+                      rows={5}
                       required
                     />
                   </div>
-                  <div className="flex space-x-4">
+                  <div className="flex space-x-9">
                     <button
                       type="submit"
                       disabled={isLoading}

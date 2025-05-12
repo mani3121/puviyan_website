@@ -14,27 +14,35 @@ Real change begins with individual action, but its true strength lies in the sha
   return (
     <section className="w-full bg-white">
       <Header />
-      <div className="container mx-auto px-4 text-center">
+      <div className="container mx-auto px-4 pt-8">
         <motion.h2
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+          className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center"
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           About Puviyan
         </motion.h2>
-        <motion.p
-          className="text-lg md:text-xl text-gray-700 text-justify"
-          style={{ whiteSpace: 'pre-line' }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5, duration: 1 }}
-        >
-          {description}
-        </motion.p>
+        <div className="flex flex-col md:flex-row items-center md:items-start">
+          {/* Left side - Image */}
+          <div className="md:w-1/2 flex justify-center mb-8 md:mb-0 md:mr-8">
+            <img src="https://puviyan-website.vercel.app/images/People_Planet_Technology.png" alt="About Puviyan" className="w-64 h-64 object-contain" />
+          </div>
+          {/* Right side - Description */}
+          <div className="md:w-1/2">
+            <motion.p
+              className="text-lg md:text-xl text-gray-700 text-justify"
+              style={{ whiteSpace: 'pre-line' }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.5, duration: 1 }}
+            >
+              {description}
+            </motion.p>
+          </div>
+        </div>
       </div>
     </section>
-    
   );
 };
 

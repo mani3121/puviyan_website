@@ -9,7 +9,7 @@ const UniteWithUs = () => {
         <p className="text-lg text-gray-600 mb-8 text-center">
           Inviting partners, CSR funders, investors, and aspiring job seekers to build a sustainable future together
         </p>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-md">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-2xl min-h-[500px]">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Name
