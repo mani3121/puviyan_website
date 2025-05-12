@@ -12,17 +12,15 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
 
   return (
-    <section className="w-full bg-white">
+    <section className="w-full bg-white relative overflow-hidden">
+      {/* Three-line border */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 border-[18px] border-[#F6D32D] rounded-none"></div>
+        <div className="absolute inset-4 border-[10px] border-[#3CCB6C] rounded-none"></div>
+        <div className="absolute inset-8 border-[6px] border-[#63DEF3] rounded-none"></div>
+      </div>
       <Header />
-      <div className="container mx-auto px-4 pt-8">
-        <motion.h2
-          className="text-4xl md:text-5xl font-bold text-gray-900 mb-8 text-center"
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          About Puviyan
-        </motion.h2>
+      <div className="container mx-auto px-4 pt-8 relative z-10">
         <div className="flex flex-col md:flex-row items-stretch">
           {/* Left side - Image */}
           <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8">
