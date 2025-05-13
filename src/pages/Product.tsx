@@ -139,8 +139,8 @@ const Product = () => {
 
   useEffect(() => {
     const script = document.createElement("script");
-//    script.src = "https://puviyan-website.vercel.app/js/websitecarbonbadge.js";
-    script.src = "js/websitecarbonbadge.js";
+    script.src = "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
+//    script.src = "js/websitecarbonbadge.js";
 
     script.defer = true;
     document.body.appendChild(script);
