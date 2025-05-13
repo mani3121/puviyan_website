@@ -137,6 +137,17 @@ const Product = () => {
     }
   }, [submitStatus]);
 
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "../public/js/websitecarbonbadge.js";
+    script.defer = true;
+    document.body.appendChild(script);
+
+    return () => {
+      document.body.removeChild(script);
+    };
+  }, []);
+
   // Return AnimatedSplitImages for mobile view
   if (isMobile) {
     return <AnimatedSplitImages />;
@@ -145,6 +156,11 @@ const Product = () => {
   // Return original Product component for desktop view
   return (
     <div className="w-full h-screen flex justify-center items-center overflow-hidden">
+      {/* Floating Carbon Badge */}
+      <div
+        id="wcb"
+        className="carbonbadge wcb-d wcb-dark fixed bottom-4 right-4 z-50"
+      ></div>
       <div className="relative w-full h-full flex justify-center items-center">
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
@@ -154,7 +170,7 @@ const Product = () => {
             className="rounded-2xl shadow-2xl w-full h-[100vh]"
             style={{
               transform: "scale(1.3)",
-              backgroundColor: "transparent"
+              backgroundColor: "transparent",
             }}
           />
           <motion.h1

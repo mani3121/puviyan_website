@@ -16,20 +16,16 @@ Real change begins with individual action, but its true strength lies in the sha
   return (
     <section className="w-full bg-white relative overflow-hidden">
       {/* Three-line border */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <div className="absolute inset-0 border-[4px] border-[#F6D32D] rounded-none"></div>
-        <div className="absolute inset-2 border-[3px] border-[#3CCB6C] rounded-none"></div>
-        <div className="absolute inset-4 border-[2px] border-[#63DEF3] rounded-none"></div>
-      </div>
+ 
       <Header />
       <div className="container mx-auto px-8 md:px-20 pt-8 relative z-10">
         <div className="flex flex-col md:flex-row items-stretch">
           {/* Left side - Image */}
-          <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8 mt-16">
+          <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8 mt-16 flex justify-center items-center">
             <img
               src="https://puviyan-website.vercel.app/images/People_Planet_Technology.png"
               alt="About Puviyan"
-              className="w-full max-w-[750px] object-contain max-h-[650px] mx-auto"
+                className="w-full max-w-[750px] object-contain max-h-[650px] mt-14"
             />
             <br/>
           </div>

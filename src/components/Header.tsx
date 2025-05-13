@@ -125,7 +125,7 @@ const Header = () => {
             <span 
               ref={textRef}
               className="hidden md:block text-xs font-bold opacity-0 -translate-x-5 text-white flex items-center"
-              style={{ fontFamily: "Arial Rounded MT Bold" }}
+              style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
             >
               Puviyan
             </span>
@@ -189,7 +189,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Product
     </a>
@@ -209,7 +209,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Services
     </a>
@@ -229,7 +229,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       About Puviyan
     </a>
@@ -249,7 +249,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
           ? "text-green-800 underline"
           : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
       }`}
-      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold" }}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Unite with Us
     </a>
