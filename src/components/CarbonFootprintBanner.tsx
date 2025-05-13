@@ -1,10 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { gsap } from 'gsap';
 
 const CarbonFootprintBanner = () => {
   const [pageWeight, setPageWeight] = useState(0); // Page weight in KB
   const [co2Estimate, setCo2Estimate] = useState(0); // CO₂ emissions in grams
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    // GSAP animation for fade-in and slide-up
+    if (bannerRef.current) {
+      gsap.fromTo(
+        bannerRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 1, ease: 'power2.out' }
+      );
+    }
+
     // Calculate the page weight and CO₂ emissions
     const calculatePageWeightAndCO2 = () => {
       const documentSize = new XMLSerializer().serializeToString(document).length;
@@ -27,39 +38,40 @@ const CarbonFootprintBanner = () => {
 
   return (
     <div
+      ref={bannerRef}
       style={{
-        fontFamily: "'Arial', sans-serif", // Font style similar to the image
-        backgroundColor: '#ffffff', // White background
-        color: '#000000', // Black text color
-        border: '1px solid #dcdcdc', // Light gray border
-        borderRadius: '6px', // Smaller rounded corners
-        padding: '8px', // Reduced padding
-        width: '200px', // Reduced width
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)', // Subtle shadow
+        fontFamily: "'Arial', sans-serif", // Font style
+        backgroundColor: '#333333', // Dark background
+        color: '#ffffff', // Light text color
+        border: '1px solid #555555', // Dark gray border
+        borderRadius: '6px', // Rounded corners
+        padding: '8px', // Padding
+        width: '200px', // Width
+        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', // Subtle shadow
       }}
     >
       <div
         style={{
-          fontSize: '14px', // Smaller font size
+          fontSize: '14px', // Font size
           fontWeight: 'bold',
-          marginBottom: '6px', // Reduced margin
+          marginBottom: '6px', // Margin
         }}
       >
         {co2Estimate ? `${co2Estimate}g of CO₂/view` : 'Loading...'}
       </div>
       <div
         style={{
-          fontSize: '12px', // Smaller font size
-          color: '#555555', // Gray text for cleaner percentage
+          fontSize: '12px', // Font size
+          color: '#cccccc', // Light gray text for cleaner percentage
         }}
       >
         Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested
       </div>
       <div
         style={{
-          fontSize: '12px', // Smaller font size
-          color: '#555555', // Gray text for page weight
-          marginTop: '6px', // Reduced margin
+          fontSize: '12px', // Font size
+          color: '#cccccc', // Light gray text for page weight
+          marginTop: '6px', // Margin
         }}
       >
         Page Weight: {pageWeight} KB
