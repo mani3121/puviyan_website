@@ -4,6 +4,8 @@ import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AnimatedSplitImages from '../components/AnimatedSplitImages';
+import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
+
 
 const Product = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
@@ -136,20 +138,6 @@ const Product = () => {
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
-
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://unpkg.com/website-carbon-badges@1.1.3/b.min.js";
-//    script.src = "js/websitecarbonbadge.js";
-
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      document.body.removeChild(script);
-    };
-  }, []);
-
   // Return AnimatedSplitImages for mobile view
   if (isMobile) {
     return <AnimatedSplitImages />;
@@ -158,11 +146,6 @@ const Product = () => {
   // Return original Product component for desktop view
   return (
     <div className="w-full h-screen flex justify-center items-center overflow-hidden">
-      {/* Floating Carbon Badge */}
-      <div
-        id="wcb"
-        className="carbonbadge wcb-d wcb-dark fixed bottom-4 right-4 z-50"
-      ></div>
       <div className="relative w-full h-full flex justify-center items-center">
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img

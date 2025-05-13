@@ -7,6 +7,7 @@ import { Helmet } from 'react-helmet';
 import Footer from '../components/Footer';
 import Product from './Product';
 import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
+import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
@@ -31,6 +32,17 @@ const Index = () => {
       <div className="w-full overflow-x-hidden">
         <Header />
         <main className="w-full">
+          {/* Floating Carbon Footprint Banner */}
+          <div
+            className="fixed bottom-4 right-4 z-50"
+            style={{
+              width: 'fit-content',
+              backgroundColor: 'transparent',
+            }}
+          >
+            <CarbonFootprintBanner />
+          </div>
+
           {/* Parallax Images section */}
           <section className="w-full h-screen">
             <ParallaxImageWrapper 
