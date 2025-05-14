@@ -7,9 +7,10 @@ interface ParallaxImageWrapperProps {
   image2: string;
   mobileImage1: string;
   mobileImage2: string;
+  loading?: 'eager' | 'lazy';
 }
 
-const ParallaxImageWrapper = ({ image1, image2, mobileImage1, mobileImage2 }: ParallaxImageWrapperProps) => {
+const ParallaxImageWrapper = ({ image1, image2, mobileImage1, mobileImage2, loading = 'lazy' }: ParallaxImageWrapperProps) => {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
@@ -33,13 +34,15 @@ const ParallaxImageWrapper = ({ image1, image2, mobileImage1, mobileImage2 }: Pa
     <ParallaxImageMobile 
       image1={mobileImage1}
       image2={mobileImage2}
+      loading={loading}
     />
   ) : (
     <ParallaxImages 
       image1={image1}
       image2={image2}
+      loading={loading}
     />
   );
 };
 
-export default ParallaxImageWrapper; 
+export default ParallaxImageWrapper;

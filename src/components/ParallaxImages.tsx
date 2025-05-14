@@ -4,9 +4,10 @@ import './ParallaxImages.css';
 interface ParallaxImagesProps {
   image1: string;
   image2: string;
+  loading?: 'eager' | 'lazy';
 }
 
-const ParallaxImages = ({ image1, image2 }: ParallaxImagesProps) => {
+const ParallaxImages = ({ image1, image2, loading }: ParallaxImagesProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isScrolling, setIsScrolling] = useState(false);

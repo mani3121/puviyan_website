@@ -90,6 +90,10 @@ const Services = () => {
                   </p>
                 ))}
               </div>
+              {/* Service Image - Example */}
+              <div className="mt-8">
+                <img src="path-to-service-image.jpg" alt="Service" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>

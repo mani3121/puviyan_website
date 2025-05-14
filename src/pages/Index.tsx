@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Product from './Product';
 import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
 import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
+import { useState, useEffect } from 'react';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
@@ -17,6 +18,21 @@ const parallaxImages = {
 };
 
 const Index = () => {
+  const [isFooterVisible, setIsFooterVisible] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const footer = document.querySelector('footer');
+      if (footer) {
+        const footerRect = footer.getBoundingClientRect();
+        setIsFooterVisible(footerRect.top < window.innerHeight);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -31,10 +47,12 @@ const Index = () => {
       </Helmet>
       <div className="w-full overflow-x-hidden">
         <Header />
-        <main className="w-full">
+        <main className="w-full pb-16"> {/* Add padding to prevent overlap */}
           {/* Floating Carbon Footprint Banner */}
           <div
-            className="fixed bottom-4 right-4 z-50"
+            className={`fixed right-4 z-50 transition-all duration-300 ${
+              isFooterVisible ? 'bottom-[calc(100% - 4rem)]' : 'bottom-4'
+            }`}
             style={{
               width: 'fit-content',
               backgroundColor: 'transparent',
@@ -50,6 +68,7 @@ const Index = () => {
               image2={parallaxImages.second}
               mobileImage1={parallaxImages.mobileFirst}
               mobileImage2={parallaxImages.mobileSecond}
+              loading="lazy" // Ensure lazy loading for images
             />
           </section>
 

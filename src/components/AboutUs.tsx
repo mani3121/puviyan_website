@@ -26,6 +26,7 @@ Real change begins with individual action, but its true strength lies in the sha
               src="https://puviyan-website.vercel.app/images/People_Planet_Technology.png"
               alt="About Puviyan"
                 className="w-full max-w-[750px] object-contain max-h-[650px] mt-14"
+                loading="lazy"
             />
             <br/>
           </div>
