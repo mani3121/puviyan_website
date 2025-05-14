@@ -38,44 +38,20 @@ const CarbonFootprintBanner = () => {
 
   return (
     <div
-      ref={bannerRef}
-      style={{
-        fontFamily: "'Arial', sans-serif", // Font style
-        backgroundColor: '#333333', // Dark background
-        color: '#ffffff', // Light text color
-        border: '1px solid #555555', // Dark gray border
-        borderRadius: '6px', // Rounded corners
-        padding: '8px', // Padding
-        width: '200px', // Width
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.5)', // Subtle shadow
-      }}
+      className="bg-black text-white p-1 rounded-md inline-block text-center space-y-0.5 text-[9px] font-medium border border-gray-300 md:p-2 md:text-xs"
+      style={{ position: 'fixed', bottom: '8px', right: '8px', zIndex: 50 }}
     >
-      <div
-        style={{
-          fontSize: '14px', // Font size
-          fontWeight: 'bold',
-          marginBottom: '6px', // Margin
-        }}
-      >
-        {co2Estimate ? `${co2Estimate}g of CO₂/view` : 'Loading...'}
+      <div className="inline-flex items-center space-x-0.5">
+        <span className="bg-black text-white px-0.5 py-0.5 rounded-l-full md:px-1.5 md:py-0.5">{co2Estimate}g of CO₂/view</span>
+        <a
+          href="https://www.websitecarbon.com/website/puviyan-website-vercel-app/"
+          target="_blank"
+          className="bg-teal-400 text-black px-0.5 py-0.5 rounded-r-full hover:underline md:px-1.5 md:py-0.5"
+        >
+          Website Carbon
+        </a>
       </div>
-      <div
-        style={{
-          fontSize: '12px', // Font size
-          color: '#cccccc', // Light gray text for cleaner percentage
-        }}
-      >
-        Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested
-      </div>
-      <div
-        style={{
-          fontSize: '12px', // Font size
-          color: '#cccccc', // Light gray text for page weight
-          marginTop: '6px', // Margin
-        }}
-      >
-        Page Weight: {pageWeight} KB
-      </div>
+      <div className="bg-black text-gray md:text-gray-300">Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested</div>
     </div>
   );
 };

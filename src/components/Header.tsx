@@ -138,7 +138,7 @@ const Header = () => {
                 toggleMenu();
                 if (isMenuOpen) setIsMenuOpen(false); // Ensure menu closes on close icon click
               }} 
-              className="p-2 rounded-md hover:bg-white/10 transition-all duration-300"
+              className="p-2 rounded-md hover:bg-black transition-all duration-300"
             >
               {isMenuOpen ? (
                 <X size={24} className="text-white hover:text-white transition-colors duration-300" />
