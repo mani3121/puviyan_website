@@ -7,7 +7,7 @@ const UniteWithUs = () => {
       <div className="w-full flex flex-col items-center">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
         <p className="text-lg text-gray-600 mb-8 text-center">
-          Inviting partners, CSR funders, investors, and aspiring job seekers to build a sustainable future together
+        We are dedicated to building a sustainable future by uniting with governments, organizations committed to sustainability and CSR, businesses offering eco-friendly solutions, investors, passionate talent, and the communities we serve.
         </p>
         <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-2xl min-h-[500px]">
           <div className="mb-4">
