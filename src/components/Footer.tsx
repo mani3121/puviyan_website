@@ -1,7 +1,12 @@
+import React from 'react';
 
-const Footer = () => {
+interface FooterProps {
+  className?: string; // Add className as an optional prop
+}
+
+const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
-    <footer className="bg-black text-white py-4">
+    <footer className={`bg-black text-white py-4 ${className || ''}`}>
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-2 md:space-y-0">
         <div className="flex-1">
           <p className="text-sm">&copy; 2025 Puviyan Digital Solutions Private Limited. All rights reserved.</p>

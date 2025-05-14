@@ -2,14 +2,14 @@ import Header from './Header';
 
 const UniteWithUs = () => {
   return (
-    <div className="min-h-screen bg-white-100 flex flex-col items-center justify-start px-4">
+    <div className="min-h-fit bg-white-100 flex flex-col items-center justify-start px-4">
       <Header />
       <div className="w-full flex flex-col items-center">
         <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
         <p className="text-lg text-gray-600 mb-8 text-center">
         We are dedicated to building a sustainable future by uniting with governments, organizations committed to sustainability and CSR, businesses offering eco-friendly solutions, investors, passionate talent, and the communities we serve.
         </p>
-        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-2xl min-h-[500px]">
+        <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full max-w-2xl">
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
               Name
@@ -32,7 +32,6 @@ const UniteWithUs = () => {
               placeholder="Your Email"
             />
           </div>
-          
           <div className="mb-4">
             <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
               Message

@@ -49,17 +49,17 @@ const Index = () => {
         <Header />
         <main className="w-full pb-16"> {/* Add padding to prevent overlap */}
           {/* Floating Carbon Footprint Banner */}
-          <div
-            className={`fixed right-4 z-50 transition-all duration-300 ${
-              isFooterVisible ? 'bottom-[calc(100% - 4rem)]' : 'bottom-4'
-            }`}
-            style={{
-              width: 'fit-content',
-              backgroundColor: 'transparent',
-            }}
-          >
-            <CarbonFootprintBanner />
-          </div>
+          {!isFooterVisible && (
+            <div
+              className="fixed bottom-4 right-4 z-50"
+              style={{
+                width: 'fit-content',
+                backgroundColor: 'transparent',
+              }}
+            >
+              <CarbonFootprintBanner />
+            </div>
+          )}
 
           {/* Parallax Images section */}
           <section className="w-full h-screen">
@@ -105,7 +105,9 @@ const Index = () => {
             </div>
           </section>
         </main>
-        <Footer />
+        <Footer 
+          className="footer-custom"
+        />
       </div>
     </>
   );
