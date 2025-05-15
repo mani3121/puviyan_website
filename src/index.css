@@ -103,3 +103,15 @@
 html, body {
   background-color: #000 !important;
 }
+
+.custom-button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 30px; /* Increased width */
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 15px;
+  margin-left: 170px; /* Move button further to the right */
+}
