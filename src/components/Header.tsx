@@ -134,10 +134,7 @@ const Header = () => {
           {/* Hamburger Menu for Mobile */}
           <div className="md:hidden -mr-2">
             <button 
-              onClick={() => {
-                toggleMenu();
-                if (isMenuOpen) setIsMenuOpen(false); // Ensure menu closes on close icon click
-              }} 
+              onClick={() => setIsMenuOpen((prev) => !prev)} 
               className="p-2 rounded-md hover:bg-black transition-all duration-300"
             >
               {isMenuOpen ? (

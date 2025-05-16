@@ -4,7 +4,6 @@ import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AnimatedSplitImages from '../components/AnimatedSplitImages';
-import { WebsiteCarbonBadge } from 'react-websitecarbon-badge';
 
 
 const Product = () => {

@@ -100,7 +100,7 @@ const Index = () => {
 
 
           <section id="unite-with-us" className="w-full bg-white">
-            <div className="w-full px-4 py-16">
+            <div className="min-h-screen">
               <UniteWithUs />
             </div>
           </section>
