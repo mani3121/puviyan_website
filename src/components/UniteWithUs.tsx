@@ -71,62 +71,62 @@ const UniteWithUs = () => {
   return (
     <div className="min-h-fit bg-white-100 flex flex-col items-center justify-start px-0 ">
       <div className="relative min-h-screen bg-white flex items-center justify-center p-4">
-      <div className="w-full flex flex-col items-center -mt-24">
-        <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
-        <p className="text-lg text-gray-600 mb-8 text-center">
-        We are dedicated to building a sustainable future by uniting with governments, organizations committed to sustainability and CSR, businesses offering eco-friendly solutions, investors, passionate talent, and the communities we serve.
-        </p>
-        {showToast && (
-            <div className="absolute top-4 bg-green-500 text-white px-4 py-2 rounded shadow-md">
-              Thank you for joining with us!
+        <div className="w-full flex flex-col items-center -mt-24">
+          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
+          <p className="text-lg text-gray-600 mb-8 text-center">
+            We are dedicated to building a sustainable future by uniting with governments, organizations committed to sustainability and CSR, businesses offering eco-friendly solutions, investors, passionate talent, and the communities we serve.
+          </p>
+          <form onSubmit={handleSubmit} className="bg-yellow-500 shadow-md rounded px-12 pt-6 pb-8 w-full max-w-2xl relative z-10">
+            {showToast && (
+              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-md z-20 pointer-events-none">
+                Thank you for joining with us!
+              </div>
+            )}
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                Name
+              </label>
+              <input
+                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name"
+                name="name"
+                type="text"
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={handleInputChange}
+                required
+              />
             </div>
-          )}
-        <form onSubmit={handleSubmit} className="bg-yellow-500 shadow-md rounded px-12 pt-6 pb-8 w-full max-w-2xl">
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-              Name
-            </label>
-            <input
-              className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="name"
-              name="name"
-              type="text"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-              Message
-            </label>
-            <textarea
-              className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-              id="message"
-              name="message"
-              placeholder="Your Message"
-              rows={4}
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            ></textarea>
-          </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+                Email
+              </label>
+              <input
+                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="email"
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={handleInputChange}
+                required
+              />
+            </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
+                Message
+              </label>
+              <textarea
+                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="message"
+                name="message"
+                placeholder="Your Message"
+                rows={4}
+                value={formData.message}
+                onChange={handleInputChange}
+                required
+              ></textarea>
+            </div>
             <div className="flex justify-center">
               <button
                 type="submit"
@@ -137,27 +137,27 @@ const UniteWithUs = () => {
               </button>
             </div>
             {submitStatus === 'error' && (
-          <p className="text-red-600 mt-2 text-center">Failed to send message. Please try again.</p>
-        )}
-          <div className="mt-24"></div>
-        </form>
+              <p className="text-red-600 mt-2 text-center">Failed to send message. Please try again.</p>
+            )}
+            <div className="mt-24"></div>
+          </form>
+        </div>
+
+        {/* Image for web version */}
+        <img
+          src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
+          alt="Foreground Overlay"
+          className="hidden sm:block absolute -bottom-32 -left-4 w-full h-31 z-10 object-fill" // Visible only on screens >=640px
+        />
+
+        {/* Image for mobile version */}
+        <img
+          src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
+          alt="Foreground Overlay"
+          className="block sm:hidden absolute bottom-0 -left-4 w-full h-40 z-10 object-fill" // Adjusted bottom position for mobile
+        />
       </div>
-
-      {/* Image for web version */}
-      <img
-        src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
-        alt="Foreground Overlay"
-        className="hidden sm:block absolute -bottom-32 -left-4 w-full h-31 z-10 object-fill" // Visible only on screens >=640px
-      />
-
-      {/* Image for mobile version */}
-      <img
-        src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
-        alt="Foreground Overlay"
-        className="block sm:hidden absolute bottom-0 -left-4 w-full h-40 z-10 object-fill" // Adjusted bottom position for mobile
-      />
-    </div>
-    <Footer className="footer-custom" />
+      <Footer className="footer-custom" />
     </div>
   );
 };
