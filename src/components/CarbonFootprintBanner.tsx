@@ -38,20 +38,23 @@ const CarbonFootprintBanner = () => {
 
   return (
     <div
-      className="bg-black text-white p-1 rounded-md inline-block text-center space-y-0.5 text-[9px] font-medium border border-gray-300 md:p-2 md:text-xs"
-      style={{ position: 'fixed', bottom: '8px', right: '8px', zIndex: 50 }}
+      className="px-3 py-1 rounded-md text-xs font-medium hover:opacity-90 transition-opacity min-w-[200px]"
+      style={{
+        background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+        color: 'white',
+        position: 'fixed',
+        bottom: '8px',
+        right: '8px',
+        zIndex: 50,
+        textAlign: 'center',
+      }}
     >
       <div className="inline-flex items-center space-x-0.5">
-        <span className="bg-black text-white px-0.5 py-0.5 rounded-l-full md:px-1.5 md:py-0.5">{co2Estimate}g of CO₂/view</span>
-        <a
-          href="https://www.websitecarbon.com/website/puviyan-website-vercel-app/"
-          target="_blank"
-          className="bg-teal-400 text-black px-0.5 py-0.5 rounded-r-full hover:underline md:px-1.5 md:py-0.5"
-        >
-          Website Carbon
-        </a>
+        <span className="text-white px-0.5 py-0.5 rounded-l-full md:px-1 md:py-0.5">{co2Estimate}g of CO₂/view</span>
+        {/* <span className="text-black px-0.5 py-0.5 rounded-r-full md:px-1 md:py-0.5">for {pageWeight}KB weight</span> */}
       </div>
-      <div className="bg-black text-gray md:text-gray-300">Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested</div>
+      {/* <div className="text-white md:text-white">Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested</div> */}
+      <div className="text-white md:text-white">Belongs to Light-weight category(emits 0.5g/view)</div>
     </div>
   );
 };
