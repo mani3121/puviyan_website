@@ -1,165 +1,117 @@
-import emailjs from '@emailjs/browser';
-import Footer from './Footer';
-import Header from './Header';
-import { useEffect, useState } from 'react';
+import { motion } from "framer-motion";
+import { useEffect } from "react";
 
-const UniteWithUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
-  const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [showToast, setShowToast] = useState(false);
-
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    try {
-      emailjs.init("d1YGFS1dDCmPJB0N4");
-
-      await emailjs.send(
-        "service_m73cz7e",
-        "template_mxugw58",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: "maniavudai10@gmail.com",
-        }
-      );
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setShowToast(true); // Show toast on success
-    } catch (error) {
-      console.error('Error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
+export default function UniteWithPuviyan() {
   useEffect(() => {
-    if (submitStatus === 'success') {
-      const timer = setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [submitStatus]);
-
-  useEffect(() => {
-    if (showToast) {
-      const timer = setTimeout(() => {
-        setShowToast(false); // Hide toast after 5 seconds
-      }, 5000);
-      return () => clearTimeout(timer);
-    }
-  }, [showToast]);
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
-    <div className="min-h-fit bg-white-100 flex flex-col items-center justify-start px-0 ">
-      <div className="relative min-h-screen bg-white flex items-center justify-center p-4">
-        <div className="w-full flex flex-col items-center -mt-24">
-          <h1 className="text-4xl font-bold text-gray-800 mb-6 text-center">Unite with Puviyan</h1>
-          <p className="text-lg text-gray-600 mb-8 text-center">
-            We are dedicated to building a sustainable future by uniting with governments, organizations committed to sustainability and CSR, businesses offering eco-friendly solutions, investors, passionate talent, and the communities we serve.
-          </p>
-          <form onSubmit={handleSubmit} className="bg-yellow-500 shadow-md rounded px-12 pt-6 pb-8 w-full max-w-2xl relative z-10">
-            {showToast && (
-              <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded shadow-md z-20 pointer-events-none">
-                Thank you for joining with us!
-              </div>
-            )}
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                Name
-              </label>
-              <input
-                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="name"
-                name="name"
-                type="text"
-                placeholder="Your Name"
-                value={formData.name}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
-                Email
-              </label>
-              <input
-                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="email"
-                name="email"
-                type="email"
-                placeholder="Your Email"
-                value={formData.email}
-                onChange={handleInputChange}
-                required
-              />
-            </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">
-                Message
-              </label>
-              <textarea
-                className="shadow appearance-none border rounded-lg w-full py-2 px-5 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                id="message"
-                name="message"
-                placeholder="Your Message"
-                rows={4}
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-              ></textarea>
-            </div>
-            <div className="flex justify-center">
-              <button
-                type="submit"
-                className="custom-button w-1/2 ml-48"
-                disabled={isLoading}
-              >
-                {isLoading ? 'Sending...' : 'Submit'}
-              </button>
-            </div>
-            {submitStatus === 'error' && (
-              <p className="text-red-600 mt-2 text-center">Failed to send message. Please try again.</p>
-            )}
-            <div className="mt-24"></div>
-          </form>
-        </div>
-
-        {/* Image for web version */}
-        <img
-          src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
-          alt="Foreground Overlay"
-          className="hidden sm:block absolute -bottom-32 -left-4 w-full h-31 z-10 object-fill" // Visible only on screens >=640px
-        />
-
-        {/* Image for mobile version */}
-        <img
-          src="https://puviyan-website.vercel.app/images/unite_with_us.png" // Replace with your image
-          alt="Foreground Overlay"
-          className="block sm:hidden absolute bottom-0 -left-4 w-full h-40 z-10 object-fill" // Adjusted bottom position for mobile
-        />
+    <div className="relative min-h-screen bg-white font-sans overflow-hidden">
+      {/* Page Header */}
+      <div className="absolute top-0 left-0 w-full flex justify-center pt-16 z-50">
+        <h2 className="text-3xl font-bold text-gray-800">Unite with Puviyan</h2>
       </div>
-      <Footer className="footer-custom" />
+      {/* Sun and hill silhouette with people */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 1 }}
+        className="absolute left-0 top-0 z-10 w-1/2 h-full flex items-start justify-start"
+      >
+        <div className="relative left-0 w-[500px] h-[500px] mt-10 ml-0">
+          <img
+            src="https://puviyan-website.vercel.app/images/sun.png"
+            alt="Sun"
+            className="absolute top-0 left-0 w-full h-full rounded-full z-10"
+          />
+        </div>
+      </motion.div>
+      {/* people climbing */}
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 2 }}
+        className="absolute left-40 top-10 z-20 w-1/2 h-full flex items-start justify-start"
+      >
+        <div className="relative w-[200%] h-[500px] mt-20 ml-[-10%]">
+          <div className="absolute bottom-0 left-0 w-full h-auto z-10">
+            <img
+              src="https://puviyan-website.vercel.app/images/People_claimbing.png"
+              alt="People Climbing"
+              className="w-full h-auto"
+              style={{ transform: 'scaleX(1.2)' }}
+            />
+          </div>
+        </div>
+      </motion.div>
+      {/* Background waves as images */}
+      <motion.img
+        src="https://puviyan-website.vercel.app/images/Green_wave.png"
+        alt="Green Wave"
+        className="absolute bottom-10 left-0 w-full h-auto z-30"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 3 }}
+      />
+      <motion.img
+        src="https://puviyan-website.vercel.app/images/Blue_wave.png"
+        alt="Blue Wave"
+        className="absolute bottom-0 left-0 w-full h-auto z-40"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 4 }}
+      />
+      <motion.img
+        src="https://puviyan-website.vercel.app/images/Black_wave.png"
+        alt="Black Wave"
+        className="absolute bottom-0 left-0 w-full h-auto z-50"
+        initial={{ y: 100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 1.5, delay: 5 }}
+      />
+      {/* Contact Form */}
+      <div className="relative z-50 flex justify-end items-center h-[70vh] pr-16 mt-[-50px]">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.5, delay: 6 }}
+        >
+          <form className="bg-white shadow-xl p-6 w-[400px] space-y-4 rounded-xl">
+            <input
+              className="w-full px-4 py-2 border rounded-md"
+              type="text"
+              placeholder="Name*"
+              required
+            />
+            <input
+              className="w-full px-4 py-2 border rounded-md"
+              type="email"
+              placeholder="Email address*"
+              required
+            />
+            <textarea
+              className="w-full px-4 py-2 border rounded-md"
+              rows="4"
+              placeholder="Your Message*"
+              required
+            />
+            <button
+              type="submit"
+              className="bg-gradient-to-r from-cyan-400 to-yellow-300 text-white font-semibold py-2 px-4 rounded-md w-full hover:opacity-90"
+            >
+              Submit
+            </button>
+          </form>
+        </motion.div>
+      </div>
+
+      {/* Footer */}
+      <div className="absolute bottom-2 left-0 right-0 text-center text-black text-xs z-50">
+        © 2025 Puviyan Digital Solutions Private Limited. All rights reserved. &nbsp;|&nbsp;
+        <a href="#" className="underline text-black">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="#" className="underline text-black">Terms & Conditions</a>
+      </div>
     </div>
   );
-};
-
-export default UniteWithUs;
+}
