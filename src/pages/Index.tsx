@@ -11,10 +11,10 @@ import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
 import { useState, useEffect } from 'react';
 
 const parallaxImages = {
-  first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpeg',
-  second: 'https://puviyan-website.vercel.app/images/Puviyanworld1.jpeg',
-  mobileFirst: 'https://puviyan-website.vercel.app/images/Puv_mob2.jpeg',
-  mobileSecond: 'https://puviyan-website.vercel.app/images/Puv_mob1.jpeg',
+  first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
+  second: 'https://puviyan-website.vercel.app/images/Puviyanworld1.jpg',
+  mobileFirst: 'https://puviyan-website.vercel.app/images/Puv_mob2.jpg',
+  mobileSecond: 'https://puviyan-website.vercel.app/images/Puv_mob1.jpg',
 };
 
 const Index = () => {
