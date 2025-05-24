@@ -1,5 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useEffect, useRef, useState } from 'react';
+import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
 
 const CarbonFootprintBanner = () => {
   const [pageWeight, setPageWeight] = useState(0); // Page weight in KB
@@ -7,7 +8,7 @@ const CarbonFootprintBanner = () => {
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // GSAP animation for fade-in and slide-up
+    // GSAP animation for fade-in and slide-in
     if (bannerRef.current) {
       gsap.fromTo(
         bannerRef.current,
@@ -38,23 +39,36 @@ const CarbonFootprintBanner = () => {
 
   return (
     <div
-      className="px-3 py-1 rounded-md text-xs font-medium hover:opacity-90 transition-opacity min-w-[200px]"
+      ref={bannerRef}
+      className="fixed bottom-8 right-4 z-50"
       style={{
-        background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
-        color: 'white',
-        position: 'fixed',
-        bottom: '8px',
-        right: '8px',
-        zIndex: 50,
-        textAlign: 'center',
+        fontFamily: 'Arial, sans-serif',
       }}
     >
-      <div className="inline-flex items-center space-x-0.5">
-        <span className="text-white px-0.5 py-0.5 rounded-l-full md:px-1 md:py-0.5">{co2Estimate}g of CO₂/view</span>
-        {/* <span className="text-black px-0.5 py-0.5 rounded-r-full md:px-1 md:py-0.5">for {pageWeight}KB weight</span> */}
+      {/* Desktop and Tablet View */}
+      <div 
+        className="co2-badge items-center gap-2 px-3 py-1.5 bg-white relative hidden md:flex"
+        style={{
+          border: '4px solid transparent',
+          backgroundImage: 'linear-gradient(white, white), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+          borderRadius: '50px 20px 20px 50px',
+        }}
+      >
+        <div className="co2-icon flex flex-col items-center">
+          <img src="https://puviyan-website.vercel.app/images/foot.png" alt="CO2 Footprint Icon" className="w-9 h-auto" />
+        </div>
+        <div className="co2-text flex flex-col">
+          <div className="main font-bold text-sm text-gray-800">{co2Estimate}g of CO₂/view</div>
+          <div className="sub text-xs text-gray-600">64% lower than global average</div>
+        </div>
       </div>
-      {/* <div className="text-white md:text-white">Cleaner than {Math.floor((1 - (co2Estimate / 100)) * 100)}% of pages tested</div> */}
-      <div className="text-white md:text-white">Belongs to Light-weight category(emits 0.5g/view)</div>
+
+      {/* Mobile View */}
+      <div className="sm:flex md:hidden">
+        <CarbonFootprintBannerMobile co2Estimate={co2Estimate} />
+      </div>
     </div>
   );
 };
