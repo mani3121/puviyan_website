@@ -105,9 +105,6 @@ const Index = () => {
             </div>
           </section>
         </main>
-        <Footer 
-          className="footer-custom"
-        />
       </div>
     </>
   );
