@@ -128,12 +128,6 @@ export default function UniteWithPuviyan() {
         </div>
       </div>
 
-      {/* Footer */}
-      <div className="absolute bottom-2 left-0 right-0 text-center text-black text-xs z-50">
-        © 2025 Puviyan Digital Solutions Private Limited. All rights reserved. &nbsp;|&nbsp;
-        <a href="#" className="underline text-black">Privacy Policy</a> &nbsp;|&nbsp;
-        <a href="#" className="underline text-black">Terms & Conditions</a>
-      </div>
-    </div>
+     </div>
   );
 }

@@ -105,13 +105,6 @@ const UniteWithUsUpdated = () => {
           </form>
         </div>
       </div>
-      <footer className="w-full text-xs text-white bg-black bg-opacity-90 py-2 px-4 flex justify-between items-center absolute bottom-0 left-0">
-        <span>© 2025 Puviyan Digital Solutions Private Limited. All rights reserved.</span>
-        <span>
-          <a href="#" className="underline mr-4">Privacy Policy</a>
-          <a href="#" className="underline">Terms & Conditions</a>
-        </span>
-      </footer>
     </div>
   );
 };
