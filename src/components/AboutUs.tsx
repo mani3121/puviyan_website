@@ -21,14 +21,14 @@ Real change begins with individual action, but its true strength lies in the sha
       <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex items-start">
         <div className="flex flex-col md:flex-row items-stretch w-full">
           {/* Left side - Image (40%) */}
-          <div className="w-full md:w-2/5 h-full mb-6 md:mb-0 md:mr-8 mt-4 flex justify-center items-center">
-            <img
-              src="https://puviyan-website.vercel.app/images/PPT.gif"
-              alt="About Puviyan"
-              className="w-full max-w-[750px] object-contain max-h-[650px] my-8"
-              loading="lazy"
-            />
-          </div>
+          <div className="w-full md:w-2/5 h-full mb-6 md:mb-0 md:mr-8 mt-32 flex justify-center items-center">
+          <img
+            src="https://puviyan-website.vercel.app/images/PPT.gif"
+            alt="About Puviyan"
+            className="mx-auto w-full max-w-[750px] object-contain max-h-[650px]"
+            loading="lazy"
+          />
+        </div>
           {/* Right side - Description (60%) */}
           <div className="w-full md:w-3/5 h-full flex items-center">
             <motion.p

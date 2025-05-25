@@ -153,7 +153,7 @@ const Product = () => {
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             style={{
-              transform: "scale(1.0)",
+              transform: "scale(1.3)",
               backgroundColor: "transparent",
             }}
           />
