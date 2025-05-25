@@ -30,7 +30,7 @@ const UniteWithUsUpdated = () => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center -mt-10"
+    <div className="w-full flex flex-col justify-center items-center -mt-10 relative"
       style={{
         height: "100vh",
         backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan2.jpg")',
@@ -106,6 +106,19 @@ const UniteWithUsUpdated = () => {
             )}
           </form>
         </div>
+      </div>
+      {/* Copyright text */}
+      <div className="absolute bottom-2 left-20 pt-2 pr-8 text-sm text-white">
+        © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+      </div>
+      {/* Privacy Policy & Terms */}
+      <div className="absolute bottom-2 right-20 pl-8 flex space-x-4 text-sm text-white">
+        <a href="/privacy-policy" className="underline hover:text-gray-300">
+          Privacy Policy
+        </a>
+        <a href="/terms-conditions" className="underline hover:text-gray-300">
+          Terms & Conditions
+        </a>
       </div>
     </div>
   );
