@@ -40,21 +40,24 @@ const UniteWithUsUpdated = () => {
       }}
     >
       <div className="flex flex-col items-center justify-center px-4">
-        <div className="max-w-2xl w-full flex flex-col items-center">
+        <div className="max-w-2xl w-full flex flex-col items-center -mt-6">
           <h1
-            className="text-5xl font-black text-black mb-2 text-center w-full"
+            className="text-5xl font-black text-black mb-6 text-center w-full"
             style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
           >
             Unite with Puviyan
           </h1>
-          <p className="text-lg text-black mb-4 text-center leading-snug text-justify" style={{ fontFamily: "Arial" }}>
+          <p
+            className="text-lg text-black mb-8 text-center leading-snug text-justify"
+            style={{ fontFamily: "Arial" }}
+          >
             We are dedicated to building a sustainable future by uniting with governments,
             organizations committed to sustainability and CSR, businesses offering eco-friendly
             solutions, investors, passionate talent, and the communities we serve.
           </p>
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-95 rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center"
+            className="bg-white bg-opacity-95 rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
           >
             <input
               type="text"

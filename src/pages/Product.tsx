@@ -196,7 +196,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     disabled={submitStatus !== "idle"}
                     className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
                     style={{
-                      background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
+                      background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
                     }}
                   >
@@ -266,7 +266,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       disabled={isLoading}
                       className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
                       style={{
-                        background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+                        background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
                       }}
                     >
@@ -281,7 +281,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       }}
                       className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[180px]"
                       style={{
-                        background: 'linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)',
+                        background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
                       }}
                     >
