@@ -34,7 +34,7 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-between"
       style={{
         height: "100vh",
-        backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan.jpg")',
+        backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan1.jpg")',
         backgroundSize: "100% auto",
         backgroundPosition: "center",
         backgroundRepeat: "no-repeat",
