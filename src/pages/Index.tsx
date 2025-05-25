@@ -1,15 +1,11 @@
 import AboutUs from '@/components/AboutUs';
-import Header from '@/components/Header';
-import ParallaxImages from '@/components/ParallaxImages';
-import Services from '@/components/Services';
-import UniteWithUs from '@/components/UniteWithUs';
-import { Helmet } from 'react-helmet';
-import Footer from '../components/Footer';
-import Product from './Product';
-import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
 import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
-import { useState, useEffect } from 'react';
+import Header from '@/components/Header';
+import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
+import Services from '@/components/Services';
 import UniteWithUsUpdated from '@/components/UniteWithUsUpdated';
+import { Helmet } from 'react-helmet';
+import Product from './Product';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
@@ -34,7 +30,7 @@ const Index = () => {
       </Helmet>
       <div className="w-full overflow-x-hidden">
         <Header />
-        <main className="w-full pb-16"> 
+        <main className="w-full"> 
        
               <CarbonFootprintBanner />
           

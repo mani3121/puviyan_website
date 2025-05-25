@@ -44,11 +44,11 @@ const UniteWithUsUpdated = () => {
         <div className="max-w-2xl w-full flex flex-col items-center md:items-start md:ml-[45rem]">
           <h1
             className="text-5xl font-black text-black mb-4 text-center w-full"
-            style={{ fontFamily: "Arial Rounded", display: "block" }}
+            style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
           >
             Unite with Puviyan
           </h1>
-          <p className="text-lg font-semibold text-black mb-8 text-center md:text-left leading-snug text-justify">
+          <p className="text-lg font-semibold text-black mb-8 text-center md:text-left leading-snug text-justify" style={{ fontFamily: "Arial" }}>
             We are dedicated to building a sustainable future by uniting with governments,<br />
             organizations committed to sustainability and CSR, businesses offering eco-friendly<br />
             solutions, investors, passionate talent, and the communities we serve.
