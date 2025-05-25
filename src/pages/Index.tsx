@@ -73,6 +73,18 @@ const Index = () => {
           </section>
 
 
+          {/* Separator Image between About Us and Unite with Us */}
+          <section id="separator-image" className="w-full bg-white">
+            <div className="w-full flex justify-center items-center py-8">
+              <img
+                src="https://puviyan-website.vercel.app/images/ribbon.jpg"
+                alt="Separator"
+                className="w-full max-w-4xl object-cover"
+                loading="lazy"
+              />
+            </div>
+          </section>
+
           <section id="unite-with-us" className="w-full bg-white">
             <div className="min-h-screen">
               <UniteWithUsUpdated />
