@@ -9,6 +9,7 @@ import Product from './Product';
 import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
 import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
 import { useState, useEffect } from 'react';
+import UniteWithUsUpdated from '@/components/UniteWithUsUpdated';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
@@ -101,7 +102,7 @@ const Index = () => {
 
           <section id="unite-with-us" className="w-full bg-white">
             <div className="min-h-screen">
-              <UniteWithUs />
+              <UniteWithUsUpdated />
             </div>
           </section>
         </main>
