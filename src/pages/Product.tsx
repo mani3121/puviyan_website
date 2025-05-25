@@ -183,7 +183,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
-          <div className={`absolute left-[36vw] ${showForm ? 'top-[78%]' : 'top-[70%]'} -translate-y-1/2 w-[400px]`}>
+          <div className={`absolute left-[36vw] ${showForm ? 'top-[82%]' : 'top-[74%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -256,6 +256,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       placeholder="Your Idea"
                       className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
                       rows={5}
+                      style={{ resize: 'none', height: '180px' }}
                       required
                     />
                   </div>
