@@ -55,7 +55,7 @@ const UniteWithUsUpdated = () => {
           </p>
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-95 rounded-2xl shadow-xl p-8 flex flex-col gap-4 w-[1000px] max-w-2xl items-center"
+            className="bg-white bg-opacity-95 rounded-2xl shadow-xl p-4 flex flex-col gap-3 w-[1000px] max-w-xl items-center" // Reduced padding and gap
           >
             <input
               type="text"

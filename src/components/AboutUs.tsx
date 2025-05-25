@@ -14,24 +14,23 @@ Real change begins with individual action, but its true strength lies in the sha
 `;
 
   return (
-    <section className="w-full bg-white relative overflow-hidden">
+    <section className="w-full bg-white relative overflow-hidden min-h-screen">
       {/* Three-line border */}
- 
       <Header />
-      <div className="container mx-auto px-8 md:px-20 pt-8 relative z-10">
-        <div className="flex flex-col md:flex-row items-stretch">
+      <div className="container mx-auto px-8 md:px-20 pt-8 relative z-10 min-h-screen flex items-center">
+        <div className="flex flex-col md:flex-row items-stretch w-full">
           {/* Left side - Image */}
           <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8 mt-16 flex justify-center items-center">
             <img
               src="https://puviyan-website.vercel.app/images/PPT.gif"
               alt="About Puviyan"
-                className="w-full max-w-[750px] object-contain max-h-[650px] my-20"
-                loading="lazy"
+              className="w-full max-w-[750px] object-contain max-h-[650px] my-20"
+              loading="lazy"
             />
             <br/>
           </div>
           {/* Right side - Description */}
-          <div className="md:w-1/2 h-full">
+          <div className="md:w-1/2 h-full flex items-center">
             <motion.p
               className="text-lg md:text-xl text-gray-700 text-justify"
               style={{ whiteSpace: 'pre-line' }}
