@@ -23,7 +23,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Left side - Image */}
           <div className="md:w-1/2 h-full w-full mb-8 md:mb-0 md:mr-8 mt-16 flex justify-center items-center">
             <img
-              src="https://puviyan-website.vercel.app/images/About.gif"
+              src="https://puviyan-website.vercel.app/images/PPT.gif"
               alt="About Puviyan"
                 className="w-full max-w-[750px] object-contain max-h-[650px] my-20"
                 loading="lazy"
