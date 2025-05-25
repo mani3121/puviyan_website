@@ -151,7 +151,7 @@ const Product = () => {
             ref={imageRef}
             src="https://puviyan-website.vercel.app/images/Mobile.png"
             alt="Product Image"
-            className="rounded-2xl shadow-2xl w-full h-[100vh]"
+            className="rounded-2xl w-full h-[100vh]"
             style={{
               transform: "scale(1.3)",
               backgroundColor: "transparent",

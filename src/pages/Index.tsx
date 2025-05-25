@@ -36,7 +36,7 @@ const Index = () => {
           
 
           {/* Parallax Images section */}
-          <section className="w-full h-screen">
+          <section className="w-full h-screen m-0 p-0">
             <ParallaxImageWrapper 
               image1={parallaxImages.first}
               image2={parallaxImages.second}
@@ -46,12 +46,9 @@ const Index = () => {
             />
           </section>
 
-          {/* Separator */}
-          <div className="w-full h-1 bg-black"></div>
-
           {/* Next section that appears after scroll */}
-          <section id="animated-split-images" className="w-full bg-white">
-            <div className="w-full px-4 py-16">
+          <section id="animated-split-images" className="w-full bg-white m-0 p-0">
+            <div className="w-full p-0 m-0">
               <Product />
             </div>
           </section>
@@ -73,7 +70,7 @@ const Index = () => {
           </section>
 
 
-          {/* Separator Image between About Us and Unite with Us */}
+          {/* Separator Image between About Us and Unite with Us
           <section id="separator-image" className="w-full">
             <img
               src="https://puviyan-website.vercel.app/images/ribbon.jpg"
@@ -81,7 +78,7 @@ const Index = () => {
               className="w-full object-cover"
               loading="lazy"
             />
-          </section>
+          </section> */}
 
           <section id="unite-with-us" className="w-full bg-white">
             <div className="min-h-screen">
