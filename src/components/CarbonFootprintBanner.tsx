@@ -46,22 +46,31 @@ const CarbonFootprintBanner = () => {
       }}
     >
       {/* Desktop and Tablet View */}
-      <div 
-        className="co2-badge items-center gap-2 px-3 py-1.5 bg-white relative hidden md:flex"
+      <div
+        className="co2-badge items-center gap-2 px-2 py-1 bg-white relative hidden md:flex"
         style={{
-          border: '4px solid transparent',
-          backgroundImage: 'linear-gradient(white, white), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+          border: '2px solid transparent',
+          backgroundImage:
+            'linear-gradient(white, white), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
-          borderRadius: '50px 20px 20px 50px',
+          borderRadius: '40px 16px 16px 40px',
         }}
       >
         <div className="co2-icon flex flex-col items-center">
-          <img src="https://puviyan-website.vercel.app/images/foot.png" alt="CO2 Footprint Icon" className="w-9 h-auto" />
+          <img
+            src="https://puviyan-website.vercel.app/images/foot.png"
+            alt="CO2 Footprint Icon"
+            className="w-7 h-auto"
+          />
         </div>
         <div className="co2-text flex flex-col">
-          <div className="main font-bold text-sm text-gray-800">{co2Estimate}g of CO₂ per page view</div>
-          <div className="sub text-xs text-gray-600">64% lower than global average</div>
+          <div className="main font-bold text-xs text-gray-800">
+            {co2Estimate}g of CO₂ per page view
+          </div>
+          <div className="sub text-[10px] text-gray-600">
+            64% lower than global average
+          </div>
         </div>
       </div>
 
