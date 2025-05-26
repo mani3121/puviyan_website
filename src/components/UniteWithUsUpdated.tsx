@@ -113,19 +113,28 @@ const UniteWithUsUpdated = () => {
           </form>
         </div>
       </div>
-      {/* Copyright text */}
-      <div className="absolute bottom-2 left-20 pt-2 pr-8 text-sm text-white">
-        © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
-      </div>
-      {/* Privacy Policy & Terms */}
-      <div className="absolute bottom-2 right-20 pl-8 flex space-x-4 text-sm text-white">
-        <a href="/privacy-policy" className="underline hover:text-gray-300">
-          Privacy Policy
-        </a>
-        <a href="/terms-conditions" className="underline hover:text-gray-300">
-          Terms & Conditions
-        </a>
-      </div>
+      <footer
+  className="absolute bottom-0 left-0 w-full h-12 flex items-center justify-between px-8 text-sm text-white bg-black"
+  style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+>
+  <span>
+    © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+  </span>
+  <div className="flex space-x-4">
+    <a
+      href="/privacy-policy"
+      className="underline hover:text-gray-300"
+    >
+      Privacy Policy
+    </a>
+    <a
+      href="/terms-conditions"
+      className="underline hover:text-gray-300"
+    >
+      Terms & Conditions
+    </a>
+  </div>
+</footer>
     </div>
   );
 };
