@@ -40,7 +40,7 @@ const CarbonFootprintBanner = () => {
   return (
     <div
       ref={bannerRef}
-      className="fixed bottom-8 right-4 z-50"
+      className="fixed bottom-8 right-8 z-50" // Changed from right-4 to right-8 to move the div left
       style={{
         fontFamily: 'Arial, sans-serif',
       }}
@@ -61,7 +61,7 @@ const CarbonFootprintBanner = () => {
           <img
             src="https://puviyan-website.vercel.app/images/Co2.png"
             alt="CO2 Footprint Icon"
-            className="w-5 h-auto" // Reduced width from w-7 to w-5 for a smaller image
+            className="w-5 h-auto"
           />
         </div>
         <div className="co2-text flex flex-col">
