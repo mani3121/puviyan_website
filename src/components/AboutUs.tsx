@@ -17,10 +17,10 @@ Real change begins with individual action, but its true strength lies in the sha
       {/* Three-line border & Header */}
       <Header />
       {/* Main content centered */}
-      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex items-center justify-center min-h-screen">
-        <div className="flex flex-col md:flex-row items-stretch w-full">
-          {/* Left side - Image (40%) */}
-          <div className="w-full md:w-2/5 h-full mb-6 md:mb-0 md:mr-8 mt-32 flex justify-center items-center">
+      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen">
+        <div className="flex flex-col items-stretch w-full">
+          {/* Top: Image */}
+          <div className="w-full mb-6 mt-12 flex justify-center items-center">
             <img
               src="https://puviyan-website.vercel.app/images/PPT.gif"
               alt="About Puviyan"
@@ -28,8 +28,8 @@ Real change begins with individual action, but its true strength lies in the sha
               loading="lazy"
             />
           </div>
-          {/* Right side - Description (60%) */}
-          <div className="w-full md:w-3/5 h-full flex items-center">
+          {/* Bottom: Description */}
+          <div className="w-full flex justify-center items-center">
             <motion.p
               className="text-lg md:text-xl text-gray-700 text-justify"
               style={{ whiteSpace: 'pre-line' }}
@@ -43,14 +43,16 @@ Real change begins with individual action, but its true strength lies in the sha
         </div>
       </div>
       {/* Inherited Separator from Index.tsx placed at the bottom */}
-       {/* <div className="w-full m-0 p-0">
+      {/*
+      <div className="w-full m-0 p-0">
         <img
           src="https://puviyan-website.vercel.app/images/ribbon.jpg"
           alt="Separator"
           className="w-full object-cover"
           loading="lazy"
         />
-      </div>  */}
+      </div>
+      */}
     </section>
   );
 };
