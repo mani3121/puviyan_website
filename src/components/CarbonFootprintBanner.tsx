@@ -60,7 +60,7 @@ const CarbonFootprintBanner = () => {
           <img src="https://puviyan-website.vercel.app/images/foot.png" alt="CO2 Footprint Icon" className="w-9 h-auto" />
         </div>
         <div className="co2-text flex flex-col">
-          <div className="main font-bold text-sm text-gray-800">{co2Estimate}g of CO₂/view</div>
+          <div className="main font-bold text-sm text-gray-800">{co2Estimate}g of CO₂ per page view</div>
           <div className="sub text-xs text-gray-600">64% lower than global average</div>
         </div>
       </div>

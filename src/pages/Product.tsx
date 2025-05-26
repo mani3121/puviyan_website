@@ -213,7 +213,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     disabled={true}
                     className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
                     style={{
-                      background: "linear-gradient(to right, #63DEF3 33%, #63DEF3 50%, #FABB15 100%)",
+                      background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
                     }}
                   >
