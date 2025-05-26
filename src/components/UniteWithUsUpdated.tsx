@@ -115,7 +115,7 @@ const UniteWithUsUpdated = () => {
       </div>
       <footer
   className="absolute bottom-0 left-0 w-full h-12 flex items-center justify-between px-8 text-sm text-white bg-black"
-  style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+  style={{ fontFamily: "Arial Rounded, Arial, sans-serif" }}
 >
   <span>
     © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
