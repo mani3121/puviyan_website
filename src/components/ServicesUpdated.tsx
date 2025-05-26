@@ -3,7 +3,7 @@ const ServicesUpdated = () => (
     <img
       src="https://puviyan-website.vercel.app/images/Services.gif"
       alt="Services"
-      className="max-w-full h-auto transform -translate- scale-110"
+      className="max-w-full h-auto transform -translate-"
       loading="lazy"
     />
   </div>

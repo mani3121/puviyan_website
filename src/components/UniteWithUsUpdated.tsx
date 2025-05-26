@@ -33,7 +33,7 @@ const UniteWithUsUpdated = () => {
     <div className="w-full flex flex-col justify-center items-center -mt-10 relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan3.jpg")',
+        backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan4.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
