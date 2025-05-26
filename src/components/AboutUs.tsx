@@ -24,7 +24,7 @@ Real change begins with individual action, but its true strength lies in the sha
             <img
               src="https://puviyan-website.vercel.app/images/PPT.gif"
               alt="About Puviyan"
-              className="mx-auto w-full max-w-[750px] object-contain max-h-[650px]"
+              className="mx-auto w-full max-w-[550px] object-contain max-h-[450px]"
               loading="lazy"
             />
           </div>
