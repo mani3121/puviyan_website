@@ -6,6 +6,7 @@ import Services from '@/components/Services';
 import UniteWithUsUpdated from '@/components/UniteWithUsUpdated';
 import { Helmet } from 'react-helmet';
 import Product from './Product';
+import ServicesUpdated from '@/components/ServicesUpdated';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
@@ -57,7 +58,7 @@ const Index = () => {
 
           <section id="services" className="w-full bg-white">
             <div className="w-full px-4 py-16">
-              <Services />
+              <ServicesUpdated />
             </div>
           </section>
 
