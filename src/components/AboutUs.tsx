@@ -45,14 +45,14 @@ Real change begins with individual action, but its true strength lies in the sha
       </div>
       
       {/* Inherited Separator from Index.tsx placed at the bottom */}
-      <div className="w-full m-0 p-0">
+      {/* <div className="w-full m-0 p-0">
         <img
           src="https://puviyan-website.vercel.app/images/ribbon.jpg"
           alt="Separator"
           className="w-full object-cover"
           loading="lazy"
         />
-      </div>
+      </div> */}
     </section>
   );
 };
