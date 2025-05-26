@@ -93,7 +93,7 @@ const UniteWithUsUpdated = () => {
               type="submit"
               className="mx-auto py-3 px-8 rounded-full text-white font-semibold text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: isLoading ? "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)" : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                background: isLoading ? "gray" : "gray",
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}

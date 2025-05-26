@@ -48,7 +48,7 @@ const Index = () => {
 
           {/* Next section that appears after scroll */}
           <section id="animated-split-images" className="w-full bg-white m-0 p-0">
-            <div className="w-full p-0 m-0">
+            <div className="w-full">
               <Product />
             </div>
           </section>
