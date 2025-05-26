@@ -34,8 +34,8 @@ const UniteWithUsUpdated = () => {
       style={{
         height: "100vh",
         backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan2.jpg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center top -100px", // Move image a little up
+        backgroundSize: "cover", // Ensures the image covers all laptop and desktop sizes
+        backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
       }}
     >
