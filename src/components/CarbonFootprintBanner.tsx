@@ -61,7 +61,7 @@ const CarbonFootprintBanner = () => {
           <img
             src="https://puviyan-website.vercel.app/images/Co2.png"
             alt="CO2 Footprint Icon"
-            className="w-7 h-auto"
+            className="w-5 h-auto" // Reduced width from w-7 to w-5 for a smaller image
           />
         </div>
         <div className="co2-text flex flex-col">
