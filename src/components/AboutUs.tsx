@@ -13,22 +13,21 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
   
   return (
-    <section className="w-full bg-white relative overflow-hidden">
+    <section className="w-full bg-white relative overflow-hidden flex items-center justify-center min-h-screen">
       {/* Three-line border & Header */}
       <Header />
-      
-      {/* Main content moved to the top */}
-      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex items-start">
+      {/* Main content centered */}
+      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex items-center justify-center min-h-screen">
         <div className="flex flex-col md:flex-row items-stretch w-full">
           {/* Left side - Image (40%) */}
           <div className="w-full md:w-2/5 h-full mb-6 md:mb-0 md:mr-8 mt-32 flex justify-center items-center">
-          <img
-            src="https://puviyan-website.vercel.app/images/PPT.gif"
-            alt="About Puviyan"
-            className="mx-auto w-full max-w-[750px] object-contain max-h-[650px]"
-            loading="lazy"
-          />
-        </div>
+            <img
+              src="https://puviyan-website.vercel.app/images/PPT.gif"
+              alt="About Puviyan"
+              className="mx-auto w-full max-w-[750px] object-contain max-h-[650px]"
+              loading="lazy"
+            />
+          </div>
           {/* Right side - Description (60%) */}
           <div className="w-full md:w-3/5 h-full flex items-center">
             <motion.p
@@ -43,16 +42,15 @@ Real change begins with individual action, but its true strength lies in the sha
           </div>
         </div>
       </div>
-      
       {/* Inherited Separator from Index.tsx placed at the bottom */}
-      {/* <div className="w-full m-0 p-0">
+       {/* <div className="w-full m-0 p-0">
         <img
           src="https://puviyan-website.vercel.app/images/ribbon.jpg"
           alt="Separator"
           className="w-full object-cover"
           loading="lazy"
         />
-      </div> */}
+      </div>  */}
     </section>
   );
 };

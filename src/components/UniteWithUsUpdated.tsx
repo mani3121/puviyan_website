@@ -34,9 +34,11 @@ const UniteWithUsUpdated = () => {
       style={{
         height: "100vh",
         backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan2.jpg")',
-        backgroundSize: "cover", // Ensures the image covers all laptop and desktop sizes
+        backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
+        // border: "none", // <-- Ensure no border is set here
+        // boxShadow: "none", // <-- Ensure no box-shadow is set here
       }}
     >
       <div className="flex flex-col items-center justify-center px-4">
