@@ -1,0 +1,148 @@
+import React, { useState } from "react";
+import WhatsAppIconButton from "./WhatsAppIconButton";
+
+const MobileUniteWithUs = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    // Simulate API call
+    setTimeout(() => {
+      setIsLoading(false);
+      setSubmitStatus("success");
+      setFormData({ name: "", email: "", message: "" });
+    }, 1200);
+  };
+
+  return (
+    <>
+      <div
+        className="w-full min-h-screen flex flex-col bg-cover relative"
+        style={{
+          backgroundImage:
+            'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan4.jpg")',
+          backgroundPosition: "left center",
+        }}
+      >
+        {/* Header: h1 and p tags */}
+        <div className="w-full px-4 pt-12 pb-2 flex flex-col items-center">
+          <h1
+            className="text-2xl font-black text-black mb-2 text-center w-full"
+            style={{ fontFamily: "Arial Rounded MT Bold" }}
+          >
+            Unite with Puviyan
+          </h1>
+          <p
+            className="text-sm text-black mb-2 text-center leading-snug"
+            style={{ fontFamily: "Arial" }}
+          >
+            We are dedicated to building a sustainable future by uniting with governments,
+            organizations committed to sustainability and CSR, businesses offering eco-friendly
+            solutions, investors, passionate talent, and the communities we serve.
+          </p>
+        </div>
+        {/* Form container */}
+        <div className="w-full px-4 py-1 flex justify-center">
+          <form
+            onSubmit={handleSubmit}
+            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-2 flex flex-col gap-2 w-full max-w-[250px] ml-24"
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Name*"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
+              value={formData.name}
+              onChange={handleInputChange}
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address*"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
+              value={formData.email}
+              onChange={handleInputChange}
+              required
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message*"
+              className="w-full px-2 py-1 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm"
+              rows={4}
+              value={formData.message}
+              onChange={handleInputChange}
+              required
+            />
+            <button
+              type="submit"
+              className="mx-auto py-1 px-4 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              style={{
+                background: isLoading
+                  ? "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)"
+                  : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                transition: "background 0.3s ease",
+              }}
+              disabled={isLoading}
+            >
+              {isLoading ? "Submitting..." : "Submit"}
+            </button>
+            {submitStatus === "success" && (
+              <div className="text-green-600 text-center text-xs">
+                Thank you for joining with us!
+              </div>
+            )}
+            {submitStatus === "error" && (
+              <div className="text-red-600 text-center text-xs">
+                Failed to send message. Please try again.
+              </div>
+            )}
+          </form>
+        </div>
+        {/* WhatsAppIconButton placed at the bottom left above the footer */}
+        <div className="absolute bottom-4 left-4">
+          <WhatsAppIconButton />
+        </div>
+      </div>
+      <footer
+        className="w-full fixed bottom-0 flex items-center justify-center bg-black text-white text-[8px] px-4 h-8"
+        style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+      >
+        <span>
+          © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+        </span>
+        <div className="flex space-x-4 ml-4">
+          <a
+            href="/privacy-policy"
+            className="underline hover:text-gray-300"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms-conditions"
+            className="underline hover:text-gray-300"
+          >
+            Terms & Conditions
+          </a>
+        </div>
+      </footer>
+    </>
+  );
+};
+
+export default MobileUniteWithUs;

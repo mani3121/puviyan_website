@@ -102,7 +102,7 @@ const AnimatedSplitImages = () => {
       <div className="w-full h-[50vh] md:h-3/4 md:w-1/2 flex justify-start items-start overflow-hidden mt-1">
         <div className="relative">
           <img
-            src="https://puviyan-website.vercel.app/images/mobile_hd1.png"
+            src="https://puviyan-website.vercel.app/images/Mobile6.png"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             style={{

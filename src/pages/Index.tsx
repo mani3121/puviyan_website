@@ -2,11 +2,10 @@ import AboutUs from '@/components/AboutUs';
 import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
 import Header from '@/components/Header';
 import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
-import Services from '@/components/Services';
-import UniteWithUsUpdated from '@/components/UniteWithUsUpdated';
+import ServicesUpdated from '@/components/ServicesUpdated';
 import { Helmet } from 'react-helmet';
 import Product from './Product';
-import ServicesUpdated from '@/components/ServicesUpdated';
+import UniteWithUs from './UniteWithUs';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
@@ -81,9 +80,9 @@ const Index = () => {
 
           <section id="unite-with-us" className="w-full bg-white">
             <div className="min-h-screen">
-              <UniteWithUsUpdated />
+              <UniteWithUs />
             </div>
-          </section>
+          </section>/
         </main>
       </div>
     </>

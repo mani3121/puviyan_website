@@ -2,12 +2,13 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import Services from "./components/Services";
-import UniteWithUs from "./components/UniteWithUs";
+// import UniteWithUs from "./components/UniteWithUs";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import Product from "./pages/Product";
 import TermsConditions from './pages/TermsConditions';
+import UniteWithUs from "./pages/UniteWithUs";
 
 const queryClient = new QueryClient();
 
