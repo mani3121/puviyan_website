@@ -159,7 +159,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[15%] -translate-y-1/2 text-6xl font-bold text-gray-600 w-[500px]"
+            className="absolute left-[36vw] top-[24%] -translate-y-1/2 text-6xl font-bold text-gray-600 w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -183,7 +183,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
-          <div className={`absolute left-[36vw] ${showForm ? 'top-[82%]' : 'top-[74%]'} -translate-y-1/2 w-[400px]`}>
+          <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[350px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -194,7 +194,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
-                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
+                    className="px-6 py-2 rounded-lg text-base font-semibold hover:opacity-90 transition-opacity min-w-[280px]"
                     style={{
                       background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
@@ -211,7 +211,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 >
                   <button
                     disabled={true}
-                    className="px-8 py-3 rounded-lg text-lg font-semibold hover:opacity-90 transition-opacity min-w-[320px]"
+                    className="px-6 py-2 rounded-lg text-base font-semibold hover:opacity-90 transition-opacity min-w-[280px]"
                     style={{
                       background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
