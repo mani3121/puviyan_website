@@ -64,7 +64,7 @@ const MobileUniteWithUs = () => {
         <div className="w-full px-4 py-1 flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-2 flex flex-col gap-2 w-full max-w-[250px] ml-24"
+            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-0 w-full max-w-[350px] mx-auto"
           >
             <input
               type="text"
@@ -87,19 +87,18 @@ const MobileUniteWithUs = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
-              className="w-full px-2 py-1 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm"
-              rows={4}
+              className="w-full px-2 py-1 mt-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm"
+              rows={3}
+              style={{ resize: 'none', height: '80px' }}
               value={formData.message}
               onChange={handleInputChange}
               required
             />
             <button
               type="submit"
-              className="mx-auto py-1 px-4 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mx-auto py-1 px-3 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: isLoading
-                  ? "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)"
-                  : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                background: "gray",
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}
