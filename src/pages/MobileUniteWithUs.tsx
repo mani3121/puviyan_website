@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import WhatsAppIconButton from "./WhatsAppIconButton";
 
 const MobileUniteWithUs = () => {
@@ -28,6 +29,10 @@ const MobileUniteWithUs = () => {
       setFormData({ name: "", email: "", message: "" });
     }, 1200);
   };
+
+  const location = useLocation();
+  // Replace '/last' with your designated route for the last page
+  const isLastPage = location.pathname === "/last";
 
   return (
     <>
@@ -119,28 +124,31 @@ const MobileUniteWithUs = () => {
           <WhatsAppIconButton />
         </div>
       </div>
-      <footer
-        className="w-full fixed bottom-0 flex items-center justify-center bg-black text-white text-[8px] px-4 h-8"
-        style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
-      >
-        <span>
-          © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
-        </span>
-        <div className="flex space-x-4 ml-4">
-          <a
-            href="/privacy-policy"
-            className="underline hover:text-gray-300"
-          >
-            Privacy Policy
-          </a>
-          <a
-            href="/terms-conditions"
-            className="underline hover:text-gray-300"
-          >
-            Terms & Conditions
-          </a>
-        </div>
-      </footer>
+      {/* Render footer only if this is the last page */}
+      {isLastPage && (
+        <footer
+          className="w-full fixed bottom-0 flex items-center justify-center bg-black text-white text-[8px] px-4 h-8"
+          style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+        >
+          <span>
+            © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+          </span>
+          <div className="flex space-x-4 ml-4">
+            <a
+              href="/privacy-policy"
+              className="underline hover:text-gray-300"
+            >
+              Privacy Policy
+            </a>
+            <a
+              href="/terms-conditions"
+              className="underline hover:text-gray-300"
+            >
+              Terms & Conditions
+            </a>
+          </div>
+        </footer>
+      )}
     </>
   );
 };
