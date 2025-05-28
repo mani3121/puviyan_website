@@ -30,15 +30,14 @@ const UniteWithUsUpdated = () => {
   };
 
   return (
-    <div className="w-full flex flex-col justify-center items-center -mt-10 relative"
+    <div
+      className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
         backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan4.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",
-        // border: "none", // <-- Ensure no border is set here
-        // boxShadow: "none", // <-- Ensure no box-shadow is set here
       }}
     >
       <div className="flex flex-col items-center justify-center px-4">
@@ -49,7 +48,7 @@ const UniteWithUsUpdated = () => {
           >
             Unite with Puviyan
           </h1>
-          <br/>
+          <br />
           <p
             className="text-lg text-black mb-8 text-center leading-snug text-justify"
             style={{ fontFamily: "Arial" }}
@@ -114,27 +113,21 @@ const UniteWithUsUpdated = () => {
         </div>
       </div>
       <footer
-  className="absolute bottom-0 left-0 w-full h-6 flex items-center justify-between px-8 text-sm text-white bg-black"
-  style={{ fontFamily: "Arial Rounded, Arial, sans-serif" }}
->
-  <span>
-    © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
-  </span>
-  <div className="flex space-x-4">
-    <a
-      href="/privacy-policy"
-      className="underline hover:text-gray-300"
-    >
-      Privacy Policy
-    </a>
-    <a
-      href="/terms-conditions"
-      className="underline hover:text-gray-300"
-    >
-      Terms & Conditions
-    </a>
-  </div>
-</footer>
+        className="absolute bottom-0 left-0 w-full h-4 flex items-end justify-between px-6 text-xs text-white bg-black"
+        style={{ fontFamily: "Arial" }}
+      >
+        <span>
+          © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+        </span>
+        <div className="flex space-x-4 mt-2">
+          <a href="/privacy-policy" className="underline hover:text-white-300">
+            Privacy Policy
+          </a>
+          <a href="/terms-conditions" className="underline hover:text-white-300">
+            Terms &amp; Conditions
+          </a>
+        </div>
+      </footer>
     </div>
   );
 };

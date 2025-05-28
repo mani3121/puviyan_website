@@ -124,7 +124,7 @@ const AnimatedSplitImages = () => {
         >
           <h1
             ref={h1Ref}
-            className="text-2xl md:text-4xl text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
+            className="text-xl md:text-3xl text-black mb-2 md:mb-6 tracking-tight text-left mt-4 md:mt-6 pl-16 w-[120%]"
             style={{
               fontFamily: "'Arial Black', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif",
               letterSpacing: "-0.02em",

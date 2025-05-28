@@ -183,7 +183,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
-          <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[350px]`}>
+          <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -227,8 +227,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <form onSubmit={handleSubmit} className="space-y-3">
-                  <div className="flex flex-row space-x-4">
+                <form onSubmit={handleSubmit} className="space-y-0">
+                  <div className="flex flex-row space-x-2 mb-3">
                     <input
                       type="text"
                       name="name"
@@ -256,15 +256,17 @@ ECOSTORY`.split("\n").map((line, index) => (
                       placeholder="Your Idea"
                       className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
                       rows={5}
-                      style={{ resize: 'none', height: '180px' }}
+                      style={{ resize: 'none', height: '100px' }}
                       required
                     />
                   </div>
-                  <div className="flex space-x-9">
+                  {/* Added a gap between textarea and button container */}
+                  <div className="mb-8" />
+                  <div className="flex space-x-9 mt-10">
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[180px]"
+                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[185px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -279,7 +281,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         setSubmitStatus('idle');
                         setFormData({ name: '', email: '', message: '' });
                       }}
-                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[180px]"
+                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[185px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',

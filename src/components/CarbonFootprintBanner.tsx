@@ -40,7 +40,7 @@ const CarbonFootprintBanner = () => {
   return (
     <div
       ref={bannerRef}
-      className="fixed bottom-9 right-8 z-50" // changed bottom-8 to bottom-12 to move the div up
+      className="fixed bottom-12 right-8 z-50" // changed from bottom-9 to bottom-12
       style={{
         fontFamily: 'Arial, sans-serif',
       }}
