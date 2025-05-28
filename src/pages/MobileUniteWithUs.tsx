@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import WhatsAppIconButton from "./WhatsAppIconButton";
 
 const MobileUniteWithUs = () => {
   const [formData, setFormData] = useState({
@@ -120,9 +119,9 @@ const MobileUniteWithUs = () => {
           </form>
         </div>
         {/* WhatsAppIconButton placed at the bottom left above the footer */}
-        <div className="absolute bottom-4 left-4">
+        {/* <div className="absolute bottom-4 left-4">
           <WhatsAppIconButton />
-        </div>
+        </div> */}
       </div>
       {/* Render footer only if this is the last page */}
       {isLastPage && (
