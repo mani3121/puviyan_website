@@ -1,5 +1,5 @@
 import emailjs from '@emailjs/browser';
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useAnimation, useInView } from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 
@@ -99,7 +99,7 @@ const AnimatedSplitImages = () => {
       <Header />
 
       {/* Left - Static Image */}
-      <div className="w-full h-[50vh] md:h-3/4 md:w-1/2 flex justify-start items-start overflow-hidden mt-1">
+      <div className="w-full h-screen md:h-3/4 md:w-1/2 flex justify-center items-center overflow-hidden">
         <div className="relative">
           <img
             src="https://puviyan-website.vercel.app/images/Mobile6.png"
@@ -108,14 +108,14 @@ const AnimatedSplitImages = () => {
             style={{
               objectFit: "contain",
               transform: "scale(0.7)",
-              transformOrigin: "top center"
+              transformOrigin: "center center"
             }}
           />
         </div>
       </div>
 
       {/* Right - Content with Form */}
-      <div className="w-full h-[50vh] md:h-full md:w-1/2 flex justify-center items-center bg-white-50 px-4 md:px-8 py-8 md:py-0 overflow-y-auto">
+      {/* <div className="w-full h-[50vh] md:h-full md:w-1/2 flex justify-center items-center bg-white-50 px-4 md:px-8 py-8 md:py-0 overflow-y-auto">
         <motion.div
           style={{
             fontFamily: "Arial Black",
@@ -248,7 +248,7 @@ const AnimatedSplitImages = () => {
             )}
           </div>
         </motion.div>
-      </div>
+      </div> */}
     </div>
   );
 };
