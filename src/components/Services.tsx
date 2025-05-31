@@ -57,7 +57,7 @@ const Services = () => {
           </span>
           <span
             ref={(el) => (headerLinesRef.current[1] = el)}
-            className="block font-bold text-[#20444a] text-2xl"
+            className="block font-bold text-[#20444a] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Advance <br /> Sustainability.
