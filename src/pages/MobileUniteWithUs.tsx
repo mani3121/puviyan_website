@@ -64,13 +64,13 @@ const MobileUniteWithUs = () => {
         <div className="w-full px-4 py-1 flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-0 w-full max-w-[350px] mx-auto"
+            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-2 w-full max-w-[270px] mx-auto"
           >
             <input
               type="text"
               name="name"
               placeholder="Name*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-2"
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -79,7 +79,7 @@ const MobileUniteWithUs = () => {
               type="email"
               name="email"
               placeholder="Email address*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-2"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -87,9 +87,9 @@ const MobileUniteWithUs = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
-              className="w-full px-2 py-1 mt-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm"
+              className="w-full px-2 py-1 mt-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm mb-2"
               rows={3}
-              style={{ resize: 'none', height: '80px' }}
+              style={{ resize: 'none', height: '60px' }}
               value={formData.message}
               onChange={handleInputChange}
               required
@@ -106,12 +106,12 @@ const MobileUniteWithUs = () => {
               {isLoading ? "Submitting..." : "Submit"}
             </button>
             {submitStatus === "success" && (
-              <div className="text-green-600 text-center text-xs">
+              <div className="text-green-600 text-center text-xs mt-1">
                 Thank you for joining with us!
               </div>
             )}
             {submitStatus === "error" && (
-              <div className="text-red-600 text-center text-xs">
+              <div className="text-red-600 text-center text-xs mt-1">
                 Failed to send message. Please try again.
               </div>
             )}
