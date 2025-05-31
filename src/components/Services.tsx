@@ -50,7 +50,7 @@ const Services = () => {
         <div className="space-y-36 text-right">
           <span
             ref={(el) => (headerLinesRef.current[0] = el)}
-            className="block font-bold text-[#3a8a7c] text-2xl"
+            className="block font-bold text-[#3a8a7c] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Empower <br />Ambition.
@@ -64,7 +64,7 @@ const Services = () => {
           </span>
           <span
             ref={(el) => (headerLinesRef.current[2] = el)}
-            className="block font-bold text-[#FABB15] text-2xl"
+            className="block font-bold text-[#FABB15] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Create <br />Collective <br /> Impact
