@@ -4,6 +4,7 @@ import gsap from "gsap";
 const Services = () => {
   const headerLinesRef = useRef<Array<HTMLSpanElement | null>>([]);
   const descRef = useRef<HTMLDivElement>(null);
+  const dividerRef = useRef<HTMLDivElement | null>(null);
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const [animated, setAnimated] = useState(false);
 
@@ -28,6 +29,13 @@ const Services = () => {
               ease: "power2.out",
             });
           }
+          if (dividerRef.current) {
+            gsap.fromTo(
+              dividerRef.current,
+              { opacity: 0 },
+              { opacity: 1, duration: 1, delay: 0.4, ease: "power2.out" }
+            );
+          }
         }
       },
       { threshold: 0.2 }
@@ -50,21 +58,21 @@ const Services = () => {
         <div className="space-y-36 text-right">
           <span
             ref={(el) => (headerLinesRef.current[0] = el)}
-            className="block font-bold text-[#3a8a7c] text-xl"
+            className="block font-bold text-[#F9BB18] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Empower <br />Ambition.
           </span>
           <span
             ref={(el) => (headerLinesRef.current[1] = el)}
-            className="block font-bold text-[#20444a] text-xl"
+            className="block font-bold text-[#74CFE6] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Advance <br /> Sustainability.
           </span>
           <span
             ref={(el) => (headerLinesRef.current[2] = el)}
-            className="block font-bold text-[#FABB15] text-xl"
+            className="block font-bold text-[#5ABA52] text-xl"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Create <br />Collective <br /> Impact
@@ -74,11 +82,12 @@ const Services = () => {
       {/* Tricolour Divider */}
       <div className="flex flex-col items-center justify-center">
         <div
+          ref={dividerRef}
           style={{
             width: "6px",
             height: "90%",
             background:
-              "linear-gradient(to bottom, #3a8a7c 0%, #20444a 50%, #FABB15 100%)",
+              "linear-gradient(to bottom, #F9BB18, #74CFE6, #5ABA52)",
             borderRadius: "8px",
           }}
         />
@@ -88,7 +97,7 @@ const Services = () => {
         <div
           ref={descRef}
           className="text-[12px] text-gray-800 text-justify font-medium leading-tight"
-          style={{ fontFamily: "Century Gothic" }}
+          style={{ fontFamily: "Arial" }}
         >
           Progress demands more—more innovation, greater responsibility, and
           measurable, enduring impact. Real change happens when these forces align,
