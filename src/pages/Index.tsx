@@ -2,7 +2,7 @@ import AboutUs from '@/components/AboutUs';
 import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
 import Header from '@/components/Header';
 import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
-import ServicesUpdated from '@/components/ServicesUpdated';
+import ServicesLatest from '@/components/ServicesLatest';
 import { Helmet } from 'react-helmet';
 import Product from './Product';
 import UniteWithUs from './UniteWithUs';
@@ -56,8 +56,8 @@ const Index = () => {
           {/* <div className="w-full h-1 bg-black"></div> */} {/* <-- Remove this line */}
 
           <section id="services" className="w-full bg-white">
-            <div className="w-full px-2 py-4">
-              <ServicesUpdated />
+            <div className="w-full px-4 py-8">
+              <ServicesLatest />
             </div>
           </section>
 
