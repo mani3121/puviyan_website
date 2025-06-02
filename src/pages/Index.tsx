@@ -56,13 +56,13 @@ const Index = () => {
           {/* <div className="w-full h-1 bg-black"></div> */} {/* <-- Remove this line */}
 
           <section id="services" className="w-full bg-white">
-            <div className="w-full px-4 py-16">
+            <div className="w-full px-2 py-4">
               <ServicesUpdated />
             </div>
           </section>
 
           <section id="about-us" className="w-full bg-white">
-            <div className="w-full px-4 ">
+            <div className="w-full px-2 ">
               <AboutUs />
             </div>
           </section>
