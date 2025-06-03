@@ -31,8 +31,8 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Bottom: Description */}
           <div className="w-full flex justify-center items-center">
             <motion.p
-              className="text-sm text-black mb-2 text-center leading-snug"
-              style={{ fontFamily: "Arial" }}
+              className="text-lg md:text-xl text-gray-700 text-justify"
+              style={{ whiteSpace: 'pre-line' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
