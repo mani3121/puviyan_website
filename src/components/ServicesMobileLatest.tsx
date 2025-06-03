@@ -2,7 +2,7 @@ const ServicesMobileLatest = () => {
   return (
     <div className="flex flex-col items-center p-6 lg:p-12 bg-white text-black">
       {/* Top banner */}
-      <div className="bg-gradient-to-b from-teal-300 to-gray-800 text-white text-center w-full rounded-t-xl py-6">
+      <div className="bg-white text-black text-center w-full rounded-t-xl py-6">
         <h2 className="text-xl md:text-2xl font-semibold">Empower Ambition.</h2>
         <h2 className="text-xl md:text-2xl font-semibold">Advance Sustainability.</h2>
         <h2 className="text-xl md:text-2xl font-semibold">Create Collective Impact.</h2>

@@ -11,7 +11,7 @@ const ServicesLatest = () => {
   return (
     <div className="flex flex-col lg:flex-row p-6 lg:p-12 gap-8 bg-white text-black min-h-[90vh] relative">
       {/* Left panel */}
-      <div className="bg-gradient-to-b from-teal-300 to-gray-800 text-white p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
+      <div className="bg-white text-black p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
         <h1 className="text-6xl mb-20 break-words" style={{ fontFamily: "Century Gothic" }}>
           Empower<br /> Ambition.
         </h1>
