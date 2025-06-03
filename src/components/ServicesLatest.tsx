@@ -39,8 +39,8 @@ const ServicesLatest = () => {
 
       {/* Right panel */}
       <div
-        className="w-full lg:w-2/3 space-y-6 text-justify flex flex-col justify-center min-h-[70vh] text-2xl pl-8"
-        style={{ fontFamily: "Arial Unicode MS" }}
+        className="w-full lg:w-2/3 space-y-6 text-justify flex flex-col justify-center min-h-[70vh] text-xl pl-8"
+        style={{ fontFamily: "Arial" }}
       >
         <p>
           Progress demands more—more innovation, more responsibility, more
