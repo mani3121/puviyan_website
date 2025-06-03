@@ -45,7 +45,7 @@ const UniteWithUsUpdated = () => {
       <div className="flex flex-col items-center justify-center px-4">
         <div className="max-w-2xl w-full flex flex-col items-center -mt-6">
           <h1
-            className="text-4xl font-black text-black mb-2 text-center w-full -mt-20"
+            className="text-4xl font-black text-gray-600 mb-2 text-center w-full -mt-20"
             style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
           >
             Unite with Puviyan
