@@ -63,7 +63,7 @@ const AnimatedSplitImages = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_email: "maniavudai10@gmail.com",
+          to_email: "reachpuviyan@gmail.com",
         }
       );
 

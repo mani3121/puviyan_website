@@ -9,6 +9,7 @@ const UniteWithUsUpdated = () => {
 
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,11 +22,12 @@ const UniteWithUsUpdated = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate API call
     setTimeout(() => {
       setIsLoading(false);
       setSubmitStatus("success");
       setFormData({ name: "", email: "", message: "" });
+      setShowSuccess(true);
+      setTimeout(() => setShowSuccess(false), 5000); // Hide after 5 seconds
     }, 1200);
   };
 
@@ -99,9 +101,9 @@ const UniteWithUsUpdated = () => {
             >
               {isLoading ? "Submitting..." : "Submit"}
             </button>
-            {submitStatus === "success" && (
+            {showSuccess && (
               <div className="text-green-600 text-center text-sm mt-2">
-                Thank you for joining with us!
+                Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
             )}
             {submitStatus === "error" && (

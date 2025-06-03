@@ -114,7 +114,7 @@ const Product = () => {
           from_name: formData.name,
           from_email: formData.email,
           message: formData.message,
-          to_email: "maniavudai10@gmail.com",
+          to_email: "reachpuviyan@gmail.com",
         }
       );
 
@@ -183,6 +183,8 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
+          {/* Add gap between heading and button */}
+          <div className="h-14" /> {/* This adds vertical space (adjust h-12 as needed) */}
           <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
