@@ -50,14 +50,14 @@ const ServicesLatest = () => {
           global ESG standards—setting a new benchmark for what technology can
           achieve.
         </p>
-
+          <br/>
         <p>
           Our services empower governments, businesses, and communities to drive
           sustainable progress. Leveraging advanced analytics, automation, and
           cloud technologies, we unlock efficiency, transparency, and measurable
           outcomes—reducing environmental footprints and creating long-term value.
         </p>
-
+<br/>
         <p>
           Sustainability isn't an add-on; it's essential. From energy-efficient
           infrastructure and circular IT to real-time ESG insights and responsible
