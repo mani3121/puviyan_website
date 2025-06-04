@@ -86,7 +86,7 @@ const Index = () => {
 
           {/* Footer */}
           <footer
-            className="w-full flex items-center justify-between bg-black text-white text-xs px-4 h-10"
+            className="w-full flex items-center justify-between bg-black text-white text-[10px] sm:text-xs px-4 h-10"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
           >
             <span className="ml-4 font-normal">
