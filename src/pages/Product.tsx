@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AnimatedSplitImages from '../components/AnimatedSplitImages';
+import { handleProductSubmit } from '../utils/handleProductSubmit';
 
 
 const Product = () => {
@@ -99,34 +100,15 @@ const Product = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setIsLoading(true);
-
-    try {
-      emailjs.init("d1YGFS1dDCmPJB0N4");
-
-      await emailjs.send(
-        "service_m73cz7e",
-        "template_mxugw58",
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-          to_email: "reachpuviyan@gmail.com",
-        }
-      );
-
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-      setShowForm(false);
-    } catch (error) {
-      console.error('Error:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsLoading(false);
-    }
+  const handleSubmit = (e: React.FormEvent) => {
+    handleProductSubmit({
+      e,
+      formData,
+      setIsLoading,
+      setSubmitStatus,
+      setFormData,
+      setShowForm,
+    });
   };
 
   useEffect(() => {

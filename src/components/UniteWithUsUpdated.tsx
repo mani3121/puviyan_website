@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { handleProductSubmit } from "../utils/handleProductSubmit"; // Make sure the path is correct
 
 const UniteWithUsUpdated = () => {
   const [formData, setFormData] = useState({
@@ -19,17 +20,24 @@ const UniteWithUsUpdated = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-      setShowSuccess(true);
-      setTimeout(() => setShowSuccess(false), 5000); // Hide after 5 seconds
-    }, 1200);
+  const handleSubmit = (e: React.FormEvent) => {
+    handleProductSubmit({
+      e,
+      formData,
+      setIsLoading,
+      setSubmitStatus,
+      setFormData,
+      setShowForm: () => {}, // No showForm in this component, so pass a noop
+    });
   };
+
+  useEffect(() => {
+    if (submitStatus === "success") {
+      setShowSuccess(true);
+      const timer = setTimeout(() => setShowSuccess(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   return (
     <div
@@ -101,7 +109,7 @@ const UniteWithUsUpdated = () => {
             >
               {isLoading ? "Submitting..." : "Submit"}
             </button>
-            {showSuccess && (
+            {submitStatus === "success" && showSuccess && (
               <div className="text-green-600 text-center text-sm mt-2">
                 Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
@@ -114,7 +122,7 @@ const UniteWithUsUpdated = () => {
           </form>
         </div>
       </div>
-      <footer
+      {/* <footer
         className="absolute bottom-0 left-0 w-full h-4 flex items-end justify-between px-6 text-xs text-white bg-black"
         style={{ fontFamily: "Arial" }}
       >
@@ -129,7 +137,7 @@ const UniteWithUsUpdated = () => {
             Terms &amp; Conditions
           </a>
         </div>
-      </footer>
+      </footer> */}
     </div>
   );
 };

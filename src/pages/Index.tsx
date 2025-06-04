@@ -82,7 +82,31 @@ const Index = () => {
             <div className="min-h-screen">
               <UniteWithUs />
             </div>
-          </section>/
+          </section>
+
+          {/* Footer */}
+          <footer
+            className="w-full flex items-center justify-between bg-black text-white text-xs px-4 h-10"
+            style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+          >
+            <span className="ml-4">
+              © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+            </span>
+            <div className="flex space-x-4 mr-4">
+              <a
+                href="/privacy-policy"
+                className="underline hover:text-gray-300"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="/terms-conditions"
+                className="underline hover:text-gray-300"
+              >
+                Terms & Conditions
+              </a>
+            </div>
+          </footer>
         </main>
       </div>
     </>

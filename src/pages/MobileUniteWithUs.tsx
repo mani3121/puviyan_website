@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { handleProductSubmit } from "../utils/handleProductSubmit"; // Make sure the path is correct
 
 const MobileUniteWithUs = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +10,7 @@ const MobileUniteWithUs = () => {
   });
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -18,16 +20,24 @@ const MobileUniteWithUs = () => {
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
-      setIsLoading(false);
-      setSubmitStatus("success");
-      setFormData({ name: "", email: "", message: "" });
-    }, 1200);
+  const handleSubmit = (e: React.FormEvent) => {
+    handleProductSubmit({
+      e,
+      formData,
+      setIsLoading,
+      setSubmitStatus,
+      setFormData,
+      setShowForm: () => {}, // No showForm in this component, so pass a noop
+    });
   };
+
+  useEffect(() => {
+    if (submitStatus === "success") {
+      setShowSuccess(true);
+      const timer = setTimeout(() => setShowSuccess(false), 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [submitStatus]);
 
   const location = useLocation();
   // Replace '/last' with your designated route for the last page
@@ -64,13 +74,13 @@ const MobileUniteWithUs = () => {
         <div className="w-full px-4 py-1 flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-2 w-full max-w-[270px] mx-auto"
+            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-1 w-full max-w-[270px] mx-auto"
           >
             <input
               type="text"
               name="name"
               placeholder="Name*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-2"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-1"
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -79,7 +89,7 @@ const MobileUniteWithUs = () => {
               type="email"
               name="email"
               placeholder="Email address*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-2"
+              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-1"
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -87,7 +97,7 @@ const MobileUniteWithUs = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
-              className="w-full px-2 py-1 mt-2 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm mb-2"
+              className="w-full px-2 py-1 mt-1 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm mb-1"
               rows={3}
               style={{ resize: 'none', height: '60px' }}
               value={formData.message}
@@ -105,7 +115,7 @@ const MobileUniteWithUs = () => {
             >
               {isLoading ? "Submitting..." : "Submit"}
             </button>
-            {submitStatus === "success" && (
+            {submitStatus === "success" && showSuccess && (
               <div className="text-green-600 text-center text-xs mt-1">
                 Thank you for joining with us!
               </div>
@@ -123,30 +133,28 @@ const MobileUniteWithUs = () => {
         </div> */}
       </div>
       {/* Render footer only if this is the last page */}
-      {isLastPage && (
-        <footer
-          className="w-full fixed bottom-0 flex items-center justify-center bg-black text-white text-[8px] px-4 h-8"
-          style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
-        >
-          <span>
-            © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
-          </span>
-          <div className="flex space-x-4 ml-4">
-            <a
-              href="/privacy-policy"
-              className="underline hover:text-gray-300"
-            >
-              Privacy Policy
-            </a>
-            <a
-              href="/terms-conditions"
-              className="underline hover:text-gray-300"
-            >
-              Terms & Conditions
-            </a>
-          </div>
-        </footer>
-      )}
+      {/* <footer
+        className="w-full flex items-center justify-between bg-black text-white text-[6px] px-4 h-6"
+        style={{ fontFamily: "Arial" }}
+      >
+        <span className="text-left">
+          © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
+        </span>
+        <div className="flex space-x-2 ml-4">
+          <a
+            href="/privacy-policy"
+            className="underline hover:text-gray-300"
+          >
+            Privacy Policy
+          </a>
+          <a
+            href="/terms-conditions"
+            className="underline hover:text-gray-300"
+          >
+            Terms & Conditions
+          </a>
+        </div>
+      </footer> */}
     </>
   );
 };

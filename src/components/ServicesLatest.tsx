@@ -26,12 +26,12 @@ const ServicesLatest = () => {
       </div>
 
       {/* Vertical Divider */}
-      <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-[36%] h-1/2 justify-center items-center pointer-events-none z-10">
+      <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-[33%] h-[55vh] justify-center items-center pointer-events-none z-10">
         <div
-          className="w-1 rounded-full"
+          className="w-2 rounded-full"
           style={{
             height: "100%",
-            background: "linear-gradient(to bottom, #5eead4, #1e293b)", // from-teal-300 to-gray-800
+            background: "linear-gradient(to bottom, #FABB15, #63DEF3 )",
             opacity: 0.7,
           }}
         />
