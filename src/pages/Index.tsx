@@ -84,9 +84,9 @@ const Index = () => {
             </div>
           </section>
 
-          {/* Footer */}
+          {/* Footer for larger screens */}
           <footer
-            className="w-full flex items-center justify-between bg-black text-white text-[10px] sm:text-xs px-4 h-10"
+            className="w-full flex items-center justify-between bg-black text-white text-[10px] sm:text-xs px-4 h-10 hidden sm:flex"
             style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
           >
             <span className="ml-4 font-normal">
@@ -104,6 +104,29 @@ const Index = () => {
                 className="underline hover:text-gray-300 font-normal"
               >
                 Terms & Conditions
+              </a>
+            </div>
+          </footer>
+          {/* Mobile Footer */}
+          <footer
+            className="w-full flex items-center justify-between bg-black text-white text-[8px] px-2 h-8 sm:hidden"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
+          >
+            <span className="font-normal">
+              © 2025 Puviyan Digital Solutions Pvt. Ltd.
+            </span>
+            <div className="flex flex-row items-center space-x-2">
+              <a
+                href="/privacy-policy"
+                className="underline hover:text-gray-300 font-normal"
+              >
+                Privacy Policy
+              </a>
+              <a
+                href="/terms-conditions"
+                className="underline hover:text-gray-300 font-normal"
+              >
+              Terms & Conditions
               </a>
             </div>
           </footer>

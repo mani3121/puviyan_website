@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { handleProductSubmit } from "../utils/handleProductSubmit"; // Make sure the path is correct
 
@@ -56,14 +56,15 @@ const MobileUniteWithUs = () => {
         {/* Header: h1 and p tags */}
         <div className="w-full px-4 pt-12 pb-2 flex flex-col items-center">
           <h1
-            className="text-2xl font-black text-black mb-2 text-center w-full"
+            className="text-3xl font-black text-gray-600 mb-2 text-center w-full"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
             Unite with Puviyan
           </h1>
+          
           <p
-            className="text-sm text-black mb-2 text-center leading-snug"
-            style={{ fontFamily: "Arial" }}
+            className="text-lg text-gray-700 text-justify leading-tight px-5"
+            style={{ whiteSpace: 'pre-line' }}
           >
             We are dedicated to building a sustainable future by uniting with governments,
             organizations committed to sustainability and CSR, businesses offering eco-friendly

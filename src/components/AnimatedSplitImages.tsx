@@ -1,11 +1,12 @@
 import emailjs from '@emailjs/browser';
 import { useAnimation, useInView } from "framer-motion";
+import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 
 const AnimatedSplitImages = () => {
   const containerRef = useRef(null);
-  const h1Ref = useRef(null);
+  const h1Ref = useRef<HTMLHeadingElement>(null);
   const controls = useAnimation();
   const isInView = useInView(h1Ref, { once: true });
   const [showForm, setShowForm] = useState(false);
@@ -39,6 +40,16 @@ const AnimatedSplitImages = () => {
       controls.start("visible");
     }
   }, [isInView, controls]);
+
+  useEffect(() => {
+    if (h1Ref.current) {
+      gsap.fromTo(
+        h1Ref.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 1, ease: "power2.out" }
+      );
+    }
+  }, []);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -102,23 +113,26 @@ const AnimatedSplitImages = () => {
       <div className="w-full h-screen md:h-3/4 md:w-1/2 flex flex-col items-center overflow-hidden relative">
         {/* "COMING SOON" text above the image */}
         <h1
-          className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold text-gray-600 w-[90vw] text-center z-10"
+          ref={h1Ref}
+          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-extrabold text-gray-600 w-[90vw] text-center z-10"
           style={{
             fontFamily: "Arial Black, Arial-BoldMT, Arial, Helvetica, sans-serif",
-            fontWeight: "bold",
-            letterSpacing: "-0.02em",
+            fontWeight: "bolder",
+            letterSpacing: "-0.0em",
             lineHeight: 1.1,
             padding: "0.5rem 1.5rem",
             borderRadius: "1rem",
-            top: "4.5rem", // Move the h1 further down
+            top: "4.5rem",
           }}
         >
-          {`COMING SOON TO REWRITE YOUR ECOSTORY`.split("\n").map((line, index) => (
-            <span key={index} className="block">
-              {line}
-            </span>
-          ))}
+          <h1
+            className="text-3xl font-extrabold text-gray-600 mb-2 text-center w-full"
+            style={{ fontFamily: "Arial Rounded MT Bold" }}
+          >
+            COMING SOON TO REWRITE YOUR ECO STORY
+          </h1>
         </h1>
+        
         <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
           <img
             src="https://puviyan-website.vercel.app/images/Mobile7.png"
@@ -126,7 +140,7 @@ const AnimatedSplitImages = () => {
             className="rounded-none md:rounded-2xl shadow-2xl"
             style={{
               objectFit: "cover",
-              width: "100%",
+              width: "80%",
               height: "70vh",
               objectPosition: "top center",
               display: "block",
