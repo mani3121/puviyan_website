@@ -87,21 +87,21 @@ const Index = () => {
           {/* Footer */}
           <footer
             className="w-full flex items-center justify-between bg-black text-white text-xs px-4 h-10"
-            style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
           >
-            <span className="ml-4">
+            <span className="ml-4 font-normal">
               © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
             </span>
-            <div className="flex space-x-4 mr-4">
+            <div className="flex space-x-4 mr-12">
               <a
                 href="/privacy-policy"
-                className="underline hover:text-gray-300"
+                className="underline hover:text-gray-300 font-normal"
               >
                 Privacy Policy
               </a>
               <a
                 href="/terms-conditions"
-                className="underline hover:text-gray-300"
+                className="underline hover:text-gray-300 font-normal"
               >
                 Terms & Conditions
               </a>

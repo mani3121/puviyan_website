@@ -102,15 +102,15 @@ const AnimatedSplitImages = () => {
       <div className="w-full h-screen md:h-3/4 md:w-1/2 flex flex-col items-center overflow-hidden relative">
         {/* "COMING SOON" text above the image */}
         <h1
-          className="absolute top-6 left-1/2 transform -translate-x-1/2 text-3xl font-bold text-gray-600 w-[90vw] text-center z-10"
+          className="absolute left-1/2 transform -translate-x-1/2 text-3xl font-bold text-gray-600 w-[90vw] text-center z-10"
           style={{
-            fontFamily: "Arial Black",
-            fontWeight: "500",
+            fontFamily: "Arial Black, Arial-BoldMT, Arial, Helvetica, sans-serif",
+            fontWeight: "bold",
             letterSpacing: "-0.02em",
             lineHeight: 1.1,
-            background: "rgba(255,255,255,0.85)",
             padding: "0.5rem 1.5rem",
             borderRadius: "1rem",
+            top: "4.5rem", // Move the h1 further down
           }}
         >
           {`COMING SOON TO REWRITE YOUR ECOSTORY`.split("\n").map((line, index) => (
@@ -130,7 +130,7 @@ const AnimatedSplitImages = () => {
               height: "70vh",
               objectPosition: "top center",
               display: "block",
-              marginTop: "10rem", // Move the image further down
+              marginTop: "14rem", // Move the image further down
             }}
           />
         </div>
