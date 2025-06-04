@@ -149,7 +149,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="https://puviyan-website.vercel.app/images/Mobile6.png"
+            src="https://puviyan-website.vercel.app/images/Mobile7.png"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             style={{
