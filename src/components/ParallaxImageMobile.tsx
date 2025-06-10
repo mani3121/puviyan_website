@@ -126,7 +126,7 @@ const ParallaxImageMobile = ({ image1, image2, loading }: ParallaxImageMobilePro
         touchAction: isTransitionComplete ? 'auto' : 'none',
         position: 'relative',
         top: '40px',
-        height: 'calc(100vh - 40px)',
+        height: 'calc(100vh)',
         width: '100%'
       }}
     >
@@ -146,8 +146,7 @@ const ParallaxImageMobile = ({ image1, image2, loading }: ParallaxImageMobilePro
           clipPath: `inset(${100 - scrollProgress}% 0 0 0)`,
           transition: 'clip-path 0.1s ease-out',
           height: '100%',
-          width: '100%'
-        }}
+          width: '100%'        }}
       >
         <div 
           className="parallax-image"
@@ -162,4 +161,4 @@ const ParallaxImageMobile = ({ image1, image2, loading }: ParallaxImageMobilePro
   );
 };
 
-export default ParallaxImageMobile; 
+export default ParallaxImageMobile;
