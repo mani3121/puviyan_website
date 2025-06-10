@@ -129,7 +129,7 @@ const AnimatedSplitImages = () => {
             className="text-3xl font-extrabold text-gray-600 mb-2 text-center w-full"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
-            COMING SOON TO REWRITE YOUR ECO STORY
+            COMING SOON TO REWRITE YOUR ECOSTORY
           </h1>
         </h1>
         
