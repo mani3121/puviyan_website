@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { handleProductSubmit } from "../utils/handleProductSubmit"; // Make sure the path is correct
 
 const UniteWithUsUpdated = () => {
@@ -44,7 +44,7 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan4.jpg")',
+        backgroundImage: 'url("/images/Unite_with_puviyan4.jpg")',
         backgroundSize: "cover",
         backgroundPosition: "center top",
         backgroundRepeat: "no-repeat",

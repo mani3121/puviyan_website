@@ -118,7 +118,7 @@ const Header = () => {
             onClick={() => (window.location.href = "/")}
           >
             <img 
-              src="https://puviyan-website.vercel.app/images/puviyan_logo.png" 
+              src="/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 md:h-4 w-auto"
             />

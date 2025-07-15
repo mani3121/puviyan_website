@@ -49,7 +49,7 @@ const MobileUniteWithUs = () => {
         className="w-full min-h-screen flex flex-col bg-cover relative"
         style={{
           backgroundImage:
-            'url("https://puviyan-website.vercel.app/images/Unite_with_puviyan4.jpg")',
+            'url("/images/Unite_with_puviyan4.jpg")',
           backgroundPosition: "left center",
         }}
       >
