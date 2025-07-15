@@ -135,7 +135,7 @@ const AnimatedSplitImages = () => {
         </h1>
         <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
           <img
-            src="/images/Mobile7.png"
+            src="/images/Mobile8.png"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             style={{

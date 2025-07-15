@@ -130,7 +130,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="/images/Mobile7.png"
+            src="/images/Mobile8.png"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             style={{
