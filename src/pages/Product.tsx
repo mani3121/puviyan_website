@@ -1,4 +1,3 @@
-import emailjs from '@emailjs/browser';
 import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
@@ -131,7 +130,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="https://puviyan-website.vercel.app/images/Mobile7.png"
+            src="/images/Mobile8.png"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             style={{

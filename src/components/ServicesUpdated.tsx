@@ -11,7 +11,7 @@ const ServicesUpdated = () => {
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-white hidden md:flex">
       <img
-        src="https://puviyan-website.vercel.app/images/Services1.gif"
+        src="/images/Services1.gif"
         alt="Services"
         className="max-w-full h-auto"
         loading="lazy"

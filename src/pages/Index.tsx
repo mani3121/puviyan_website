@@ -9,10 +9,10 @@ import UniteWithUs from './UniteWithUs';
 import Gallery from '@/components/Gallery';
 
 const parallaxImages = {
-  first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
-  second: 'https://puviyan-website.vercel.app/images/Puviyanworld1.jpg',
-  mobileFirst: 'https://puviyan-website.vercel.app/images/Puv_mob2.jpg',
-  mobileSecond: 'https://puviyan-website.vercel.app/images/Puv_mob1.jpg',
+  first: '/images/Puviyanworld2.jpg',
+  second: '/images/Puviyanworld1.jpg',
+  mobileFirst: '/images/Puv_mob2.jpg',
+  mobileSecond: '/images/Puv_mob1.jpg',
 };
 
 const Index = () => {
@@ -78,7 +78,7 @@ const Index = () => {
           {/* Separator Image between About Us and Unite with Us
           <section id="separator-image" className="w-full">
             <img
-              src="https://puviyan-website.vercel.app/images/ribbon.jpg"
+              src="/images/ribbon.jpg"
               alt="Separator"
               className="w-full object-cover"
               loading="lazy"

@@ -22,7 +22,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Top: Image */}
           <div className="w-full mb-6 mt-12 flex justify-center items-center">
             <img
-              src="https://puviyan-website.vercel.app/images/PPT.gif"
+              src="/images/ppt1.gif"
               alt="About Puviyan"
               className="mx-auto w-full max-w-[550px] object-contain max-h-[550px]"
               loading="lazy"
@@ -46,7 +46,7 @@ Real change begins with individual action, but its true strength lies in the sha
       {/*
       <div className="w-full m-0 p-0">
         <img
-          src="https://puviyan-website.vercel.app/images/ribbon.jpg"
+          src="/images/ribbon.jpg"
           alt="Separator"
           className="w-full object-cover"
           loading="lazy"
