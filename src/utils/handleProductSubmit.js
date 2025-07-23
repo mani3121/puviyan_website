@@ -17,7 +17,7 @@ export const handleProductSubmit = async ({
 
     await emailjs.send(
       "service_m73cz7e",
-      "template_mxugw58",
+      "template_3or3eqs",
       {
         from_name: formData.name,
         from_email: formData.email,

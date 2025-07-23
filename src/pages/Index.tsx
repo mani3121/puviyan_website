@@ -6,6 +6,7 @@ import ServicesLatest from '@/components/ServicesLatest';
 import { Helmet } from 'react-helmet';
 import Product from './Product';
 import UniteWithUs from './UniteWithUs';
+import Gallery from '@/components/Gallery';
 
 const parallaxImages = {
   first: 'https://puviyan-website.vercel.app/images/Puviyanworld2.jpg',
@@ -43,6 +44,12 @@ const Index = () => {
               mobileImage2={parallaxImages.mobileSecond}
               loading="lazy" // Ensure lazy loading for images
             />
+          </section>
+          {/* Gallery Section */}
+          <section id="gallery" className="w-full bg-white">
+            <div className="w-full px-4 py-8">
+              <Gallery />
+            </div> 
           </section>
 
           {/* Next section that appears after scroll */}
