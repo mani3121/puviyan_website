@@ -45,12 +45,7 @@ const Index = () => {
               loading="lazy" // Ensure lazy loading for images
             />
           </section>
-          {/* Gallery Section */}
-          <section id="gallery" className="w-full bg-white">
-            <div className="w-full px-4 py-8">
-              <Gallery />
-            </div> 
-          </section>
+       
 
           {/* Next section that appears after scroll */}
           <section id="animated-split-images" className="w-full bg-white m-0 p-0">
@@ -66,6 +61,12 @@ const Index = () => {
             <div className="w-full px-4 py-8">
               <ServicesLatest />
             </div>
+          </section>
+             {/* Gallery Section */}
+          <section id="gallery" className="w-full bg-white">
+            <div className="w-full px-4 py-8">
+              <Gallery />
+            </div> 
           </section>
 
           <section id="about-us" className="w-full bg-white">

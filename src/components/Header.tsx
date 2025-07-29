@@ -214,6 +214,26 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       Services
     </a>
     <a
+      href="/gallery"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("gallery");
+      }}
+      className={`block px-3 py-2 text-sm transition-colors ${
+        isMobile 
+          ? "w-full text-center font-normal border-b border-white/20" 
+          : "font-semibold"
+      } ${
+        currentPath === "/gallery"
+          ? "text-green-800 underline"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
+      }`}
+      style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
+    >
+      Community
+    </a>
+    <a
       href="/about-us"
       onClick={(e) => {
         e.preventDefault();
