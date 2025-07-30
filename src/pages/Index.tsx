@@ -1,12 +1,14 @@
-import AboutUs from '@/components/AboutUs';
-import CarbonFootprintBanner from '@/components/CarbonFootprintBanner';
-import Header from '@/components/Header';
-import ParallaxImageWrapper from '@/components/ParallaxImageWrapper';
-import ServicesLatest from '@/components/ServicesLatest';
+import React, { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
-import Product from './Product';
-import UniteWithUs from './UniteWithUs';
-import Gallery from '@/components/Gallery';
+import Header from '@/components/Header';
+
+const AboutUs = lazy(() => import('@/components/AboutUs'));
+const CarbonFootprintBanner = lazy(() => import('@/components/CarbonFootprintBanner'));
+const ParallaxImageWrapper = lazy(() => import('@/components/ParallaxImageWrapper'));
+const ServicesLatest = lazy(() => import('@/components/ServicesLatest'));
+const Product = lazy(() => import('./Product'));
+const UniteWithUs = lazy(() => import('./UniteWithUs'));
+ const Gallery = lazy(() => import('@/components/Gallery'));
 
 const parallaxImages = {
   first: '/images/Puviyanworld2.jpg',
@@ -16,7 +18,6 @@ const parallaxImages = {
 };
 
 const Index = () => {
-  
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
@@ -31,66 +32,53 @@ const Index = () => {
       </Helmet>
       <div className="w-full overflow-x-hidden">
         <Header />
-        <main className="w-full"> 
-       
-              <CarbonFootprintBanner />
-          
-          {/* Parallax Images section */}
-          <section className="w-full h-screen m-0 p-0">
-            <ParallaxImageWrapper 
-              image1={parallaxImages.first}
-              image2={parallaxImages.second}
-              mobileImage1={parallaxImages.mobileFirst}
-              mobileImage2={parallaxImages.mobileSecond}
-              loading="lazy" // Ensure lazy loading for images
-            />
-          </section>
-       
+        <main className="w-full">
+          <Suspense fallback={<div className="text-center py-8">Loading...</div>}>
+            <CarbonFootprintBanner />
 
-          {/* Next section that appears after scroll */}
-          <section id="animated-split-images" className="w-full bg-white m-0 p-0">
-            <div className="w-full">
-              <Product />
-            </div>
-          </section>
+            {/* Parallax Images section */}
+            <section className="w-full h-screen m-0 p-0">
+              <ParallaxImageWrapper
+                image1={parallaxImages.first}
+                image2={parallaxImages.second}
+                mobileImage1={parallaxImages.mobileFirst}
+                mobileImage2={parallaxImages.mobileSecond}
+                loading="lazy"
+              />
+            </section>
 
-          {/* Separator */}
-          {/* <div className="w-full h-1 bg-black"></div> */} {/* <-- Remove this line */}
+            {/* Next section that appears after scroll */}
+            <section id="animated-split-images" className="w-full bg-white m-0 p-0">
+              <div className="w-full">
+                <Product />
+              </div>
+            </section>
 
-          <section id="services" className="w-full bg-white">
-            <div className="w-full px-4 py-8">
-              <ServicesLatest />
-            </div>
-          </section>
-             {/* Gallery Section */}
-          <section id="gallery" className="w-full bg-white">
-            <div className="w-full px-4 py-8">
-              <Gallery />
-            </div> 
-          </section>
+            <section id="services" className="w-full bg-white">
+              <div className="w-full px-4 py-8">
+                <ServicesLatest />
+              </div>
+            </section>
 
-          <section id="about-us" className="w-full bg-white">
-            <div className="w-full px-2 ">
-              <AboutUs />
-            </div>
-          </section>
+            {/* Gallery Section */}
+            <section id="gallery" className="w-full bg-white">
+              <div className="w-full px-4 py-8">
+                <Gallery />
+              </div>
+            </section>
 
+            <section id="about-us" className="w-full bg-white">
+              <div className="w-full px-2 ">
+                <AboutUs />
+              </div>
+            </section>
 
-          {/* Separator Image between About Us and Unite with Us
-          <section id="separator-image" className="w-full">
-            <img
-              src="/images/ribbon.jpg"
-              alt="Separator"
-              className="w-full object-cover"
-              loading="lazy"
-            />
-          </section> */}
-
-          <section id="unite-with-us" className="w-full bg-white">
-            <div className="min-h-screen">
-              <UniteWithUs />
-            </div>
-          </section>
+            <section id="unite-with-us" className="w-full bg-white">
+              <div className="min-h-screen">
+                <UniteWithUs />
+              </div>
+            </section>
+          </Suspense>
 
           {/* Footer for larger screens */}
           <footer
@@ -134,7 +122,7 @@ const Index = () => {
                 href="/terms-conditions"
                 className="underline hover:text-gray-300 font-normal"
               >
-              Terms & Conditions
+                Terms & Conditions
               </a>
             </div>
           </footer>

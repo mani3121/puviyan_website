@@ -63,9 +63,8 @@ const UniteWithUsUpdated = () => {
             className="text-lg text-black mb-8 text-center leading-snug text-justify"
             style={{ fontFamily: "Arial" }}
           >
-            We are dedicated to building a sustainable future by uniting with governments,
-            organizations committed to sustainability and CSR, businesses offering eco-friendly
-            solutions, investors, passionate talent, and the communities we serve.
+            We are committed to building a sustainable future by uniting with governments, mission-aligned organizations,investors, technology professionals, sustainability advocates, and the communities we serve. 
+
           </p>
           <form
             onSubmit={handleSubmit}

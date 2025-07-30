@@ -124,7 +124,7 @@ const Header = () => {
             />
             <span 
               ref={textRef}
-              className="hidden md:block text-xs font-bold opacity-0 -translate-x-5 text-white flex items-center"
+              className="hidden md:block text-xs font-bold opacity-0 -translate-x-5 text-green-400 flex items-center"
               style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
             >
               Puviyan
@@ -191,9 +191,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       }`}
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
-      Product
+      Technology
     </a>
-    <a
+    {/* <a
       href="/services"
       onClick={(e) => {
         e.preventDefault();
@@ -212,7 +212,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Services
-    </a>
+    </a> */}
     <a
       href="/gallery"
       onClick={(e) => {
@@ -231,7 +231,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       }`}
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
-      Community
+      People and Planet
     </a>
     <a
       href="/about-us"

@@ -99,29 +99,16 @@ const Services = () => {
           className="text-[12px] text-gray-800 text-justify font-medium leading-tight"
           style={{ fontFamily: "Arial" }}
         >
-          Progress demands more—more innovation, greater responsibility, and
-          measurable, enduring impact. Real change happens when these forces align,
-          powered by purpose and partnership. By embedding sustainability into every
-          digital transformation, we align our vision with the UN Sustainable
-          Development Goals and global ESG standards—setting a new benchmark for
-          what technology can achieve.
+          Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together. By embedding sustainability into every digital transformation across products and services, we align with global standards and set a new benchmark for what technology can achieve.
           <br />
           <br />
-          Our services empower governments, businesses, and communities to lead
-          the way in sustainable development. Through advanced analytics,
-          automation, and cloud technologies, we drive efficiency, transparency, and
-          outcomes that reduce environmental impact and create long-term value.
+          Sustainability is not an add-on; it is essential. We unite with governments, organizations, and communities worldwide to accelerate sustainable transformation at scale through strategic consulting and technology-led innovations.
           <br />
           <br />
-          Sustainability isn’t an add-on—it’s a global imperative. From energy-efficient
-          infrastructure and circular IT to real-time ESG insights and responsible value
-          chains, our solutions enable purposeful leadership and deliver results that
-          matter—for all stakeholders, and for the planet.
-          Together, we’re engineering a better future.
+          Our capabilities span energy-efficient infrastructure, circular IT strategies, advanced real-time analytics, responsible AI solutions, and resilient, optimized value chains, with each contributing to measurable environmental, social, and economic (ESG) outcomes at scale.
           <br />
           <br />
-          This is progress, reimagined. Technology that’s not just smart, but right. For
-          everyone. For the future.
+          This is progress, reimagined. Technology that is not just smart, but right for people and planet.
         </div>
       </div>
     </div>
