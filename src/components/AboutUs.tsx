@@ -5,7 +5,7 @@ const AboutUs = () => {
   const description = `
   "How can I contribute to a sustainable future while pursuing my dreams and honoring my priorities? And how can we, as a collective, align our efforts to create meaningful change?"
 
-At Puviyan, our mission is to democratize sustainability at a large scale, making it accessible and impactful without requiring significant compromise in priorities. We advance this commitment through Puviyan Digital Solutions, which delivers technology-led sustainable innovations, and Puviyan Foundation, which leads grassroots initiatives.
+We advance this commitment through Puviyan Digital Solutions, delivering technology-led sustainable innovations, and Puviyan Foundation, leading grassroots initiatives.
 
 ‘Puviyan’ signifies a person with a deep sense of environmental consciousness and harmony with nature, perfectly reflecting our vision to advance sustainability as an opportunity to innovate and reimagine possibilities.
 
