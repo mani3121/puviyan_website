@@ -49,7 +49,7 @@ const MobileUniteWithUs = () => {
         className="w-full min-h-screen flex flex-col bg-cover relative"
         style={{
           backgroundImage:
-            'url("/images/Unite_with_puviyan4.jpg")',
+            'url("/images/Unite_with_puviyan.jpg")',
           backgroundPosition: "left center",
         }}
       >

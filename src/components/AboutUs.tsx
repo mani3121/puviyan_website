@@ -20,13 +20,18 @@ Real change begins with individual action, but its true strength lies in the sha
       <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div className="w-full mb-6 mt-12 flex justify-center items-center">
-            <img
-              src="/images/ppt1.gif"
-              alt="About Puviyan"
-              className="mx-auto w-full max-w-[550px] object-contain max-h-[550px]"
-              loading="lazy"
-            />
+          <div className="w-full mb-6 mt-12 flex justify-center items-center overflow-hidden">
+            <video
+              src="/images/PPT.mp4"
+              className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
+              autoPlay
+              loop
+              muted
+              playsInline
+              style={{ border: "none" }}
+            >
+              Sorry, your browser does not support embedded videos.
+            </video>
           </div>
           {/* Bottom: Description */}
           <div className="w-full flex justify-center items-center">

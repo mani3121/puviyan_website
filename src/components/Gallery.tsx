@@ -1,4 +1,5 @@
 import React from "react";
+import Carousel from "./Carousel";
 
 const Gallery = () => {
   return (
@@ -20,26 +21,25 @@ Each cloth bag, when used 150 times, can save about 0.5 kg of CO₂ emissions 
 
         {/* Right Section – Image Collage */}
         <div className="relative w-full h-full">
-          {/* Image 1 */}
+          {/* Image 1
           <img
             src="/images/Puviyanworld1.jpg"
             alt="Placeholder 1"
             className="absolute top-0 left-0 w-[60%] rounded-md shadow-lg"
           />
 
-          {/* Image 2 */}
           <img
             src="/images/Puv_mob1.jpg"
             alt="Placeholder 2"
             className="absolute top-0 right-0 w-[55%] translate-x-1/3 -translate-y-1/4 rounded-md shadow-lg"
           />
 
-          {/* Image 3 */}
           <img
             src="/images/Puviyanworld2.jpg"
             alt="Placeholder 3"
             className="absolute bottom-0 right-0 w-[75%] translate-x-1/4 translate-y-1/3 rounded-md shadow-lg"
-          />
+          /> */}
+          <Carousel />
         </div>
       </div>
     </div>

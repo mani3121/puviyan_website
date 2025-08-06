@@ -11,10 +11,10 @@ const UniteWithUs = lazy(() => import('./UniteWithUs'));
  const Gallery = lazy(() => import('@/components/Gallery'));
 
 const parallaxImages = {
-  first: '/images/Puviyanworld2.jpg',
-  second: '/images/Puviyanworld1.jpg',
-  mobileFirst: '/images/Puv_mob2.jpg',
-  mobileSecond: '/images/Puv_mob1.jpg',
+  first: '/images/Home_bt.jpg',
+  second: '/images/Home_at.jpg',
+  mobileFirst: '/images/Home_bt_mob.jpg',
+  mobileSecond: '/images/Home_at_mob.jpg',
 };
 
 const Index = () => {
