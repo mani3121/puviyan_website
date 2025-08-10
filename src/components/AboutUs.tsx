@@ -13,7 +13,7 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
   
   return (
-    <section className="w-full bg-white relative overflow-hidden flex items-center justify-center min-h-screen">
+    <section className="w-full bg-black relative overflow-hidden flex items-center justify-center min-h-screen">
       {/* Three-line border & Header */}
       <Header />
       {/* Main content centered */}
@@ -25,10 +25,10 @@ Real change begins with individual action, but its true strength lies in the sha
               src="/images/PPT.mp4"
               className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
               autoPlay
-              loop
+              loop={false} // Play only once
               muted
               playsInline
-              style={{ border: "none" }}
+              style={{ border: "none", width: "100%", height: "600px" }} // Explicitly set height
             >
               Sorry, your browser does not support embedded videos.
             </video>
@@ -36,7 +36,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Bottom: Description */}
           <div className="w-full flex justify-center items-center">
             <motion.p
-              className="text-lg md:text-xl text-gray-700 text-justify"
+              className="text-lg md:text-xl text-gray-300 text-justify"
               style={{ whiteSpace: 'pre-line' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

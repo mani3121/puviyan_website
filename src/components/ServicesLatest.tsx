@@ -9,9 +9,9 @@ const ServicesLatest = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row p-6 lg:p-12 gap-8 bg-white text-black min-h-[90vh] relative">
+    <div className="flex flex-col lg:flex-row p-6 lg:p-12 gap-8 bg-black text-gray-300 min-h-[90vh] relative">
       {/* Left panel */}
-      <div className="bg-white text-black p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
+      <div className="bg-black text-gray-300 p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
         <h1 className="text-5xl mb-20 break-words" style={{ fontFamily: "Century Gothic" }}>
           Empower<br /> Ambition.
         </h1>
@@ -39,7 +39,7 @@ const ServicesLatest = () => {
 
       {/* Right panel */}
       <div
-        className="w-full lg:w-2/3 space-y-6 text-justify flex flex-col justify-center min-h-[70vh] text-xl pl-8"
+        className="w-full lg:w-2/3 space-y-6 text-justify flex flex-col justify-center min-h-[70vh] text-xl pl-8 text-gray-300"
         style={{ fontFamily: "Arial" }}
       >
         <p>
@@ -50,14 +50,14 @@ const ServicesLatest = () => {
           global ESG standards—setting a new benchmark for what technology can
           achieve.
         </p>
-          <br/>
+        <br/>
         <p>
           Our services empower governments, businesses, and communities to drive
           sustainable progress. Leveraging advanced analytics, automation, and
           cloud technologies, we unlock efficiency, transparency, and measurable
           outcomes—reducing environmental footprints and creating long-term value.
         </p>
-<br/>
+        <br/>
         <p>
           Sustainability isn't an add-on; it's essential. From energy-efficient
           infrastructure and circular IT to real-time ESG insights and responsible
