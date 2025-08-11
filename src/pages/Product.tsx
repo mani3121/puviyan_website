@@ -130,7 +130,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="/images/Mobile7.png"
+            src="/images/MobileImage2.webp"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             loading="lazy"
@@ -166,7 +166,7 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           {/* Add gap between heading and button */}
-          <div className="h-14" /> {/* This adds vertical space (adjust h-12 as needed) */}
+          <div className="h-4" /> {/* This adds vertical space (adjust h-6 as needed) */}
           <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (

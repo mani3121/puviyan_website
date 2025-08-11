@@ -47,7 +47,7 @@ const CarbonFootprintBanner = () => {
     >
       {/* Desktop and Tablet View */}
       <div
-        className="co2-badge items-center gap-2 px-2 py-1 bg-white relative hidden md:flex"
+        className="co2-badge items-center gap-3 px-4 py-2 bg-white relative hidden md:flex"
         style={{
           border: '2px solid transparent',
           backgroundImage:
@@ -59,9 +59,9 @@ const CarbonFootprintBanner = () => {
       >
         <div className="co2-icon flex flex-col items-center">
           <img
-            src="/images/Co2.png"
+            src="/images/web1.png"
             alt="CO2 Footprint Icon"
-            className="w-5 h-auto"
+            className="w-7 h-auto"
             loading="lazy"
           />
         </div>
