@@ -12,7 +12,7 @@ const UniteWithUs = lazy(() => import('./UniteWithUs'));
 
 const parallaxImages = {
   first: '/images/Home_bt.jpg',
-  second: '/images/Home_at.jpg',
+  second: '/images/Home_bt.jpeg',
   mobileFirst: '/images/Home_bt_mob.jpg',
   mobileSecond: '/images/Home_at_mob.jpg',
 };

@@ -62,6 +62,7 @@ const CarbonFootprintBanner = () => {
             src="/images/Co2.png"
             alt="CO2 Footprint Icon"
             className="w-5 h-auto"
+            loading="lazy"
           />
         </div>
         <div className="co2-text flex flex-col">

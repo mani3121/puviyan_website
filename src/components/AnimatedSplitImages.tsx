@@ -138,6 +138,7 @@ const AnimatedSplitImages = () => {
             src="/images/Mobile7.png"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
+            loading="lazy"
             style={{
               objectFit: "cover",
               width: "80%",

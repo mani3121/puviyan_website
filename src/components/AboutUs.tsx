@@ -28,6 +28,7 @@ Real change begins with individual action, but its true strength lies in the sha
               loop={false} // Play only once
               muted
               playsInline
+              preload="metadata"
               style={{ border: "none", width: "100%", height: "600px" }} // Explicitly set height
             >
               Sorry, your browser does not support embedded videos.

@@ -133,6 +133,7 @@ const Product = () => {
             src="/images/Mobile7.png"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
+            loading="lazy"
             style={{
               transform: "scale(1.1)",
               backgroundColor: "transparent",

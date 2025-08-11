@@ -121,6 +121,7 @@ const Header = () => {
               src="/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 md:h-4 w-auto"
+              loading="lazy"
             />
             <span 
               ref={textRef}

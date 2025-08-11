@@ -65,6 +65,7 @@ const Gallery = () => {
 								src={carouselData[0].image}
 								className="w-full h-full object-contain"
 								alt="Gallery Image"
+								loading="lazy"
 							/>
 						</div>
 					</div>
