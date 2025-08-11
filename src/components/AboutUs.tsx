@@ -22,7 +22,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Top: Image */}
           <div className="w-full mb-6 mt-12 flex justify-center items-center overflow-hidden">
             <video
-              src="/images/PPT.mp4"
+              src="/images/PPT_dark.mp4"
               className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
               autoPlay
               loop={false} // Play only once

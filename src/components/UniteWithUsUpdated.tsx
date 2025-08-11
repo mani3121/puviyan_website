@@ -44,23 +44,23 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("/images/Unite_with_puviyan.jpg")',
-        backgroundSize: "cover",
-        backgroundPosition: "center top",
+        backgroundImage: 'url("/images/UniteWithUs1.webp")',
+        backgroundSize: "contain",
+        backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
       }}
     >
       <div className="flex flex-col items-center justify-center px-4">
         <div className="max-w-2xl w-full flex flex-col items-center -mt-6">
           <h1
-            className="text-4xl font-black text-gray-600 mb-2 text-center w-full -mt-20"
+            className="text-4xl font-black text-gray-400 mb-2 text-center w-full -mt-20"
             style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
           >
             Unite with Puviyan
           </h1>
           <br />
           <p
-            className="text-lg text-black mb-8 text-center leading-snug text-justify"
+            className="text-lg text-gray-400 mb-8 text-center leading-snug text-justify"
             style={{ fontFamily: "Arial" }}
           >
             We are committed to building a sustainable future by uniting with governments, mission-aligned organizations,investors, technology professionals, sustainability advocates, and the communities we serve. 

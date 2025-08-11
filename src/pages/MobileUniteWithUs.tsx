@@ -46,11 +46,13 @@ const MobileUniteWithUs = () => {
   return (
     <>
       <div
-        className="w-full min-h-screen flex flex-col bg-cover relative"
+        className="w-full min-h-screen flex flex-col relative"
         style={{
           backgroundImage:
-            'url("/images/Unite_with_puviyan.jpg")',
-          backgroundPosition: "left center",
+            'url("/images/UniteWithUs1.webp")',
+          backgroundSize: "cover",
+          backgroundPosition: "center center",
+          backgroundRepeat: "no-repeat",
         }}
       >
         {/* Header: h1 and p tags */}
