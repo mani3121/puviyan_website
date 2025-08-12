@@ -82,8 +82,8 @@ const Index = () => {
 
           {/* Footer for larger screens */}
           <footer
-            className="w-full flex items-center justify-between bg-black text-gray-300 text-[10px] sm:text-xs px-4 h-10 hidden sm:flex"
-            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
+            className="w-full flex items-center justify-between text-gray-300 text-[10px] sm:text-xs px-4 h-10 hidden sm:flex"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal", backgroundColor: "#1F1F1F" }}
           >
             <span className="ml-4 font-normal">
               © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
