@@ -9,16 +9,16 @@ const ServicesLatest = () => {
   }
 
   return (
-    <div className="flex flex-col lg:flex-row p-6 lg:p-12 gap-8 bg-black text-gray-300 min-h-[90vh] relative">
+    <div className="flex flex-col lg:flex-row p-6 lg:p-12 gap-8 bg-black text-white-300 min-h-[90vh] relative">
       {/* Left panel */}
-      <div className="bg-black text-gray-300 p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
-        <h1 className="text-5xl mb-20 break-words" style={{ fontFamily: "Century Gothic" }}>
+      <div className="bg-black text-white-300 p-8 flex flex-col justify-center items-center text-center w-full lg:w-1/3 min-h-[65vh]">
+        <h1 className="text-5xl mb-20 break-words" style={{ fontFamily: "Arial Rounded MT Bold" }}>
           Empower<br /> Ambition.
         </h1>
-        <h1 className="text-5xl mb-20 break-words" style={{ fontFamily: "Century Gothic" }}>
+        <h1 className="text-5xl mb-20 break-words" style={{ fontFamily: "Arial Rounded MT Bold" }}>
           Advance <br />Sustainability.
         </h1>
-        <h1 className="text-5xl break-words" style={{ fontFamily: "Century Gothic" }}>
+        <h1 className="text-5xl break-words" style={{ fontFamily: "Arial Rounded MT Bold" }}>
           Create <br />
           Collective<br />
           Impact.
@@ -31,7 +31,7 @@ const ServicesLatest = () => {
           className="w-2 rounded-full"
           style={{
             height: "100%",
-            background: "linear-gradient(to bottom, #FABB15, #63DEF3 )",
+            background: "linear-gradient(to bottom, #F9BB18, #74CFE6, #5ABA52 )",
             opacity: 0.7,
           }}
         />

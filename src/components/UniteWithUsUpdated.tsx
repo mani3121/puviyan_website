@@ -68,13 +68,15 @@ const UniteWithUsUpdated = () => {
           </p>
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-95 rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
+            className="rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
+            style={{ backgroundColor: "#808080" }}
           >
             <input
               type="text"
               name="name"
               placeholder="Name*"
               className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
+              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -84,6 +86,7 @@ const UniteWithUsUpdated = () => {
               name="email"
               placeholder="Email address*"
               className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
+              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -92,6 +95,7 @@ const UniteWithUsUpdated = () => {
               name="message"
               placeholder="Your Message*"
               className="w-full px-6 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
+              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
               rows={5}
               value={formData.message}
               onChange={handleInputChange}

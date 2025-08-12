@@ -130,7 +130,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="/images/MobileImage2.webp"
+            src="/images/MobileImage1.jpg"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh]"
             loading="lazy"
@@ -141,7 +141,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[24%] -translate-y-1/2 text-6xl font-bold text-gray-600 w-[500px]"
+            className="absolute left-[36vw] top-[24%] -translate-y-1/2 text-6xl font-bold text-White-600 w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -158,8 +158,8 @@ const Product = () => {
             {`COMING 
             SOON
 TO
-REWRITE YOUR
-ECOSTORY`.split("\n").map((line, index) => (
+REWRITE OUR
+CARBON STORY`.split("\n").map((line, index) => (
               <span key={index} className="block">
                 {line}
               </span>
