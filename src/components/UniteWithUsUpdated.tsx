@@ -69,7 +69,7 @@ const UniteWithUsUpdated = () => {
           <form
             onSubmit={handleSubmit}
             className="rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
-            style={{ backgroundColor: "#808080" }}
+            style={{ backgroundColor: "#2A2A2A" }}
           >
             <input
               type="text"
