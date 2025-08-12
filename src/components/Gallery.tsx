@@ -28,7 +28,7 @@ const Gallery = () => {
 					>
 						Team Puviyan: Walking the Talk on World Environment Day 2025
 					</h1>
-					<p className="text-lg text-gray-400 mb-8 text-center">
+					<p className="text-lg text-gray-400 mb-8 text-left">
 						On World Environment Day 2025, Team Puviyan proudly joined the global
 						movement led by the United Nations Environment Programme, united under
 						this year’s theme: “Beat Plastic Pollution.”
