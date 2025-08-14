@@ -245,12 +245,12 @@ CARBON STORY`.split("\n").map((line, index) => (
                     />
                   </div>
                   {/* Added a gap between textarea and button container */}
-                  <div className="mb-8" />
-                  <div className="flex space-x-9 mt-10">
+                  <div className="mb-3" />
+                  <div className="flex flex-row space-x-2">
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[185px]"
+                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -265,7 +265,7 @@ CARBON STORY`.split("\n").map((line, index) => (
                         setSubmitStatus('idle');
                         setFormData({ name: '', email: '', message: '' });
                       }}
-                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[185px]"
+                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[190px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',

@@ -37,7 +37,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Bottom: Description */}
           <div className="w-full flex justify-center items-center">
             <motion.p
-              className="text-lg md:text-xl text-gray-300 text-justify"
+              className="text-lg md:text-xl text-white text-justify"
               style={{ whiteSpace: 'pre-line' }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}

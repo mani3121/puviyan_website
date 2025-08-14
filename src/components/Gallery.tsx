@@ -23,12 +23,12 @@ const Gallery = () => {
 				{/* Left Section */}
 				<div className="flex flex-col justify-center items-center h-full">
 					<h1
-						className="text-4xl font-black text-gray-300 mb-4 text-center w-full"
+						className="text-4xl font-black text-white mb-4 text-center w-full"
 						style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
 					>
 						Team Puviyan: Walking the Talk on World Environment Day 2025
 					</h1>
-					<p className="text-lg text-gray-400 mb-8 text-justify">
+					<p className="text-lg text-white mb-8 text-justify">
 						On World Environment Day 2025, Team Puviyan proudly joined the global
 						movement led by the United Nations Environment Programme, united under
 						this year’s theme: “Beat Plastic Pollution.”

@@ -53,14 +53,14 @@ const UniteWithUsUpdated = () => {
       <div className="flex flex-col items-center justify-center px-4">
         <div className="max-w-2xl w-full flex flex-col items-center -mt-6">
           <h1
-            className="text-4xl font-black text-gray-400 mb-2 text-center w-full -mt-20"
-            style={{ fontFamily: "Arial Rounded MT Bold", display: "block" }}
+            className="text-4xl font-black text-white mb text-center w-full -mt-20"
+            style={{  fontFamily: "Arial Rounded MT Bold", display: "block" }}
           >
             Unite with Puviyan
           </h1>
           <br />
           <p
-            className="text-lg text-gray-400 mb-8 text-center leading-snug text-justify"
+            className="text-lg text-white mb-8 text-center leading-snug text-justify"
             style={{ fontFamily: "Arial" }}
           >
             We are committed to building a sustainable future by uniting with governments, mission-aligned organizations,investors, technology professionals, sustainability advocates, and the communities we serve. 
@@ -69,14 +69,14 @@ const UniteWithUsUpdated = () => {
           <form
             onSubmit={handleSubmit}
             className="rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
-            style={{ backgroundColor: "#2A2A2A" }}
+            style={{ backgroundColor: "#24282B" }}
           >
             <input
               type="text"
               name="name"
               placeholder="Name*"
-              className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
+              className="w-full placeholder-white px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
+              style={{  backgroundColor: "#24282B" }}
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -85,8 +85,8 @@ const UniteWithUsUpdated = () => {
               type="email"
               name="email"
               placeholder="Email address*"
-              className="w-full px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
+              className="w-full px-6 py-3 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
+              style={{ backgroundColor: "#24282B" }}
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -94,8 +94,8 @@ const UniteWithUsUpdated = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
-              className="w-full px-6 py-3 rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
-              style={{ backgroundColor: "rgba(128, 128, 128, 0.3)" }}
+              className="w-full px-6 py-3 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
+              style={{ backgroundColor: "#24282B" }}
               rows={5}
               value={formData.message}
               onChange={handleInputChange}
@@ -105,7 +105,7 @@ const UniteWithUsUpdated = () => {
               type="submit"
               className="mx-auto py-3 px-8 rounded-full text-white font-semibold text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: isLoading ? "gray" : "gray",
+                background: isLoading ? "gray" : "#575757",
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}
