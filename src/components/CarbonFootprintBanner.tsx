@@ -1,11 +1,18 @@
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, useCallback } from 'react';
 import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
 
 const CarbonFootprintBanner = () => {
   const [pageWeight, setPageWeight] = useState(0); // Page weight in KB
   const [co2Estimate, setCo2Estimate] = useState(0); // CO₂ emissions in grams
-  const bannerRef = useRef<HTMLDivElement>(null);
+  const bannerRef = useRef<HTMLDivElement | null>(null);
+
+  // stable wheel handler so we can add/remove reliably
+  const wheelHandler = useCallback((e: WheelEvent) => {
+    // prevent the page from scrolling while pointer is over the banner
+    e.preventDefault();
+    e.stopPropagation();
+  }, []);
 
   useEffect(() => {
     // GSAP animation for fade-in and slide-in
@@ -37,6 +44,18 @@ const CarbonFootprintBanner = () => {
     calculatePageWeightAndCO2();
   }, []);
 
+  // add/remove wheel listener on hover to block page scrolling when pointer is over banner
+  const handleMouseEnter = () => {
+    if (bannerRef.current) {
+      bannerRef.current.addEventListener('wheel', wheelHandler, { passive: false });
+    }
+  };
+  const handleMouseLeave = () => {
+    if (bannerRef.current) {
+      bannerRef.current.removeEventListener('wheel', wheelHandler as EventListener);
+    }
+  };
+
   return (
     <div
       ref={bannerRef}
@@ -44,6 +63,8 @@ const CarbonFootprintBanner = () => {
       style={{
         fontFamily: 'Arial, sans-serif',
       }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Desktop and Tablet View */}
       <div
