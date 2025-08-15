@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { handleProductSubmit } from "../utils/handleProductSubmit"; // Make sure the path is correct
+import { handleProductSubmit } from "../../utils/handleProductSubmit"; // Make sure the path is correct
 
 const UniteWithUsUpdated = () => {
   const [formData, setFormData] = useState({

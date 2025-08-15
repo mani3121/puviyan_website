@@ -6,7 +6,7 @@ import Services from "./components/Services";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import Product from "./pages/Product";
+import Product from "./pages/webVersion/Product";
 import TermsConditions from './pages/TermsConditions';
 import UniteWithUs from "./pages/UniteWithUs";
 

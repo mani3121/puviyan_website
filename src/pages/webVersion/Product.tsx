@@ -2,8 +2,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AnimatedSplitImages from '../components/AnimatedSplitImages';
-import { handleProductSubmit } from '../utils/handleProductSubmit';
+import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
+import { handleProductSubmit } from '../../utils/handleProductSubmit';
 
 
 const Product = () => {

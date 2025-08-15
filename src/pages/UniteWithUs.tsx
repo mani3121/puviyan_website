@@ -1,7 +1,7 @@
 import React from "react";
 import { useMediaQuery } from "react-responsive";
-import MobileUniteWithUs from "./MobileUniteWithUs";
-import UniteWithUsUpdated from "../components/UniteWithUsUpdated";
+import MobileUniteWithUs from "./mobileVersion/MobileUniteWithUs";
+import UniteWithUsUpdated from "./webVersion/UniteWithUsUpdated";
 
 const UniteWithUs = () => {
   // Mobile breakpoint: screen widths up to 768px considered mobile.

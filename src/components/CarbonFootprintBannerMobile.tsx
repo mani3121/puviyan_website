@@ -17,7 +17,6 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
       }}
     >
       <div className="co2-icon flex flex-col items-center">
-        {/* <img src="https://puviyan-website.vercel.app/images/foot.png" alt="CO2 Footprint Icon" className="w-7 h-auto" /> */}
       </div>
       <div className="co2-text flex flex-col">
         <div className="main font-bold text-[10px] text-gray-800">{co2Estimate}g of CO₂/view</div>
