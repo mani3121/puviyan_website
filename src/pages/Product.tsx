@@ -244,8 +244,8 @@ CARBON STORY`.split("\n").map((line, index) => (
                       required
                     />
                   </div>
-                  {/* Added a gap between textarea and button container */}
-                  <div className="mb-3" />
+                  {/* gap between textarea and buttons */}
+                  <div className="h-2" />
                   <div className="flex flex-row space-x-2">
                     <button
                       type="submit"
