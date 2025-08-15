@@ -52,7 +52,7 @@ const Gallery = () => {
 				{/* Right Section – Single Image */}
 				<div className="relative flex flex-col items-center justify-center w-full h-full">
 					{/* Single Image Display */}
-					<div className="flex items-center justify-center w-full">
+					<div className="flex items-center justify-center w-full -mt-6 md:-mt-12">
 						<div
 							className={`relative rounded-3xl shadow-2xl transition-all duration-300`}
 							style={{
