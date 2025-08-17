@@ -113,10 +113,10 @@ const AnimatedSplitImages = () => {
           }}
         >
           <h1
-            className="text-3xl font-extrabold text-gray-600 mb-2 text-center w-full"
+            className="text-3xl font-extrabold text-white mb-2 text-center w-full"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
-            COMING SOON TO REWRITE OUR ECOSTORY
+            COMING SOON TO REWRITE OUR CARBON STORY
           </h1>
 
           {/* Button next to the h1 */}
@@ -135,7 +135,7 @@ const AnimatedSplitImages = () => {
         </h1>
         <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
           <img
-            src="/images/MobileImage2.webp"
+            src="/images/MobileImage1.jpg"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             loading="lazy"
