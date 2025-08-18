@@ -68,6 +68,7 @@ const UniteWithUsUpdated = () => {
           </p>
           <form
             onSubmit={handleSubmit}
+            autoComplete="off"
             className="rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
             style={{ backgroundColor: "#24282B" }}
           >
@@ -75,6 +76,7 @@ const UniteWithUsUpdated = () => {
               type="text"
               name="name"
               placeholder="Name*"
+              autoComplete="new-name" // or any random string, e.g. "nope"
               className="w-full placeholder-white px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
               style={{  backgroundColor: "#24282B" }}
               value={formData.name}
@@ -85,6 +87,7 @@ const UniteWithUsUpdated = () => {
               type="email"
               name="email"
               placeholder="Email address*"
+              autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
               style={{ backgroundColor: "#24282B" }}
               value={formData.email}
@@ -94,6 +97,7 @@ const UniteWithUsUpdated = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
+              autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
               style={{ backgroundColor: "#24282B" }}
               rows={5}
