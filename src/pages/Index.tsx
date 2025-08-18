@@ -88,7 +88,7 @@ const Index = () => {
             <span className="ml-4 font-normal">
               © 2025 Puviyan Digital Solutions Private Limited. All rights reserved.
             </span>
-            <div className="flex space-x-4 mr-12">
+            <div className="flex space-x-4 mr-16">
               <a
                 href="/privacy-policy"
                 className="underline hover:text-gray-400 font-normal"

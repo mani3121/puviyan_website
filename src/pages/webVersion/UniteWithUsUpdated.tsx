@@ -69,8 +69,11 @@ const UniteWithUsUpdated = () => {
           <form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="rounded-2xl shadow-xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4"
-            style={{ backgroundColor: "#24282B" }}
+            className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-lg"
+            style={{
+              backgroundColor: "#000",
+              boxShadow: "0 4px 32px 0 rgba(200,200,200,0.18)", // light grey shadow
+            }}
           >
             <input
               type="text"
@@ -78,7 +81,7 @@ const UniteWithUsUpdated = () => {
               placeholder="Name*"
               autoComplete="new-name" // or any random string, e.g. "nope"
               className="w-full placeholder-white px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{  backgroundColor: "#24282B" }}
+              style={{  backgroundColor: "#070707ff" }}
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -89,7 +92,7 @@ const UniteWithUsUpdated = () => {
               placeholder="Email address*"
               autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{ backgroundColor: "#24282B" }}
+              style={{ backgroundColor: "#070707ff" }}
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -99,7 +102,7 @@ const UniteWithUsUpdated = () => {
               placeholder="Your Message*"
               autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
-              style={{ backgroundColor: "#24282B" }}
+              style={{ backgroundColor: "#070707ff" }}
               rows={5}
               value={formData.message}
               onChange={handleInputChange}
@@ -109,7 +112,7 @@ const UniteWithUsUpdated = () => {
               type="submit"
               className="mx-auto py-3 px-8 rounded-full text-white font-semibold text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: isLoading ? "gray" : "#575757",
+                background: isLoading ? "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)" : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}
