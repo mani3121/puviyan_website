@@ -99,7 +99,7 @@ const CarbonFootprintBanner = () => {
               alt="CO2 Footprint Icon"
               className="w-6 h-6 mb-1"
               loading="lazy"
-              style={{ filter: 'invert(1)' }}
+              style={{ filter: 'brightness(0) invert(1)' }} // Ensures icon is pure white
             />
           </div>
           {/* Center text */}
