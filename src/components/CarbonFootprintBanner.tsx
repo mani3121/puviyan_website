@@ -59,7 +59,7 @@ const CarbonFootprintBanner = () => {
   return (
     <div
       ref={bannerRef}
-      className="fixed bottom-12 right-16 z-50" // changed right-8 to right-12 to move left
+      className="fixed bottom-12 right-16 z-50"
       style={{
         fontFamily: 'Arial, sans-serif',
       }}
@@ -68,31 +68,61 @@ const CarbonFootprintBanner = () => {
     >
       {/* Desktop and Tablet View */}
       <div
-        className="co2-badge items-center gap-3 px-4 py-2 bg-white relative hidden md:flex"
+        className="hidden md:flex items-center relative"
         style={{
-          border: '2px solid transparent',
-          backgroundImage:
-            'linear-gradient(white, white), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-          backgroundOrigin: 'border-box',
-          backgroundClip: 'padding-box, border-box',
-          borderRadius: '40px 16px 16px 40px',
+          minWidth: 300, // reduced from 370
+          minHeight: 70, // reduced from 90
         }}
       >
-        <div className="co2-icon flex flex-col items-center">
-          <img
-            src="/images/web1.png"
-            alt="CO2 Footprint Icon"
-            className="w-7 h-auto"
-            loading="lazy"
-          />
-        </div>
-        <div className="co2-text flex flex-col">
-          <div className="main font-bold text-xs text-gray-800">
-            {co2Estimate} g of CO₂ per page view
+        {/* Gradient border background */}
+        <div
+          className="absolute inset-0 rounded-[24px] pointer-events-none" // reduced radius
+          style={{
+            background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
+            zIndex: 0,
+            filter: 'blur(0.5px)',
+          }}
+        />
+        {/* Main badge */}
+        <div
+          className="relative flex items-center pl-4 pr-6 py-2 bg-black rounded-[24px] min-h-[70px] min-w-[300px] shadow-lg"
+          style={{
+            zIndex: 1,
+            border: '2px solid transparent',
+            backgroundClip: 'padding-box',
+          }}
+        >
+          {/* Left icons */}
+          <div className="flex flex-col items-center justify-center mr-3">
+            <img
+              src="/images/Co2.png"
+              alt="CO2 Footprint Icon"
+              className="w-6 h-6 mb-1"
+              loading="lazy"
+              style={{ filter: 'invert(1)' }}
+            />
           </div>
-          <div className="sub text-[10px] text-gray-600">
-            64% lower than global average
+          {/* Center text */}
+          <div className="flex flex-col justify-center">
+            <span className="text-white font-bold text-base leading-tight">
+              {co2Estimate}g of CO<sub>2</sub>/view
+            </span>
+            <span className="text-white text-xs mt-1">
+              64% lower than global average
+            </span>
           </div>
+          {/* Top right label */}
+          <span
+            className="absolute top-0 right-0 rounded-bl-[16px] rounded-tr-[24px] px-3 py-1 text-black font-semibold text-sm"
+            style={{
+              background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
+              transform: 'translateY(-60%)',
+              minWidth: 110,
+              textAlign: 'right',
+            }}
+          >
+            Puviyan Certified
+          </span>
         </div>
       </div>
 

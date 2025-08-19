@@ -44,7 +44,7 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("/images/UniteWithUs1.webp")',
+        backgroundImage: 'url("/images/UniteWithUs2.webp")',
         backgroundSize: "contain",
         backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
@@ -69,10 +69,10 @@ const UniteWithUsUpdated = () => {
           <form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-lg"
+            className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-2xl"
             style={{
               backgroundColor: "#000",
-              boxShadow: "0 4px 32px 0 rgba(200,200,200,0.18)", // light grey shadow
+              boxShadow: "0 8px 48px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
             }}
           >
             <input
@@ -110,9 +110,9 @@ const UniteWithUsUpdated = () => {
             />
             <button
               type="submit"
-              className="mx-auto py-3 px-8 rounded-full text-white font-semibold text-lg shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mx-auto py-2 px-6 rounded-full text-white font-semibold text-base shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
               style={{
-                background: isLoading ? "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)" : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                background: isLoading ? "#888" : "#888", // gray color
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}

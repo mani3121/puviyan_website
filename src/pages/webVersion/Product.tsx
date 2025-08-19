@@ -141,7 +141,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[32%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
+            className="absolute left-[36vw] top-[28%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -211,7 +211,15 @@ ECOSTORY`.split("\n").map((line, index) => (
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <form onSubmit={handleSubmit} className="space-y-0">
+                <form
+                  onSubmit={handleSubmit}
+                  autoComplete="off"
+                  className="space-y-0 p-6 rounded-2xl shadow-2xl"
+                  style={{
+                    background: "#000",
+                    boxShadow: "0 8px 48px 0 rgba(200,200,200,0.32)",
+                  }}
+                >
                   <div className="flex flex-row space-x-2 mb-3">
                     <input
                       type="text"
@@ -219,7 +227,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your Name"
-                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
+                      autoComplete="new-password" // prevents browser suggestions/autofill
+                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
                       required
                     />
                     <input
@@ -228,7 +237,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                       value={formData.email}
                       onChange={handleInputChange}
                       placeholder="Your Email"
-                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
+                      autoComplete="off"
+                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
                       required
                     />
                   </div>
@@ -238,7 +248,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                       value={formData.message}
                       onChange={handleInputChange}
                       placeholder="Your Idea"
-                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm"
+                      autoComplete="off"
+                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
                       rows={5}
                       style={{ resize: 'none', height: '100px' }}
                       required
@@ -250,7 +261,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="bg-gray-900 text-white px-8 py-2 rounded-lg font-semibold hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]"
+                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -265,11 +276,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         setSubmitStatus('idle');
                         setFormData({ name: '', email: '', message: '' });
                       }}
-                      className="bg-gray-200 text-gray-900 px-8 py-2 rounded-lg font-semibold hover:bg-gray-300 transition-colors min-w-[190px]"
-                      style={{
-                        background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                        color: 'white',
-                      }}
+                      className="px-6 py-2 rounded-lg font-semibold transition-colors min-w-[170px] bg-gray-400 text-white hover:bg-gray-500"
                     >
                       Back
                     </button>

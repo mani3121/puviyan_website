@@ -13,14 +13,14 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
   
   return (
-    <section className="w-full bg-black relative overflow-hidden flex items-center justify-center min-h-screen">
+    <section className="w-full bg-black relative overflow-hidden flex items-center justify-center min-h-[70vh] py-4">
       {/* Three-line border & Header */}
       <Header />
       {/* Main content centered */}
-      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen">
+      <div className="container mx-auto px-8 md:px-20 pt-0 relative z-10 flex flex-col items-center justify-center min-h-[70vh]">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div className="w-full mb-6 mt-12 flex justify-center items-center overflow-hidden">
+          <div className="w-full mb-4 flex justify-center items-center overflow-hidden mt-0">
             <video
               src="/images/PPT_dark.mp4"
               className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
