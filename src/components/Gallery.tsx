@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 
 const carouselData = [
 	{
-		image: "/images/EventCollage1.webp",
+		image: "/images/EventCollage.webp",
 		bg: "bg-[#c7d2d6]",
 		text: "text-[#e76b5b]",
 	},
