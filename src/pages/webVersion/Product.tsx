@@ -165,6 +165,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               </span>
             ))}
           </motion.h1>
+          <br/>
           <div className={`absolute left-[36vw] ${showForm ? 'top-[85%]' : 'top-[78%]'} -translate-y-1/2 w-[400px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
