@@ -141,7 +141,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[26%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
+            className="absolute left-[36vw] top-[23%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",

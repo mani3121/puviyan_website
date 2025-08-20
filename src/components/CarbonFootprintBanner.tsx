@@ -1,5 +1,5 @@
 import { gsap } from 'gsap';
-import { useEffect, useRef, useState, useCallback } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
 
 const CarbonFootprintBanner = () => {
@@ -74,15 +74,19 @@ const CarbonFootprintBanner = () => {
           minHeight: 70, // reduced from 90
         }}
       >
-        {/* Gradient border background */}
-        <div
-          className="absolute inset-0 rounded-[24px] pointer-events-none" // reduced radius
-          style={{
-            background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
-            zIndex: 0,
-            filter: 'blur(0.5px)',
-          }}
-        />
+                 {/* Gradient border background */}
+         <div
+           className="absolute rounded-[24px] pointer-events-none" // reduced radius
+           style={{
+             background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
+             zIndex: 0,
+             filter: 'blur(0.5px)',
+             top: '-4px',
+             left: '-4px',
+             right: '-4px',
+             bottom: '-4px',
+           }}
+         />
         {/* Main badge */}
         <div
           className="relative flex items-center pl-4 pr-6 py-2 bg-black rounded-[24px] min-h-[70px] min-w-[300px] shadow-lg"
@@ -92,19 +96,19 @@ const CarbonFootprintBanner = () => {
             backgroundClip: 'padding-box',
           }}
         >
-          {/* Left icons */}
-          <div className="flex flex-col items-center justify-center mr-3">
-            <img
-              src="/images/Co2.png"
-              alt="CO2 Footprint Icon"
-              className="w-6 h-6 mb-1"
-              loading="lazy"
-              style={{ filter: 'brightness(0) invert(1)' }} // Ensures icon is pure white
-            />
-          </div>
-          {/* Center text */}
-          <div className="flex flex-col justify-center">
-            <span className="text-white font-bold text-base leading-tight">
+                     {/* Left icons */}
+           <div className="flex flex-col items-center justify-center mr-4">
+             <img
+               src="/images/Co2.png"
+               alt="CO2 Footprint Icon"
+               className="w-10 h-10 mb-1"
+               loading="lazy"
+               style={{ filter: 'brightness(0) invert(1)' }} // Ensures icon is pure white
+             />
+           </div>
+           {/* Center text */}
+           <div className="flex flex-col justify-center ml-2">
+            <span className="text-white font text-base leading-tight">
               {co2Estimate}g of CO<sub>2</sub>/view
             </span>
             <span className="text-white text-xs mt-1">
@@ -112,14 +116,14 @@ const CarbonFootprintBanner = () => {
             </span>
           </div>
           {/* Top right label */}
-          <span
-            className="absolute top-0 right-0 rounded-bl-[16px] rounded-tr-[24px] px-3 py-1 text-black font-semibold text-sm"
-            style={{
-              background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
-              transform: 'translateY(-60%)',
-              minWidth: 110,
-              textAlign: 'right',
-            }}
+                                           <span
+              className="absolute top-0 right-0 rounded-tl-[24px] rounded-tr-[30px] px-3 py-1 text-black font-semibold text-sm"
+                         style={{
+               background: 'linear-gradient(90deg, #74CFE6 30%, #5ABA52 100%)',
+               transform: 'translateY(-95%)',
+               minWidth: 110,
+               textAlign: 'right',
+             }}
           >
             Puviyan Certified
           </span>
