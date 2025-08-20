@@ -24,7 +24,7 @@ Real change begins with individual action, but its true strength lies in the sha
             <img
               src="/images/ppt1.gif"
               alt="Puviyan Presentation"
-              className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
+              className="mx-auto w-full max-w-[550px] object-contain max-h-[450px] bg-transparent"
               style={{ border: "none", width: "100%", height: "600px" }}
               loading="lazy"
             />
