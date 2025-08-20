@@ -132,16 +132,16 @@ const Product = () => {
             ref={imageRef}
             src="/images/Mobile.avif"
             alt="Product Image"
-            className="rounded-2xl w-full h-[100vh]"
+            className="rounded-lg w-full h-[100vh]"
             loading="lazy"
-            style={{
+           style={{
               transform: "scale(1.1)",
               backgroundColor: "transparent",
             }}
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[28%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
+            className="absolute left-[36vw] top-[26%] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -213,12 +213,25 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 p-6 rounded-2xl shadow-2xl"
+                  className="space-y-0 p-6 rounded-2xl relative"
                   style={{
                     background: "#000",
-                    boxShadow: "0 8px 48px 0 rgba(200,200,200,0.32)",
+                    boxShadow: "0 4px 16px 0 rgba(200,200,200,0.32)",
                   }}
                 >
+                  {/* Close Icon */}
+                  <button
+                    type="button"
+                    aria-label="Close"
+                    className="absolute -top-3 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    onClick={() => {
+                      setShowForm(false);
+                      setSubmitStatus('idle');
+                      setFormData({ name: '', email: '', message: '' });
+                    }}
+                  >
+                    &times;
+                  </button>
                   <div className="flex flex-row space-x-2 mb-3">
                     <input
                       type="text"
@@ -226,7 +239,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       value={formData.name}
                       onChange={handleInputChange}
                       placeholder="Your Name"
-                      autoComplete="new-password" // prevents browser suggestions/autofill
+                      autoComplete="new-password"
                       className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
                       required
                     />
@@ -241,6 +254,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       required
                     />
                   </div>
+                   <div className="h-2" />
                   <div>
                     <textarea
                       name="message"
@@ -256,7 +270,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   </div>
                   {/* gap between textarea and buttons */}
                   <div className="h-2" />
-                  <div className="flex flex-row space-x-2">
+                  <div className="flex flex-row space-x-4 justify-center items-center w-full">
                     <button
                       type="submit"
                       disabled={isLoading}
@@ -267,17 +281,6 @@ ECOSTORY`.split("\n").map((line, index) => (
                       }}
                     >
                       {isLoading ? 'Sending...' : 'Submit'}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => {
-                        setShowForm(false);
-                        setSubmitStatus('idle');
-                        setFormData({ name: '', email: '', message: '' });
-                      }}
-                      className="px-6 py-2 rounded-lg font-semibold transition-colors min-w-[170px] bg-gray-400 text-white hover:bg-gray-500"
-                    >
-                      Back
                     </button>
                   </div>
                   {submitStatus === 'error' && (

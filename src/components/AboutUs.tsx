@@ -20,22 +20,17 @@ Real change begins with individual action, but its true strength lies in the sha
       <div className="container mx-auto px-8 md:px-20 pt-0 relative z-10 flex flex-col items-center justify-center min-h-[70vh]">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div className="w-full mb-4 flex justify-center items-center overflow-hidden mt-0">
-            <video
-              src="/images/PPT_dark.mp4"
+          <div className="w-full flex justify-center items-center overflow-hidden mt-0">
+            <img
+              src="/images/ppt1.gif"
+              alt="Puviyan Presentation"
               className="mx-auto w-full max-w-[540px] object-contain max-h-[530px] bg-transparent"
-              autoPlay
-              loop={false} // Play only once
-              muted
-              playsInline
-              preload="metadata"
-              style={{ border: "none", width: "100%", height: "600px" }} // Explicitly set height
-            >
-              Sorry, your browser does not support embedded videos.
-            </video>
+              style={{ border: "none", width: "100%", height: "600px" }}
+              loading="lazy"
+            />
           </div>
           {/* Bottom: Description */}
-          <div className="w-full flex justify-center items-center">
+          <div className="w-full flex justify-center items-center mt-0">
             <motion.p
               className="text-lg md:text-xl text-white text-justify"
               style={{ whiteSpace: 'pre-line' }}
