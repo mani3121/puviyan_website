@@ -31,12 +31,13 @@ const Gallery = () => {
 	}, []);
 
 	return (
-		<div className="bg-black px-8 py-4">
-			<div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center min-h-[70vh]">
+		<div className="bg-black px-8 py-4 mt-16">{/* mt-16 moves the entire div down */}
+			<div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center" style={{ minHeight: "700px" }}>
 				{/* Left Section */}
 				<div
 					ref={leftRef}
 					className="flex flex-col justify-center items-center h-full"
+					style={{ minHeight: "700px" }}
 				>
 					<h1
 						ref={h1Ref}
@@ -57,13 +58,13 @@ const Gallery = () => {
 				</div>
 
 				{/* Right Section – Single Image */}
-				<div className="flex flex-col items-center justify-center w-full min-h-[70vh]">
+				<div className="flex flex-col items-center justify-center w-full" style={{ minHeight: "700px" }}>
 					<div className="flex items-center justify-center w-full">
 						<div
 							className="relative rounded-3xl shadow-2xl transition-all duration-300 flex items-center justify-center"
 							style={{
-								width: 1000,
-								height: imageHeight ? imageHeight * 0.78 : undefined, // Reduce height by 15%
+								width: "900px",
+								height: imageHeight ? `${Math.round(imageHeight * 0.78)}px` : "540px",
 								overflow: "hidden",
 								margin: "0 auto",
 							}}

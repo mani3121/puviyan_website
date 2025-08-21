@@ -108,7 +108,7 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-[#1F1F1F] text-white transition-colors duration-300">
       <div className="container mx-auto px-4 py-1.5 md:py-0">
         <div className="flex items-center justify-between h-10 md:h-auto">
           {/* Logo with Text */}

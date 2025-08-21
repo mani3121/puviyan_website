@@ -44,7 +44,7 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("/images/UniteWithUs2.webp")',
+        backgroundImage: 'url("/images/UniteWithUs2.png")',
         backgroundSize: "contain",
         backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
@@ -69,10 +69,10 @@ const UniteWithUsUpdated = () => {
           <form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-2xl"
+            className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-md"
             style={{
               backgroundColor: "#000",
-              boxShadow: "0 8px 48px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
+              boxShadow: "0 4px 24px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
             }}
           >
             <input

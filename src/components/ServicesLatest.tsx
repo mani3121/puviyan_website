@@ -26,7 +26,9 @@ const ServicesLatest = () => {
       </div>
 
       {/* Vertical Divider */}
-      <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-[33%] h-[68vh] justify-center items-center pointer-events-none z-10">
+      <div className="hidden lg:flex absolute top-1/2 -translate-y-1/2 left-[33%] justify-center items-center pointer-events-none z-10"
+        style={{ height: "510px" }} // Set height in px here
+      >
         <div
           className="w-2 rounded-full"
           style={{

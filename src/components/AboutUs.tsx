@@ -20,7 +20,10 @@ Real change begins with individual action, but its true strength lies in the sha
       <div className="container mx-auto px-8 md:px-20 pt-0 relative z-10 flex flex-col items-center justify-center min-h-[70vh]">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div className="w-full flex justify-center items-center overflow-hidden mt-0">
+          <div
+            className="w-full flex justify-center items-center overflow-hidden mt-0 mb-0"
+            style={{ marginBottom: "0px" }} // Remove gap below image
+          >
             <img
               src="/images/ppt1.gif"
               alt="Puviyan Presentation"
@@ -30,7 +33,7 @@ Real change begins with individual action, but its true strength lies in the sha
             />
           </div>
           {/* Bottom: Description */}
-          <div className="w-full flex justify-center items-center mt-0">
+          <div className="w-full flex justify-center items-center mt-0" style={{ marginTop: "0px" }}>
             <motion.p
               className="text-lg md:text-xl text-white text-justify"
               style={{ whiteSpace: 'pre-line' }}
