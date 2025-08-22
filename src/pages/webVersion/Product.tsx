@@ -223,7 +223,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-3 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-2 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none" // changed from -top-3 to top-3
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
