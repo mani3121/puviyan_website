@@ -6,7 +6,7 @@
 /* 13 inch laptops (1366px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
   .product-motion-h1 {
-    left: 600px;
+    left: 520px;
   }
 }
 
@@ -20,28 +20,28 @@
 /* 15 inch laptops (1536px) */
 @media (min-width: 1536px) and (max-width: 1599px) {
   .product-motion-h1 {
-    left: 720px;
+    left: 600px;
   }
 }
 
 /* 16 inch laptops (1600px) */
 @media (min-width: 1600px) and (max-width: 1679px) {
   .product-motion-h1 {
-    left: 770px;
+    left: 650px;
   }
 }
 
 /* 17 inch laptops (1680px) and up to 1799px */
 @media (min-width: 1680px) and (max-width: 1799px) {
   .product-motion-h1 {
-    left: 820px;
+    left: 700px;
   }
 }
 
 /* 18 inch screens (1800px) and up to 1919px */
 @media (min-width: 1800px) and (max-width: 1919px) {
   .product-motion-h1 {
-    left: 880px;
+    left: 720px;
   }
 }
 
