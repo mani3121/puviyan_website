@@ -142,7 +142,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute product-motion-h1 top-[190px] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
+            className="absolute product-motion-h1 top-[230px] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -167,7 +167,7 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           <br/>
-          <div className={`absolute product-motion-h1 ${showForm ? 'top-[710px]' : 'top-[640px]'} -translate-y-1/2 w-[350px]`}>
+          <div className={`absolute product-motion-h1 ${showForm ? 'top-[750px]' : 'top-[680px]'} -translate-y-1/2 w-[350px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
