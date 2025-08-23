@@ -175,7 +175,7 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           <br/>
-          <div className={`absolute left-[720px] ${showForm ? 'top-[710px]' : 'top-[640px]'} -translate-y-1/2 w-[350px]`}>
+          <div className={`absolute .product-motion-h1 ${showForm ? 'top-[710px]' : 'top-[640px]'} -translate-y-1/2 w-[350px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div

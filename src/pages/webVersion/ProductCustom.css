@@ -7,17 +7,17 @@
   width: 500px;
 }
 
-@media (min-width: 768px) {
+@media screen and (min-width: 1500px) and (max-width: 1600px)  {
   .product-motion-h1 {
     left: 540px;
   }
 }
-@media (min-width: 1024px) {
+@media screen and (min-width: 1600px) and (max-width: 1700px) {
   .product-motion-h1 {
     left: 600px;
   }
 }
-@media (min-width: 1280px) {
+@media screen and (min-width: 1700px) and (max-width: 1800px){
   .product-motion-h1 {
     left: 720px;
   }
