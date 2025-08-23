@@ -11,8 +11,8 @@ const UniteWithUs = lazy(() => import('./UniteWithUs'));
  const Gallery = lazy(() => import('@/components/Gallery'));
 
 const parallaxImages = {
-  first: 'https://cdn.shortpixel.ai/spai/q_glossy+w_722+h_722+to_auto+ret_img/puviyan-website.vercel.app/images/Home_bt.jpg',
-  second: 'https://cdn.shortpixel.ai/spai/q_glossy+w_722+h_722+to_auto+ret_img/puviyan-website.vercel.app/images/Home_bt.jpeg',
+  first: '/images/Home_bt.jpg',
+  second: '/images/Home_bt.jpeg',
   mobileFirst: '/images/Home_bt_mob.jpg',
   mobileSecond: '/images/Home_at_mob.jpg',
 };
