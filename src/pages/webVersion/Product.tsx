@@ -141,16 +141,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="
-              absolute
-              left-[420px]         // default (mobile/tablet)
-              md:left-[540px]      // for md screens (≥768px)
-              lg:left-[600px]      // for lg screens (≥1024px)
-              xl:left-[720px]      // for xl screens (≥1280px)
-              top-[190px]
-              -translate-y-1/2
-              text-6xl font-bold text-white w-[500px]
-            "
+            className="product-motion-h1 text-6xl font-bold text-white"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
