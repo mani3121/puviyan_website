@@ -152,8 +152,8 @@ const Product = () => {
             initial="hidden"
             animate={controls}
             variants={{
-              hidden: { opacity: 0, x: -100 },
-              visible: { opacity: 1, x: 0, transition: { duration: 2 } },
+              hidden: { opacity: 0, x: -200 }, // Start further left
+              visible: { opacity: 1, x: 0, transition: { duration: 2 } }, // Move further right
             }}
           >
             {`COMING 
