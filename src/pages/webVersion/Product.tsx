@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
+import './ProductCustom.css';
 
 
 const Product = () => {
@@ -141,16 +142,7 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="
-              absolute
-              left-[420px]         // default (mobile/tablet)
-              md:left-[540px]      // for md screens (≥768px)
-              lg:left-[600px]      // for lg screens (≥1024px)
-              xl:left-[720px]      // for xl screens (≥1280px)
-              top-[190px]
-              -translate-y-1/2
-              text-6xl font-bold text-white w-[500px]
-            "
+            className="absolute product-motion-h1 top-[190px] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -175,7 +167,7 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           <br/>
-          <div className={`absolute .product-motion-h1 ${showForm ? 'top-[710px]' : 'top-[640px]'} -translate-y-1/2 w-[350px]`}>
+          <div className={`absolute product-motion-h1 ${showForm ? 'top-[710px]' : 'top-[640px]'} -translate-y-1/2 w-[350px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div

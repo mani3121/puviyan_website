@@ -1,23 +1,52 @@
 /* ProductCustom.css */
 .product-motion-h1 {
-  position: absolute;
-  left: 420px;
-  top: 190px;
-  transform: translateY(-50%);
-  width: 500px;
+  left: 380px; /* default for small screens */
 }
 
-@media screen and (min-width: 1500px) and (max-width: 1600px)  {
-  .product-motion-h1 {
-    left: 540px;
-  }
-}
-@media screen and (min-width: 1600px) and (max-width: 1700px) {
+/* 13 inch laptops (1366px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
   .product-motion-h1 {
     left: 600px;
   }
 }
-@media screen and (min-width: 1700px) and (max-width: 1800px){
+
+/* 14 inch laptops (1440px) */
+@media (min-width: 1440px) and (max-width: 1535px) {
+  .product-motion-h1 {
+    left: 540px;
+  }
+}
+
+/* 15 inch laptops (1536px) */
+@media (min-width: 1536px) and (max-width: 1599px) {
+  .product-motion-h1 {
+    left: 720px;
+  }
+}
+
+/* 16 inch laptops (1600px) */
+@media (min-width: 1600px) and (max-width: 1679px) {
+  .product-motion-h1 {
+    left: 770px;
+  }
+}
+
+/* 17 inch laptops (1680px) and up to 1799px */
+@media (min-width: 1680px) and (max-width: 1799px) {
+  .product-motion-h1 {
+    left: 820px;
+  }
+}
+
+/* 18 inch screens (1800px) and up to 1919px */
+@media (min-width: 1800px) and (max-width: 1919px) {
+  .product-motion-h1 {
+    left: 880px;
+  }
+}
+
+/* 19 inch screens (1920px and above) */
+@media (min-width: 1920px) {
   .product-motion-h1 {
     left: 720px;
   }
