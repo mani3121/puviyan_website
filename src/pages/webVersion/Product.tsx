@@ -217,7 +217,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   className="space-y-0 p-6 rounded-2xl relative"
                   style={{
                     background: "#000",
-                    boxShadow: "0 4px 16px 0 rgba(200,200,200,0.32)",
+                    boxShadow: "0 1px 1px 0 rgba(200,200,200,0.32)",
                     minHeight: "200px", // Increased form height
                   }}
                 >
@@ -225,7 +225,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-2 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none" // changed from -top-3 to top-3
+                    className="absolute -top-2 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none" // changed from -top-3 to top-3
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
