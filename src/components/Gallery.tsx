@@ -31,8 +31,11 @@ const Gallery = () => {
 	}, []);
 
 	return (
-		<div className="bg-black px-8 py-4 mt-16">{/* mt-16 moves the entire div down */}
-			<div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center" style={{ minHeight: "700px" }}>
+		<div className="bg-black px-8 py-4 mt-16">
+			<div
+				className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center"
+				style={{ minHeight: "700px", gridTemplateColumns: "1fr 1.5fr" }} // Adjust grid columns
+			>
 				{/* Left Section */}
 				<div
 					ref={leftRef}
@@ -63,7 +66,8 @@ const Gallery = () => {
 						<div
 							className="relative rounded-3xl shadow-2xl transition-all duration-300 flex items-center justify-center"
 							style={{
-								width: "900px",
+								width: "100%",
+								maxWidth: "1100px", // Increased max width for right section
 								height: imageHeight ? `${Math.round(imageHeight * 0.78)}px` : "540px",
 								overflow: "hidden",
 								margin: "0 auto",

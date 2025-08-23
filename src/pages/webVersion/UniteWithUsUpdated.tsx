@@ -110,10 +110,10 @@ const UniteWithUsUpdated = () => {
             />
             <button
               type="submit"
-              className="mx-auto py-2 px-6 rounded-full text-white font-semibold text-base shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mx-auto py-2 px-12 rounded-full text-white font-semibold text-base shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]"
               style={{
                background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                        color: 'white', // gray color
+                        color: 'white',
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}

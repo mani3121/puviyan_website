@@ -25,10 +25,10 @@ Real change begins with individual action, but its true strength lies in the sha
             style={{ marginBottom: "0px" }} // Remove gap below image
           >
             <img
-              src="/images/ppt1.gif"
+              src="https://cdn.shortpixel.ai/spai/q_glossy+w_500+h_500+to_auto+ret_img/puviyan-website.vercel.app/images/ppt1.gif"
               alt="Puviyan Presentation"
-              className="mx-auto w-full max-w-[550px] object-contain max-h-[450px] bg-transparent"
-              style={{ border: "none", width: "100%", height: "600px" }}
+              className="mx-auto w-full max-w-[550px] object-contain max-h-[540px] bg-transparent"
+              style={{ border: "none", width: "100%", height: "420px" }}
               loading="lazy"
             />
           </div>
