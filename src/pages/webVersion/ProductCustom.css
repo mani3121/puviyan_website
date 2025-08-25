@@ -51,3 +51,105 @@
     left: 720px;
   }
 }
+
+/* Default (small screens) */
+.coming-soon {
+  top: 180px;
+}
+.share-your-ideas {
+  top: 600px;
+}
+.ideas-form {
+  top: 530px;
+}
+
+/* 13 inch laptops (1366px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .coming-soon {
+    top: 210px;
+  }
+  .share-your-ideas {
+    top: 670px;
+  }
+  .ideas-form {
+    top: 600px;
+  }
+}
+
+/* 14 inch laptops (1440px) */
+@media (min-width: 1440px) and (max-width: 1535px) {
+  .coming-soon {
+    top: 230px;
+  }
+  .share-your-ideas {
+    top: 710px;
+  }
+  .ideas-form {
+    top: 640px;
+  }
+}
+
+/* 15 inch laptops (1536px) and (max-width: 1599px) */
+@media (min-width: 1536px) and (max-width: 1599px) {
+  .coming-soon {
+    top: 240px;
+  }
+  .share-your-ideas {
+    top: 730px;
+  }
+  .ideas-form {
+    top: 660px;
+  }
+}
+
+/* 16 inch laptops (1600px) and (max-width: 1679px) */
+@media (min-width: 1600px) and (max-width: 1679px) {
+  .coming-soon {
+    top: 250px;
+  }
+  .share-your-ideas {
+    top: 750px;
+  }
+  .ideas-form {
+    top: 680px;
+  }
+}
+
+/* 17 inch laptops (1680px) and up to 1799px */
+@media (min-width: 1680px) and (max-width: 1799px) {
+  .coming-soon {
+    top: 260px;
+  }
+  .share-your-ideas {
+    top: 770px;
+  }
+  .ideas-form {
+    top: 700px;
+  }
+}
+
+/* 18 inch screens (1800px) and up to 1919px */
+@media (min-width: 1800px) and (max-width: 1919px) {
+  .coming-soon {
+    top: 265px;
+  }
+  .share-your-ideas {
+    top: 775px;
+  }
+  .ideas-form {
+    top: 705px;
+  }
+}
+
+/* 19 inch screens (1920px and above) */
+@media (min-width: 1920px) {
+  .coming-soon {
+    top: 270px;
+  }
+  .share-your-ideas {
+    top: 780px;
+  }
+  .ideas-form {
+    top: 710px;
+  }
+}

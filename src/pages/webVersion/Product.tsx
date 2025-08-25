@@ -131,18 +131,18 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="/images/Mobile.avif"
+            src="/images/MobileImage3.webp"
             alt="Product Image"
             className="rounded-lg w-full h-[100vh]"
             loading="lazy"
            style={{
-              transform: "scale(1.1)",
-              backgroundColor: "transparent",
+              backgroundColor: "#000000",
+              display: "block", 
             }}
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute product-motion-h1 top-[230px] -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
+            className="absolute product-motion-h1 coming-soon -translate-y-1/2 text-6xl font-bold text-white w-[500px]"
             style={{
               fontFamily: "Arial Black",
               fontWeight: "1000",
@@ -167,7 +167,7 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           <br/>
-          <div className={`absolute product-motion-h1 ${showForm ? 'top-[750px]' : 'top-[680px]'} -translate-y-1/2 w-[350px]`}>
+          <div className={`absolute product-motion-h1 ${showForm ? 'share-your-ideas' : 'ideas-form'} -translate-y-1/2 w-[350px]`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
