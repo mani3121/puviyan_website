@@ -79,19 +79,6 @@
 /* 14 inch laptops (1440px) */
 @media (min-width: 1440px) and (max-width: 1535px) {
   .coming-soon {
-    top: 230px;
-  }
-  .share-your-ideas {
-    top: 710px;
-  }
-  .ideas-form {
-    top: 640px;
-  }
-}
-
-/* 15 inch laptops (1536px) and (max-width: 1599px) */
-@media (min-width: 1536px) and (max-width: 1599px) {
-  .coming-soon {
     top: 240px;
   }
   .share-your-ideas {
@@ -102,10 +89,23 @@
   }
 }
 
+/* 15 inch laptops (1536px) and (max-width: 1599px) */
+@media (min-width: 1536px) and (max-width: 1599px) {
+  .coming-soon {
+    top: 250px;
+  }
+  .share-your-ideas {
+    top: 740px;
+  }
+  .ideas-form {
+    top: 670px;
+  }
+}
+
 /* 16 inch laptops (1600px) and (max-width: 1679px) */
 @media (min-width: 1600px) and (max-width: 1679px) {
   .coming-soon {
-    top: 250px;
+    top: 255px;
   }
   .share-your-ideas {
     top: 750px;
