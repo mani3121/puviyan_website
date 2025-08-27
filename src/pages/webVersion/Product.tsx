@@ -2,8 +2,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
+import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import './ProductCustom.css';
 
 
@@ -135,6 +135,7 @@ const Product = () => {
             alt="Product Image"
             className="rounded-lg w-full h-[100vh]"
             loading="lazy"
+            onContextMenu={(e) => e.preventDefault()}
            style={{
               backgroundColor: "#000000",
               display: "block", 
