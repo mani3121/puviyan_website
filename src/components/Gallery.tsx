@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Header from "./Header";
 
 const Gallery = () => {
@@ -13,17 +13,17 @@ const Gallery = () => {
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-black">
-      <div className="w-full max-w-[1450px] flex flex-row bg-black rounded-2xl shadow-lg overflow-hidden">
+      <div className="w-full max-w-[1450px] flex flex-col md:flex-row bg-black rounded-2xl shadow-lg overflow-hidden">
         {/* Left Section - 40% */}
         <div
           ref={leftRef}
-          className="w-2/5 flex flex-col justify-center items-start p-10 bg-black"
+          className="w-full md:w-2/5 flex flex-col justify-center items-start p-6 lg:p-8 xl:p-10 bg-black"
         >
           <Header />
-          <h1 className="text-4xl font-bold justify-center text-white mb-6 mt-4 ">
+          <h1 className="text-2xl lg:text-3xl xl:text-4xl font-bold justify-center text-white mb-6 mt-4">
             Walking the Talk on World Environment Day 2025
           </h1>
-          <p className="text-lg text-white text-justify">
+          <p className="text-sm lg:text-base xl:text-lg text-white text-justify">
             On World Environment Day 2025, Team Puviyan proudly joined the global
             movement led by the United Nations Environment Programme (UNEP),
             emphasizing the powerful theme: “Beat Plastic Pollution.”
@@ -44,7 +44,7 @@ const Gallery = () => {
           </p>
         </div>
         {/* Right Section - 60% */}
-        <div className="w-3/5 flex items-center justify-center bg-black">
+        <div className="w-full md:w-3/5 flex items-center justify-center bg-black">
           <img
             src="/images/EventCollage.webp"
             alt="Event Collage"
@@ -52,6 +52,7 @@ const Gallery = () => {
             style={{
               height: leftHeight ? `${Math.round(leftHeight * 0.95)}px` : "auto",
               maxHeight: "80vh",
+              minHeight: "300px",
             }}
             loading="lazy"
           />
