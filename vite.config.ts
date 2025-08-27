@@ -9,26 +9,6 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom'],
-          animations: ['framer-motion', 'gsap'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-accordion'],
-        }
-      }
-    },
-    chunkSizeWarningLimit: 1000,
-    minify: 'terser',
-    terserOptions: {
-      compress: {
-        drop_console: mode === 'production',
-        drop_debugger: true,
-        pure_funcs: ['console.log']
-      }
-    }
-  },
   plugins: [
     react(),
     mode === 'development' &&
