@@ -122,6 +122,7 @@ const Header = () => {
               alt="Puviyan Logo" 
               className="h-5 md:h-4 w-auto"
               loading="lazy"
+              onContextMenu={(e) => e.preventDefault()}
             />
             <span 
               ref={textRef}

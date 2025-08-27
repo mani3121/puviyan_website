@@ -139,6 +139,7 @@ const AnimatedSplitImages = () => {
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             loading="lazy"
+            onContextMenu={(e) => e.preventDefault()}
             style={{
               objectFit: "cover",
               width: "80%",

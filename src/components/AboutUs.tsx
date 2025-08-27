@@ -30,6 +30,7 @@ Real change begins with individual action, but its true strength lies in the sha
               className="mx-auto w-full max-w-[550px] object-contain max-h-[540px] bg-transparent"
               style={{ border: "none", width: "100%", height: "420px" }}
               loading="lazy"
+              onContextMenu={(e) => e.preventDefault()}
             />
           </div>
           {/* Bottom: Description */}
@@ -54,6 +55,7 @@ Real change begins with individual action, but its true strength lies in the sha
           alt="Separator"
           className="w-full object-cover"
           loading="lazy"
+          onContextMenu={(e) => e.preventDefault()}
         />
       </div>
       */}

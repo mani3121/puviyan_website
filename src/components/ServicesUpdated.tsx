@@ -15,6 +15,7 @@ const ServicesUpdated = () => {
         alt="Services"
         className="max-w-full h-auto"
         loading="lazy"
+        onContextMenu={(e) => e.preventDefault()}
       />
     </div>
   );

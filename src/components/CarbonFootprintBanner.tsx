@@ -103,6 +103,7 @@ const CarbonFootprintBanner = () => {
                alt="CO2 Footprint Icon"
                className="w-10 h-10 mb-1"
                loading="lazy"
+               onContextMenu={(e) => e.preventDefault()}
                style={{ filter: 'brightness(0) invert(1)' }} // Ensures icon is pure white
              />
            </div>

@@ -55,6 +55,7 @@ const Gallery = () => {
               minHeight: "300px",
             }}
             loading="lazy"
+            onContextMenu={(e) => e.preventDefault()}
           />
         </div>
       </div>
