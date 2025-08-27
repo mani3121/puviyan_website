@@ -66,68 +66,36 @@ const CarbonFootprintBanner = () => {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {/* Desktop and Tablet View */}
+     {/* Desktop and Tablet View */}
       <div
-        className="hidden md:flex items-center relative"
+        className="co2-badge items-center gap-4 px-4 py-3 bg-black relative hidden md:flex"
         style={{
-          minWidth: 300, // reduced from 370
-          minHeight: 70, // reduced from 90
+          border: '2px solid transparent',
+          backgroundImage:
+            'linear-gradient(black, black), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+          backgroundOrigin: 'border-box',
+          backgroundClip: 'padding-box, border-box',
+          borderRadius: '40px 16px 16px 40px',
+          minWidth: '240px',
+          minHeight: '80px',
         }}
       >
-                 {/* Gradient border background */}
-         <div
-           className="absolute rounded-[24px] pointer-events-none" // reduced radius
-           style={{
-             background: 'linear-gradient(90deg, #F9BB18 0%, #74CFE6 60%, #5ABA52 100%)',
-             zIndex: 0,
-             filter: 'blur(0.5px)',
-             top: '-4px',
-             left: '-4px',
-             right: '-4px',
-             bottom: '-4px',
-           }}
-         />
-        {/* Main badge */}
-        <div
-          className="relative flex items-center pl-4 pr-6 py-2 bg-black rounded-[24px] min-h-[70px] min-w-[300px] shadow-lg"
-          style={{
-            zIndex: 1,
-            border: '2px solid transparent',
-            backgroundClip: 'padding-box',
-          }}
-        >
-                     {/* Left icons */}
-           <div className="flex flex-col items-center justify-center mr-4">
-             <img
-               src="/images/Co2.png"
-               alt="CO2 Footprint Icon"
-               className="w-10 h-10 mb-1"
-               loading="lazy"
-               onContextMenu={(e) => e.preventDefault()}
-               style={{ filter: 'brightness(0) invert(1)' }} // Ensures icon is pure white
-             />
-           </div>
-           {/* Center text */}
-           <div className="flex flex-col justify-center ml-2">
-            <span className="text-white font text-base leading-tight">
-              {co2Estimate}g of CO<sub>2</sub>/view
-            </span>
-            <span className="text-white text-xs mt-1">
-              64% lower than global average
-            </span>
+        <div className="co2-icon flex flex-col items-center">
+          <img
+            src="/images/Co2.png"
+            alt="CO2 Footprint Icon"
+            className="w-8 h-auto"
+            onContextMenu={(e) => e.preventDefault()}
+            style={{ filter: 'brightness(0) invert(1)' }}
+          />
+        </div>
+        <div className="co2-text flex flex-col">
+          <div className="main font-bold text-sm text-white">
+            {co2Estimate} g of CO₂ per page view
           </div>
-          {/* Top right label */}
-                                           <span
-              className="absolute top-0 right-0 rounded-tl-[24px] rounded-tr-[30px] px-3 py-1 text-black font-semibold text-sm"
-                         style={{
-               background: 'linear-gradient(90deg, #74CFE6 30%, #5ABA52 100%)',
-               transform: 'translateY(-95%)',
-               minWidth: 110,
-               textAlign: 'right',
-             }}
-          >
-            Puviyan Certified
-          </span>
+          <div className="sub text-xs text-gray-300">
+            64% lower than global average
+          </div>
         </div>
       </div>
 
