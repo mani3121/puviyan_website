@@ -47,18 +47,6 @@ Real change begins with individual action, but its true strength lies in the sha
           </div>
         </div>
       </div>
-      {/* Inherited Separator from Index.tsx placed at the bottom */}
-      {/*
-      <div className="w-full m-0 p-0">
-        <img
-          src="/images/ribbon.jpg"
-          alt="Separator"
-          className="w-full object-cover"
-          loading="lazy"
-          onContextMenu={(e) => e.preventDefault()}
-        />
-      </div>
-      */}
     </section>
   );
 };
