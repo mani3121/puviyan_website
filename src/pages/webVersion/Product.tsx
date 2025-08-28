@@ -167,7 +167,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           </motion.h1>
           
           {/* CTA Section with proper spacing */}
-          <div className={`absolute left-[36vw] ${showForm ? 'top-[calc(24%+28rem)] sm:top-[calc(24%+30rem)]' : 'top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)]'} w-full max-w-[320px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[640px] px-3 sm:px-4 md:px-0`}>
+          <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[320px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[640px] px-3 sm:px-4 md:px-0`}>
             {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -211,67 +211,82 @@ ECOSTORY`.split("\n").map((line, index) => (
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.5 }}
               >
-                <form onSubmit={handleSubmit} className="space-y-4 p-6 bg-black rounded-2xl">
+                <form
+                  onSubmit={handleSubmit}
+                  autoComplete="off"
+                  className="space-y-0 p-6 rounded-2xl relative"
+                  style={{
+                    background: "#000",
+                    boxShadow: "0 1px 1px 0 rgba(200,200,200,0.32)",
+                    minHeight: "200px", // Increased form height
+                  }}
+                >
+                  {/* Close Icon */}
                   <button
                     type="button"
-                    onClick={() => setShowForm(false)}
-                    className="absolute top-2 right-2 text-white hover:text-gray-300"
+                    aria-label="Close"
+                    className="absolute -top-2 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none" // changed from -top-3 to top-3
+                    onClick={() => {
+                      setShowForm(false);
+                      setSubmitStatus('idle');
+                      setFormData({ name: '', email: '', message: '' });
+                    }}
                   >
-                    ✕
+                    &times;
                   </button>
-                  <input
-                    type="text"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder="Your Name"
-                    className="w-full p-3 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400"
-                    required
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="Your Email"
-                    className="w-full p-3 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400"
-                    required
-                  />
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    placeholder="Share your ideas..."
-                    rows={4}
-                    className="w-full p-3 border border-gray-600 rounded-lg bg-gray-900 text-white placeholder-gray-400 resize-none"
-                    required
-                  />
-                  <div className="flex gap-4">
+                  <div className="flex flex-row space-x-2 mb-3">
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      placeholder="Your Name"
+                      autoComplete="new-password"
+                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
+                      required
+                    />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      placeholder="Your Email"
+                      autoComplete="off"
+                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
+                      required
+                    />
+                  </div>
+                   <div className="h-2" />
+                  <div>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleInputChange}
+                      placeholder="Your Idea"
+                      autoComplete="off"
+                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
+                      rows={5}
+                      style={{ resize: 'none', height: '100px' }}
+                      required
+                    />
+                  </div>
+                  {/* gap between textarea and buttons */}
+                  <div className="h-2" />
+                  <div className="flex flex-row space-x-4 justify-center items-center w-full">
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="flex-1 py-3 rounded-lg font-semibold text-white"
+                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
                       style={{
-                        background: isLoading 
-                          ? "#6B7280" 
-                          : "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                        background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                        color: 'white',
                       }}
                     >
-                      {isLoading ? "Sending..." : "Send Message"}
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => setShowForm(false)}
-                      className="flex-1 py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-lg font-semibold"
-                    >
-                      Cancel
+                      {isLoading ? 'Sending...' : 'Submit'}
                     </button>
                   </div>
-                  {submitStatus === 'success' && (
-                    <p className="text-green-400 text-sm text-center">Message sent successfully!</p>
-                  )}
                   {submitStatus === 'error' && (
-                    <p className="text-red-400 text-sm text-center">Failed to send message. Please try again.</p>
+                    <p className="text-red-600 mt-2">Failed to send message. Please try again.</p>
                   )}
                 </form>
               </motion.div>
