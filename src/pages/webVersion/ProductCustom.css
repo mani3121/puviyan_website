@@ -54,7 +54,7 @@
 
 /* Default (small screens) */
 .coming-soon {
-  top: 180px;
+  top: 220px;
 }
 .share-your-ideas {
   top: 600px;
@@ -66,7 +66,7 @@
 /* 13 inch laptops (1366px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
   .coming-soon {
-    top: 210px;
+    top: 250px;
   }
   .share-your-ideas {
     top: 670px;
@@ -79,7 +79,7 @@
 /* 14 inch laptops (1440px) */
 @media (min-width: 1440px) and (max-width: 1535px) {
   .coming-soon {
-    top: 240px;
+    top: 280px;
   }
   .share-your-ideas {
     top: 730px;
@@ -92,7 +92,7 @@
 /* 15 inch laptops (1536px) and (max-width: 1599px) */
 @media (min-width: 1536px) and (max-width: 1599px) {
   .coming-soon {
-    top: 250px;
+    top: 290px;
   }
   .share-your-ideas {
     top: 740px;
@@ -105,7 +105,7 @@
 /* 16 inch laptops (1600px) and (max-width: 1679px) */
 @media (min-width: 1600px) and (max-width: 1679px) {
   .coming-soon {
-    top: 255px;
+    top: 295px;
   }
   .share-your-ideas {
     top: 750px;
@@ -118,7 +118,7 @@
 /* 17 inch laptops (1680px) and up to 1799px */
 @media (min-width: 1680px) and (max-width: 1799px) {
   .coming-soon {
-    top: 260px;
+    top: 300px;
   }
   .share-your-ideas {
     top: 770px;
@@ -131,7 +131,7 @@
 /* 18 inch screens (1800px) and up to 1919px */
 @media (min-width: 1800px) and (max-width: 1919px) {
   .coming-soon {
-    top: 265px;
+    top: 305px;
   }
   .share-your-ideas {
     top: 775px;
@@ -144,36 +144,99 @@
 /* 19 inch screens (1920px and above) */
 @media (min-width: 1920px) {
   .coming-soon {
-    top: 270px;
+    top: 310px;
   }
   .share-your-ideas {
-    top: 780px;
+    top: 800px;
   }
   .ideas-form {
     top: 710px;
   }
 }
 
-/* Form dimensions - consistent across all screen sizes */
+/* Form dimensions, responsive font weights, and field sizing */
+/* Default (small screens) */
 .form-container {
-  width: 400px;
-  min-height: 280px;
+  width: 320px;
+  min-height: 240px;
+  padding: 18px;
 }
 
-/* Responsive form dimensions */
+.responsive-font-weight {
+  font-weight: 600;
+}
+
+.responsive-input {
+  padding: 6px 8px;
+  font-size: 12px;
+}
+
+.responsive-textarea {
+  padding: 6px 8px;
+  font-size: 12px;
+  height: 70px;
+}
+
+.responsive-button-padding {
+  padding: 12px 18px;
+  font-size: 12px;
+}
+
 /* 13 inch laptops (1366px) */
 @media (min-width: 1280px) and (max-width: 1439px) {
   .form-container {
-    width: 380px;
-    min-height: 270px;
+    width: 360px;
+    min-height: 260px;
+    padding: 20px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 700;
+  }
+  
+  .responsive-input {
+    padding: 8px 10px;
+    font-size: 13px;
+  }
+  
+  .responsive-textarea {
+    padding: 8px 10px;
+    font-size: 13px;
+    height: 75px;
+  }
+  
+  .responsive-button-padding {
+    padding: 14px 20px;
+    font-size: 13px;
   }
 }
 
 /* 14 inch laptops (1440px) */
 @media (min-width: 1440px) and (max-width: 1535px) {
   .form-container {
-    width: 390px;
-    min-height: 275px;
+    width: 380px;
+    min-height: 280px;
+    padding: 22px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 750;
+  }
+  
+  .responsive-input {
+    padding: 9px 11px;
+    font-size: 13px;
+  }
+  
+  .responsive-textarea {
+    padding: 9px 11px;
+    font-size: 13px;
+    height: 80px;
+  }
+  
+  .responsive-button-padding {
+    padding: 14px 22px;
+    font-size: 13px;
   }
 }
 
@@ -181,7 +244,28 @@
 @media (min-width: 1536px) and (max-width: 1599px) {
   .form-container {
     width: 400px;
-    min-height: 280px;
+    min-height: 300px;
+    padding: 24px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 800;
+  }
+  
+  .responsive-input {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  
+  .responsive-textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+    height: 85px;
+  }
+  
+  .responsive-button-padding {
+    padding: 16px 24px;
+    font-size: 14px;
   }
 }
 
@@ -189,7 +273,28 @@
 @media (min-width: 1600px) and (max-width: 1679px) {
   .form-container {
     width: 420px;
-    min-height: 290px;
+    min-height: 320px;
+    padding: 26px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 850;
+  }
+  
+  .responsive-input {
+    padding: 11px 13px;
+    font-size: 14px;
+  }
+  
+  .responsive-textarea {
+    padding: 11px 13px;
+    font-size: 14px;
+    height: 90px;
+  }
+  
+  .responsive-button-padding {
+    padding: 16px 26px;
+    font-size: 14px;
   }
 }
 
@@ -197,22 +302,85 @@
 @media (min-width: 1680px) and (max-width: 1799px) {
   .form-container {
     width: 440px;
-    min-height: 300px;
+    min-height: 340px;
+    padding: 28px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 900;
+  }
+  
+  .responsive-input {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  
+  .responsive-textarea {
+    padding: 12px 14px;
+    font-size: 14px;
+    height: 95px;
+  }
+  
+  .responsive-button-padding {
+    padding: 16px 28px;
+    font-size: 15px;
   }
 }
 
 /* 18 inch screens (1800px) and up to 1919px */
 @media (min-width: 1800px) and (max-width: 1919px) {
   .form-container {
-    width: 450px;
-    min-height: 310px;
+    width: 460px;
+    min-height: 360px;
+    padding: 30px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 950;
+  }
+  
+  .responsive-input {
+    padding: 13px 15px;
+    font-size: 14px;
+  }
+  
+  .responsive-textarea {
+    padding: 13px 15px;
+    font-size: 14px;
+    height: 98px;
+  }
+  
+  .responsive-button-padding {
+    padding: 18px 30px;
+    font-size: 15px;
   }
 }
 
-/* 19 inch screens (1920px and above) */
+/* 19 inch screens (1920px and above) - baseline */
 @media (min-width: 1920px) {
   .form-container {
-    width: 460px;
-    min-height: 320px;
+    width: 500px;
+    min-height: 420px;
+    padding: 32px;
+  }
+  
+  .responsive-font-weight {
+    font-weight: 1000;
+  }
+  
+  .responsive-input {
+    padding: 12px 12px;
+    font-size: 14px;
+  }
+  
+  .responsive-textarea {
+    padding: 12px 12px;
+    font-size: 14px;
+    height: 100px;
+  }
+  
+  .responsive-button-padding {
+    padding: 18px 32px;
+    font-size: 16px;
   }
 }

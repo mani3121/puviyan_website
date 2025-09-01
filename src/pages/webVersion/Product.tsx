@@ -141,10 +141,9 @@ const Product = () => {
           />
           <motion.h1
             ref={h1Ref}
-            className="absolute left-[36vw] top-[24%] -translate-y-1/2 text-4xl sm:text-5xl md:text-6xl font-bold text-white w-[300px] sm:w-[400px] md:w-[500px]"
+            className="absolute left-[36vw] top-[24%] -translate-y-1/2 text-4xl sm:text-5xl md:text-6xl font-bold text-white w-[300px] sm:w-[400px] md:w-[500px] responsive-font-weight"
             style={{
               fontFamily: "Arial Black",
-              fontWeight: "1000",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
             }}
@@ -214,7 +213,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 p-6 rounded-2xl relative form-container"
+                  className="space-y-0 rounded-2xl relative form-container"
                   style={{
                     background: "#000",
                     boxShadow: "0 1px 1px 0 rgba(200,200,200,0.32)",
@@ -224,7 +223,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-2 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none" // changed from -top-3 to top-3
+                    className="absolute -top-8 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
@@ -275,7 +274,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
+                      className="responsive-button-padding rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
