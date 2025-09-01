@@ -12,12 +12,12 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-black">
-      <div className="w-full max-w-[1450px] flex flex-row bg-black rounded-2xl shadow-lg overflow-hidden">
-        {/* Left Section - 40% */}
+    <div className="w-full min-h-screen flex items-center justify-center bg-black p-4">
+      <div className="w-full max-w-[1800px] flex flex-row bg-black rounded-2xl shadow-lg overflow-hidden">
+        {/* Left Section - 50% */}
         <div
           ref={leftRef}
-          className="w-2/5 flex flex-col justify-center items-start p-10 bg-black"
+          className="w-1/2 flex flex-col justify-center items-start p-12 bg-black"
         >
           <Header />
           <h1 className="text-4xl font-bold justify-center text-white mb-6 mt-4 ">
@@ -43,15 +43,14 @@ const Gallery = () => {
             creates a big impact for our planet and future generations.
           </p>
         </div>
-        {/* Right Section - 60% */}
-        <div className="w-3/5 flex items-center justify-center bg-black">
+        {/* Right Section - 50% */}
+        <div className="w-1/2 flex items-center justify-center bg-black p-6">
           <img
             src="/images/EventCollage.webp"
             alt="Event Collage"
-            className="max-w-full object-contain rounded-2xl"
+            className="w-full object-contain rounded-2xl"
             style={{
-              height: leftHeight ? `${Math.round(leftHeight * 0.95)}px` : "auto",
-              maxHeight: "80vh",
+              height: leftHeight ? `${leftHeight}px` : "auto",
             }}
             loading="lazy"
           />

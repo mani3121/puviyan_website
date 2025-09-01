@@ -214,11 +214,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 p-6 rounded-2xl relative"
+                  className="space-y-0 p-6 rounded-2xl relative form-container"
                   style={{
                     background: "#000",
                     boxShadow: "0 1px 1px 0 rgba(200,200,200,0.32)",
-                    minHeight: "200px", // Increased form height
                   }}
                 >
                   {/* Close Icon */}
