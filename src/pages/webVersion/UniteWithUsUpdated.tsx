@@ -72,7 +72,7 @@ const UniteWithUsUpdated = () => {
             className="rounded-2xl p-4 flex flex-col gap-4 w-[1000px] max-w-xl items-center -mt-4 shadow-md"
             style={{
               backgroundColor: "#000",
-              boxShadow: "0 4px 24px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
+              boxShadow: "0 2px 2px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
             }}
           >
             <input
