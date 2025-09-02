@@ -47,16 +47,16 @@ const CarbonFootprintBanner = () => {
     >
       {/* Desktop and Tablet View */}
       <div
-        className="co2-badge items-center justify-center gap-4 px-6 py-4 bg-gray-900 relative hidden md:flex shadow-lg"
+        className="co2-badge items-center justify-center gap-3 px-4 py-3 bg-gray-900 relative hidden md:flex shadow-lg"
         style={{
           border: '2px solid transparent',
           backgroundImage:
-            'linear-gradient(#1f2937, #1f2937), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+            'linear-gradient(#1f2937,rgb(12, 12, 12)), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
           borderRadius: '40px 16px 16px 40px',
-          minWidth: '320px',
-          minHeight: '100px',
+          minWidth: '180px',
+          minHeight: '55px',
         }}
       >
         <div className="co2-icon flex flex-col items-center justify-center">
