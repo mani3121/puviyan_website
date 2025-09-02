@@ -37,11 +37,21 @@ const ParallaxImageWrapper = ({ image1, image2, mobileImage1, mobileImage2, load
       loading={loading}
     />
   ) : (
-    <ParallaxImages 
-      image1={image1}
-      image2={image2}
-      loading={loading}
-    />
+    <>
+      <img
+        src={isMobile ? mobileImage1 : image1}
+        alt="Parallax background"
+        className="absolute inset-0 w-full h-full object-cover"
+        loading={loading}
+        decoding="async"
+        fetchPriority="high"
+      />
+      <ParallaxImages 
+        image1={image1}
+        image2={image2}
+        loading={loading}
+      />
+    </>
   );
 };
 

@@ -131,11 +131,12 @@ const ParallaxImages = ({ image1, image2, loading }: ParallaxImagesProps) => {
       className={`parallax-container ${isTransitionComplete ? 'transition-complete' : ''}`}
     >
       <div className="parallax-image-wrapper">
-        <div 
-          className="parallax-image"
-          style={{ 
-            backgroundImage: `url(${image1})`
-          }}
+        <img
+          src={image1}
+          alt="Parallax background layer 1"
+          className="parallax-image w-full h-full object-cover"
+          loading={loading}
+          decoding="async"
         />
       </div>
       <div 
@@ -144,11 +145,12 @@ const ParallaxImages = ({ image1, image2, loading }: ParallaxImagesProps) => {
           clipPath: `inset(${100 - scrollProgress}% 0 0 0)`
         }}
       >
-        <div 
-          className="parallax-image"
-          style={{ 
-            backgroundImage: `url(${image2})`
-          }}
+        <img
+          src={image2}
+          alt="Parallax background layer 2"
+          className="parallax-image w-full h-full object-cover"
+          loading={loading}
+          decoding="async"
         />
       </div>
     </div>
