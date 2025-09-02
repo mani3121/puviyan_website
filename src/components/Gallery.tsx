@@ -14,12 +14,17 @@ const Gallery = () => {
         const screenWidth = window.innerWidth;
         
         // Responsive height calculation
-        let targetHeight = 520; // Reduced base height for ~13" screens
-        if (screenWidth >= 1536) targetHeight = 900; // 2xl screens
-        else if (screenWidth >= 1280) targetHeight = 800; // xl screens
-        else if (screenWidth >= 1024) targetHeight = 700; // lg screens
-        
-        setContainerHeight(targetHeight);
+        // Only enforce fixed heights on desktop and above (>= 1024px)
+        if (screenWidth >= 1536) {
+          setContainerHeight(900); // 2xl screens
+        } else if (screenWidth >= 1280) {
+          setContainerHeight(800); // xl screens
+        } else if (screenWidth >= 1024) {
+          setContainerHeight(700); // lg screens
+        } else {
+          // For mobile/tablet, let the sections grow naturally
+          setContainerHeight(undefined);
+        }
       }
     };
 
@@ -30,11 +35,11 @@ const Gallery = () => {
 
   return (
     <div className="w-full min-h-screen flex items-center justify-center bg-black p-4">
-      <div className="w-full max-w-[1800px] flex flex-row bg-black rounded-2xl shadow-lg overflow-hidden min-h-[600px] lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[900px]">
+      <div className="w-full max-w-[1800px] flex flex-col lg:flex-row bg-black rounded-2xl shadow-lg overflow-hidden lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[900px]">
         {/* Left Section - 50% */}
         <div
           ref={leftRef}
-          className="w-1/2 flex flex-col justify-center items-start p-3 md:p-8 lg:p-10 xl:p-12 2xl:p-16 bg-black"
+          className="w-full lg:w-1/2 flex flex-col justify-center items-start p-3 md:p-8 lg:p-10 xl:p-12 2xl:p-16 bg-black"
           style={{
             height: containerHeight ? `${containerHeight}px` : "auto",
           }}
@@ -66,7 +71,7 @@ const Gallery = () => {
         {/* Right Section - 50% */}
         <div 
           ref={rightRef}
-          className="w-1/2 flex items-center justify-center bg-black p-6"
+          className="w-full lg:w-1/2 flex items-center justify-center bg-black p-6"
           style={{
             height: containerHeight ? `${containerHeight}px` : "auto",
           }}
@@ -74,7 +79,7 @@ const Gallery = () => {
           <img
             src="/images/EventCollage.webp"
             alt="Event Collage"
-            className="w-full h-full object-contain rounded-2xl"
+            className="w-full h-auto lg:h-full object-contain rounded-2xl"
             loading="lazy"
           />
         </div>
