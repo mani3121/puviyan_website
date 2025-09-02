@@ -1,7 +1,6 @@
 import Header from '@/components/Header';
-import { Suspense, lazy, useEffect } from 'react';
+import { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
-import { preloadCriticalImages } from '@/utils/imageOptimization';
 
 const AboutUs = lazy(() => import('@/components/AboutUs'));
 const CarbonFootprintBanner = lazy(() => import('@/components/CarbonFootprintBanner'));
@@ -18,18 +17,7 @@ const parallaxImages = {
   mobileSecond: '/images/Home_at_mob.jpg',
 };
 
-// Preload critical images for better performance
-const criticalImages = [
-  parallaxImages.first,
-  parallaxImages.mobileFirst
-];
-
 const Index = () => {
-  useEffect(() => {
-    // Preload critical images on component mount
-    preloadCriticalImages(criticalImages);
-  }, []);
-
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
