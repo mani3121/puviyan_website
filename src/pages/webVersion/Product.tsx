@@ -132,7 +132,7 @@ const Product = () => {
             ref={imageRef}
             src="/images/MobileImage_Final.jpeg"
             alt="Product Image"
-            className="rounded-2xl w-full h-[100vh]"
+            className="rounded-2xl w-full h-[100vh] -mt-8" // Added -mt-8 to move image up
             loading="lazy"
             style={{
               transform: "scale(1.1)",

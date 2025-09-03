@@ -272,115 +272,31 @@
 /* 16 inch laptops (1600px) */
 @media (min-width: 1600px) and (max-width: 1679px) {
   .form-container {
-    width: 420px;
-    min-height: 320px;
-    padding: 26px;
-  }
-  
-  .responsive-font-weight {
-    font-weight: 850;
-  }
-  
-  .responsive-input {
-    padding: 11px 13px;
-    font-size: 14px;
-  }
-  
-  .responsive-textarea {
-    padding: 11px 13px;
-    font-size: 14px;
-    height: 90px;
-  }
-  
-  .responsive-button-padding {
-    padding: 16px 26px;
-    font-size: 14px;
+    min-height: 280px;
+    padding-bottom: 24px;
   }
 }
 
 /* 17 inch laptops (1680px) and up to 1799px */
 @media (min-width: 1680px) and (max-width: 1799px) {
   .form-container {
-    width: 440px;
-    min-height: 340px;
-    padding: 28px;
-  }
-  
-  .responsive-font-weight {
-    font-weight: 900;
-  }
-  
-  .responsive-input {
-    padding: 12px 14px;
-    font-size: 14px;
-  }
-  
-  .responsive-textarea {
-    padding: 12px 14px;
-    font-size: 14px;
-    height: 95px;
-  }
-  
-  .responsive-button-padding {
-    padding: 16px 28px;
-    font-size: 15px;
+    min-height: 300px;
+    padding-bottom: 28px;
   }
 }
 
 /* 18 inch screens (1800px) and up to 1919px */
 @media (min-width: 1800px) and (max-width: 1919px) {
   .form-container {
-    width: 460px;
-    min-height: 360px;
-    padding: 30px;
-  }
-  
-  .responsive-font-weight {
-    font-weight: 950;
-  }
-  
-  .responsive-input {
-    padding: 13px 15px;
-    font-size: 14px;
-  }
-  
-  .responsive-textarea {
-    padding: 13px 15px;
-    font-size: 14px;
-    height: 98px;
-  }
-  
-  .responsive-button-padding {
-    padding: 18px 30px;
-    font-size: 15px;
+    min-height: 320px;
+    padding-bottom: 32px;
   }
 }
 
-/* 19 inch screens (1920px and above) - baseline */
+/* 19 inch screens (1920px and above) */
 @media (min-width: 1920px) {
   .form-container {
-    width: 500px;
-    min-height: 420px;
-    padding: 32px;
-  }
-  
-  .responsive-font-weight {
-    font-weight: 1000;
-  }
-  
-  .responsive-input {
-    padding: 12px 12px;
-    font-size: 14px;
-  }
-  
-  .responsive-textarea {
-    padding: 12px 12px;
-    font-size: 14px;
-    height: 100px;
-  }
-  
-  .responsive-button-padding {
-    padding: 18px 32px;
-    font-size: 16px;
+    min-height: 340px;
+    padding-bottom: 36px;
   }
 }

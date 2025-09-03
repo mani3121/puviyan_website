@@ -63,7 +63,7 @@ const CarbonFootprintBanner = () => {
           <img
             src="/images/Co-2.png"
             alt="CO2 Footprint Icon"
-            className="w-8 h-8"
+            className="w-12 h-12"
           />
         </div>
         <div className="co2-text flex flex-col justify-center">
