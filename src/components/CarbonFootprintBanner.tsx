@@ -47,7 +47,7 @@ const CarbonFootprintBanner = () => {
     >
       {/* Desktop and Tablet View */}
       <div
-        className="co2-badge items-center justify-center gap-3 px-4 py-3 bg-gray-900 relative hidden md:flex shadow-lg"
+        className="co2-badge items-center justify-center gap-2 px-3 py-2 bg-gray-900 relative hidden md:flex shadow-lg"
         style={{
           border: '2px solid transparent',
           backgroundImage:
@@ -55,23 +55,22 @@ const CarbonFootprintBanner = () => {
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
           borderRadius: '40px 16px 16px 40px',
-          minWidth: '180px',
-          minHeight: '55px',
+          minWidth: '80px',
+          minHeight: '30px',
         }}
       >
         <div className="co2-icon flex flex-col items-center justify-center">
           <img
-            src="/images/Co2.png"
+            src="/images/Co-2.png"
             alt="CO2 Footprint Icon"
-            className="w-10 h-10"
-            style={{ filter: 'brightness(0) invert(1)' }}
+            className="w-8 h-8"
           />
         </div>
         <div className="co2-text flex flex-col justify-center">
-          <div className="main font-bold text-base text-white leading-tight">
+          <div className="main font-bold text-sm text-white leading-tight">
             {co2Estimate} g of CO₂ per page view
           </div>
-          <div className="sub text-sm text-gray-300 mt-1">
+          <div className="sub text-xs text-gray-300 mt-0.5">
             64% lower than global average
           </div>
         </div>
