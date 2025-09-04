@@ -166,8 +166,8 @@ ECOSTORY`.split("\n").map((line, index) => (
           </motion.h1>
           
           {/* CTA Section with proper spacing */}
-          <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[320px] sm:max-w-[480px] md:max-w-[560px] lg:max-w-[640px] px-3 sm:px-4 md:px-0`}>
-            {!showForm ? (
+          <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
+          {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
@@ -232,7 +232,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   >
                     &times;
                   </button>
-                  <div className="flex flex-row space-x-2 mb-3">
+                  <div className="flex flex-row space-x-2 mb-3 justify-center">
                     <input
                       type="text"
                       name="name"
@@ -240,7 +240,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       onChange={handleInputChange}
                       placeholder="Your Name"
                       autoComplete="new-password"
-                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
+                      className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
                       required
                     />
                     <input
@@ -250,26 +250,28 @@ ECOSTORY`.split("\n").map((line, index) => (
                       onChange={handleInputChange}
                       placeholder="Your Email"
                       autoComplete="off"
-                      className="w-1/2 px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
+                      className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
                       required
                     />
                   </div>
                    <div className="h-2" />
                   <div>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      placeholder="Your Idea"
-                      autoComplete="off"
-                      className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black"
-                      rows={5}
-                      style={{ resize: 'none', height: '100px' }}
-                      required
-                    />
+                    <div className="flex justify-center">
+                      <textarea
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        placeholder="Your Idea"
+                        autoComplete="off"
+                        className="w-[90%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
+                        rows={5}
+                        style={{ resize: 'none' }}
+                        required
+                      />
+                    </div>
                   </div>
                   {/* gap between textarea and buttons */}
-                  <div className="h-2" />
+                  <div className="h-3" />
                   <div className="flex flex-row space-x-4 justify-center items-center w-full">
                     <button
                       type="submit"
@@ -286,6 +288,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   {submitStatus === 'error' && (
                     <p className="text-red-600 mt-2">Failed to send message. Please try again.</p>
                   )}
+                  <div className="h-3" />
                 </form>
               </motion.div>
             )}
