@@ -13,30 +13,26 @@ Real change begins with individual action, but its true strength lies in the sha
   `;
   
   return (
-    <section className="w-full bg-black relative overflow-hidden flex items-center justify-center min-h-[70vh] py-4">
+    <section className="w-full bg-black relative overflow-hidden flex items-center justify-center min-h-screen">
       {/* Three-line border & Header */}
       <Header />
       {/* Main content centered */}
-      <div className="container mx-auto px-8 md:px-20 pt-0 relative z-10 flex flex-col items-center justify-center min-h-[70vh]">
+      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div
-            className="w-full flex justify-center items-center overflow-hidden mt-0 mb-0"
-            style={{ marginBottom: "0px" }} // Remove gap below image
-          >
+          <div className="w-full mb-6 mt-12 flex justify-center items-center overflow-hidden">
             <img
               src="/images/ppt1.gif"
-              alt="Puviyan Presentation"
-              className="mx-auto w-full max-w-[550px] object-contain max-h-[540px] bg-transparent"
-              style={{ border: "none", width: "100%", height: "420px" }}
+              alt="About Us"
+              className="mx-auto w-full max-w-[550px] object-contain max-h-[550px] bg-transparent"
               loading="lazy"
             />
           </div>
           {/* Bottom: Description */}
-          <div className="w-full flex justify-center items-center mt-0" style={{ marginTop: "0px" }}>
+          <div className="w-full flex justify-center items-center">
             <motion.p
               className="text-lg md:text-xl text-white text-justify"
-              style={{ whiteSpace: 'pre-line' }}
+              style={{ whiteSpace: 'pre-line', opacity: 1 }}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.5, duration: 1 }}
