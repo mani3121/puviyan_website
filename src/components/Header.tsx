@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { Menu, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
+import OptimizedImage from './OptimizedImage';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -117,11 +118,14 @@ const Header = () => {
             className="cursor-pointer flex items-center gap-2"
             onClick={() => (window.location.href = "/")}
           >
-            <img 
-              src="/images/puviyan_logo.png" 
-              alt="Puviyan Logo" 
+            <OptimizedImage
+              src="/images/puviyan_logo.png"
+              alt="Puviyan Logo"
               className="h-5 md:h-4 w-auto"
               loading="lazy"
+              width={80}
+              height={16}
+              preferModernSrcForDownload
             />
             <span 
               ref={textRef}

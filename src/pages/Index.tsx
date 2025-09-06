@@ -3,7 +3,7 @@ import { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
 
 const AboutUs = lazy(() => import('@/components/AboutUs'));
-const CarbonFootprintBanner = lazy(() => import('@/components/CarbonFootprintBanner'));
+const WebsiteCarbonBadgeContainer = lazy(() => import('@/components/WebsiteCarbonBadgeContainer'));
 const ParallaxImageWrapper = lazy(() => import('@/components/ParallaxImageWrapper'));
 const ServicesLatest = lazy(() => import('@/components/ServicesLatest'));
 const Product = lazy(() => import('./webVersion/Product'));
@@ -34,7 +34,7 @@ const Index = () => {
         <Header />
         <main className="w-full bg-black text-gray-300">
           <Suspense fallback={<div className="text-center py-8 text-gray-300">Loading...</div>}>
-            <CarbonFootprintBanner />
+            <WebsiteCarbonBadgeContainer />
 
             {/* Parallax Images section */}
             <section className="w-full h-screen m-0 p-0 bg-black text-gray-300">

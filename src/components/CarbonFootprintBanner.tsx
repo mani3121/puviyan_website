@@ -2,6 +2,7 @@
 import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
+import OptimizedImage from './OptimizedImage';
 import { getTransferredBytes, simplifiedCO2PerView, compareToBaseline } from '@/utils/carbon'; // adjust path alias as needed
 
 const CarbonFootprintBanner = () => {
@@ -66,7 +67,14 @@ const CarbonFootprintBanner = () => {
         }}
       >
         <div className="co2-icon flex flex-col items-center justify-center">
-          <img src="/images/Co-2.png" alt="CO2 Footprint Icon" className="w-8 h-8" />
+          <OptimizedImage
+            src="/images/Co-2.png"
+            alt="CO2 Footprint Icon"
+            className="w-8 h-8"
+            width={32}
+            height={32}
+            preferModernSrcForDownload
+          />
         </div>
         <div className="co2-text flex flex-col justify-center">
           <div className="main font-bold text-xs text-white leading-tight">

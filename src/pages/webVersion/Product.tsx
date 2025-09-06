@@ -1,6 +1,7 @@
 import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
+import OptimizedImage from '@/components/OptimizedImage';
 import { useMediaQuery } from 'react-responsive';
 import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
@@ -128,12 +129,15 @@ const Product = () => {
     <div className="w-full h-screen flex justify-center items-center overflow-hidden">
       <div className="relative w-full h-full flex justify-center items-center">
         <div className="relative -translate-x-[95%] w-[28vw]">
-          <img
-            ref={imageRef}
+          <OptimizedImage
+            ref={imageRef as any}
             src="/images/MobileImage_Final.jpeg"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh] -mt-8" // Added -mt-8 to move image up
             loading="lazy"
+            width={800}
+            height={1600}
+            preferModernSrcForDownload
             style={{
               transform: "scale(1.1)",
               backgroundColor: "transparent",
