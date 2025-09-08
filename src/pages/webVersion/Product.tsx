@@ -318,7 +318,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     </div>
                   </div>
                   {/* gap between textarea and buttons */}
-                  <div className="h-3" />
+                  <div className="h-1" />
                   <div className="flex flex-row space-x-4 justify-center items-center w-full">
                     <button
                       type="submit"
@@ -331,6 +331,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     >
                       {isLoading ? 'Sending...' : 'Submit'}
                     </button>
+                    <div className="h-2" />
                   </div>
                 </form>
               </motion.div>
