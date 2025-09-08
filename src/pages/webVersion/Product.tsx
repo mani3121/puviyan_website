@@ -165,10 +165,10 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           
-          {/* CTA Section with proper spacing */}
-          <div className={`absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
-          {!showForm ? (
-              submitStatus === "idle" ? (
+          {/* Button Section */}
+          {!showForm && (
+            <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
+              {submitStatus === "idle" ? (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -203,8 +203,13 @@ ECOSTORY`.split("\n").map((line, index) => (
                     WITH YOUR IDEAS
                   </button>
                 </motion.div>
-              )
-            ) : (
+              )}
+            </div>
+          )}
+          
+          {/* Form Section */}
+          {showForm && (
+            <div className={`absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -291,8 +296,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <div className="h-3" />
                 </form>
               </motion.div>
-            )}
-          </div>
+            </div>
+          )}
           
           <div
             ref={textRef}
