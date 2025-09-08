@@ -2,8 +2,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
+import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 
 const Product = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
@@ -166,7 +166,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           </motion.h1>
           
           {/* CTA Section with proper spacing */}
-          <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
+          <div className={`absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
           {!showForm ? (
               submitStatus === "idle" ? (
                 <motion.div
@@ -263,7 +263,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onChange={handleInputChange}
                         placeholder="Your Idea"
                         autoComplete="off"
-                        className="w-[90%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
+                        className="w-[92%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
                         rows={5}
                         style={{ resize: 'none' }}
                         required
