@@ -172,7 +172,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
                 >
                   <button
                     onClick={() => setShowForm(true)}
@@ -190,7 +190,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
                 >
                   <button
                     disabled={true}
@@ -213,7 +213,7 @@ ECOSTORY`.split("\n").map((line, index) => (
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
               >
                 <form
                   onSubmit={handleSubmit}
@@ -228,7 +228,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-8 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-8 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
