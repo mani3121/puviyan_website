@@ -5,13 +5,21 @@ const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_mxugw5
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'DC-AUxWF_PZKhnpao';
 
 // initialize once with the EmailJS public key
-if (PUBLIC_KEY && PUBLIC_KEY !== 'DC-AUxWF_PZKhnpao') {
+console.log('EmailJS Configuration:', {
+  SERVICE_ID: SERVICE_ID ? '✓ Set' : '✗ Missing',
+  TEMPLATE_ID: TEMPLATE_ID ? '✓ Set' : '✗ Missing',
+  PUBLIC_KEY: PUBLIC_KEY ? '✓ Set' : '✗ Missing'
+});
+
+if (PUBLIC_KEY) {
   try {
     emailjs.init(PUBLIC_KEY);
+    console.log('EmailJS initialized successfully');
   } catch (err) {
-    // safe to ignore in dev, but log for debugging
-    // console.warn('EmailJS init failed', err);
+    console.error('EmailJS init failed:', err);
   }
+} else {
+  console.error('EmailJS PUBLIC_KEY is missing!');
 }
 
 export const handleProductSubmit = async ({
@@ -44,23 +52,44 @@ export const handleProductSubmit = async ({
       from_name: formData.name,
       from_email: formData.email,
       message: formData.message,
-      // add required template variables here, for example:
-      // reply_to: formData.email,
-      // subject: formData.subject,
+      to_name: 'Puviyan Team', // Add recipient name
+      reply_to: formData.email,
     };
+
+    console.log('Sending email with params:', templateParams);
+    console.log('Using service:', SERVICE_ID, 'template:', TEMPLATE_ID);
 
     // Use send() after init(PUBLIC_KEY) — do not pass an email address as user id
     const result = await emailjs.send(SERVICE_ID, TEMPLATE_ID, templateParams);
     console.log('EmailJS send result:', result);
 
-    setSubmitStatus('success');
-    setFormData({ name: '', email: '', message: '' });
-    setShowForm(false);
+    if (result.status === 200) {
+      setSubmitStatus('success');
+      setFormData({ name: '', email: '', message: '' });
+      setShowForm(false);
+      console.log('Email sent successfully!');
+    } else {
+      console.error('Unexpected result status:', result.status);
+      setSubmitStatus('error');
+    }
   } catch (error) {
-    console.error('EmailJS error:', error);
-    // If server responded with details, log them for debugging
-    if (error && error.status) console.error('status:', error.status);
-    if (error && error.text) console.error('text:', error.text);
+    console.error('EmailJS error details:', {
+      error: error,
+      status: error?.status,
+      text: error?.text,
+      message: error?.message,
+      stack: error?.stack
+    });
+    
+    // More specific error handling
+    if (error?.status === 422) {
+      console.error('Template or service configuration error');
+    } else if (error?.status === 400) {
+      console.error('Bad request - check template parameters');
+    } else if (error?.status === 403) {
+      console.error('Forbidden - check your EmailJS credentials');
+    }
+    
     setSubmitStatus('error');
   } finally {
     setIsLoading(false);

@@ -14,7 +14,7 @@ const Product = () => {
   const isInView = useInView(h1Ref, { once: true });
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'validation_error' | 'invalid_email'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -110,10 +110,10 @@ const Product = () => {
   };
 
   useEffect(() => {
-    if (submitStatus === 'success') {
+    if (submitStatus !== 'idle') {
       const timer = setTimeout(() => {
         setSubmitStatus('idle');
-      }, 50000);
+      }, 5000); // Auto-hide after 5 seconds
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
@@ -237,6 +237,48 @@ ECOSTORY`.split("\n").map((line, index) => (
                   >
                     &times;
                   </button>
+                  
+                  {/* Success/Error Messages at top of form */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-green-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Message sent successfully! Thank you for sharing your ideas.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-red-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Failed to send message. Please check console for details and try again.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'validation_error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Please fill in all required fields.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'invalid_email' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Please enter a valid email address.
+                    </motion.div>
+                  )}
                   <div className="flex flex-row space-x-2 mb-3 justify-center">
                     <input
                       type="text"
@@ -281,7 +323,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="responsive-button-padding rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
+                      className="px-6 py-4 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] h-2 flex items-center justify-center"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -290,10 +332,6 @@ ECOSTORY`.split("\n").map((line, index) => (
                       {isLoading ? 'Sending...' : 'Submit'}
                     </button>
                   </div>
-                  {submitStatus === 'error' && (
-                    <p className="text-red-600 mt-2">Failed to send message. Please try again.</p>
-                  )}
-                  <div className="h-3" />
                 </form>
               </motion.div>
             </div>
