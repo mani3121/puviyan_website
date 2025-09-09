@@ -228,7 +228,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-8 right-3 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-8 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
@@ -318,7 +318,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     </div>
                   </div>
                   {/* gap between textarea and buttons */}
-                  <div className="h-1" />
+                    <div className="h-3" />
                   <div className="flex flex-row space-x-4 justify-center items-center w-full">
                     <button
                       type="submit"
@@ -331,8 +331,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                     >
                       {isLoading ? 'Sending...' : 'Submit'}
                     </button>
-                    <div className="h-2" />
                   </div>
+                    <div className="h-2" />
                 </form>
               </motion.div>
             </div>

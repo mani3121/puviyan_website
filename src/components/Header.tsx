@@ -162,7 +162,7 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-8">
+            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-16">
               {renderLinks(currentPath, scrollToSection, isScrolled, isMobile)}
             </div>
           )}
