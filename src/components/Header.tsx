@@ -109,8 +109,8 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
-      <div className="container mx-auto px-4 py-1.5 md:py-0">
-        <div className="flex items-center justify-between h-10 md:h-auto">
+      <div className="w-full px-4 py-1.5 md:py-0 md:pl-4 md:pr-0">
+        <div className="flex items-center justify-between h-10 md:h-auto max-w-screen-2xl mx-auto">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
@@ -162,8 +162,9 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-4">
-              {renderLinks(currentPath, scrollToSection, isScrolled, isMobile)}
+            <div className="hidden md:flex md:items-center md:space-x-6 flex-1 justify-end">
+              {renderMainLinks(currentPath, scrollToSection, isScrolled, isMobile)}
+              {renderUniteWithUsLink(currentPath, scrollToSection, isScrolled, isMobile)}
             </div>
           )}
         </div>
@@ -172,6 +173,7 @@ const Header = () => {
   );
 };
 
+// For mobile, render all links together
 const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
   <>
     <a
@@ -275,6 +277,80 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       Unite with Us
     </a>
   </>
+);
+
+// For desktop, split the main links from the Unite With Us link
+const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
+  <div className="flex items-center space-x-6">
+    <a
+      href="/animated-split-images"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("animated-split-images");
+      }}
+      className={`block px-3 py-2 text-sm transition-colors font-semibold ${
+        currentPath === "/animated-split-images"
+          ? "text-green-800 underline"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
+      }`}
+      style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+    >
+      Technology
+    </a>
+    <a
+      href="/gallery"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("gallery");
+      }}
+      className={`block px-3 py-2 text-sm transition-colors font-semibold ${
+        currentPath === "/gallery"
+          ? "text-green-800 underline"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
+      }`}
+      style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+    >
+      People and Planet
+    </a>
+    <a
+      href="/about-us"
+      onClick={(e) => {
+        e.preventDefault();
+        document.body.style.overflowY = "scroll";
+        scrollToSection("about-us");
+      }}
+      className={`block px-3 py-2 text-sm transition-colors font-semibold ${
+        currentPath === "/about-us"
+          ? "text-green-800 underline"
+          : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
+      }`}
+      style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+    >
+      About Puviyan
+    </a>
+  </div>
+);
+
+// Separate function for the Unite With Us link to position it at the edge
+const renderUniteWithUsLink = (currentPath, scrollToSection, isScrolled, isMobile) => (
+  <a
+    href="/unite-with-us"
+    onClick={(e) => {
+      e.preventDefault();
+      document.body.style.overflowY = "scroll";
+      scrollToSection("unite-with-us");
+    }}
+    className={`block py-2 text-sm transition-colors font-semibold ${
+      currentPath === "/unite-with-us"
+        ? "text-green-800 underline"
+        : isScrolled ? "text-white hover:text-green-400" : " hover:text-green-800"
+    }`}
+    style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
+  >
+    Unite with Us
+  </a>
 );
 
 export default Header;
