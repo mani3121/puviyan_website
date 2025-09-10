@@ -70,7 +70,7 @@ const CarbonFootprintBanner = () => {
         </div>
         <div className="co2-text flex flex-col justify-center">
           <div className="main font-bold text-xs text-white leading-tight">
-            {co2Estimate} g of CO₂ per page view
+            {co2Estimate} g of CO2e per page view
           </div>
           <div className="sub text-xs text-gray-300 mt-0.5">
             {comparison || '—'}

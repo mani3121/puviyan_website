@@ -2,8 +2,8 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
+import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 
 const Product = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
@@ -14,7 +14,7 @@ const Product = () => {
   const isInView = useInView(h1Ref, { once: true });
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'validation_error' | 'invalid_email'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -110,10 +110,10 @@ const Product = () => {
   };
 
   useEffect(() => {
-    if (submitStatus === 'success') {
+    if (submitStatus !== 'idle') {
       const timer = setTimeout(() => {
         setSubmitStatus('idle');
-      }, 50000);
+      }, 5000); // Auto-hide after 5 seconds
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
@@ -165,14 +165,14 @@ ECOSTORY`.split("\n").map((line, index) => (
             ))}
           </motion.h1>
           
-          {/* CTA Section with proper spacing */}
-          <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
-          {!showForm ? (
-              submitStatus === "idle" ? (
+          {/* Button Section */}
+          {!showForm && (
+            <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
+              {submitStatus === "idle" ? (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
                 >
                   <button
                     onClick={() => setShowForm(true)}
@@ -190,7 +190,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.5 }}
+                  transition={{ duration: 0.2, delay: 0.1 }}
                 >
                   <button
                     disabled={true}
@@ -203,17 +203,22 @@ ECOSTORY`.split("\n").map((line, index) => (
                     WITH YOUR IDEAS
                   </button>
                 </motion.div>
-              )
-            ) : (
+              )}
+            </div>
+          )}
+          
+          {/* Form Section */}
+          {showForm && (
+            <div className={`absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
               >
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 rounded-2xl relative form-container"
+                  className="space-y-0 rounded-2xl relative form-container pb-8"
                   style={{
                     background: "#000",
                     boxShadow: "0 1px 1px 0 rgba(200,200,200,0.32)",
@@ -223,7 +228,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-8 right-6 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-8 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
@@ -232,6 +237,48 @@ ECOSTORY`.split("\n").map((line, index) => (
                   >
                     &times;
                   </button>
+                  
+                  {/* Success/Error Messages at top of form */}
+                  {submitStatus === 'success' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-green-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Message sent successfully! Thank you for sharing your ideas.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-red-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Failed to send message. Please check console for details and try again.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'validation_error' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Please fill in all required fields.
+                    </motion.div>
+                  )}
+                  {submitStatus === 'invalid_email' && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
+                    >
+                      Please enter a valid email address.
+                    </motion.div>
+                  )}
                   <div className="flex flex-row space-x-2 mb-3 justify-center">
                     <input
                       type="text"
@@ -263,20 +310,19 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onChange={handleInputChange}
                         placeholder="Your Idea"
                         autoComplete="off"
-                        className="w-[90%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
+                        className="w-[92%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
                         rows={5}
                         style={{ resize: 'none' }}
                         required
                       />
                     </div>
                   </div>
-                  {/* gap between textarea and buttons */}
-                  <div className="h-3" />
-                  <div className="flex flex-row space-x-4 justify-center items-center w-full">
+                  {/* Calculated spacing to center submit button between textarea and form bottom */}
+                  <div className="flex flex-col h-20 justify-center items-center">
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="responsive-button-padding rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px]"
+                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -285,14 +331,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                       {isLoading ? 'Sending...' : 'Submit'}
                     </button>
                   </div>
-                  {submitStatus === 'error' && (
-                    <p className="text-red-600 mt-2">Failed to send message. Please try again.</p>
-                  )}
-                  <div className="h-3" />
                 </form>
               </motion.div>
-            )}
-          </div>
+            </div>
+          )}
           
           <div
             ref={textRef}

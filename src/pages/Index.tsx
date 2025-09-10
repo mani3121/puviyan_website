@@ -59,8 +59,7 @@ const Index = () => {
                 <ServicesLatest />
               </div>
             </section>
-
-            {/* Gallery Section */}
+                 {/* Gallery Section */}
             <section id="gallery" className="w-full bg-black text-gray-300">
               <div className="w-full px-4 py-8">
                 <Gallery />
@@ -111,7 +110,7 @@ const Index = () => {
             <span className="font-normal">
               © 2025 Puviyan Digital Solutions Pvt. Ltd.
             </span>
-            <div className="flex flex-row items-center space-x-2">
+            <div className="flex flex-row items-center space-x-6">
               <a
                 href="/privacy-policy"
                 className="underline hover:text-gray-400 font-normal"

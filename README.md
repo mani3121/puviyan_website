@@ -164,6 +164,4 @@ The site is configured for Vercel deployment with:
 
 This is a private project for Puviyan Digital Solutions. For any inquiries or suggestions, please contact the development team.
 
----
-
 **Built with ❤️ by Puviyan Digital Solutions**
