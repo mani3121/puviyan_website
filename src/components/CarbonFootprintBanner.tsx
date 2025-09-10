@@ -1,14 +1,16 @@
+// components/CarbonFootprintBanner.tsx
 import { gsap } from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
+import { getTransferredBytes, simplifiedCO2PerView, compareToBaseline } from '@/utils/carbon'; // adjust path alias as needed
 
 const CarbonFootprintBanner = () => {
-  const [pageWeight, setPageWeight] = useState(0); // Page weight in KB
-  const [co2Estimate, setCo2Estimate] = useState(0); // CO₂ emissions in grams
+  const [pageWeightKB, setPageWeightKB] = useState(0); // KB
+  const [co2Estimate, setCo2Estimate] = useState(0);   // grams/view
+  const [comparison, setComparison] = useState('');     // optional label
   const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // GSAP animation for fade-in and slide-in
     if (bannerRef.current) {
       gsap.fromTo(
         bannerRef.current,
@@ -17,35 +19,39 @@ const CarbonFootprintBanner = () => {
       );
     }
 
-    // Calculate the page weight and CO₂ emissions
-    const calculatePageWeightAndCO2 = () => {
-      const documentSize = new XMLSerializer().serializeToString(document).length;
-      const imagesSize = Array.from(document.querySelectorAll('img')).reduce(
-        (total) => total + 100000, // Rough estimate: 100KB per image
-        0
-      );
+    // Only runs in browser; guard just in case of SSR
+    if (typeof window === 'undefined') return;
 
-      const totalSizeKB = (documentSize + imagesSize) / 1024; // Convert to KB
-      setPageWeight(parseFloat(totalSizeKB.toFixed(2)));
+    const calc = () => {
+      const bytes = getTransferredBytes();
+      const totalKB = bytes / 1024;
+      const totalMB = bytes / (1024 * 1024);
+      setPageWeightKB(Number(totalKB.toFixed(2)));
 
-      // Correct CO₂ calculation: ~0.5g CO₂ per MB transferred
-      const totalSizeMB = totalSizeKB / 1024; // Convert KB to MB
-      const estimatedCO2 = parseFloat((totalSizeMB * 0.5).toFixed(2)); // CO₂ in grams
-      setCo2Estimate(estimatedCO2);
+      // Use your preferred constants here
+      const { gramsCO2 } = simplifiedCO2PerView(totalMB, {
+        energyPerGB_kWh: 0.405,  // or 0.81 — your choice
+        carbonIntensity_gPerKWh: 475,
+      } as any); // narrow typing if you prefer exact keys
+
+      setCo2Estimate(gramsCO2);
+
+      // Optional: compute the “X% lower” label versus a baseline grams/view
+      const baseline_g = 0.70; // e.g., your chosen “global average” grams/view
+      const { label } = compareToBaseline(gramsCO2, baseline_g);
+      setComparison(label);
     };
 
-    calculatePageWeightAndCO2();
+    calc();
   }, []);
 
   return (
     <div
       ref={bannerRef}
-      className="fixed bottom-12 right-16 z-50" // changed right-8 to right-12 to move left
-      style={{
-        fontFamily: 'Arial, sans-serif',
-      }}
+      className="fixed bottom-12 right-16 z-50"
+      style={{ fontFamily: 'Arial, sans-serif' }}
     >
-      {/* Desktop and Tablet View */}
+      {/* Desktop & Tablet */}
       <div
         className="co2-badge items-center justify-center gap-1.5 px-2 py-1.5 bg-gray-900 relative hidden md:flex shadow-lg"
         style={{
@@ -60,24 +66,22 @@ const CarbonFootprintBanner = () => {
         }}
       >
         <div className="co2-icon flex flex-col items-center justify-center">
-          <img
-            src="/images/Co-2.png"
-            alt="CO2 Footprint Icon"
-            className="w-8 h-8"
-            style={{ transform: 'rotate(-18deg)' }}
-          />
+          <img src="/images/Co-2.png" alt="CO2 Footprint Icon" className="w-8 h-8" />
         </div>
         <div className="co2-text flex flex-col justify-center">
           <div className="main font-bold text-xs text-white leading-tight">
             {co2Estimate} g of CO2e per page view
           </div>
           <div className="sub text-xs text-gray-300 mt-0.5">
-            64% lower than global average
+            {comparison || '—'}
+          </div>
+          <div className="text-[10px] text-gray-400 mt-0.5">
+            Page weight: {pageWeightKB} KB
           </div>
         </div>
       </div>
 
-      {/* Mobile View */}
+      {/* Mobile */}
       <div className="sm:flex md:hidden">
         <CarbonFootprintBannerMobile co2Estimate={co2Estimate} />
       </div>
@@ -86,3 +90,4 @@ const CarbonFootprintBanner = () => {
 };
 
 export default CarbonFootprintBanner;
+ 
