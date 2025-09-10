@@ -317,13 +317,12 @@ ECOSTORY`.split("\n").map((line, index) => (
                       />
                     </div>
                   </div>
-                  {/* gap between textarea and buttons */}
-                    <div className="h-3" />
-                  <div className="flex flex-row space-x-4 justify-center items-center w-full">
+                  {/* Calculated spacing to center submit button between textarea and form bottom */}
+                  <div className="flex flex-col h-20 justify-center items-center">
                     <button
                       type="submit"
                       disabled={isLoading}
-                      className="px-6 py-4 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] h-2 flex items-center justify-center"
+                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
                       style={{
                         background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                         color: 'white',
@@ -332,7 +331,6 @@ ECOSTORY`.split("\n").map((line, index) => (
                       {isLoading ? 'Sending...' : 'Submit'}
                     </button>
                   </div>
-                    <div className="h-2" />
                 </form>
               </motion.div>
             </div>
