@@ -75,9 +75,9 @@ const CarbonFootprintBanner = () => {
           <div className="sub text-xs text-gray-300 mt-0.5">
             {comparison || '—'}
           </div>
-          <div className="text-[10px] text-gray-400 mt-0.5">
+          {/* <div className="text-[10px] text-gray-400 mt-0.5">
             Page weight: {pageWeightKB} KB
-          </div>
+          </div> */}
         </div>
       </div>
 
