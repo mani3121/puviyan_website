@@ -60,13 +60,6 @@ const Index = () => {
               </div>
             </section>
 
-            {/* Gallery Section */}
-            <section id="gallery" className="w-full bg-black text-gray-300">
-              <div className="w-full px-4 py-8">
-                <Gallery />
-              </div>
-            </section>
-
             <section id="about-us" className="w-full bg-black text-gray-300">
               <div className="w-full px-2 ">
                 <AboutUs />
