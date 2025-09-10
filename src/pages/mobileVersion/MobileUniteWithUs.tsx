@@ -49,7 +49,7 @@ const MobileUniteWithUs = () => {
         className="w-full min-h-screen flex flex-col relative"
         style={{
           backgroundImage:
-            'url("/images/UniteWithUs1.webp")',
+            'url("/images/UniteWithUs2.png")',
           backgroundSize: "cover",
           backgroundPosition: "center center",
           backgroundRepeat: "no-repeat",
@@ -66,24 +66,29 @@ const MobileUniteWithUs = () => {
           
           <p
             className="text-sm text-white text-justify leading-tight px-5"
-            style={{ whiteSpace: 'pre-line' }}
+            style={{ fontFamily: "Arial", whiteSpace: 'pre-line' }}
           >
-            We are dedicated to building a sustainable future by uniting with governments,
-            organizations committed to sustainability and CSR, businesses offering eco-friendly
-            solutions, investors, passionate talent, and the communities we serve.
+            We are committed to building a sustainable future by uniting with governments, mission-aligned organizations, investors, technology professionals, sustainability advocates, and the communities we serve.
           </p>
         </div>
         {/* Form container */}
         <div className="w-full px-4 py-1 flex justify-center">
           <form
             onSubmit={handleSubmit}
-            className="bg-white bg-opacity-90 rounded-xl shadow-lg p-1 flex flex-col gap-1 w-full max-w-[270px] mx-auto"
+            autoComplete="off"
+            className="rounded-2xl p-4 flex flex-col gap-4 w-full max-w-[320px] mx-auto shadow-md"
+            style={{
+              backgroundColor: "#000",
+              boxShadow: "0 2px 2px 0 rgba(200,200,200,0.32)",
+            }}
           >
             <input
               type="text"
               name="name"
               placeholder="Name*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-1"
+              autoComplete="new-name"
+              className="w-full placeholder-white px-4 py-2.5 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              style={{ backgroundColor: "#070707ff" }}
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -92,7 +97,9 @@ const MobileUniteWithUs = () => {
               type="email"
               name="email"
               placeholder="Email address*"
-              className="w-full px-2 py-1 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm mb-1"
+              autoComplete="off"
+              className="w-full px-4 py-2.5 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              style={{ backgroundColor: "#070707ff" }}
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -100,18 +107,20 @@ const MobileUniteWithUs = () => {
             <textarea
               name="message"
               placeholder="Your Message*"
-              className="w-full px-2 py-1 mt-1 rounded-xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm mb-1"
-              rows={3}
-              style={{ resize: 'none', height: '60px' }}
+              autoComplete="off"
+              className="w-full px-4 py-2.5 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm text-white"
+              style={{ backgroundColor: "#070707ff", resize: 'none' }}
+              rows={4}
               value={formData.message}
               onChange={handleInputChange}
               required
             />
             <button
               type="submit"
-              className="mx-auto py-1 px-3 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed"
+              className="mx-auto py-2 px-8 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
               style={{
-                background: "gray",
+                background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                color: 'white',
                 transition: "background 0.3s ease",
               }}
               disabled={isLoading}
@@ -119,12 +128,12 @@ const MobileUniteWithUs = () => {
               {isLoading ? "Submitting..." : "Submit"}
             </button>
             {submitStatus === "success" && showSuccess && (
-              <div className="text-green-600 text-center text-xs mt-1">
-                Thank you for joining with us!
+              <div className="text-green-400 text-center text-xs mt-2">
+                Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
             )}
             {submitStatus === "error" && (
-              <div className="text-red-600 text-center text-xs mt-1">
+              <div className="text-red-400 text-center text-xs mt-2">
                 Failed to send message. Please try again.
               </div>
             )}

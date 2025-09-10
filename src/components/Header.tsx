@@ -133,7 +133,7 @@ const Header = () => {
           </div>
 
           {/* Hamburger Menu for Mobile */}
-          <div className="md:hidden -mr-2">
+          <div className="md:hidden ml-auto mr-4">
             <button 
               onClick={() => setIsMenuOpen((prev) => !prev)} 
               className="p-2 rounded-md hover:bg-black transition-all duration-300"

@@ -135,7 +135,7 @@ const AnimatedSplitImages = () => {
         </h1>
         <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
           <img
-            src="/images/Mobile.avif"
+            src="/images/MobileImage_Final.jpeg"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
             loading="lazy"
@@ -161,44 +161,65 @@ const AnimatedSplitImages = () => {
         shouldCloseOnOverlayClick={true} // Allow closing on overlay click
         preventScroll={true} // Prevent background scrolling
       >
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            required
-          />
-          <textarea
-            name="message"
-            placeholder="Your Idea"
-            value={formData.message}
-            onChange={handleInputChange}
-            className="w-full px-4 py-2 border rounded-lg"
-            rows={4}
-            required
-          />
-          <button
-            type="submit"
-            className="px-4 py-2 text-white font-semibold rounded-lg w-full"
-            style={{
-              background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)"
-            }}
-            disabled={isLoading}
-          >
-            {isLoading ? "Submitting..." : "Submit"}
-          </button>
+        <form 
+          onSubmit={handleSubmit} 
+          className="space-y-0 rounded-2xl relative p-6 bg-black"
+          style={{
+            background: "#000",
+            boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
+          }}
+        >
+          <div className="flex flex-col space-y-3 mb-3 bg-black">
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleInputChange}
+              placeholder="Your Name"
+              autoComplete="new-password"
+              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
+              required
+            />
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleInputChange}
+              placeholder="Your Email"
+              autoComplete="off"
+              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
+              required
+            />
+          </div>
+          <div className="h-2 bg-black" />
+          <div className="bg-black">
+            <div className="flex justify-center bg-black">
+              <textarea
+                name="message"
+                value={formData.message}
+                onChange={handleInputChange}
+                placeholder="Your Idea"
+                autoComplete="off"
+                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
+                rows={5}
+                style={{ resize: 'none' }}
+                required
+              />
+            </div>
+          </div>
+          <div className="flex flex-col h-12 justify-center items-center bg-black">
+            <button
+              type="submit"
+              disabled={isLoading}
+              className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
+              style={{
+                background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                color: 'white',
+              }}
+            >
+              {isLoading ? 'Sending...' : 'Submit'}
+            </button>
+          </div>
         </form>
       </Modal>
     </div>
