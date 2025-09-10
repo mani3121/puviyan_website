@@ -317,8 +317,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                       />
                     </div>
                   </div>
+                  {/* Conditional spacing for 16+ inch screens */}
+                  <div className="hidden min-[1600px]:block h-3" />
                   {/* Calculated spacing to center submit button between textarea and form bottom */}
-                  <div className="flex flex-col h-20 justify-center items-center">
+                  <div className="flex flex-col h-12 justify-center items-center">
                     <button
                       type="submit"
                       disabled={isLoading}
