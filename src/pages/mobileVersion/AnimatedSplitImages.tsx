@@ -2,10 +2,10 @@ import { useAnimation, useInView } from "framer-motion";
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
-import { handleProductSubmit } from "../utils/handleProductSubmit";
-import "./AnimatedSplitImages.css";
+import { handleProductSubmit } from "../../utils/handleProductSubmit";
+import "../AnimatedSplitImages.css";
 
-import Header from "./Header";
+import Header from "../../components/Header";
 
 Modal.setAppElement('#root');
 
@@ -113,10 +113,10 @@ const AnimatedSplitImages = () => {
           }}
         >
           <h1
-            className="text-3xl font-extrabold text-gray-600 mb-2 text-center w-full"
+            className="text-3xl font-extrabold text-white mb-2 text-center w-full"
             style={{ fontFamily: "Arial Rounded MT Bold" }}
           >
-            COMING SOON TO REWRITE YOUR ECOSTORY
+            COMING SOON TO REWRITE OUR CARBON STORY
           </h1>
 
           {/* Button next to the h1 */}
@@ -135,9 +135,10 @@ const AnimatedSplitImages = () => {
         </h1>
         <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
           <img
-            src="/images/Mobile7.png"
+            src="/images/Mobile.avif"
             alt="Vertical Parallax"
             className="rounded-none md:rounded-2xl shadow-2xl"
+            loading="lazy"
             style={{
               objectFit: "cover",
               width: "80%",

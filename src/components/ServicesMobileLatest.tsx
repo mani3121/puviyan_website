@@ -1,8 +1,8 @@
 const ServicesMobileLatest = () => {
   return (
-    <div className="flex flex-col items-center p-6 lg:p-12 bg-white text-black">
+    <div className="flex flex-col items-center p-6 lg:p-12 bg-black text-white">
       {/* Top banner */}
-      <div className="bg-white text-gray-600 text-center w-full rounded-t-xl py-2">
+      <div className="bg-black text-white text-center w-full rounded-t-xl py-2">
         <h2 className="text-xl md:text-2xl font-bold">Empower Ambition.</h2>
         <h2 className="text-xl md:text-2xl font-bold">Advance Sustainability.</h2>
         <h2 className="text-xl md:text-2xl font-bold">Create Collective Impact.</h2>
@@ -20,7 +20,7 @@ const ServicesMobileLatest = () => {
 
       {/* Body content */}
       <div
-        className="max-w-2xl text-lg md:text-xl text-gray-700 text-justify"
+        className="max-w-2xl text-lg md:text-xl text-white text-justify"
         style={{ whiteSpace: 'pre-line' }}
       >
         <p>

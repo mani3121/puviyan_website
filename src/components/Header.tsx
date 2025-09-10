@@ -108,9 +108,9 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
-      <div className="container mx-auto px-4 py-1.5 md:py-0">
-        <div className="flex items-center justify-between h-10 md:h-auto">
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-[#1F1F1F] text-white transition-colors duration-300">
+      <div className="w-full px-4 py-1.5 md:py-0 md:px-0">
+        <div className="flex items-center justify-between h-10 md:h-auto md:px-4">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
@@ -121,6 +121,7 @@ const Header = () => {
               src="/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
               className="h-5 md:h-4 w-auto"
+              loading="lazy"
             />
             <span 
               ref={textRef}
@@ -161,7 +162,7 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-4">
+            <div className="hidden md:flex md:items-center md:space-x-6 md:mr-16">
               {renderLinks(currentPath, scrollToSection, isScrolled, isMobile)}
             </div>
           )}

@@ -47,28 +47,31 @@ const CarbonFootprintBanner = () => {
     >
       {/* Desktop and Tablet View */}
       <div
-        className="co2-badge items-center gap-2 px-2 py-1 bg-white relative hidden md:flex"
+        className="co2-badge items-center justify-center gap-1.5 px-2 py-1.5 bg-gray-900 relative hidden md:flex shadow-lg"
         style={{
-          border: '2px solid transparent',
+          border: '1px solid transparent',
           backgroundImage:
-            'linear-gradient(white, white), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+            'linear-gradient(#1f2937,rgb(12, 12, 12)), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
-          borderRadius: '40px 16px 16px 40px',
+          borderRadius: '30px 12px 12px 30px',
+          minWidth: '60px',
+          minHeight: '24px',
         }}
       >
-        <div className="co2-icon flex flex-col items-center">
+        <div className="co2-icon flex flex-col items-center justify-center">
           <img
-            src="/images/Co2.png"
+            src="/images/Co-2.png"
             alt="CO2 Footprint Icon"
-            className="w-5 h-auto"
+            className="w-8 h-8"
+            style={{ transform: 'rotate(-18deg)' }}
           />
         </div>
-        <div className="co2-text flex flex-col">
-          <div className="main font-bold text-xs text-gray-800">
-            {co2Estimate} g of CO₂ per page view
+        <div className="co2-text flex flex-col justify-center">
+          <div className="main font-bold text-xs text-white leading-tight">
+            {co2Estimate} g of CO2e per page view
           </div>
-          <div className="sub text-[10px] text-gray-600">
+          <div className="sub text-xs text-gray-300 mt-0.5">
             64% lower than global average
           </div>
         </div>

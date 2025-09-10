@@ -1,5 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
+import { useEffect, useRef, useState } from "react";
 
 const Services = () => {
   const headerLinesRef = useRef<Array<HTMLSpanElement | null>>([]);
@@ -51,7 +51,7 @@ const Services = () => {
   return (
     <div
       ref={sectionRef}
-      className="w-full min-h-screen flex flex-row bg-white md:hidden"
+      className="w-full min-h-screen flex flex-row bg-black md:hidden"
     >
       {/* Left Side: Header Lines */}
       <div className="w-[40%] flex flex-col justify-center items-end pr-2">
@@ -96,19 +96,30 @@ const Services = () => {
       <div className="w-[60%] flex items-center justify-start pl-2">
         <div
           ref={descRef}
-          className="text-[12px] text-gray-800 text-justify font-medium leading-tight"
+          className="text-[12px] text-gray-300 text-justify font-medium leading-tight"
           style={{ fontFamily: "Arial" }}
         >
-          Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together. By embedding sustainability into every digital transformation across products and services, we align with global standards and set a new benchmark for what technology can achieve.
+          Progress demands more: more innovation, more responsibility, and more
+          meaningful impact. Real change happens when these forces move forward
+          together. By embedding sustainability into every digital transformation
+          across products and services, we align with global standards and set a
+          new benchmark for what technology can achieve.
           <br />
           <br />
-          Sustainability is not an add-on; it is essential. We unite with governments, organizations, and communities worldwide to accelerate sustainable transformation at scale through strategic consulting and technology-led innovations.
+          Sustainability is not an add-on; it is essential. We unite with
+          governments, organizations, and communities worldwide to accelerate
+          sustainable transformation at scale through strategic consulting and
+          technology-led innovations.
           <br />
           <br />
-          Our capabilities span energy-efficient infrastructure, circular IT strategies, advanced real-time analytics, responsible AI solutions, and resilient, optimized value chains, with each contributing to measurable environmental, social, and economic (ESG) outcomes at scale.
+          Our capabilities span energy-efficient infrastructure, circular IT
+          strategies, advanced real-time analytics, responsible AI solutions, and
+          resilient, optimized value chains, with each contributing to measurable
+          environmental, social, and economic (ESG) outcomes at scale.
           <br />
           <br />
-          This is progress, reimagined. Technology that is not just smart, but right for people and planet.
+          This is progress, reimagined. Technology that is not just smart, but
+          right for people and planet.
         </div>
       </div>
     </div>
