@@ -61,11 +61,11 @@ const Index = () => {
             </section>
 
             {/* Gallery Section */}
-            <section id="gallery" className="w-full bg-white">
+            {/* <section id="gallery" className="w-full bg-white">
               <div className="w-full px-4 py-8">
                 <Gallery />
               </div>
-            </section>
+            </section> */}
 
             <section id="about-us" className="w-full bg-white">
               <div className="w-full px-2 ">

@@ -191,9 +191,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       }`}
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
-      Technology
+      Product
     </a>
-    {/* <a
+    { <a
       href="/services"
       onClick={(e) => {
         e.preventDefault();
@@ -212,8 +212,8 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Services
-    </a> */}
-    <a
+    </a> }
+    {/* <a
       href="/gallery"
       onClick={(e) => {
         e.preventDefault();
@@ -232,7 +232,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       People and Planet
-    </a>
+    </a> */}
     <a
       href="/about-us"
       onClick={(e) => {
