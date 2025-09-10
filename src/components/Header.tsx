@@ -109,12 +109,12 @@ const Header = () => {
 
   return (
     <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
-      <div className="w-full px-4 py-1.5 md:py-0 md:pl-4 md:pr-0">
-        <div className="flex items-center justify-between h-10 md:h-auto max-w-screen-2xl mx-auto">
+      <div className="w-full">
+        <div className="flex items-center h-10 md:h-auto">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-2"
+            className="cursor-pointer flex items-center gap-2 ml-[15%]"
             onClick={() => (window.location.href = "/")}
           >
             <img 
@@ -162,10 +162,10 @@ const Header = () => {
               )}
             </AnimatePresence>
           ) : (
-            <div className="hidden md:flex md:items-center md:space-x-6 flex-1 justify-end">
+            <nav className="hidden md:flex md:items-center md:space-x-6 ml-auto mr-[6%]">
               {renderMainLinks(currentPath, scrollToSection, isScrolled, isMobile)}
               {renderUniteWithUsLink(currentPath, scrollToSection, isScrolled, isMobile)}
-            </div>
+            </nav>
           )}
         </div>
       </div>
