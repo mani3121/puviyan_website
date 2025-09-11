@@ -48,7 +48,7 @@ const CarbonFootprintBanner = () => {
   return (
     <div
       ref={bannerRef}
-      className="fixed bottom-12 right-16 z-50"
+      className="fixed bottom-12 right-[6%] z-50"
       style={{ fontFamily: 'Arial, sans-serif' }}
     >
       {/* Desktop & Tablet */}
