@@ -108,7 +108,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300"
+    style={{  backgroundColor: "#1F1F1F" }}>
       <div className="w-full">
         <div className="flex items-center h-14 md:h-auto">
           {/* Logo with Text */}
