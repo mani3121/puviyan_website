@@ -1,10 +1,18 @@
 import { useRef, useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import Header from "./Header";
+import MobileGallery from "../pages/mobileVersion/MobileGallery";
 
 const Gallery = () => {
+  const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const leftRef = useRef<HTMLDivElement>(null);
   const rightRef = useRef<HTMLDivElement>(null);
   const [containerHeight, setContainerHeight] = useState<number | undefined>(undefined);
+
+  // Return mobile version for mobile screens
+  if (isMobile) {
+    return <MobileGallery />;
+  }
 
   useEffect(() => {
     const updateHeight = () => {

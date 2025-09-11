@@ -49,9 +49,9 @@ const MobileUniteWithUs = () => {
         className="w-full min-h-screen flex flex-col relative"
         style={{
           backgroundImage:
-            'url("/images/UniteWithUs2.png")',
-          backgroundSize: "cover",
-          backgroundPosition: "center center",
+            'url("/images/UniteWithUs3.webp")',
+          backgroundSize: "100% auto",
+          backgroundPosition: "center bottom",
           backgroundRepeat: "no-repeat",
         }}
       >
@@ -76,7 +76,7 @@ const MobileUniteWithUs = () => {
           <form
             onSubmit={handleSubmit}
             autoComplete="off"
-            className="rounded-2xl p-4 flex flex-col gap-4 w-full max-w-[320px] mx-auto shadow-md"
+            className="rounded-2xl p-3 flex flex-col gap-3 w-full max-w-[320px] mx-auto shadow-md"
             style={{
               backgroundColor: "#000",
               boxShadow: "0 2px 2px 0 rgba(200,200,200,0.32)",
@@ -87,7 +87,7 @@ const MobileUniteWithUs = () => {
               name="name"
               placeholder="Name*"
               autoComplete="new-name"
-              className="w-full placeholder-white px-4 py-2.5 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              className="w-full placeholder-white px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
               style={{ backgroundColor: "#070707ff" }}
               value={formData.name}
               onChange={handleInputChange}
@@ -98,7 +98,7 @@ const MobileUniteWithUs = () => {
               name="email"
               placeholder="Email address*"
               autoComplete="off"
-              className="w-full px-4 py-2.5 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              className="w-full px-4 py-2 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
               style={{ backgroundColor: "#070707ff" }}
               value={formData.email}
               onChange={handleInputChange}
@@ -108,9 +108,9 @@ const MobileUniteWithUs = () => {
               name="message"
               placeholder="Your Message*"
               autoComplete="off"
-              className="w-full px-4 py-2.5 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm text-white"
+              className="w-full px-4 py-2 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm text-white"
               style={{ backgroundColor: "#070707ff", resize: 'none' }}
-              rows={4}
+              rows={3}
               value={formData.message}
               onChange={handleInputChange}
               required

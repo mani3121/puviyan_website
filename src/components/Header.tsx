@@ -110,17 +110,17 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300">
       <div className="w-full">
-        <div className="flex items-center h-10 md:h-auto">
+        <div className="flex items-center h-14 md:h-auto">
           {/* Logo with Text */}
           <div 
             ref={logoRef}
-            className="cursor-pointer flex items-center gap-2 ml-[15%]"
+            className="cursor-pointer flex items-center gap-2 ml-4 md:ml-[15%]"
             onClick={() => (window.location.href = "/")}
           >
             <img 
               src="/images/puviyan_logo.png" 
               alt="Puviyan Logo" 
-              className="h-5 md:h-4 w-auto"
+              className="h-7 md:h-4 w-auto"
               loading="lazy"
             />
             <span 
@@ -133,15 +133,15 @@ const Header = () => {
           </div>
 
           {/* Hamburger Menu for Mobile */}
-          <div className="md:hidden ml-auto mr-4">
+          <div className="md:hidden ml-auto mr-2">
             <button 
               onClick={() => setIsMenuOpen((prev) => !prev)} 
               className="p-2 rounded-md hover:bg-black transition-all duration-300"
             >
               {isMenuOpen ? (
-                <X size={24} className="text-white hover:text-white transition-colors duration-300" />
+                <X size={28} className="text-white hover:text-white transition-colors duration-300" />
               ) : (
-                <Menu size={24} className="text-white hover:text-green-400 transition-colors duration-300" />
+                <Menu size={28} className="text-white hover:text-green-400 transition-colors duration-300" />
               )}
             </button>
           </div>
