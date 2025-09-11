@@ -177,7 +177,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     onClick={() => setShowForm(true)}
                     disabled={submitStatus !== "idle"}
-                    className="w-full sm:w-auto px-6 py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
+                    className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
                     style={{
                       background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
@@ -194,7 +194,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 >
                   <button
                     disabled={true}
-                    className="w-full sm:w-auto px-6 py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
+                    className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
                     style={{
                       background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                       color: "white",
