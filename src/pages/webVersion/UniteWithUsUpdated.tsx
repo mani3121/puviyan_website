@@ -21,6 +21,10 @@ const UniteWithUsUpdated = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
+    // Reset status before submission to ensure useEffect triggers on success
+    setSubmitStatus("idle");
+    setShowSuccess(false);
+    
     handleProductSubmit({
       e,
       formData,
