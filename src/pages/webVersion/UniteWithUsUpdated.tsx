@@ -85,7 +85,11 @@ const UniteWithUsUpdated = () => {
               placeholder="Name*"
               autoComplete="new-name" // or any random string, e.g. "nope"
               className="w-full placeholder-white px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{  backgroundColor: "#070707ff" }}
+              style={{  
+                backgroundColor: "#070707ff",
+                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                WebkitTextFillColor: "white"
+              }}
               value={formData.name}
               onChange={handleInputChange}
               required
@@ -96,7 +100,11 @@ const UniteWithUsUpdated = () => {
               placeholder="Email address*"
               autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{ backgroundColor: "#070707ff" }}
+              style={{ 
+                backgroundColor: "#070707ff",
+                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                WebkitTextFillColor: "white"
+              }}
               value={formData.email}
               onChange={handleInputChange}
               required
@@ -106,7 +114,11 @@ const UniteWithUsUpdated = () => {
               placeholder="Your Message*"
               autoComplete="off"
               className="w-full px-6 py-3 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
-              style={{ backgroundColor: "#070707ff" }}
+              style={{ 
+                backgroundColor: "#070707ff",
+                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                WebkitTextFillColor: "white"
+              }}
               rows={5}
               value={formData.message}
               onChange={handleInputChange}
