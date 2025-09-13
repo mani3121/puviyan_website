@@ -42,7 +42,7 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-black p-4">
+    <div className="w-full min-h-screen flex items-center justify-center bg-black p-4 -mt-12">
       <div className="w-full max-w-[1800px] flex flex-col lg:flex-row bg-black rounded-2xl shadow-lg overflow-hidden lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[900px]">
         {/* Left Section - 50% */}
         <div
@@ -59,11 +59,11 @@ const Gallery = () => {
           <p className="text-[10px] md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white text-justify leading-tight md:leading-relaxed">
             On World Environment Day 2025, Team Puviyan proudly joined the global
             movement led by the United Nations Environment Programme (UNEP),
-            emphasizing the powerful theme: “Beat Plastic Pollution.”
+            emphasizing the powerful theme: "Beat Plastic Pollution."
             <br />
             <br />
-            As part of this initiative, we embraced a personal commitment: “I am
-            Puviyan. I pledge to beat Plastic Pollution.” Guided by the pledge,
+            As part of this initiative, we embraced a personal commitment: "I am
+            Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
             our team took to the streets of Chennai to engage residents, spark
             conversations, and spotlight the urgent need to reduce single-use
             plastic waste.
@@ -71,8 +71,8 @@ const Gallery = () => {
             <br />
             We distributed reusable cloth bags, encouraging simple, everyday
             actions that help protect the environment. Each cloth bag, when used
-            150 times, can save about 0.5 kg of CO2e emissions and keep 150
-            plastic bags out of landfills and waterways. It’s a small switch that
+            150 times, can save about 0.5 kg of CO2e emissions and keep 150
+            plastic bags out of landfills and waterways. It's a small switch that
             creates a big impact for our planet and future generations.
           </p>
         </div>

@@ -288,6 +288,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                       placeholder="Your Name"
                       autoComplete="new-password"
                       className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
+                      style={{
+                        WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                        WebkitTextFillColor: "white"
+                      }}
                       required
                     />
                     <input
@@ -298,6 +302,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                       placeholder="Your Email"
                       autoComplete="off"
                       className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
+                      style={{
+                        WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                        WebkitTextFillColor: "white"
+                      }}
                       required
                     />
                   </div>
@@ -312,7 +320,11 @@ ECOSTORY`.split("\n").map((line, index) => (
                         autoComplete="off"
                         className="w-[92%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
                         rows={5}
-                        style={{ resize: 'none' }}
+                        style={{ 
+                          resize: 'none',
+                          WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                          WebkitTextFillColor: "white"
+                        }}
                         required
                       />
                     </div>
