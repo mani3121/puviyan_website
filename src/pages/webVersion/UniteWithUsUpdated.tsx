@@ -9,10 +9,42 @@ const UniteWithUsUpdated = () => {
   });
 
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "validation_error" | "invalid_email">("idle");
   const [showSuccess, setShowSuccess] = useState(false);
   const [showSubmitButton, setShowSubmitButton] = useState(true);
   const [showToastInPlace, setShowToastInPlace] = useState(false);
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+
+  const validateField = (name: string, value: string) => {
+    const trimmedValue = value.trim();
+    
+    switch (name) {
+      case 'name':
+        if (trimmedValue === '') return 'Please fill your name';
+        if (trimmedValue.length < 2) return 'Name must be at least 2 characters';
+        return '';
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (trimmedValue === '') return 'Please fill your valid email';
+        if (!emailRegex.test(trimmedValue)) return 'Please fill your valid email';
+        return '';
+      case 'message':
+        if (trimmedValue === '') return 'Please fill your message';
+        if (trimmedValue.length < 10) return 'Message must be at least 10 characters';
+        return '';
+      default:
+        return '';
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -20,27 +52,95 @@ const UniteWithUsUpdated = () => {
       ...prev,
       [name]: value,
     }));
+    
+    // Clear error when user starts typing
+    if (touched[name as keyof typeof touched]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+    
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Hide submit button and show toast in its place
-    setShowSubmitButton(false);
-    setShowToastInPlace(true);
+    // Validate all fields
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      message: validateField('message', formData.message),
+    };
     
-    // After 3 seconds, restore submit button and clear form
-    setTimeout(() => {
-      setShowToastInPlace(false);
-      setShowSubmitButton(true);
-      setFormData({ name: "", email: "", message: "" });
-    }, 3000);
+    // Mark all fields as touched
+    setTouched({
+      name: true,
+      email: true,
+      message: true,
+    });
+    
+    setErrors(newErrors);
+    
+    // Check if there are any errors
+    const hasErrors = Object.values(newErrors).some(error => error !== '');
+    
+    if (hasErrors) {
+      return; // Don't submit if there are validation errors
+    }
+    
+    // Start loading state
+    setIsLoading(true);
+    
+    try {
+      // Use the existing email utility
+      await handleProductSubmit({
+        e,
+        formData,
+        setIsLoading,
+        setSubmitStatus,
+        setFormData: (data) => {
+          setFormData(data);
+          setErrors({ name: "", email: "", message: "" });
+          setTouched({ name: false, email: false, message: false });
+        },
+        setShowForm: () => {
+          // Hide submit button and show toast in its place
+          setShowSubmitButton(false);
+          setShowToastInPlace(true);
+          
+          // After 3 seconds, restore submit button
+          setTimeout(() => {
+            setShowToastInPlace(false);
+            setShowSubmitButton(true);
+          }, 3000);
+        },
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
     if (submitStatus === "success") {
       setShowSuccess(true);
-      const timer = setTimeout(() => setShowSuccess(false), 5000);
+      const timer = setTimeout(() => setShowSuccess(false), 3000);
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
@@ -80,51 +180,78 @@ const UniteWithUsUpdated = () => {
               boxShadow: "0 2px 2px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
             }}
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Name*"
-              autoComplete="new-name" // or any random string, e.g. "nope"
-              className="w-full placeholder-white px-6 py-3 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{  
-                backgroundColor: "#070707ff",
-                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
-                WebkitTextFillColor: "white"
-              }}
-              value={formData.name}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Email address*"
-              autoComplete="off"
-              className="w-full px-6 py-3 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-base"
-              style={{ 
-                backgroundColor: "#070707ff",
-                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
-                WebkitTextFillColor: "white"
-              }}
-              value={formData.email}
-              onChange={handleInputChange}
-              required
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message*"
-              autoComplete="off"
-              className="w-full px-6 py-3 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base"
-              style={{ 
-                backgroundColor: "#070707ff",
-                WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
-                WebkitTextFillColor: "white"
-              }}
-              rows={5}
-              value={formData.message}
-              onChange={handleInputChange}
-              required
-            />
+            <div className="w-full">
+              <input
+                type="text"
+                name="name"
+                placeholder="Name*"
+                autoComplete="new-name"
+                className={`w-full placeholder-white px-6 py-3 rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-200 text-base ${
+                  errors.name ? 'border-red-500' : 'border-gray-300'
+                }`}
+                style={{  
+                  backgroundColor: "#070707ff",
+                  WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                  WebkitTextFillColor: "white"
+                }}
+                value={formData.name}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  {errors.name}
+                </p>
+              )}
+            </div>
+            <div className="w-full">
+              <input
+                type="email"
+                name="email"
+                placeholder="Email address*"
+                autoComplete="off"
+                className={`w-full px-6 py-3 placeholder-white rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-200 text-base ${
+                  errors.email ? 'border-red-500' : 'border-gray-300'
+                }`}
+                style={{ 
+                  backgroundColor: "#070707ff",
+                  WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                  WebkitTextFillColor: "white"
+                }}
+                value={formData.email}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+              />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  {errors.email}
+                </p>
+              )}
+            </div>
+            <div className="w-full">
+              <textarea
+                name="message"
+                placeholder="Your Message*"
+                autoComplete="off"
+                className={`w-full px-6 py-3 placeholder-white rounded-2xl border focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-base ${
+                  errors.message ? 'border-red-500' : 'border-gray-300'
+                }`}
+                style={{ 
+                  backgroundColor: "#070707ff",
+                  WebkitBoxShadow: "0 0 0 1000px #070707ff inset",
+                  WebkitTextFillColor: "white"
+                }}
+                rows={5}
+                value={formData.message}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+              />
+              {errors.message && (
+                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  {errors.message}
+                </p>
+              )}
+            </div>
             {showSubmitButton ? (
               <button
                 type="submit"
@@ -139,18 +266,28 @@ const UniteWithUsUpdated = () => {
                 {isLoading ? "Submitting..." : "Submit"}
               </button>
             ) : showToastInPlace ? (
-              <div className="text-green-600 text-center text-sm py-2 px-12 min-w-[200px] flex items-center justify-center">
+              <div className="text-green-600 text-center text-lg py-2 px-12 min-w-[200px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
                 Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
             ) : null}
             {submitStatus === "success" && showSuccess && !showToastInPlace && (
-              <div className="text-green-600 text-center text-sm mt-2">
+              <div className="text-green-600 text-center text-lg mt-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
                 Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
             )}
             {submitStatus === "error" && (
-              <div className="text-red-600 text-center text-sm mt-2">
+              <div className="text-red-600 text-center text-sm mt-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
                 Failed to send message. Please try again.
+              </div>
+            )}
+            {submitStatus === "validation_error" && (
+              <div className="text-red-600 text-center text-sm mt-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                Please fill in all required fields correctly.
+              </div>
+            )}
+            {submitStatus === "invalid_email" && (
+              <div className="text-red-600 text-center text-sm mt-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                Please enter a valid email address.
               </div>
             )}
           </form>

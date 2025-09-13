@@ -23,6 +23,16 @@ const Product = () => {
   const [showSubmitButton, setShowSubmitButton] = useState(true);
   const [showToastInPlace, setShowToastInPlace] = useState(false);
   const [lastTouchY, setLastTouchY] = useState(0);
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false
+  });
 
   useEffect(() => {
     const image = imageRef.current;
@@ -92,28 +102,118 @@ const Product = () => {
     }
   }, [isInView, controls]);
 
+  const validateField = (name: string, value: string) => {
+    const trimmedValue = value.trim();
+    
+    switch (name) {
+      case 'name':
+        if (trimmedValue === '') return 'Please fill your name';
+        if (trimmedValue.length < 2) return 'Name must be at least 2 characters';
+        return '';
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (trimmedValue === '') return 'Please fill your valid email';
+        if (!emailRegex.test(trimmedValue)) return 'Please fill your valid email';
+        return '';
+      case 'message':
+        if (trimmedValue === '') return 'Please fill your message';
+        if (trimmedValue.length < 10) return 'Message must be at least 10 characters';
+        return '';
+      default:
+        return '';
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    
+    // Clear error when user starts typing
+    if (touched[name as keyof typeof touched]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+    
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Hide submit button and show toast in its place
-    setShowSubmitButton(false);
-    setShowToastInPlace(true);
+    // Validate all fields
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      message: validateField('message', formData.message),
+    };
     
-    // After 3 seconds, close form, restore submit button and clear form
-    setTimeout(() => {
-      setShowToastInPlace(false);
-      setShowSubmitButton(true);
-      setFormData({ name: '', email: '', message: '' });
-      setShowForm(false);
-    }, 3000);
+    // Mark all fields as touched
+    setTouched({
+      name: true,
+      email: true,
+      message: true,
+    });
+    
+    setErrors(newErrors);
+    
+    // Check if there are any errors
+    const hasErrors = Object.values(newErrors).some(error => error !== '');
+    
+    if (hasErrors) {
+      return; // Don't submit if there are validation errors
+    }
+    
+    // Start loading state
+    setIsLoading(true);
+    
+    try {
+      // Use the existing email utility
+      await handleProductSubmit({
+        e,
+        formData,
+        setIsLoading,
+        setSubmitStatus,
+        setFormData: (data) => {
+          setFormData(data);
+          setErrors({ name: '', email: '', message: '' });
+          setTouched({ name: false, email: false, message: false });
+        },
+        setShowForm: () => {
+          // Hide submit button and show toast in its place
+          setShowSubmitButton(false);
+          setShowToastInPlace(true);
+          
+          // After 3 seconds, close form and restore submit button
+          setTimeout(() => {
+            setShowToastInPlace(false);
+            setShowSubmitButton(true);
+            setShowForm(false);
+          }, 3000);
+        },
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -225,75 +325,38 @@ ECOSTORY`.split("\n").map((line, index) => (
                     &times;
                   </button>
                   
-                  {/* Success/Error Messages at top of form */}
-                  {submitStatus === 'success' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mb-4 p-3 bg-green-600 text-white rounded-lg text-sm font-medium"
-                    >
-                      Message sent successfully! Thank you for sharing your ideas.
-                    </motion.div>
-                  )}
-                  {submitStatus === 'error' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mb-4 p-3 bg-red-600 text-white rounded-lg text-sm font-medium"
-                    >
-                      Failed to send message. Please check console for details and try again.
-                    </motion.div>
-                  )}
-                  {submitStatus === 'validation_error' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
-                    >
-                      Please fill in all required fields.
-                    </motion.div>
-                  )}
-                  {submitStatus === 'invalid_email' && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                      className="mb-4 p-3 bg-orange-600 text-white rounded-lg text-sm font-medium"
-                    >
-                      Please enter a valid email address.
-                    </motion.div>
-                  )}
                   <div className="flex flex-row space-x-2 mb-3 justify-center">
                     <input
                       type="text"
                       name="name"
                       value={formData.name}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       placeholder="Your Name"
                       autoComplete="new-password"
-                      className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
+                      className={`w-[45%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input ${
+                        errors.name ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
+                      }`}
                       style={{
-                        WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                        WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
                         WebkitTextFillColor: "white"
                       }}
-                      required
                     />
                     <input
                       type="email"
                       name="email"
                       value={formData.email}
                       onChange={handleInputChange}
+                      onBlur={handleBlur}
                       placeholder="Your Email"
                       autoComplete="off"
-                      className="w-[45%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-input"
+                      className={`w-[45%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input ${
+                        errors.email ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
+                      }`}
                       style={{
-                        WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                        WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
                         WebkitTextFillColor: "white"
                       }}
-                      required
                     />
                   </div>
                    <div className="h-2" />
@@ -303,16 +366,18 @@ ECOSTORY`.split("\n").map((line, index) => (
                         name="message"
                         value={formData.message}
                         onChange={handleInputChange}
+                        onBlur={handleBlur}
                         placeholder="Your Idea"
                         autoComplete="off"
-                        className="w-[92%] px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black responsive-textarea"
+                        className={`w-[92%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea ${
+                          errors.message ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
+                        }`}
                         rows={5}
                         style={{ 
                           resize: 'none',
-                          WebkitBoxShadow: "0 0 0 1000px #000000 inset",
+                          WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
                           WebkitTextFillColor: "white"
                         }}
-                        required
                       />
                     </div>
                   </div>
@@ -333,8 +398,9 @@ ECOSTORY`.split("\n").map((line, index) => (
                         {isLoading ? 'Sending...' : 'Submit'}
                       </button>
                     ) : showToastInPlace ? (
-                      <div className="text-green-600 text-center text-sm py-2 px-6 min-w-[170px] flex items-center justify-center">
-Thank you for your idea!                       </div>
+                      <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                        Thank you for your idea!
+                      </div>
                     ) : null}
                   </div>
                 </form>
