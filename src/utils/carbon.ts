@@ -22,26 +22,44 @@ export type SimplifiedCO2Options = {
       return 0;
     }
   
-    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
-    const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
+    try {
+      const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming | undefined;
+      const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
   
-    let bytes = 0;
+      let bytes = 0;
   
-    const addEntry = (entry?: PerformanceResourceTiming | PerformanceNavigationTiming) => {
-      if (!entry) return;
-      const ts = (entry as any).transferSize as number | undefined;
-      const ebs = (entry as any).encodedBodySize as number | undefined;
-      if (typeof ts === 'number' && isFinite(ts) && ts > 0) {
-        bytes += ts;
-      } else if (typeof ebs === 'number' && isFinite(ebs) && ebs > 0) {
-        bytes += ebs; // fallback (no headers)
+      const addEntry = (entry?: PerformanceResourceTiming | PerformanceNavigationTiming) => {
+        if (!entry) return;
+        const ts = (entry as any).transferSize as number | undefined;
+        const ebs = (entry as any).encodedBodySize as number | undefined;
+        const ds = (entry as any).decodedBodySize as number | undefined;
+        
+        if (typeof ts === 'number' && isFinite(ts) && ts > 0) {
+          bytes += ts;
+        } else if (typeof ebs === 'number' && isFinite(ebs) && ebs > 0) {
+          bytes += ebs; // fallback (no headers)
+        } else if (typeof ds === 'number' && isFinite(ds) && ds > 0) {
+          bytes += ds; // last resort fallback
+        }
+      };
+  
+      addEntry(nav);
+      for (const r of resources) {
+        addEntry(r);
       }
-    };
   
-    addEntry(nav);
-    for (const r of resources) addEntry(r);
+      // Additional safety check - if we still have 0 bytes, 
+      // it might be due to timing issues or CORS restrictions
+      if (bytes === 0 && resources.length > 0) {
+        // Estimate based on number of resources (rough fallback)
+        bytes = Math.max(resources.length * 50000, 500000); // 50KB per resource, min 500KB
+      }
   
-    return bytes;
+      return bytes;
+    } catch (error) {
+      console.warn('Error calculating transferred bytes:', error);
+      return 0;
+    }
   }
   
   /**

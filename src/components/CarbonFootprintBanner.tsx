@@ -26,23 +26,45 @@ const CarbonFootprintBanner = () => {
       const bytes = getTransferredBytes();
       const totalKB = bytes / 1024;
       const totalMB = bytes / (1024 * 1024);
-      setPageWeightKB(Number(totalKB.toFixed(2)));
+      
+      // If no bytes detected, use a reasonable fallback
+      const fallbackMB = totalMB > 0 ? totalMB : 1.5; // 1.5MB fallback
+      setPageWeightKB(Number((fallbackMB * 1024).toFixed(2)));
 
       // Use your preferred constants here
-      const { gramsCO2 } = simplifiedCO2PerView(totalMB, {
+      const { gramsCO2 } = simplifiedCO2PerView(fallbackMB, {
         energyPerGB_kWh: 0.405,  // or 0.81 — your choice
         carbonIntensity_gPerKWh: 475,
       } as any); // narrow typing if you prefer exact keys
 
       setCo2Estimate(gramsCO2);
 
-      // Optional: compute the “X% lower” label versus a baseline grams/view
-      const baseline_g = 0.70; // e.g., your chosen “global average” grams/view
+      // Optional: compute the "X% lower" label versus a baseline grams/view
+      const baseline_g = 0.70; // e.g., your chosen "global average" grams/view
       const { label } = compareToBaseline(gramsCO2, baseline_g);
       setComparison(label);
     };
 
+    // Initial calculation
     calc();
+
+    // Retry calculation after resources are fully loaded
+    const retryCalc = () => {
+      setTimeout(() => {
+        const bytes = getTransferredBytes();
+        if (bytes > 0) {
+          calc();
+        }
+      }, 1000);
+    };
+
+    // Listen for load completion
+    if (document.readyState === 'complete') {
+      retryCalc();
+    } else {
+      window.addEventListener('load', retryCalc);
+      return () => window.removeEventListener('load', retryCalc);
+    }
   }, []);
 
   return (
