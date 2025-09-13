@@ -17,10 +17,10 @@ Real change begins with individual action, but its true strength lies in the sha
       {/* Three-line border & Header */}
       <Header />
       {/* Main content centered */}
-      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen">
+      <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen -mt-16">
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Image */}
-          <div className="w-full mb-6 mt-12 flex justify-center items-center overflow-hidden">
+          <div className="w-full mb-6 mt-4 flex justify-center items-center overflow-hidden">
             <img
               src="/images/ppt1.gif"
               alt="About Us"
