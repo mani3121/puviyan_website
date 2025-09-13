@@ -180,7 +180,7 @@ const UniteWithUsUpdated = () => {
               boxShadow: "0 2px 2px 0 rgba(200,200,200,0.32)", // increased shadow spread and opacity
             }}
           >
-            <div className="w-full">
+            <div className="w-full relative">
               <input
                 type="text"
                 name="name"
@@ -199,12 +199,15 @@ const UniteWithUsUpdated = () => {
                 onBlur={handleBlur}
               />
               {errors.name && (
-                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                  </div>
                   {errors.name}
-                </p>
+                </div>
               )}
             </div>
-            <div className="w-full">
+            <div className="w-full relative">
               <input
                 type="email"
                 name="email"
@@ -223,12 +226,15 @@ const UniteWithUsUpdated = () => {
                 onBlur={handleBlur}
               />
               {errors.email && (
-                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                  </div>
                   {errors.email}
-                </p>
+                </div>
               )}
             </div>
-            <div className="w-full">
+            <div className="w-full relative">
               <textarea
                 name="message"
                 placeholder="Your Message*"
@@ -247,9 +253,12 @@ const UniteWithUsUpdated = () => {
                 onBlur={handleBlur}
               />
               {errors.message && (
-                <p className="text-red-500 text-sm mt-1 px-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                  </div>
                   {errors.message}
-                </p>
+                </div>
               )}
             </div>
             {showSubmitButton ? (

@@ -326,59 +326,79 @@ ECOSTORY`.split("\n").map((line, index) => (
                   </button>
                   
                   <div className="flex flex-row space-x-2 mb-3 justify-center">
-                    <input
-                      type="text"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleInputChange}
-                      onBlur={handleBlur}
-                      placeholder="Your Name"
-                      autoComplete="new-password"
-                      className={`w-[45%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input ${
-                        errors.name ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
-                      }`}
-                      style={{
-                        WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
-                        WebkitTextFillColor: "white"
-                      }}
-                    />
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleInputChange}
-                      onBlur={handleBlur}
-                      placeholder="Your Email"
-                      autoComplete="off"
-                      className={`w-[45%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input ${
-                        errors.email ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
-                      }`}
-                      style={{
-                        WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
-                        WebkitTextFillColor: "white"
-                      }}
-                    />
+                    <div className="relative w-[45%]">
+                      <input
+                        type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        placeholder="Your Name"
+                        autoComplete="new-password"
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                          errors.name ? 'border-red-500' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.name && (
+                        <div className="absolute -top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-1 rounded shadow-lg z-10" style={{ fontFamily: 'Arial Rounded MT Bold' }}>
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                            <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                          </div>
+                          {errors.name}
+                        </div>
+                      )}
+                    </div>
+                    <div className="relative w-[45%]">
+                      <input
+                        type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        onBlur={handleBlur}
+                        placeholder="Your Email"
+                        autoComplete="off"
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                          errors.email ? 'border-red-500' : 'border-gray-300'
+                        }`}
+                      />
+                      {errors.email && (
+                        <div className="absolute -top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-1 rounded shadow-lg z-10" style={{ fontFamily: 'Arial Rounded MT Bold' }}>
+                          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                            <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                          </div>
+                          {errors.email}
+                        </div>
+                      )}
+                    </div>
                   </div>
                    <div className="h-2" />
                   <div>
                     <div className="flex justify-center">
-                      <textarea
-                        name="message"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        onBlur={handleBlur}
-                        placeholder="Your Idea"
-                        autoComplete="off"
-                        className={`w-[92%] px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea ${
-                          errors.message ? 'border-red-500 bg-red-900/20' : 'border-gray-300 bg-black'
-                        }`}
-                        rows={5}
-                        style={{ 
-                          resize: 'none',
-                          WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
-                          WebkitTextFillColor: "white"
-                        }}
-                      />
+                      <div className="relative w-[92%]">
+                        <textarea
+                          name="message"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          onBlur={handleBlur}
+                          placeholder="Your Idea"
+                          autoComplete="off"
+                          className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea bg-black text-white ${
+                            errors.message ? 'border-red-500' : 'border-gray-300'
+                          }`}
+                          rows={5}
+                          style={{ 
+                            resize: 'none'
+                          }}
+                        />
+                        {errors.message && (
+                          <div className="absolute -top-2 right-2 bg-red-500 text-white text-[10px] px-2 py-1 rounded shadow-lg z-10" style={{ fontFamily: 'Arial Rounded MT Bold' }}>
+                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
+                              <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
+                            </div>
+                            {errors.message}
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </div>
                   {/* Conditional spacing for 16+ inch screens */}
