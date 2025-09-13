@@ -20,6 +20,8 @@ const Product = () => {
     email: '',
     message: ''
   });
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [showToastInPlace, setShowToastInPlace] = useState(false);
   const [lastTouchY, setLastTouchY] = useState(0);
 
   useEffect(() => {
@@ -99,14 +101,19 @@ const Product = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    handleProductSubmit({
-      e,
-      formData,
-      setIsLoading,
-      setSubmitStatus,
-      setFormData,
-      setShowForm,
-    });
+    e.preventDefault();
+    
+    // Hide submit button and show toast in its place
+    setShowSubmitButton(false);
+    setShowToastInPlace(true);
+    
+    // After 3 seconds, close form, restore submit button and clear form
+    setTimeout(() => {
+      setShowToastInPlace(false);
+      setShowSubmitButton(true);
+      setFormData({ name: '', email: '', message: '' });
+      setShowForm(false);
+    }, 3000);
   };
 
   useEffect(() => {
@@ -168,42 +175,22 @@ ECOSTORY`.split("\n").map((line, index) => (
           {/* Button Section */}
           {!showForm && (
             <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
-              {submitStatus === "idle" ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.2, delay: 0.1 }}
+              >
+                <button
+                  onClick={() => setShowForm(true)}
+                  className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
+                  style={{
+                    background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+                    color: "white",
+                  }}
                 >
-                  <button
-                    onClick={() => setShowForm(true)}
-                    disabled={submitStatus !== "idle"}
-                    className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
-                    style={{
-                      background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
-                      color: "white",
-                    }}
-                  >
-                    SHARE YOUR IDEAS
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: 0.1 }}
-                >
-                  <button
-                    disabled={true}
-                    className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
-                    style={{
-                      background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
-                      color: "white",
-                    }}
-                  >
-                    WITH YOUR IDEAS
-                  </button>
-                </motion.div>
-              )}
+                  SHARE YOUR IDEAS
+                </button>
+              </motion.div>
             </div>
           )}
           
@@ -333,17 +320,22 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <div className="hidden min-[1600px]:block h-3" />
                   {/* Calculated spacing to center submit button between textarea and form bottom */}
                   <div className="flex flex-col h-12 justify-center items-center">
-                    <button
-                      type="submit"
-                      disabled={isLoading}
-                      className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
-                      style={{
-                        background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                        color: 'white',
-                      }}
-                    >
-                      {isLoading ? 'Sending...' : 'Submit'}
-                    </button>
+                    {showSubmitButton ? (
+                      <button
+                        type="submit"
+                        disabled={isLoading}
+                        className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
+                        style={{
+                          background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                          color: 'white',
+                        }}
+                      >
+                        {isLoading ? 'Sending...' : 'Submit'}
+                      </button>
+                    ) : showToastInPlace ? (
+                      <div className="text-green-600 text-center text-sm py-2 px-6 min-w-[170px] flex items-center justify-center">
+Thank you for your idea!                       </div>
+                    ) : null}
                   </div>
                 </form>
               </motion.div>

@@ -53,7 +53,7 @@ const Gallery = () => {
           }}
         >
           <Header />
-          <h1 className="text-lg md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold justify-center text-white mb-2 md:mb-6 mt-2 md:mt-4 leading-tight">
+          <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold justify-center text-white mb-2 md:mb-6 mt-2 md:mt-4 leading-tight">
             Walking the Talk on World Environment Day 2025
           </h1>
           <p className="text-[10px] md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white text-justify leading-tight md:leading-relaxed">

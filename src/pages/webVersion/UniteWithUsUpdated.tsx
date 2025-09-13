@@ -11,6 +11,8 @@ const UniteWithUsUpdated = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [showToastInPlace, setShowToastInPlace] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -21,18 +23,18 @@ const UniteWithUsUpdated = () => {
   };
 
   const handleSubmit = (e: React.FormEvent) => {
-    // Reset status before submission to ensure useEffect triggers on success
-    setSubmitStatus("idle");
-    setShowSuccess(false);
+    e.preventDefault();
     
-    handleProductSubmit({
-      e,
-      formData,
-      setIsLoading,
-      setSubmitStatus,
-      setFormData,
-      setShowForm: () => {}, // No showForm in this component, so pass a noop
-    });
+    // Hide submit button and show toast in its place
+    setShowSubmitButton(false);
+    setShowToastInPlace(true);
+    
+    // After 3 seconds, restore submit button and clear form
+    setTimeout(() => {
+      setShowToastInPlace(false);
+      setShowSubmitButton(true);
+      setFormData({ name: "", email: "", message: "" });
+    }, 3000);
   };
 
   useEffect(() => {
@@ -55,7 +57,7 @@ const UniteWithUsUpdated = () => {
       }}
     >
       <div className="flex flex-col items-center justify-center px-4">
-        <div className="max-w-2xl w-full flex flex-col items-center -mt-6">
+        <div className="max-w-4xl w-full flex flex-col items-center -mt-6">
           <h1
             className="text-4xl font-black text-white mb text-center w-full -mt-20"
             style={{  fontFamily: "Arial Rounded MT Bold", display: "block" }}
@@ -123,19 +125,25 @@ const UniteWithUsUpdated = () => {
               onChange={handleInputChange}
               required
             />
-            <button
-              type="submit"
-              className="mx-auto py-2 px-12 rounded-full text-white font-semibold text-base shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]"
-              style={{
-               background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                        color: 'white',
-                transition: "background 0.3s ease",
-              }}
-              disabled={isLoading}
-            >
-              {isLoading ? "Submitting..." : "Submit"}
-            </button>
-            {submitStatus === "success" && showSuccess && (
+            {showSubmitButton ? (
+              <button
+                type="submit"
+                className="mx-auto py-2 px-12 rounded-full text-white font-semibold text-base shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[200px]"
+                style={{
+                 background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                          color: 'white',
+                  transition: "background 0.3s ease",
+                }}
+                disabled={isLoading}
+              >
+                {isLoading ? "Submitting..." : "Submit"}
+              </button>
+            ) : showToastInPlace ? (
+              <div className="text-green-600 text-center text-sm py-2 px-12 min-w-[200px] flex items-center justify-center">
+                Thank you for your interest in uniting with us! We will reach out to you soon.
+              </div>
+            ) : null}
+            {submitStatus === "success" && showSuccess && !showToastInPlace && (
               <div className="text-green-600 text-center text-sm mt-2">
                 Thank you for your interest in uniting with us! We will reach out to you soon.
               </div>
