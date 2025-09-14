@@ -11,8 +11,8 @@ const UniteWithUs = lazy(() => import('./UniteWithUs'));
 const Gallery = lazy(() => import('@/components/Gallery'));
 
 const parallaxImages = {
-  first: '/images/Home_bt.jpg',
-  second: '/images/Home_bt.avif',
+  first: '/images/Home_bt.avif',
+  second: '/images/Home_at.avif',
   mobileFirst: '/images/Home_bt_mob.avif',
   mobileSecond: '/images/Home_at_mob.avif',
 };
