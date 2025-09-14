@@ -22,7 +22,7 @@ Real change begins with individual action, but its true strength lies in the sha
           {/* Top: Image */}
           <div className="w-full mb-6 mt-4 flex justify-center items-center overflow-hidden">
             <img
-              src="/images/ppt1.gif"
+              src="/images/ppt1.avif"
               alt="About Us"
               className="mx-auto w-full max-w-[550px] object-contain max-h-[550px] bg-transparent"
               loading="lazy"

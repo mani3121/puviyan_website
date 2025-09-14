@@ -119,7 +119,7 @@ const Header = () => {
             onClick={() => (window.location.href = "/")}
           >
             <img 
-              src="/images/puviyan_logo.png" 
+              src="/images/puviyan_logo.avif" 
               alt="Puviyan Logo" 
               className="h-7 md:h-4 w-auto"
               loading="lazy"

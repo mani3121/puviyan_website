@@ -8,13 +8,13 @@ const ParallaxImageWrapper = lazy(() => import('@/components/ParallaxImageWrappe
 const ServicesLatest = lazy(() => import('@/components/ServicesLatest'));
 const Product = lazy(() => import('./webVersion/Product'));
 const UniteWithUs = lazy(() => import('./UniteWithUs'));
- const Gallery = lazy(() => import('@/components/Gallery'));
+const Gallery = lazy(() => import('@/components/Gallery'));
 
 const parallaxImages = {
   first: '/images/Home_bt.jpg',
-  second: '/images/Home_bt.jpeg',
-  mobileFirst: '/images/Home_bt_mob.jpg',
-  mobileSecond: '/images/Home_at_mob.jpg',
+  second: '/images/Home_bt.avif',
+  mobileFirst: '/images/Home_bt_mob.avif',
+  mobileSecond: '/images/Home_at_mob.avif',
 };
 
 const Index = () => {

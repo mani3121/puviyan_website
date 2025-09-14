@@ -150,7 +150,7 @@ const UniteWithUsUpdated = () => {
       className="w-full flex flex-col justify-center items-center relative"
       style={{
         height: "100vh",
-        backgroundImage: 'url("/images/UniteWithUs2.png")',
+        backgroundImage: 'url("/images/UniteWithUs2.avif")',
         backgroundSize: "contain",
         backgroundPosition: "center bottom",
         backgroundRepeat: "no-repeat",
