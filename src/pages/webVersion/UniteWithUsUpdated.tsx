@@ -29,17 +29,17 @@ const UniteWithUsUpdated = () => {
     
     switch (name) {
       case 'name':
-        if (trimmedValue === '') return 'Please fill your name';
-        if (trimmedValue.length < 2) return 'Name must be at least 2 characters';
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 2) return 'error';
         return '';
       case 'email':
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (trimmedValue === '') return 'Please fill your valid email';
-        if (!emailRegex.test(trimmedValue)) return 'Please fill your valid email';
+        if (trimmedValue === '') return 'error';
+        if (!emailRegex.test(trimmedValue)) return 'error';
         return '';
       case 'message':
-        if (trimmedValue === '') return 'Please fill your message';
-        if (trimmedValue.length < 10) return 'Message must be at least 10 characters';
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 10) return 'error';
         return '';
       default:
         return '';
@@ -198,14 +198,6 @@ const UniteWithUsUpdated = () => {
                 onChange={handleInputChange}
                 onBlur={handleBlur}
               />
-              {errors.name && (
-                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
-                  </div>
-                  {errors.name}
-                </div>
-              )}
             </div>
             <div className="w-full relative">
               <input
@@ -225,14 +217,6 @@ const UniteWithUsUpdated = () => {
                 onChange={handleInputChange}
                 onBlur={handleBlur}
               />
-              {errors.email && (
-                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
-                  </div>
-                  {errors.email}
-                </div>
-              )}
             </div>
             <div className="w-full relative">
               <textarea
@@ -252,14 +236,6 @@ const UniteWithUsUpdated = () => {
                 onChange={handleInputChange}
                 onBlur={handleBlur}
               />
-              {errors.message && (
-                <div className="absolute -top-2 right-4 bg-red-500 text-white text-xs px-2 py-1 rounded shadow-lg z-10 animate-pulse" style={{ fontFamily: "Arial Rounded MT Bold" }}>
-                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-full">
-                    <div className="w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-red-500"></div>
-                  </div>
-                  {errors.message}
-                </div>
-              )}
             </div>
             {showSubmitButton ? (
               <button

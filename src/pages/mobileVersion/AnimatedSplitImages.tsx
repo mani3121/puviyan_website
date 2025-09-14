@@ -16,11 +16,23 @@ const AnimatedSplitImages = () => {
   const isInView = useInView(h1Ref, { once: true });
   const [showForm, setShowForm] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error' | 'validation_error' | 'invalid_email'>('idle');
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: ''
+  });
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [showToastInPlace, setShowToastInPlace] = useState(false);
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    message: ''
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false
   });
   const [containerHeight, setContainerHeight] = useState('100vh');
 
@@ -56,24 +68,117 @@ const AnimatedSplitImages = () => {
     }
   }, []);
 
+  const validateField = (name: string, value: string) => {
+    const trimmedValue = value.trim();
+    
+    switch (name) {
+      case 'name':
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 2) return 'error';
+        return '';
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (trimmedValue === '') return 'error';
+        if (!emailRegex.test(trimmedValue)) return 'error';
+        return '';
+      case 'message':
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 10) return 'error';
+        return '';
+      default:
+        return '';
+    }
+  };
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
+    
+    // Clear error when user starts typing
+    if (touched[name as keyof typeof touched]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
+  };
+
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+    
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
-      handleProductSubmit({
+    e.preventDefault();
+    
+    // Validate all fields
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      message: validateField('message', formData.message),
+    };
+    
+    // Mark all fields as touched
+    setTouched({
+      name: true,
+      email: true,
+      message: true,
+    });
+    
+    setErrors(newErrors);
+    
+    // Check if there are any errors
+    const hasErrors = Object.values(newErrors).some(error => error !== '');
+    
+    if (hasErrors) {
+      return; // Don't submit if there are validation errors
+    }
+    
+    // Start loading state
+    setIsLoading(true);
+    
+    try {
+      await handleProductSubmit({
         e,
         formData,
         setIsLoading,
         setSubmitStatus,
-        setFormData,
-        setShowForm,
+        setFormData: (data) => {
+          setFormData(data);
+          setErrors({ name: '', email: '', message: '' });
+          setTouched({ name: false, email: false, message: false });
+        },
+        setShowForm: () => {
+          // Hide submit button and show toast in its place
+          setShowSubmitButton(false);
+          setShowToastInPlace(true);
+          
+          // After 3 seconds, close form and restore submit button
+          setTimeout(() => {
+            setShowToastInPlace(false);
+            setShowSubmitButton(true);
+            setShowForm(false);
+          }, 3000);
+        },
       });
-
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -175,20 +280,24 @@ const AnimatedSplitImages = () => {
               name="name"
               value={formData.name}
               onChange={handleInputChange}
+              onBlur={handleBlur}
               placeholder="Your Name"
               autoComplete="new-password"
-              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
-              required
+              className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
+                errors.name ? 'border-red-500' : 'border-gray-300'
+              }`}
             />
             <input
               type="email"
               name="email"
               value={formData.email}
               onChange={handleInputChange}
+              onBlur={handleBlur}
               placeholder="Your Email"
               autoComplete="off"
-              className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
-              required
+              className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
             />
           </div>
           <div className="h-2 bg-black" />
@@ -198,27 +307,35 @@ const AnimatedSplitImages = () => {
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
+                onBlur={handleBlur}
                 placeholder="Your Idea"
                 autoComplete="off"
-                className="w-full px-3 py-1.5 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white"
+                className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
+                  errors.message ? 'border-red-500' : 'border-gray-300'
+                }`}
                 rows={5}
                 style={{ resize: 'none' }}
-                required
               />
             </div>
           </div>
           <div className="flex flex-col h-12 justify-center items-center bg-black">
-            <button
-              type="submit"
-              disabled={isLoading}
-              className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                color: 'white',
-              }}
-            >
-              {isLoading ? 'Sending...' : 'Submit'}
-            </button>
+            {showSubmitButton ? (
+              <button
+                type="submit"
+                disabled={isLoading}
+                className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
+                style={{
+                  background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                  color: 'white',
+                }}
+              >
+                {isLoading ? 'Sending...' : 'Submit'}
+              </button>
+            ) : showToastInPlace ? (
+              <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                Thank you for your idea!
+              </div>
+            ) : null}
           </div>
         </form>
       </Modal>

@@ -302,7 +302,7 @@ const CarbonFootprintBanner = () => {
         }}
       >
         <div className="co2-icon flex flex-col items-center justify-center">
-          <img src="/images/Co-2.avif" alt="CO2 Footprint Icon" className="w-8 h-8" />
+          <img src="/images/Co-2.avif" alt="CO2 Footprint Icon" className="w-8 h-8" style={{ transform: 'rotate(-19deg)' }} />
         </div>
         <div className="co2-text flex flex-col justify-center">
           <div className="main font-bold text-xs text-white leading-tight">

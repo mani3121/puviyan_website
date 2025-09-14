@@ -9,8 +9,42 @@ const MobileUniteWithUs = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error" | "validation_error" | "invalid_email">("idle");
   const [showSuccess, setShowSuccess] = useState(false);
+  const [showSubmitButton, setShowSubmitButton] = useState(true);
+  const [showToastInPlace, setShowToastInPlace] = useState(false);
+  const [errors, setErrors] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+  const [touched, setTouched] = useState({
+    name: false,
+    email: false,
+    message: false,
+  });
+
+  const validateField = (name: string, value: string) => {
+    const trimmedValue = value.trim();
+    
+    switch (name) {
+      case 'name':
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 2) return 'error';
+        return '';
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (trimmedValue === '') return 'error';
+        if (!emailRegex.test(trimmedValue)) return 'error';
+        return '';
+      case 'message':
+        if (trimmedValue === '') return 'error';
+        if (trimmedValue.length < 10) return 'error';
+        return '';
+      default:
+        return '';
+    }
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -18,17 +52,88 @@ const MobileUniteWithUs = () => {
       ...prev,
       [name]: value,
     }));
+    
+    // Clear error when user starts typing
+    if (touched[name as keyof typeof touched]) {
+      const error = validateField(name, value);
+      setErrors((prev) => ({
+        ...prev,
+        [name]: error,
+      }));
+    }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    handleProductSubmit({
-      e,
-      formData,
-      setIsLoading,
-      setSubmitStatus,
-      setFormData,
-      setShowForm: () => {}, // No showForm in this component, so pass a noop
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setTouched((prev) => ({
+      ...prev,
+      [name]: true,
+    }));
+    
+    const error = validateField(name, value);
+    setErrors((prev) => ({
+      ...prev,
+      [name]: error,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Validate all fields
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      message: validateField('message', formData.message),
+    };
+    
+    // Mark all fields as touched
+    setTouched({
+      name: true,
+      email: true,
+      message: true,
     });
+    
+    setErrors(newErrors);
+    
+    // Check if there are any errors
+    const hasErrors = Object.values(newErrors).some(error => error !== '');
+    
+    if (hasErrors) {
+      return; // Don't submit if there are validation errors
+    }
+    
+    // Start loading state
+    setIsLoading(true);
+    
+    try {
+      await handleProductSubmit({
+        e,
+        formData,
+        setIsLoading,
+        setSubmitStatus,
+        setFormData: (data) => {
+          setFormData(data);
+          setErrors({ name: "", email: "", message: "" });
+          setTouched({ name: false, email: false, message: false });
+        },
+        setShowForm: () => {
+          // Hide submit button and show toast in its place
+          setShowSubmitButton(false);
+          setShowToastInPlace(true);
+          
+          // After 3 seconds, restore submit button
+          setTimeout(() => {
+            setShowToastInPlace(false);
+            setShowSubmitButton(true);
+          }, 3000);
+        },
+      });
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setSubmitStatus('error');
+      setIsLoading(false);
+    }
   };
 
   useEffect(() => {
@@ -87,46 +192,58 @@ const MobileUniteWithUs = () => {
               name="name"
               placeholder="Name*"
               autoComplete="new-name"
-              className="w-full placeholder-white px-4 py-2 rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              className={`w-full placeholder-white px-4 py-2 rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white ${
+                errors.name ? 'border-red-500' : 'border-gray-300'
+              }`}
               style={{ backgroundColor: "#070707ff" }}
               value={formData.name}
               onChange={handleInputChange}
-              required
+              onBlur={handleBlur}
             />
             <input
               type="email"
               name="email"
               placeholder="Email address*"
               autoComplete="off"
-              className="w-full px-4 py-2 placeholder-white rounded-full border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white"
+              className={`w-full px-4 py-2 placeholder-white rounded-full border focus:outline-none focus:ring-2 focus:ring-blue-200 text-sm text-white ${
+                errors.email ? 'border-red-500' : 'border-gray-300'
+              }`}
               style={{ backgroundColor: "#070707ff" }}
               value={formData.email}
               onChange={handleInputChange}
-              required
+              onBlur={handleBlur}
             />
             <textarea
               name="message"
               placeholder="Your Message*"
               autoComplete="off"
-              className="w-full px-4 py-2 placeholder-white rounded-2xl border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm text-white"
+              className={`w-full px-4 py-2 placeholder-white rounded-2xl border focus:outline-none focus:ring-2 focus:ring-blue-200 resize-none text-sm text-white ${
+                errors.message ? 'border-red-500' : 'border-gray-300'
+              }`}
               style={{ backgroundColor: "#070707ff", resize: 'none' }}
               rows={3}
               value={formData.message}
               onChange={handleInputChange}
-              required
+              onBlur={handleBlur}
             />
-            <button
-              type="submit"
-              className="mx-auto py-2 px-8 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
-              style={{
-                background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
-                color: 'white',
-                transition: "background 0.3s ease",
-              }}
-              disabled={isLoading}
-            >
-              {isLoading ? "Submitting..." : "Submit"}
-            </button>
+            {showSubmitButton ? (
+              <button
+                type="submit"
+                className="mx-auto py-2 px-8 rounded-full text-white font-semibold text-sm shadow-md disabled:opacity-50 disabled:cursor-not-allowed min-w-[150px]"
+                style={{
+                  background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
+                  color: 'white',
+                  transition: "background 0.3s ease",
+                }}
+                disabled={isLoading}
+              >
+                {isLoading ? "Submitting..." : "Submit"}
+              </button>
+            ) : showToastInPlace ? (
+              <div className="text-green-400 text-center text-xs py-2 px-8 min-w-[150px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                Thank you for your interest in uniting with us! We will reach out to you soon.
+              </div>
+            ) : null}
             {submitStatus === "success" && showSuccess && (
               <div className="text-green-400 text-center text-xs mt-2">
                 Thank you for your interest in uniting with us! We will reach out to you soon.
