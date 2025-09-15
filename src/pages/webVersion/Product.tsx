@@ -117,7 +117,7 @@ const Product = () => {
         return '';
       case 'message':
         if (trimmedValue === '') return 'error';
-        if (trimmedValue.length < 10) return 'error';
+        if (trimmedValue.length < 1) return 'error';
         return '';
       default:
         return '';
@@ -407,7 +407,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         {isLoading ? 'Sending...' : 'Submit'}
                       </button>
                     ) : showToastInPlace ? (
-                      <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                      <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center -mt-7" style={{ fontFamily: "Arial Rounded MT Bold" }}>
                         Thank you for your idea!
                       </div>
                     ) : null}

@@ -39,7 +39,7 @@ const UniteWithUsUpdated = () => {
         return '';
       case 'message':
         if (trimmedValue === '') return 'error';
-        if (trimmedValue.length < 10) return 'error';
+        if (trimmedValue.length < 1) return 'error';
         return '';
       default:
         return '';
@@ -252,12 +252,12 @@ const UniteWithUsUpdated = () => {
               </button>
             ) : showToastInPlace ? (
               <div className="text-green-600 text-center text-lg py-2 px-12 min-w-[200px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
-                Thank you for your interest in uniting with us! We will reach out to you soon.
+                Thank you for your interest in uniting with us!<br />We will reach out to you soon.
               </div>
             ) : null}
             {submitStatus === "success" && showSuccess && !showToastInPlace && (
               <div className="text-green-600 text-center text-lg mt-2" style={{ fontFamily: "Arial Rounded MT Bold" }}>
-                Thank you for your interest in uniting with us! We will reach out to you soon.
+                Thank you for your interest in uniting with us!<br />We will reach out to you soon.
               </div>
             )}
             {submitStatus === "error" && (
