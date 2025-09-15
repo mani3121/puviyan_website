@@ -237,7 +237,7 @@ const Product = () => {
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
-            src="/images/MobileImage_Final.jpeg"
+            src="/images/MobileImage.jpeg"
             alt="Product Image"
             className="rounded-2xl w-full h-[100vh] -mt-8" // Added -mt-8 to move image up
             loading="lazy"
@@ -338,6 +338,11 @@ ECOSTORY`.split("\n").map((line, index) => (
                         className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
                           errors.name ? 'border-red-500' : 'border-gray-300'
                         }`}
+                        style={{
+                          WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                          WebkitTextFillColor: "white",
+                          backgroundColor: "#000000 !important"
+                        }}
                       />
                     </div>
                     <div className="relative w-[45%]">
@@ -352,6 +357,11 @@ ECOSTORY`.split("\n").map((line, index) => (
                         className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
                           errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
+                        style={{
+                          WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                          WebkitTextFillColor: "white",
+                          backgroundColor: "#000000 !important"
+                        }}
                       />
                     </div>
                   </div>
@@ -371,7 +381,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                           }`}
                           rows={5}
                           style={{ 
-                            resize: 'none'
+                            resize: 'none',
+                            WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                            WebkitTextFillColor: "white",
+                            backgroundColor: "#000000 !important"
                           }}
                         />
                       </div>

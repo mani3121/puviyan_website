@@ -154,7 +154,7 @@ const MobileUniteWithUs = () => {
         className="w-full min-h-screen flex flex-col relative"
         style={{
           backgroundImage:
-            'url("/images/UniteWithUs3.webp")',
+            'url("/images/UniteWithUs_mobile.webp")',
           backgroundSize: "100% auto",
           backgroundPosition: "center bottom",
           backgroundRepeat: "no-repeat",
