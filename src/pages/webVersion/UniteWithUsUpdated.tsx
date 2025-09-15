@@ -39,7 +39,7 @@ const UniteWithUsUpdated = () => {
         return '';
       case 'message':
         if (trimmedValue === '') return 'error';
-        if (trimmedValue.length < 10) return 'error';
+        if (trimmedValue.length < 1) return 'error';
         return '';
       default:
         return '';
