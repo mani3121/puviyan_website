@@ -270,7 +270,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           
           {/* Button Section */}
           {!showForm && (
-            <div className="absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[25vw] md:w-[30vw]">
+            <div className="absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[24vw] md:w-[28vw]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -282,7 +282,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   style={{
                     background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                     color: "white",
-                    width: "60%",
+                    width: "75%",
                   }}
                 >
                   SHARE YOUR IDEAS
@@ -293,7 +293,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           
           {/* Form Section */}
           {showForm && (
-            <div className="absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[25vw] md:w-[30vw]">
+            <div className="absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[24vw] md:w-[28vw]">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -302,7 +302,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 rounded-2xl relative form-container pb-[4%]"
+                  className="w-full space-y-0 rounded-2xl relative form-container pb-[4%]"
                   style={{
                     background: "#000",
                     boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
@@ -312,7 +312,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-[4%] right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-[12%] right-[4%] text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
@@ -322,7 +322,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     &times;
                   </button>
                   
-                  <div className="flex flex-row space-x-[2%] mb-[2%] justify-center">
+                  <div className="flex flex-row space-x-[2%] mb-[4%] justify-center">
                     <div className="relative w-[45%]">
                       <input
                         type="text"
@@ -362,7 +362,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                       />
                     </div>
                   </div>
-                   <div className="h-[1%]" />
+                  <div className="h-2" />
                   <div>
                     <div className="flex justify-center">
                       <div className="relative w-[92%]">
@@ -387,6 +387,8 @@ ECOSTORY`.split("\n").map((line, index) => (
                       </div>
                     </div>
                   </div>
+                  {/* Gap after Your Idea textarea */}
+                  <div className="h-1" />
                   {/* Conditional spacing for 16+ inch screens */}
                   <div className="hidden min-[1600px]:block h-[2%]" />
                   {/* Calculated spacing to center submit button between textarea and form bottom */}
