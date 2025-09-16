@@ -293,7 +293,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           
           {/* Form Section */}
           {showForm && (
-            <div className="absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[24vw] md:w-[28vw]">
+            <div className="absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-md sm:max-w-sm md:max-w-sm lg:max-w-md px-3 sm:px-4 md:px-0">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -302,7 +302,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="w-full space-y-0 rounded-2xl relative form-container pb-[4%]"
+                  className="space-y-0 rounded-2xl relative form-container pb-8"
                   style={{
                     background: "#000",
                     boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
@@ -312,7 +312,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                   <button
                     type="button"
                     aria-label="Close"
-                    className="absolute -top-[12%] right-[4%] text-gray-400 hover:text-white text-2xl focus:outline-none"
+                    className="absolute -top-8 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
                     onClick={() => {
                       setShowForm(false);
                       setSubmitStatus('idle');
@@ -322,7 +322,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                     &times;
                   </button>
                   
-                  <div className="flex flex-row space-x-[2%] mb-[4%] justify-center">
+                  <div className="flex flex-row space-x-2 mb-3 justify-center">
                     <div className="relative w-[45%]">
                       <input
                         type="text"
@@ -332,7 +332,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onBlur={handleBlur}
                         placeholder="Your Name"
                         autoComplete="new-password"
-                        className={`w-full px-[4%] py-[2%] border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
                           errors.name ? 'border-red-500' : 'border-gray-300'
                         }`}
                         style={{
@@ -351,7 +351,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onBlur={handleBlur}
                         placeholder="Your Email"
                         autoComplete="off"
-                        className={`w-full px-[4%] py-[2%] border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
                           errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
                         style={{
@@ -373,7 +373,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                           onBlur={handleBlur}
                           placeholder="Your Idea"
                           autoComplete="off"
-                          className={`w-full px-[4%] py-[2%] border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea bg-black text-white ${
+                          className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea bg-black text-white ${
                             errors.message ? 'border-red-500' : 'border-gray-300'
                           }`}
                           rows={5}
@@ -387,17 +387,15 @@ ECOSTORY`.split("\n").map((line, index) => (
                       </div>
                     </div>
                   </div>
-                  {/* Gap after Your Idea textarea */}
-                  <div className="h-1" />
                   {/* Conditional spacing for 16+ inch screens */}
-                  <div className="hidden min-[1600px]:block h-[2%]" />
+                  <div className="hidden min-[1600px]:block h-3" />
                   {/* Calculated spacing to center submit button between textarea and form bottom */}
-                  <div className="flex flex-col h-[6%] justify-center items-center">
+                  <div className="flex flex-col h-12 justify-center items-center">
                     {showSubmitButton ? (
                       <button
                         type="submit"
                         disabled={isLoading}
-                        className="px-[4%] py-[2%] rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[60%] flex items-center justify-center"
+                        className="px-6 py-2 rounded-lg font-semibold transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-w-[170px] flex items-center justify-center"
                         style={{
                           background: 'linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
                           color: 'white',
@@ -406,7 +404,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                         {isLoading ? 'Sending...' : 'Submit'}
                       </button>
                     ) : showToastInPlace ? (
-                      <div className="text-green-600 text-center text-lg py-[2%] px-[4%] min-w-[60%] flex items-center justify-center -mt-[3%]" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+                      <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center -mt-7" style={{ fontFamily: "Arial Rounded MT Bold" }}>
                         Thank you for your idea!
                       </div>
                     ) : null}
