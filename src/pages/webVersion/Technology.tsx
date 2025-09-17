@@ -270,7 +270,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           
           {/* Button Section */}
           {!showForm && (
-            <div className="absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-[20vw] sm:w-[24vw] md:w-[28vw]">
+            <div className={`absolute left-[36vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-[450px] sm:max-w-[340px] md:max-w-[360px] lg:max-w-[400px] px-3 sm:px-4 md:px-0`}>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -278,11 +278,10 @@ ECOSTORY`.split("\n").map((line, index) => (
               >
                 <button
                   onClick={() => setShowForm(true)}
-                  className="px-[2.5%] py-[1.5%] min-[1600px]:py-[2%] rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 text-center"
+                  className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
                   style={{
                     background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
                     color: "white",
-                    width: "75%",
                   }}
                 >
                   SHARE YOUR IDEAS
