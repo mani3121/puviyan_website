@@ -320,6 +320,9 @@ ECOSTORY`.split("\n").map((line, index) => (
                       setShowForm(false);
                       setSubmitStatus('idle');
                       setFormData({ name: '', email: '', message: '' });
+                      // Clear validation states so red borders/backgrounds don't persist
+                      setErrors({ name: '', email: '', message: '' });
+                      setTouched({ name: false, email: false, message: false });
                     }}
                   >
                     &times;
