@@ -272,6 +272,7 @@ const AnimatedSplitImages = () => {
               setShowForm(false);
               setSubmitStatus('idle');
               setFormData({ name: '', email: '', message: '' });
+              setErrors({ name: '', email: '', message: '' });
             }}
           >
             &times;
@@ -287,7 +288,7 @@ const AnimatedSplitImages = () => {
                 placeholder="Your Name"
                 autoComplete="new-password"
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 ${
-                errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
+                errors.name ? 'border-red-500 focus:ring-red-500' : 'border-white hover:border-gray-300'
                 }`}
               style={{
                 WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
@@ -304,7 +305,7 @@ const AnimatedSplitImages = () => {
                 placeholder="Your Email"
                 autoComplete="off"
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 ${
-                errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
+                errors.email ? 'border-red-500 focus:ring-red-500' : 'border-white hover:border-gray-300'
               }`}
               style={{
                 WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
@@ -320,7 +321,7 @@ const AnimatedSplitImages = () => {
                   placeholder="Your Idea"
                   autoComplete="off"
               className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 resize-none ${
-                errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
+                errors.message ? 'border-red-500 focus:ring-red-500' : 'border-white hover:border-gray-300'
               }`}
               rows={4}
               style={{
