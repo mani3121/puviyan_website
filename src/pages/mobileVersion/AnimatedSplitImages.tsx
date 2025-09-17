@@ -3,7 +3,6 @@ import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
 import { handleProductSubmit } from "../../utils/handleProductSubmit";
-import "../AnimatedSplitImages.css";
 
 import Header from "../../components/Header";
 
@@ -193,7 +192,7 @@ const AnimatedSplitImages = () => {
   return (
     <div
       ref={containerRef}
-      className="flex flex-col md:flex-row w-full overflow-hidden"
+      className="flex flex-col w-full overflow-hidden bg-black min-h-screen"
       style={{
         height: containerHeight,
         minHeight: "100vh"
@@ -201,56 +200,46 @@ const AnimatedSplitImages = () => {
     >
       <Header />
 
-      {/* Left - Static Image */}
-      <div className="w-full h-screen md:h-3/4 md:w-1/2 flex flex-col items-center overflow-hidden relative">
-        {/* "COMING SOON" text above the image */}
-        <h1
-          ref={h1Ref}
-          className="absolute left-1/2 transform -translate-x-1/2 text-2xl font-extrabold text-gray-600 w-[90vw] text-center z-10"
-          style={{
-            fontFamily: "Arial Black, Arial-BoldMT, Arial, Helvetica, sans-serif",
-            fontWeight: "bolder",
-            letterSpacing: "-0.0em",
-            lineHeight: 1.1,
-            padding: "0.5rem 1.5rem",
-            borderRadius: "1rem",
-            top: "4.5rem",
-          }}
-        >
+      {/* Main Content */}
+      <div className="w-full h-screen flex flex-col items-center justify-start overflow-hidden relative bg-black">
+        {/* Text and Button Section */}
+        <div className="flex flex-col items-center justify-center text-center px-4 pt-20 pb-8 z-10">
           <h1
-            className="text-3xl font-extrabold text-white mb-2 text-center w-full"
-            style={{ fontFamily: "Arial Rounded MT Bold" }}
-          >
-            COMING SOON TO REWRITE OUR CARBON STORY
-          </h1>
-
-          {/* Button next to the h1 */}
-          <button
-            onClick={() => setShowForm(true)}
-            className="mt-4 px-4 py-2 text-sm bg-gradient-to-r from-yellow-400 to-blue-400 text-white font-semibold rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300"
+            ref={h1Ref}
+            className="text-4xl font-black text-white leading-tight mb-8 max-w-sm"
             style={{
-              fontFamily: "Arial",
-              lineHeight: 1.2,
-              background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
-              zIndex: 10,
+              fontFamily: "Arial Black, Arial-BoldMT, Arial, Helvetica, sans-serif",
+              letterSpacing: "-0.02em",
+              lineHeight: 1.1,
             }}
           >
-            {submitStatus === 'idle' ? "SHARE YOUR IDEAS" : "WITH YOUR IDEAS"}
+            COMING SOON TO<br />REWRITE YOUR<br />ECOSTORY
+          </h1>
+
+          {/* Button */}
+          <button
+            onClick={() => setShowForm(true)}
+            className="px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
+            style={{
+              background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
+              color: "white",
+            }}
+          >
+            SHARE YOUR IDEAS
           </button>
-        </h1>
-        <div className="relative w-full h-full flex justify-center items-start overflow-hidden">
+        </div>
+
+        {/* Mobile Image */}
+        <div className="relative flex justify-center items-center flex-1 w-full max-w-sm mx-auto">
           <img
             src="/images/MobileImage.jpeg"
-            alt="Vertical Parallax"
-            className="rounded-none md:rounded-2xl shadow-2xl"
+            alt="Mobile App Preview"
+            className="rounded-2xl shadow-2xl object-cover"
             loading="lazy"
             style={{
-              objectFit: "cover",
               width: "80%",
-              height: "70vh",
+              height: "75vh",
               objectPosition: "top center",
-              display: "block",
-              marginTop: "16rem", // Move the image further down
             }}
           />
         </div>
@@ -261,64 +250,88 @@ const AnimatedSplitImages = () => {
       <Modal
         isOpen={showForm}
         onRequestClose={() => setShowForm(false)}
-        className="modal"
-        overlayClassName="overlay"
-        shouldCloseOnOverlayClick={true} // Allow closing on overlay click
-        preventScroll={true} // Prevent background scrolling
+        className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-md bg-black p-6 rounded-2xl shadow-2xl z-50"
+        overlayClassName="fixed inset-0 bg-black bg-opacity-50 z-40"
+        shouldCloseOnOverlayClick={true}
+        preventScroll={true}
       >
         <form 
           onSubmit={handleSubmit} 
-          className="space-y-0 rounded-2xl relative p-6 bg-black"
+          className="space-y-0 rounded-2xl relative pb-8"
           style={{
             background: "#000",
             boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
           }}
         >
-          <div className="flex flex-col space-y-3 mb-3 bg-black">
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-              placeholder="Your Name"
-              autoComplete="new-password"
-              className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
-                errors.name ? 'border-red-500' : 'border-gray-300'
-              }`}
-            />
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              onBlur={handleBlur}
-              placeholder="Your Email"
-              autoComplete="off"
-              className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
-                errors.email ? 'border-red-500' : 'border-gray-300'
-              }`}
-            />
-          </div>
-          <div className="h-2 bg-black" />
-          <div className="bg-black">
-            <div className="flex justify-center bg-black">
-              <textarea
-                name="message"
-                value={formData.message}
+          {/* Close Icon */}
+          <button
+            type="button"
+            aria-label="Close"
+            className="absolute -top-8 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
+            onClick={() => {
+              setShowForm(false);
+              setSubmitStatus('idle');
+              setFormData({ name: '', email: '', message: '' });
+            }}
+          >
+            &times;
+          </button>
+          
+          <div className="flex flex-col space-y-4">
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
                 onChange={handleInputChange}
                 onBlur={handleBlur}
-                placeholder="Your Idea"
-                autoComplete="off"
-                className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 bg-black text-white ${
-                  errors.message ? 'border-red-500' : 'border-gray-300'
+                placeholder="Your Name"
+                autoComplete="new-password"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 ${
+                errors.name ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
                 }`}
-                rows={5}
-                style={{ resize: 'none' }}
+              style={{
+                WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitTextFillColor: "white",
+                backgroundColor: "#000000 !important"
+              }}
               />
-            </div>
-          </div>
-          <div className="flex flex-col h-12 justify-center items-center bg-black">
+              <input
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleInputChange}
+                onBlur={handleBlur}
+                placeholder="Your Email"
+                autoComplete="off"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 ${
+                errors.email ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
+              }`}
+              style={{
+                WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitTextFillColor: "white",
+                backgroundColor: "#000000 !important"
+              }}
+              />
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  onBlur={handleBlur}
+                  placeholder="Your Idea"
+                  autoComplete="off"
+              className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 text-sm placeholder-gray-400 bg-black text-white transition-all duration-200 resize-none ${
+                errors.message ? 'border-red-500 focus:ring-red-500' : 'border-gray-600 hover:border-gray-500'
+              }`}
+              rows={4}
+              style={{
+                WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitTextFillColor: "white",
+                backgroundColor: "#000000 !important"
+              }}
+                />
+              </div>
+          
+          <div className="flex flex-col justify-center items-center pt-4">
             {showSubmitButton ? (
               <button
                 type="submit"
@@ -332,7 +345,7 @@ const AnimatedSplitImages = () => {
                 {isLoading ? 'Sending...' : 'Submit'}
               </button>
             ) : showToastInPlace ? (
-              <div className="text-green-600 text-center text-lg py-2 px-6 min-w-[170px] flex items-center justify-center" style={{ fontFamily: "Arial Rounded MT Bold" }}>
+              <div className="text-green-400 text-center text-lg py-3 px-6 min-w-[170px] flex items-center justify-center font-bold mt-4">
                 Thank you for your idea!
               </div>
             ) : null}

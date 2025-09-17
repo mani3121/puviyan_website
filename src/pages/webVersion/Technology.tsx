@@ -3,6 +3,7 @@ import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { handleProductSubmit } from '../../utils/handleProductSubmit';
+import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
 
 const Technology = () => {
   const isMobile = useMediaQuery({ maxWidth: 767 }); // Tailwind's md breakpoint
@@ -223,7 +224,10 @@ const Technology = () => {
       return () => clearTimeout(timer);
     }
   }, [submitStatus]);
-  
+   // Return AnimatedSplitImages for mobile view
+   if (isMobile) {
+    return <AnimatedSplitImages />;
+  }
 
   // Return main Technology component for desktop view
   return (
