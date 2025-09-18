@@ -29,7 +29,7 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
       setCo2Estimate(gramsCO2);
 
       // Compute the "X% lower" label versus baseline
-      const baseline_g = 0.70; // same baseline as web version
+      const baseline_g = 0.6; // mobile baseline
       const { label } = compareToBaseline(gramsCO2, baseline_g);
       setComparison(label || '64% lower than global average');
     };
