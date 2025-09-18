@@ -177,10 +177,8 @@ const Header = () => {
 // For mobile, render all links together
 const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
   <>
-    <a
-      href="/animated-split-images"
-      onClick={(e) => {
-        e.preventDefault();
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
@@ -196,7 +194,7 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Technology
-    </a>
+    </button>
     {/* <a
       href="/services"
       onClick={(e) => {
@@ -217,10 +215,8 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
     >
       Services
     </a> */}
-    <a
-      href="/gallery"
-      onClick={(e) => {
-        e.preventDefault();
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("gallery");
       }}
@@ -236,11 +232,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       People and Planet
-    </a>
-    <a
-      href="/about-us"
-      onClick={(e) => {
-        e.preventDefault();
+    </button>
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
@@ -256,11 +250,9 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       About Puviyan
-    </a>
-    <a
-      href="/unite-with-us"
-      onClick={(e) => {
-        e.preventDefault();
+    </button>
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
@@ -276,17 +268,15 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
       style={{ fontFamily: isMobile ? "-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', sans-serif" : "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Unite with Us
-    </a>
+    </button>
   </>
 );
 
 // For desktop, split the main links from the Unite With Us link
 const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
   <div className="flex items-center">
-    <a
-      href="/animated-split-images"
-      onClick={(e) => {
-        e.preventDefault();
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
@@ -298,11 +288,9 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
       style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       Technology
-    </a>
-    <a
-      href="/gallery"
-      onClick={(e) => {
-        e.preventDefault();
+    </button>
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("gallery");
       }}
@@ -314,11 +302,9 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
       style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       People and Planet
-    </a>
-    <a
-      href="/about-us"
-      onClick={(e) => {
-        e.preventDefault();
+    </button>
+    <button
+      onClick={() => {
         document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
@@ -330,16 +316,14 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
       style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
     >
       About Puviyan
-    </a>
+    </button>
   </div>
 );
 
 // Separate function for the Unite With Us link to position it at the edge
 const renderUniteWithUsLink = (currentPath, scrollToSection, isScrolled, isMobile) => (
-  <a
-    href="/unite-with-us"
-    onClick={(e) => {
-      e.preventDefault();
+  <button
+    onClick={() => {
       document.body.style.overflowY = "scroll";
       scrollToSection("unite-with-us");
     }}
@@ -351,7 +335,7 @@ const renderUniteWithUsLink = (currentPath, scrollToSection, isScrolled, isMobil
     style={{ fontFamily: "Arial Rounded MT Bold, Arial, sans-serif" }}
   >
     Unite with Us
-  </a>
+  </button>
 );
 
 export default Header;
