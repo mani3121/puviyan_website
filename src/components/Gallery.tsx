@@ -42,21 +42,18 @@ const Gallery = () => {
   }, []);
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-black p-4 -mt-12">
-      <div className="w-full max-w-[1800px] flex flex-col lg:flex-row bg-black rounded-2xl shadow-lg overflow-hidden lg:min-h-[700px] xl:min-h-[800px] 2xl:min-h-[900px]">
+    <div className="w-full h-screen flex items-center justify-center bg-black -mt-12">
+      <div className="w-full h-[68%] flex flex-col lg:flex-row bg-black overflow-hidden">
         {/* Left Section - 50% */}
         <div
           ref={leftRef}
-          className="w-full lg:w-1/2 flex flex-col justify-center items-start p-3 md:p-8 lg:p-10 xl:p-12 2xl:p-16 bg-black"
-          style={{
-            height: containerHeight ? `${containerHeight}px` : "auto",
-          }}
+          className="w-full lg:w-[45%] h-[68%] flex flex-col justify-start items-start p-8 bg-black"
         >
-          <Header />
-          <h1 className="text-xl md:text-3xl lg:text-4xl xl:text-4xl 2xl:text-5xl font-bold justify-center text-white mb-2 md:mb-6 mt-2 md:mt-4 leading-tight">
-            Walking the Talk on World Environment Day 2025
-          </h1>
-          <p className="text-[12px] md:text-base lg:text-lg xl:text-xl 2xl:text-2xl text-white text-justify leading-tight md:leading-relaxed">
+          <div className="-mt-8">
+            <h1 className="font-bold text-white mb-6 leading-tight" style={{ fontSize: '6vh' }}>
+              Walking the Talk on World Environment Day 2025
+            </h1>
+          <p className="text-white text-justify leading-relaxed" style={{ fontSize: '2.2vh' }}>
             On World Environment Day 2025, Team Puviyan proudly joined the global
             movement led by the United Nations Environment Programme (UNEP),
             emphasizing the powerful theme: "Beat Plastic Pollution."
@@ -74,20 +71,18 @@ const Gallery = () => {
             150 times, can save about 0.5 kg of CO2e emissions and keep 150
             plastic bags out of landfills and waterways. It's a small switch that
             creates a big impact for our planet and future generations.
-          </p>
+            </p>
+          </div>
         </div>
         {/* Right Section - 50% */}
         <div 
           ref={rightRef}
-          className="w-full lg:w-1/2 flex items-center justify-center bg-black p-6"
-          style={{
-            height: containerHeight ? `${containerHeight}px` : "auto",
-          }}
+          className="w-full lg:w-[55%] h-full flex items-center justify-center bg-black p-6"
         >
           <img
             src="/images/EventCollage.webp"
             alt="Event Collage"
-            className="w-full h-auto lg:h-full object-contain rounded-2xl"
+            className="w-full h-full object-cover rounded-2xl"
             loading="lazy"
           />
         </div>
