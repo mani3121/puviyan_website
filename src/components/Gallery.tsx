@@ -59,8 +59,9 @@ const Gallery = () => {
             emphasizing the powerful theme: "Beat Plastic Pollution."
             <br />
             <br />
-            As part of this initiative, we embraced a personal commitment: "I am
-            Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
+            As part of this initiative, we embraced a personal commitment: 
+            <br />
+            "I am Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
             our team took to the streets of Chennai to engage residents, spark
             conversations, and spotlight the urgent need to reduce single-use
             plastic waste.
