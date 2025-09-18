@@ -64,18 +64,25 @@ const ParallaxImages = ({ image1, image2, loading }: ParallaxImagesProps) => {
           const containerRect = container.getBoundingClientRect();
           const isInView = containerRect.top <= window.innerHeight && containerRect.bottom >= 0;
           
-          if (isInView && !isTransitionComplete) {
+          if (isInView) {
+            // Check if we should block the action (same logic as mouse wheel)
+            let delta = 0;
+            
+            // Determine scroll direction based on key
+            if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Space') {
+              delta = 5; // Scroll down
+              // Block downward scrolling when transition is complete
+              if (isTransitionComplete) {
+                return;
+              }
+            } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
+              delta = -5; // Scroll up
+              // Allow upward scrolling even when transition is complete
+            }
+            
             e.preventDefault();
             
             if (!isScrolling) {
-              let delta = 0;
-              
-              // Determine scroll direction based on key
-              if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === 'Space') {
-                delta = 5; // Scroll down
-              } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-                delta = -5; // Scroll up
-              }
               
               const newProgress = Math.min(100, Math.max(0, scrollProgress + delta));
               setScrollProgress(newProgress);
