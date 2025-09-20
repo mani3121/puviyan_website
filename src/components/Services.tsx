@@ -99,27 +99,24 @@ const Services = () => {
           className="text-[12px] text-gray-300 text-justify font-medium leading-tight"
           style={{ fontFamily: "Arial" }}
         >
-          Progress demands more: more innovation, more responsibility, and more
-          meaningful impact. Real change happens when these forces move forward
-          together. By embedding sustainability into every digital transformation
-          across products and services, we align with global standards and set a
-          new benchmark for what technology can achieve.
+         Progress demands more: more innovation, more responsibility, and more 
+         meaningful impact. Real change happens when these forces move forward together.
+         We bring real PEP, Puviyan Engineering Practice, across products and services,
+         embedding sustainable engineering best practices at the core and setting a new 
+         benchmark for what technology can achieve.
           <br />
           <br />
-          Sustainability is not an add-on; it is essential. We unite with
-          governments, organizations, and communities worldwide to accelerate
-          sustainable transformation at scale through strategic consulting and
-          technology-led innovations.
+          By uniting with governments, organizations, and communities worldwide, 
+          we accelerate sustainable digital transformation at scale through strategic 
+          consulting and technology-led innovations.
           <br />
           <br />
-          Our capabilities span energy-efficient infrastructure, circular IT
-          strategies, advanced real-time analytics, responsible AI solutions, and
-          resilient, optimized value chains, with each contributing to measurable
-          environmental, social, and economic (ESG) outcomes at scale.
+          Our capabilities span responsible AI solutions, energy-efficient infrastructure, advanced 
+          real-time analytics, circular IT strategies, and resilient, optimized value chains, each 
+          contributing to measurable environmental, social, and economic (ESG) outcomes at scale.
           <br />
           <br />
-          This is progress, reimagined. Technology that is not just smart, but
-          right for people and planet.
+          This is progress, reimagined. Technology that is not just smart, but right for people and planet.
         </div>
       </div>
     </div>
