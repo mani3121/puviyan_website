@@ -45,8 +45,11 @@ const ServicesLatest = () => {
         style={{ fontFamily: "Arial" }}
       >
         <p>
-         Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together. By embedding sustainability into every digital transformation across products and services, we align with global standards and set a new benchmark for what technology can achieve.
-        </p>
+        Progress demands more: more innovation, more responsibility, and more 
+         meaningful impact. Real change happens when these forces move forward together.
+         We bring real PEP, Puviyan Engineering Practice, across products and services,
+         embedding sustainable engineering best practices at the core and setting a new 
+         benchmark for what technology can achieve.        </p>
         <br/>
         <p>
          Sustainability is not an add-on; it is essential. We unite with governments, organizations, and communities worldwide to accelerate sustainable transformation at scale through strategic consulting and technology-led innovations.
