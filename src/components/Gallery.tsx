@@ -1,6 +1,5 @@
-import { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "react-responsive";
-import Header from "./Header";
 import MobileGallery from "../pages/mobileVersion/MobileGallery";
 
 const Gallery = () => {
@@ -53,27 +52,41 @@ const Gallery = () => {
             <h1 className="font-bold text-white mb-6 leading-tight" style={{ fontSize: '6vh' }}>
               Walking the Talk on World Environment Day 2025
             </h1>
-          <p className="text-white text-justify leading-relaxed" style={{ fontSize: '2.2vh' }}>
-            On World Environment Day 2025, Team Puviyan proudly joined the global
-            movement led by the United Nations Environment Programme (UNEP),
-            emphasizing the powerful theme: "Beat Plastic Pollution."
-            <br />
-            <br />
-            As part of this initiative, we embraced a personal commitment: 
-            <br />
-            "I am Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
-            our team took to the streets of Chennai to engage residents, spark
-            conversations, and spotlight the urgent need to reduce single-use
-            plastic waste.
-            <br />
-            <br />
-            We distributed reusable cloth bags, encouraging simple, everyday
-            actions that help protect the environment. Each cloth bag, when used
-            150 times, can save about 0.5 kg of CO2e emissions and keep 150
-            plastic bags out of landfills and waterways. It's a small switch that
-            creates a big impact for our planet and future generations.
+            <div className="space-y-6">
+            <p className="text-white text-lg font-normal font-['Arial'] leading-7 text-justify">
+              On World Environment Day 2025, Team Puviyan proudly joined the global
+              movement led by the United Nations Environment Programme (UNEP),
+              emphasizing the powerful theme: "Beat Plastic Pollution."
+            </p>
+
+            {/* ✅ Grouped block to remove space between two <p> */}
+            <div className="space-y-0">
+              <p
+                className="text-white text-lg font-normal font-['Arial'] leading-7 mb-0"
+                style={{
+                  textAlign: "justify",
+                  textAlignLast: "justify",
+                }}
+              >
+                As part of this initiative, we embraced a personal commitment:
+              </p>
+              <p className="text-white text-lg font-normal font-['Arial'] leading-7 text-justify mt-0">
+                "I am Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
+                our team took to the streets of Chennai to engage residents, spark
+                conversations, and spotlight the urgent need to reduce single-use
+                plastic waste.
+              </p>
+            </div>
+
+            <p className="text-white text-lg font-normal font-['Arial'] leading-7 text-justify">
+              We distributed reusable cloth bags, encouraging simple, everyday
+              actions that help protect the environment. Each cloth bag, when used
+              150 times, can save about 0.5 kg of CO2e emissions and keep 150
+              plastic bags out of landfills and waterways. It's a small switch that
+              creates a big impact for our planet and future generations.
             </p>
           </div>
+        </div>
         </div>
         {/* Right Section - 50% */}
         <div 
