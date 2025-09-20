@@ -15,7 +15,7 @@ const parallaxImages = {
   first: '/images/Home_bt.avif',
   second: '/images/Home_at.avif',
   mobileFirst: '/images/Home_bt_mob.avif',
-  mobileSecond: '/images/Home_at_mob.avif',
+  mobileSecond: '/images/Home_at_color.avif',
 };
 
 const Index = () => {
