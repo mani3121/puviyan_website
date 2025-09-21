@@ -59,7 +59,6 @@ const CarbonFootprintBanner = () => {
     const storeData = (data: StoredCarbonData) => {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        console.log(Carbon data stored: ${data.co2Estimate.toFixed(3)}g CO2e);
       } catch (error) {
         console.warn('Storage failed:', error);
       }
@@ -177,8 +176,6 @@ const CarbonFootprintBanner = () => {
 
     const baseline_g = 0.70;
     const { label } = compareToBaseline(gramsCO2, baseline_g);
-
-    console.log(Carbon footprint: ${gramsCO2.toFixed(3)}g CO2e (${effectiveMB.toFixed(3)}MB) - ${dataSource});
 
     // Update state
     setPageWeightKB(calculatedPageWeightKB);
