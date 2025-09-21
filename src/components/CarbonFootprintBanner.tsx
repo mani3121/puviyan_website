@@ -297,7 +297,7 @@ const CarbonFootprintBanner = () => {
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
           borderRadius: '30px 12px 12px 30px',
-          minWidth: '60px',
+          minWidth: '75px',
           minHeight: '24px',
         }}
       >
@@ -305,10 +305,10 @@ const CarbonFootprintBanner = () => {
           <img src="/images/Co-2.avif" alt="CO2 Footprint Icon" className="w-8 h-8" style={{ transform: 'rotate(-19deg)' }} />
         </div>
         <div className="co2-text flex flex-col justify-center">
-          <div className="main font-bold text-xs text-white leading-tight">
+          <div className="main font-bold text-[11px] text-white leading-tight">
             {co2Estimate.toFixed(2)} g of CO2e per page view
           </div>
-          <div className="sub text-xs text-gray-300 mt-0.5">
+          <div className="sub text-[11px] text-gray-300 mt-0.5">
             {comparison || '—'}
           </div>
           {/* {process.env.NODE_ENV === 'development' && (
