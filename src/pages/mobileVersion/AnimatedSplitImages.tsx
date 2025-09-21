@@ -257,7 +257,7 @@ const AnimatedSplitImages = () => {
       >
         <form 
           onSubmit={handleSubmit} 
-          className="space-y-0 rounded-2xl relative pb-8"
+          className="space-y-0 rounded-2xl relative pb-2"
           style={{
             background: "#000",
             boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
@@ -267,7 +267,7 @@ const AnimatedSplitImages = () => {
           <button
             type="button"
             aria-label="Close"
-            className="absolute -top-8 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
+            className="absolute -top-10 right-0 text-gray-400 hover:text-white text-2xl focus:outline-none"
             onClick={() => {
               setShowForm(false);
               setSubmitStatus('idle');
@@ -291,7 +291,7 @@ const AnimatedSplitImages = () => {
                 errors.name ? 'border-red-500 focus:ring-red-500' : 'border-white hover:border-gray-300'
                 }`}
               style={{
-                WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                 WebkitTextFillColor: "white",
                 backgroundColor: "#000000 !important"
               }}
@@ -308,7 +308,7 @@ const AnimatedSplitImages = () => {
                 errors.email ? 'border-red-500 focus:ring-red-500' : 'border-white hover:border-gray-300'
               }`}
               style={{
-                WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                 WebkitTextFillColor: "white",
                 backgroundColor: "#000000 !important"
               }}
@@ -325,7 +325,7 @@ const AnimatedSplitImages = () => {
               }`}
               rows={4}
               style={{
-                WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                 WebkitTextFillColor: "white",
                 backgroundColor: "#000000 !important"
               }}
@@ -346,7 +346,7 @@ const AnimatedSplitImages = () => {
                 {isLoading ? 'Sending...' : 'Submit'}
               </button>
             ) : showToastInPlace ? (
-              <div className="text-green-400 text-center text-lg py-3 px-6 min-w-[170px] flex items-center justify-center font-bold mt-4">
+              <div className="text-green-400 text-center text-lg py-3 px-6 min-w-[170px] flex items-center justify-center font-bold">
                 Thank you for your idea!
               </div>
             ) : null}
