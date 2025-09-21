@@ -1,4 +1,3 @@
-// components/CarbonFootprintBanner.tsx
 import { gsap } from 'gsap';
 import { useEffect, useRef, useState, useCallback } from 'react';
 import CarbonFootprintBannerMobile from './CarbonFootprintBannerMobile';
@@ -25,7 +24,7 @@ const CarbonFootprintBanner = () => {
   const sessionIdRef = useRef<string>('');
 
   const STORAGE_KEY = 'carbon_footprint_data';
-  const CACHE_DURATION = 24 * 60 * 60 * 1000;
+  const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days for consistent values
   const QUICK_RETRY_DELAY = 200;
 
   const getSessionId = useCallback(() => {
@@ -46,7 +45,8 @@ const CarbonFootprintBanner = () => {
         const storedData = localStorage.getItem(STORAGE_KEY);
         if (storedData) {
           const parsed = JSON.parse(storedData) as StoredCarbonData;
-          if (parsed.url === currentUrl && parsed.sessionId !== sessionId) {
+          // *FIXED*: Only check URL match, ignore sessionId for consistent values
+          if (parsed.url === currentUrl) {
             return parsed;
           }
         }
@@ -59,36 +59,33 @@ const CarbonFootprintBanner = () => {
     const storeData = (data: StoredCarbonData) => {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        console.log(`Carbon data stored: ${data.co2Estimate.toFixed(3)}g CO2e`);
+        console.log(Carbon data stored: ${data.co2Estimate.toFixed(3)}g CO2e);
       } catch (error) {
         console.warn('Storage failed:', error);
       }
     };
 
-    // **FIXED**: Proper TypeScript casting for navigation timing
+    // *IMPROVED*: Better detection of fresh vs cached loads
     const analyzeResourcesConsistently = () => {
       const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
       
-      // **CORRECT WAY**: Get navigation timing with proper type checking
       const navigationEntries = performance.getEntriesByType('navigation');
       const navigation = navigationEntries.length > 0 
         ? navigationEntries[0] as PerformanceNavigationTiming 
         : null;
       
       let totalTransferSize = 0;
+      let totalResourcesWithTransfer = 0;
       let estimatedActualSize = 0;
-      let significantTransferDetected = false;
 
-      // Process resources with consistent logic
+      // Process resources - count actual transfers vs cached
       for (const resource of resources) {
         if (resource.transferSize > 0) {
           totalTransferSize += resource.transferSize;
+          totalResourcesWithTransfer++;
           estimatedActualSize += resource.transferSize;
-          if (resource.transferSize > 5120) { // 5KB threshold for significant transfer
-            significantTransferDetected = true;
-          }
         } else {
-          // For cached resources, use the actual body size
+          // Cached resource - use encoded body size for total page size estimation
           const bodySize = resource.encodedBodySize || resource.decodedBodySize || 0;
           if (bodySize > 0) {
             estimatedActualSize += bodySize;
@@ -96,12 +93,13 @@ const CarbonFootprintBanner = () => {
         }
       }
 
-      // **FIXED**: Process navigation with proper null checking
+      // Process navigation entry
+      let navigationTransferred = false;
       if (navigation) {
         if (navigation.transferSize && navigation.transferSize > 0) {
           totalTransferSize += navigation.transferSize;
+          navigationTransferred = true;
           estimatedActualSize += navigation.transferSize;
-          significantTransferDetected = true;
         } else {
           const navSize = navigation.encodedBodySize || navigation.decodedBodySize || 0;
           if (navSize > 0) {
@@ -110,11 +108,17 @@ const CarbonFootprintBanner = () => {
         }
       }
 
+      // *KEY*: Determine if this is a fresh load
+      const isFreshLoad = navigationTransferred && totalResourcesWithTransfer > 0;
+      const transferRatio = resources.length > 0 ? totalResourcesWithTransfer / resources.length : 0;
+
       return {
         totalTransferSize,
         estimatedActualSize,
-        significantTransferDetected,
-        resourceCount: resources.length + (navigation ? 1 : 0)
+        isFreshLoad,
+        transferRatio,
+        resourceCount: resources.length,
+        totalResourcesWithTransfer
       };
     };
 
@@ -122,7 +126,7 @@ const CarbonFootprintBanner = () => {
     const storedData = getStoredData();
     const currentTime = Date.now();
 
-    // Improved decision logic to prevent value drift
+    // *SIMPLIFIED LOGIC*: Always prefer stored data if available and valid
     let effectiveMB: number;
     let shouldStore = false;
     let dataSource = '';
@@ -131,36 +135,35 @@ const CarbonFootprintBanner = () => {
     const totalTransferMB = analysis.totalTransferSize / (1024 * 1024);
     const estimatedMB = analysis.estimatedActualSize / (1024 * 1024);
 
-    // **KEY FIX**: More restrictive storage conditions to prevent drift
-    if (analysis.significantTransferDetected && estimatedMB > 0.02) {
-      // Fresh load with significant transfer - this is the "true" measurement
-      effectiveMB = estimatedMB;
-      shouldStore = true;
-      dataSource = 'fresh measurement';
-    } else if (hasValidStoredData && totalTransferMB < 0.01) {
-      // Cached load - use stored data consistently
+    if (hasValidStoredData) {
+      // *PRIORITY 1*: Always use stored data if available - this ensures consistency
       effectiveMB = storedData.totalMB;
-      shouldStore = false; // **IMPORTANT**: Don't overwrite good stored data
-      dataSource = 'stored (cached load)';
-    } else if (estimatedMB > 0.01) {
-      // Some transfer detected but not significant - use estimated but don't store
-      effectiveMB = estimatedMB;
-      shouldStore = false; // **KEY**: Don't store potentially inaccurate measurements
-      dataSource = 'estimated (not stored)';
-    } else {
-      // Fallback - use stored data or conservative default
-      effectiveMB = hasValidStoredData ? storedData.totalMB : 1.0; // Reduced fallback
       shouldStore = false;
-      dataSource = 'fallback';
+      dataSource = 'stored (consistent value)';
+    } else if (analysis.isFreshLoad && totalTransferMB > 0.01) {
+      // *PRIORITY 2*: Fresh load with actual transfers - store this as the baseline
+      effectiveMB = totalTransferMB;
+      shouldStore = true;
+      dataSource = 'fresh load (storing as baseline)';
+    } else if (estimatedMB > 0.02) {
+      // *PRIORITY 3*: Some data available but not ideal - use but don't store
+      effectiveMB = Math.min(estimatedMB, 2.0); // Cap to prevent inflated values
+      shouldStore = false;
+      dataSource = 'estimated (capped, not stored)';
+    } else {
+      // *FALLBACK*: Conservative default
+      effectiveMB = 0.5; // Conservative 500KB default
+      shouldStore = false;
+      dataSource = 'fallback default';
     }
 
-    // Sanity bounds - prevent extreme values
-    if (effectiveMB < 0.02) {
-      effectiveMB = hasValidStoredData ? storedData.totalMB : 1.0;
+    // *SAFETY BOUNDS*: Prevent extreme values
+    if (effectiveMB < 0.01) {
+      effectiveMB = 0.5;
       dataSource += ' (min applied)';
     }
-    if (effectiveMB > 10) {
-      effectiveMB = 5.0; // Cap at 5MB
+    if (effectiveMB > 5.0) {
+      effectiveMB = 5.0;
       dataSource += ' (max applied)';
     }
 
@@ -175,15 +178,15 @@ const CarbonFootprintBanner = () => {
     const baseline_g = 0.70;
     const { label } = compareToBaseline(gramsCO2, baseline_g);
 
-    console.log(`Carbon footprint: ${gramsCO2.toFixed(3)}g CO2e (${effectiveMB.toFixed(3)}MB) - ${dataSource}`);
+    console.log(Carbon footprint: ${gramsCO2.toFixed(3)}g CO2e (${effectiveMB.toFixed(3)}MB) - ${dataSource});
 
     // Update state
     setPageWeightKB(calculatedPageWeightKB);
     setCo2Estimate(gramsCO2);
     setComparison(label);
 
-    // **CRITICAL**: Only store if this is truly a fresh, accurate measurement
-    if (shouldStore && analysis.significantTransferDetected) {
+    // *STORE ONLY FRESH, ACCURATE MEASUREMENTS*
+    if (shouldStore && analysis.isFreshLoad) {
       const dataToStore: StoredCarbonData = {
         totalMB: effectiveMB,
         pageWeightKB: calculatedPageWeightKB,
@@ -268,8 +271,9 @@ const CarbonFootprintBanner = () => {
           console.table({
             'CO2 Estimate (g)': data.co2Estimate?.toFixed(3),
             'Page Size (MB)': data.totalMB?.toFixed(3),
-            'Timestamp': new Date(data.timestamp).toLocaleTimeString(),
+            'Timestamp': new Date(data.timestamp).toLocaleString(),
             'URL': data.url,
+            'Age (hours)': ((Date.now() - data.timestamp) / (1000 * 60 * 60)).toFixed(1),
             'Session ID': data.sessionId?.slice(0, 8) + '...'
           });
         } else {
@@ -277,7 +281,30 @@ const CarbonFootprintBanner = () => {
         }
       };
 
-      console.log('Dev tools: window.clearCarbonFootprintData(), window.showCarbonFootprintData()');
+      (window as any).testCarbonConsistency = () => {
+        const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
+        const navigation = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+        
+        let transferCount = 0;
+        let totalTransfer = 0;
+        resources.forEach(r => {
+          if (r.transferSize > 0) {
+            transferCount++;
+            totalTransfer += r.transferSize;
+          }
+        });
+        
+        console.table({
+          'Navigation Transfer': navigation?.transferSize || 0,
+          'Resources with Transfer': transferCount,
+          'Total Resources': resources.length,
+          'Transfer Ratio': (transferCount / resources.length * 100).toFixed(1) + '%',
+          'Total Transfer (KB)': (totalTransfer / 1024).toFixed(1),
+          'Load Type': (navigation?.transferSize > 0 && transferCount > 0) ? 'FRESH' : 'CACHED'
+        });
+      };
+
+      console.log('Dev tools: window.clearCarbonFootprintData(), window.showCarbonFootprintData(), window.testCarbonConsistency()');
     }
   }, []);
 
@@ -297,7 +324,7 @@ const CarbonFootprintBanner = () => {
           backgroundOrigin: 'border-box',
           backgroundClip: 'padding-box, border-box',
           borderRadius: '30px 12px 12px 30px',
-          minWidth: '75px',
+          minWidth: '60px',
           minHeight: '24px',
         }}
       >
@@ -305,10 +332,10 @@ const CarbonFootprintBanner = () => {
           <img src="/images/Co-2.avif" alt="CO2 Footprint Icon" className="w-8 h-8" style={{ transform: 'rotate(-19deg)' }} />
         </div>
         <div className="co2-text flex flex-col justify-center">
-          <div className="main font-bold text-[11px] text-white leading-tight">
+          <div className="main font-bold text-xs text-white leading-tight">
             {co2Estimate.toFixed(2)} g of CO2e per page view
           </div>
-          <div className="sub text-[11px] text-gray-300 mt-0.5">
+          <div className="sub text-xs text-gray-300 mt-0.5">
             {comparison || '—'}
           </div>
           {/* {process.env.NODE_ENV === 'development' && (
