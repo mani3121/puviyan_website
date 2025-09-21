@@ -59,14 +59,7 @@ const Gallery = () => {
             emphasizing the powerful theme: "Beat Plastic Pollution."
             <br />
             <br />
-            <span style={{
-              wordSpacing: '0.5em',
-              letterSpacing: '0.1em',
-              textAlign: 'justify',
-              textAlignLast: 'justify',
-            }}>
               As part of this initiative, we embraced a personal commitment: 
-            </span>
 
             "I am Puviyan. I pledge to beat Plastic Pollution." Guided by the pledge,
             our team took to the streets of Chennai to engage residents, spark

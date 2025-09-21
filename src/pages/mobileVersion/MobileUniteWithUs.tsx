@@ -162,13 +162,10 @@ const MobileUniteWithUs = () => {
       >
         {/* Header: h1 and p tags */}
         <div className="w-full px-4 pt-12 pb-2 flex flex-col items-center">
-          <h1
-            className="text-3xl font-black text-white mb-2 text-center w-full"
-            style={{ fontFamily: "Arial Rounded MT Bold" }}
-          >
-            Unite with Puviyan
-          </h1>
-          
+        <h1 className="text-3xl font-bold text-white text-center leading-tight">
+              Unite with Puviyan
+            </h1>
+          <br/>
           <p
             className="text-sm text-white text-justify leading-tight px-5"
             style={{ fontFamily: "Arial", whiteSpace: 'pre-line' }}
