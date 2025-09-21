@@ -18,14 +18,14 @@ interface StoredCarbonData {
 const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = ({ co2Estimate: propCo2Estimate }) => {
   const [pageWeightKB, setPageWeightKB] = useState(0);
   const [co2Estimate, setCo2Estimate] = useState(propCo2Estimate);
-  const [comparison, setComparison] = useState('64% lower than global average');
+  const [comparison, setComparison] = useState('');
 
   const calculationDoneRef = useRef(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
   const sessionIdRef = useRef<string>('');
 
   const STORAGE_KEY = 'carbon_footprint_data_mobile';
-  const CACHE_DURATION = 24 * 60 * 60 * 1000;
+  const CACHE_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days for consistent values
   const QUICK_RETRY_DELAY = 200;
 
   const getSessionId = useCallback(() => {
@@ -46,7 +46,8 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
         const storedData = localStorage.getItem(STORAGE_KEY);
         if (storedData) {
           const parsed = JSON.parse(storedData) as StoredCarbonData;
-          if (parsed.url === currentUrl && parsed.sessionId !== sessionId) {
+          // *FIXED*: Only check URL match, ignore sessionId for consistent values
+          if (parsed.url === currentUrl) {
             return parsed;
           }
         }
@@ -59,13 +60,12 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
     const storeData = (data: StoredCarbonData) => {
       try {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-        console.log(`Carbon data stored (mobile): ${data.co2Estimate.toFixed(3)}g CO2e`);
       } catch (error) {
         console.warn('Storage failed:', error);
       }
     };
 
-    // Use the same comprehensive resource analysis as desktop version
+    // *IMPROVED*: Better detection of fresh vs cached loads
     const analyzeResourcesConsistently = () => {
       const resources = performance.getEntriesByType('resource') as PerformanceResourceTiming[];
       
@@ -75,19 +75,17 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
         : null;
       
       let totalTransferSize = 0;
+      let totalResourcesWithTransfer = 0;
       let estimatedActualSize = 0;
-      let significantTransferDetected = false;
 
-      // Process resources with consistent logic
+      // Process resources - count actual transfers vs cached
       for (const resource of resources) {
         if (resource.transferSize > 0) {
           totalTransferSize += resource.transferSize;
+          totalResourcesWithTransfer++;
           estimatedActualSize += resource.transferSize;
-          if (resource.transferSize > 5120) { // 5KB threshold for significant transfer
-            significantTransferDetected = true;
-          }
         } else {
-          // For cached resources, use the actual body size
+          // Cached resource - use encoded body size for total page size estimation
           const bodySize = resource.encodedBodySize || resource.decodedBodySize || 0;
           if (bodySize > 0) {
             estimatedActualSize += bodySize;
@@ -95,12 +93,13 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
         }
       }
 
-      // Process navigation with proper null checking
+      // Process navigation entry
+      let navigationTransferred = false;
       if (navigation) {
         if (navigation.transferSize && navigation.transferSize > 0) {
           totalTransferSize += navigation.transferSize;
+          navigationTransferred = true;
           estimatedActualSize += navigation.transferSize;
-          significantTransferDetected = true;
         } else {
           const navSize = navigation.encodedBodySize || navigation.decodedBodySize || 0;
           if (navSize > 0) {
@@ -109,11 +108,17 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
         }
       }
 
+      // *KEY*: Determine if this is a fresh load
+      const isFreshLoad = navigationTransferred && totalResourcesWithTransfer > 0;
+      const transferRatio = resources.length > 0 ? totalResourcesWithTransfer / resources.length : 0;
+
       return {
         totalTransferSize,
         estimatedActualSize,
-        significantTransferDetected,
-        resourceCount: resources.length + (navigation ? 1 : 0)
+        isFreshLoad,
+        transferRatio,
+        resourceCount: resources.length,
+        totalResourcesWithTransfer
       };
     };
 
@@ -121,7 +126,7 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
     const storedData = getStoredData();
     const currentTime = Date.now();
 
-    // Use the same decision logic as desktop version
+    // *SIMPLIFIED LOGIC*: Always prefer stored data if available and valid
     let effectiveMB: number;
     let shouldStore = false;
     let dataSource = '';
@@ -130,65 +135,61 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
     const totalTransferMB = analysis.totalTransferSize / (1024 * 1024);
     const estimatedMB = analysis.estimatedActualSize / (1024 * 1024);
 
-    // Same restrictive storage conditions as desktop to prevent drift
-    if (analysis.significantTransferDetected && estimatedMB > 0.02) {
-      // Fresh load with significant transfer - this is the "true" measurement
-      effectiveMB = estimatedMB;
-      shouldStore = true;
-      dataSource = 'fresh measurement';
-    } else if (hasValidStoredData && totalTransferMB < 0.01) {
-      // Cached load - use stored data consistently
+    if (hasValidStoredData) {
+      // *PRIORITY 1*: Always use stored data if available - this ensures consistency
       effectiveMB = storedData.totalMB;
       shouldStore = false;
-      dataSource = 'stored (cached load)';
-    } else if (estimatedMB > 0.01) {
-      // Some transfer detected but not significant - use estimated but don't store
-      effectiveMB = estimatedMB;
+      dataSource = 'stored (consistent value)';
+    } else if (analysis.isFreshLoad && totalTransferMB > 0.01) {
+      // *PRIORITY 2*: Fresh load with actual transfers - store this as the baseline
+      effectiveMB = totalTransferMB;
+      shouldStore = true;
+      dataSource = 'fresh load (storing as baseline)';
+    } else if (estimatedMB > 0.02) {
+      // *PRIORITY 3*: Some data available but not ideal - use but don't store
+      effectiveMB = Math.min(estimatedMB, 2.0); // Cap to prevent inflated values
       shouldStore = false;
-      dataSource = 'estimated (not stored)';
+      dataSource = 'estimated (capped, not stored)';
     } else {
-      // Fallback - use stored data or conservative default
-      effectiveMB = hasValidStoredData ? storedData.totalMB : 1.0;
+      // *FALLBACK*: Conservative default
+      effectiveMB = 0.5; // Conservative 500KB default
       shouldStore = false;
-      dataSource = 'fallback';
+      dataSource = 'fallback default';
     }
 
-    // Sanity bounds - prevent extreme values
-    if (effectiveMB < 0.02) {
-      effectiveMB = hasValidStoredData ? storedData.totalMB : 1.0;
+    // *SAFETY BOUNDS*: Prevent extreme values
+    if (effectiveMB < 0.01) {
+      effectiveMB = 0.5;
       dataSource += ' (min applied)';
     }
-    if (effectiveMB > 10) {
-      effectiveMB = 5.0; // Cap at 5MB
+    if (effectiveMB > 5.0) {
+      effectiveMB = 5.0;
       dataSource += ' (max applied)';
     }
 
     const calculatedPageWeightKB = Number((effectiveMB * 1024).toFixed(2));
 
-    // Calculate CO2 emissions using same constants as desktop
+    // Calculate CO2 emissions
     const { gramsCO2 } = simplifiedCO2PerView(effectiveMB, {
       energyPerGB_kWh: 0.405,
       carbonIntensity_gPerKWh: 475,
     } as any);
 
-    // Use same baseline as desktop version
     const baseline_g = 0.60;
     const { label } = compareToBaseline(gramsCO2, baseline_g);
-
-    console.log(`Carbon footprint (mobile): ${gramsCO2.toFixed(3)}g CO2e (${effectiveMB.toFixed(3)}MB) - ${dataSource}`);
 
     // Update state
     setPageWeightKB(calculatedPageWeightKB);
     setCo2Estimate(gramsCO2);
-    setComparison(label || '64% lower than global average');
+    setComparison(label);
 
-    // Only store if this is truly a fresh, accurate measurement
-    if (shouldStore && analysis.significantTransferDetected) {
+    // *STORE ONLY FRESH, ACCURATE MEASUREMENTS*
+    if (shouldStore && analysis.isFreshLoad) {
       const dataToStore: StoredCarbonData = {
         totalMB: effectiveMB,
         pageWeightKB: calculatedPageWeightKB,
         co2Estimate: gramsCO2,
-        comparison: label || '64% lower than global average',
+        comparison: label,
         timestamp: currentTime,
         url: currentUrl,
         sessionId: sessionId
@@ -200,7 +201,6 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
   }, [STORAGE_KEY, CACHE_DURATION, getSessionId]);
 
   useEffect(() => {
-    // Only runs in browser; guard just in case of SSR
     if (typeof window === 'undefined') return;
 
     // Clear existing timers
