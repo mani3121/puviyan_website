@@ -105,11 +105,11 @@ const Index = () => {
           </footer>
           {/* Mobile Footer */}
           <footer
-            className="w-full flex items-center justify-between bg-black text-gray-300 text-[8px] px-2 h-8 sm:hidden"
-            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal" }}
+            className="w-full flex items-center justify-between text-gray-300 text-[8px] px-2 h-8 sm:hidden"
+            style={{ fontFamily: "Arial, sans-serif", fontWeight: "normal", backgroundColor: "#1F1F1F" }}
           >
             <span className="font-normal">
-              © 2025 Puviyan Digital Solutions Pvt. Ltd.
+              2025 Puviyan Digital Solutions Pvt. Ltd.
             </span>
             <div className="flex flex-row items-center space-x-6">
               <a

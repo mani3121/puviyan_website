@@ -52,8 +52,17 @@ const Header = () => {
   }, [isMenuOpen]);
 
   useEffect(() => {
-    const handleTouch = () => {
+    const handleTouch = (e: TouchEvent) => {
       if (isMenuOpen) {
+        // Don't close if touching the menu button or menu itself
+        const target = e.target as Element;
+        if (target && (
+          target.closest('button') || 
+          target.closest('.mobile-menu') ||
+          target.closest('[data-menu-button]')
+        )) {
+          return;
+        }
         setIsMenuOpen(false);
       }
     };
@@ -108,8 +117,8 @@ const Header = () => {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm bg-black text-white transition-colors duration-300"
-    style={{  backgroundColor: "#1F1F1F" }}>
+    <header className="fixed top-0 left-0 w-full z-[100] shadow-sm text-white transition-colors duration-300"
+    style={{ backgroundColor: "#1F1F1F" }}>
       <div className="w-full">
         <div className="flex items-center h-14 md:h-auto">
           {/* Logo with Text */}
@@ -136,13 +145,19 @@ const Header = () => {
           {/* Hamburger Menu for Mobile */}
           <div className="md:hidden ml-auto mr-2">
             <button 
-              onClick={() => setIsMenuOpen((prev) => !prev)} 
-              className="p-2 rounded-md hover:bg-black transition-all duration-300"
+              data-menu-button
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                setIsMenuOpen((prev) => !prev);
+              }} 
+              className="p-2 rounded-md transition-all duration-300"
+              style={{ backgroundColor: isMenuOpen ? '#1F1F1F' : 'transparent' }}
             >
               {isMenuOpen ? (
-                <X size={28} className="text-white hover:text-white transition-colors duration-300" />
+                <X size={28} className="text-white hover:text-gray-400 transition-colors duration-300" />
               ) : (
-                <Menu size={28} className="text-white hover:text-green-400 transition-colors duration-300" />
+                <Menu size={28} className="text-white hover:text-gray-400 transition-colors duration-300" />
               )}
             </button>
           </div>
@@ -156,7 +171,8 @@ const Header = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute top-12 left-0 w-full bg-black shadow-md flex flex-col items-center px-0 py-2 z-50"
+                  className="absolute top-12 left-0 w-full shadow-md flex flex-col items-center px-0 py-2 z-50"
+                  style={{ backgroundColor: "#1F1F1F" }}
                 >
                   {renderLinks(currentPath, scrollToSection, true, isMobile)}
                 </motion.div>

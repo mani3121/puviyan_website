@@ -161,7 +161,7 @@ const MobileUniteWithUs = () => {
         }}
       >
         {/* Header: h1 and p tags */}
-        <div className="w-full px-4 pt-12 pb-2 flex flex-col items-center">
+        <div className="w-full px-4 pt-20 pb-2 flex flex-col items-center">
         <h1 className="text-2xl font-bold text-white text-center leading-tight">
               Unite with Puviyan
             </h1>
