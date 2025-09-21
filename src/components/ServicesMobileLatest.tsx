@@ -24,23 +24,17 @@ const ServicesMobileLatest = () => {
         style={{ whiteSpace: 'pre-line' }}
       >
         <p>
-        Progress demands more: more innovation, more responsibility, and more 
-         meaningful impact. Real change happens when these forces move forward together.
-         We bring real PEP, Puviyan Engineering Practice, across products and services,
-         embedding sustainable engineering best practices at the core and setting a new 
-         benchmark for what technology can achieve.         </p>
+        Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together.
+We bring real PEP, Puviyan Engineering Practice, across products and services, embedding sustainable engineering best practices at the core and setting a new benchmark for what technology can achieve.         </p>
         <br/>
         <p>
-          Our services empower governments, businesses, and communities to drive sustainable progress. Leveraging advanced analytics, automation, and cloud technologies, we unlock efficiency, transparency, and measurable outcomes—reducing environmental footprints and creating long-term value.
-        </p>
+        By uniting with governments, organizations, and communities worldwide, we accelerate sustainable digital transformation at scale through strategic consulting and technology-led innovations.        </p>
         <br/>
         <p>
-          Sustainability isn't an add-on; it's essential. From energy-efficient infrastructure and circular IT to real-time ESG insights and responsible value chains, our solutions enable purposeful leadership and deliver results that matter—for all stakeholders and for the planet.
-        </p>
+        Our capabilities span responsible AI solutions, energy-efficient infrastructure, advanced real-time analytics, circular IT strategies, and resilient, optimized value chains, each contributing to measurable environmental, social, and economic (ESG) outcomes at scale.        </p>
         <br/>
         <p>
-          This is progress, reimagined. Technology that's not just smart, but right. For everyone. For the future.
-        </p>
+        This is progress, reimagined: technology that is not just smart, but right for people and planet.        </p>
       </div>
     </div>
   );
