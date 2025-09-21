@@ -24,8 +24,11 @@ const ServicesMobileLatest = () => {
         style={{ whiteSpace: 'pre-line' }}
       >
         <p>
-          Progress demands more—more innovation, more responsibility, more meaningful impact. Real change happens when these forces move forward together. By embedding sustainability into every digital transformation, vision aligns with the United Nations Sustainable Development Goals and global ESG standards—setting a new benchmark for what technology can achieve.
-        </p>
+        Progress demands more: more innovation, more responsibility, and more 
+         meaningful impact. Real change happens when these forces move forward together.
+         We bring real PEP, Puviyan Engineering Practice, across products and services,
+         embedding sustainable engineering best practices at the core and setting a new 
+         benchmark for what technology can achieve.         </p>
         <br/>
         <p>
           Our services empower governments, businesses, and communities to drive sustainable progress. Leveraging advanced analytics, automation, and cloud technologies, we unlock efficiency, transparency, and measurable outcomes—reducing environmental footprints and creating long-term value.
