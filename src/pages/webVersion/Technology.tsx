@@ -337,12 +337,12 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onChange={handleInputChange}
                         onBlur={handleBlur}
                         placeholder="Your Name"
-                        autoComplete="new-password"
-                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                        autoComplete="off"
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-white responsive-input bg-black text-white ${
                           errors.name ? 'border-red-500' : 'border-gray-300'
                         }`}
                         style={{
-                          WebkitBoxShadow: errors.name ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                          WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                           WebkitTextFillColor: "white",
                           backgroundColor: "#000000 !important"
                         }}
@@ -357,11 +357,11 @@ ECOSTORY`.split("\n").map((line, index) => (
                         onBlur={handleBlur}
                         placeholder="Your Email"
                         autoComplete="off"
-                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-input bg-black text-white ${
+                        className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-white responsive-input bg-black text-white ${
                           errors.email ? 'border-red-500' : 'border-gray-300'
                         }`}
                         style={{
-                          WebkitBoxShadow: errors.email ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                          WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                           WebkitTextFillColor: "white",
                           backgroundColor: "#000000 !important"
                         }}
@@ -379,13 +379,13 @@ ECOSTORY`.split("\n").map((line, index) => (
                           onBlur={handleBlur}
                           placeholder="Your Idea"
                           autoComplete="off"
-                          className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-gray-300 responsive-textarea bg-black text-white ${
+                          className={`w-full px-3 py-1.5 border rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-900 text-sm placeholder-white responsive-textarea bg-black text-white ${
                             errors.message ? 'border-red-500' : 'border-gray-300'
                           }`}
                           rows={5}
                           style={{ 
                             resize: 'none',
-                            WebkitBoxShadow: errors.message ? "0 0 0 1000px rgba(127, 29, 29, 0.2) inset" : "0 0 0 1000px #000000 inset",
+                            WebkitBoxShadow: "0 0 0 1000px #000000 inset",
                             WebkitTextFillColor: "white",
                             backgroundColor: "#000000 !important"
                           }}
