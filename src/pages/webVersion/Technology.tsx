@@ -296,7 +296,7 @@ ECOSTORY`.split("\n").map((line, index) => (
           
           {/* Form Section */}
           {showForm && (
-            <div className="absolute left-[35vw] top-[calc(24%+20rem)] sm:top-[calc(24%+22rem)] lg:top-[calc(24%+24rem)] w-full max-w-md sm:max-w-sm md:max-w-sm lg:max-w-md px-3 sm:px-4 md:px-0 max-h-[60vh] overflow-visible">
+            <div className="absolute left-[35vw] top-[calc(24%+24rem)] sm:top-[calc(24%+26rem)] w-full max-w-md sm:max-w-sm md:max-w-sm lg:max-w-md px-3 sm:px-4 md:px-0">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -305,7 +305,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 <form
                   onSubmit={handleSubmit}
                   autoComplete="off"
-                  className="space-y-0 rounded-2xl relative form-container pb-4"
+                  className="space-y-0 rounded-2xl relative form-container pb-8"
                   style={{
                     background: "#000",
                     boxShadow: "0 0px 0px 0 rgba(200,200,200,0.32)",
@@ -393,8 +393,10 @@ ECOSTORY`.split("\n").map((line, index) => (
                       </div>
                     </div>
                   </div>
-                  {/* Submit button section with responsive spacing */}
-                  <div className="flex flex-col justify-center items-center pt-3 pb-2">
+                  {/* Conditional spacing for 16+ inch screens */}
+                  <div className="hidden min-[1600px]:block h-3" />
+                  {/* Calculated spacing to center submit button between textarea and form bottom */}
+                  <div className="flex flex-col h-12 justify-center items-center">
                     {showSubmitButton ? (
                       <button
                         type="submit"
