@@ -34,7 +34,7 @@ const ServicesLatest = () => {
           style={{
             height: "100%",
             background: "linear-gradient(to bottom, #F9BB18, #74CFE6, #5ABA52 )",
-            opacity: 0.7,
+            opacity: 1.5,
           }}
         />
       </div>
