@@ -246,14 +246,14 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
 
   return (
     <div 
-      className="co2-badge flex items-center gap-1 pl-2 py-1 bg-black relative w-fit text-center fixed top-[-4px] pr-2"
+      className="co2-badge flex items-center gap-1 pl-2 py-1.5 bg-black relative w-fit text-center fixed top-[-4px] pr-2"
       style={{
         border: '1px solid transparent',
         backgroundImage: 'linear-gradient(black, black), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
         backgroundOrigin: 'border-box',
         backgroundClip: 'padding-box, border-box',
         borderRadius: '25px 8px 8px 25px',
-        left: '10px',
+        left: '12px',
       }}
     >
       <div className="co2-icon flex flex-col items-center">
@@ -261,7 +261,7 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
       </div>
       <div className="co2-text flex flex-col">
         <div className="main font-bold text-[9px] text-white-800">{co2Estimate.toFixed(2)}g of CO2e per page view</div>
-        <div className="sub text-[9px] text-white-600">{comparison}</div>
+        <div className="sub text-[8px] text-white-600">{comparison}</div>
       </div>
     </div>
   );
