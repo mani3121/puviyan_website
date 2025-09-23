@@ -162,12 +162,12 @@ const MobileUniteWithUs = () => {
       >
         {/* Header: h1 and p tags */}
         <div className="w-full px-8 md:px-20 pt-20 pb-2 flex flex-col items-center">
-        <h1 className="text-2xl font-bold text-white text-center leading-tight">
+        <h1 className="text-2xl font-bold text-white text-left leading-tight">
               Unite with Puviyan
             </h1>
           <br/>
           <p
-            className="max-w-2xl text-lg md:text-xl text-white text-justify"
+            className="max-w-2xl text-lg md:text-xl text-white text-left"
             style={{ whiteSpace: 'pre-line' }}
           >
             We are committed to building a sustainable future by uniting with governments, mission-aligned organizations, investors, technology professionals, sustainability advocates, and the communities we serve.

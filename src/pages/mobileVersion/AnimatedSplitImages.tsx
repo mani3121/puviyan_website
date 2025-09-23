@@ -206,11 +206,12 @@ const AnimatedSplitImages = () => {
         <div className="flex flex-col items-center justify-center text-center px-4 pt-20 pb-8 z-10">
           <h1
             ref={h1Ref}
-            className="text-4xl font-black text-white leading-tight mb-8 max-w-sm"
+            className="font-black text-white leading-tight mb-8 max-w-sm"
             style={{
               fontFamily: "Arial Black, Arial-BoldMT, Arial, Helvetica, sans-serif",
               letterSpacing: "-0.02em",
               lineHeight: 1.1,
+              fontSize: "28px",
             }}
           >
             COMING SOON TO<br />REWRITE YOUR<br />ECOSTORY

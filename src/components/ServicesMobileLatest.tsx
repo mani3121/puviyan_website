@@ -20,10 +20,10 @@ const ServicesMobileLatest = () => {
 
       {/* Body content */}
       <div
-        className="max-w-2xl text-lg md:text-xl text-white text-justify"
-        style={{ whiteSpace: 'pre-line' }}
-      >
+        className="max-w-2xl text-lg md:text-xl text-white text-left"
+        style={{ whiteSpace: 'pre-line' }} >
         <p>
+          <br/>
         Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together.
 We bring real PEP, Puviyan Engineering Practice, across products and services, embedding sustainable engineering best practices at the core and setting a new benchmark for what technology can achieve.         </p>
         <br/>

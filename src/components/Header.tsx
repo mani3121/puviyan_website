@@ -16,13 +16,29 @@ const Header = () => {
   };
 
   const scrollToSection = (id: string) => {
-    const section = document.getElementById(id);
-    if (section) {
-      section.scrollIntoView({ behavior: 'smooth' });
-      if (isMobile) {
-        setIsMenuOpen(false);
-      }
+    // Close mobile menu first
+    if (isMobile) {
+      setIsMenuOpen(false);
     }
+    
+    // Small delay to ensure menu animation completes and DOM is ready
+    setTimeout(() => {
+      const section = document.getElementById(id);
+      if (section) {
+        // Ensure body overflow is set correctly
+        document.body.style.overflowY = "scroll";
+        section.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        // If section not found, try again after a short delay
+        setTimeout(() => {
+          const retrySection = document.getElementById(id);
+          if (retrySection) {
+            document.body.style.overflowY = "scroll";
+            retrySection.scrollIntoView({ behavior: 'smooth' });
+          }
+        }, 100);
+      }
+    }, isMobile ? 300 : 0); // Wait for mobile menu animation to complete
   };
 
   const currentPath = window.location.pathname;
@@ -125,7 +141,23 @@ const Header = () => {
           <div 
             ref={logoRef}
             className="cursor-pointer flex items-center gap-2 ml-4 md:ml-[6%]"
-            onClick={() => (window.location.href = "/")}
+            onClick={() => {
+              // Close mobile menu if open
+              if (isMobile && isMenuOpen) {
+                setIsMenuOpen(false);
+              }
+              
+              // Check if we're already on the home page
+              if (window.location.pathname === '/') {
+                // If on home page, smooth scroll to top
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                // Reset body overflow in case it was modified
+                document.body.style.overflowY = "scroll";
+              } else {
+                // If on different page, navigate to home
+                window.location.href = "/";
+              }
+            }}
           >
             <img 
               src="/images/puviyan_logo.avif" 
@@ -195,7 +227,6 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
   <>
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
       className={`block px-3 py-2 text-xs transition-colors ${
@@ -233,7 +264,6 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
     </a> */}
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("gallery");
       }}
       className={`block px-3 py-2 text-xs transition-colors ${
@@ -251,7 +281,6 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
     </button>
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
       className={`block px-3 py-2 text-xs transition-colors ${
@@ -269,7 +298,6 @@ const renderLinks = (currentPath, scrollToSection, isScrolled, isMobile) => (
     </button>
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("unite-with-us");
       }}
       className={`block px-3 py-2 text-xs transition-colors ${
@@ -293,7 +321,6 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
   <div className="flex items-center">
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("animated-split-images");
       }}
       className={`block px-6 py-2 text-xs transition-colors font-semibold ${
@@ -307,7 +334,6 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
     </button>
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("gallery");
       }}
       className={`block px-6 py-2 text-xs transition-colors font-semibold ${
@@ -321,7 +347,6 @@ const renderMainLinks = (currentPath, scrollToSection, isScrolled, isMobile) => 
     </button>
     <button
       onClick={() => {
-        document.body.style.overflowY = "scroll";
         scrollToSection("about-us");
       }}
       className={`block px-6 py-2 text-xs transition-colors font-semibold ${
