@@ -1,8 +1,17 @@
 .parallax-container {
   position: relative;
   height: 100vh;
+  width: 100vw;
   overflow: hidden;
   background-color: black;
+}
+
+/* Mobile-specific container adjustments */
+@media screen and (max-width: 768px) {
+  .parallax-container {
+    min-width: 100vw;
+    max-width: 100vw;
+  }
 }
 
 .parallax-container.transition-complete {
@@ -21,6 +30,14 @@
   overflow: hidden;
 }
 
+/* Mobile-specific wrapper adjustments */
+@media screen and (max-width: 768px) {
+  .parallax-image-wrapper {
+    min-width: 100vw;
+    width: 100vw;
+  }
+}
+
 .parallax-image {
   position: absolute;
   top: 0;
@@ -29,6 +46,16 @@
   height: 100%;
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Ensure full width coverage on all mobile devices */
+@media screen and (max-width: 768px) {
+  .parallax-image {
+    background-size: 100% 100%;
+    min-width: 100vw;
+    min-height: 100vh;
+  }
 }
 
 /* First image styling */
