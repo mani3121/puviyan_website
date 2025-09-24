@@ -142,21 +142,36 @@ const Header = () => {
             ref={logoRef}
             className="cursor-pointer flex items-center gap-2 ml-4 md:ml-[6%]"
             onClick={() => {
-              // Close mobile menu if open
-              if (isMobile && isMenuOpen) {
-                setIsMenuOpen(false);
-              }
+              // Create a loading overlay to prevent FOUC during reload
+              const overlay = document.createElement('div');
+              overlay.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: #1F1F1F;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: opacity 0.2s ease-in-out;
+              `;
               
-              // Check if we're already on the home page
-              if (window.location.pathname === '/') {
-                // If on home page, smooth scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                // Reset body overflow in case it was modified
-                document.body.style.overflowY = "scroll";
-              } else {
-                // If on different page, navigate to home
-                window.location.href = "/";
-              }
+              // Add loading spinner or logo
+              overlay.innerHTML = `
+                <div style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+                  <img src="/images/puviyan_logo.avif" alt="Loading..." style="width: 40px; height: auto; opacity: 0.8;" />
+                  <div style="color: white; font-size: 14px; opacity: 0.7;">Loading...</div>
+                </div>
+              `;
+              
+              document.body.appendChild(overlay);
+              
+              // Small delay to ensure overlay is visible, then reload
+              setTimeout(() => {
+                window.location.reload();
+              }, 100);
             }}
           >
             <img 

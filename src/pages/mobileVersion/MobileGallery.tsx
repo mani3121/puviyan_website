@@ -15,7 +15,7 @@ We distributed reusable cloth bags, encouraging simple, everyday actions that he
         <div className="flex flex-col items-stretch w-full">
           {/* Top: Title */}
           <div className="w-full mb-4 mt-12 flex justify-center items-center">
-            <h1 className="text-2xl font-bold text-white text-left leading-tight">
+            <h1 className="text-2xl font-bold text-white text-center leading-tight">
               Walking the Talk on World Environment Day 2025
             </h1>
           </div>
