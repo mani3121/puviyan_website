@@ -6,7 +6,6 @@ import Services from "./components/Services";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import Product from "./pages/webVersion/Product";
 import TermsConditions from './pages/TermsConditions';
 import UniteWithUs from "./pages/UniteWithUs";
 
@@ -18,10 +17,8 @@ const App = () => (
       <Router>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/animated-split-images" element={<Product />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsConditions />} />
-          {/* <Route path="/animated-split-images" element={<AnimatedSplitImages />} /> */}
           <Route path="/about-us" element={<AboutUs />} />
           <Route path="/unite-with-us" element={<UniteWithUs />} />
           <Route path="/services" element={<Services />} />

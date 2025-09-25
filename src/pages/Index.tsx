@@ -7,7 +7,6 @@ const AboutUs = lazy(() => import('@/components/AboutUs'));
 const CarbonFootprintBanner = lazy(() => import('@/components/CarbonFootprintBanner'));
 const ParallaxImageWrapper = lazy(() => import('@/components/ParallaxImageWrapper'));
 const ServicesLatest = lazy(() => import('@/components/ServicesLatest'));
-const Product = lazy(() => import('./webVersion/Product'));
 const UniteWithUs = lazy(() => import('./UniteWithUs'));
 const Gallery = lazy(() => import('@/components/Gallery'));
 
