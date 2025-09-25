@@ -20,7 +20,7 @@ Real change begins with individual action, but its true strength lies in the sha
       <div className="container mx-auto px-8 md:px-20 pt-4 relative z-10 flex flex-col items-center justify-center min-h-screen -mt-16 md:-mt-16 mt-8">
         <div className="flex flex-col items-stretch w-full mt-12 md:mt-0">
           {/* Top: Image */}
-          <div className="w-full mb-6 mt-4 flex justify-center items-center overflow-hidden">
+          <div className="w-full mb-0 md:mb-6 mt-4 flex justify-center items-center overflow-hidden">
             <img
               src="/images/ppt.avif"
               alt="About Us"
