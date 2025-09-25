@@ -20,18 +20,15 @@ const ServicesMobileLatest = () => {
 
       {/* Body content */}
       <div
-        className="max-w-2xl text-lg md:text-xl text-white text-left mt-2"
+        className="max-w-2xl text-lg md:text-xl text-white text-left mt-3"
         style={{ whiteSpace: 'pre-line' }} >
-        <p>
+        <p className="mb-3">
         Progress demands more: more innovation, more responsibility, and more meaningful impact. Real change happens when these forces move forward together.
 We bring real PEP, Puviyan Engineering Practice, across products and services, embedding sustainable engineering best practices at the core and setting a new benchmark for what technology can achieve.         </p>
-        <br/>
-        <p>
+        <p className="mb-3">
         By uniting with governments, organizations, and communities worldwide, we accelerate sustainable digital transformation at scale through strategic consulting and technology-led innovations.        </p>
-        <br/>
-        <p>
+        <p className="mb-3">
         Our capabilities span responsible AI solutions, energy-efficient infrastructure, advanced real-time analytics, circular IT strategies, and resilient, optimized value chains, each contributing to measurable environmental, social, and economic (ESG) outcomes at scale.        </p>
-        <br/>
         <p>
         This is progress, reimagined: technology that is not just smart, but right for people and planet.        </p>
       </div>

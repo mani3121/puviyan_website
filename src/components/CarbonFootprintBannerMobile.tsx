@@ -56,7 +56,7 @@ const CarbonFootprintBannerMobile: React.FC<CarbonFootprintBannerMobileProps> = 
         <img src="/images/Co-2.avif" alt="CO2 Icon" style={{ width: '16.2px', height: '20.48px', transform: 'rotate(-14.596deg)' }} />
       </div>
       <div className="co2-text flex flex-col">
-        <div className="main font-bold text-[7.5px] text-white-800">{co2Estimate.toFixed(2)}g of CO2e per page view</div>
+        <div className="main font-bold text-[7.6px] text-white-800">{co2Estimate.toFixed(2)}g of CO2e per page view</div>
         <div className="sub text-[7.5px] text-white-600" >{comparison}</div>
       </div>
     </div>
