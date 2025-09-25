@@ -4,17 +4,9 @@ const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID ?? 'service_m73cz7e';
 const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID ?? 'template_mxugw58';
 const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY ?? 'DC-AUxWF_PZKhnpao';
 
-// initialize once with the EmailJS public key
-console.log('EmailJS Configuration:', {
-  SERVICE_ID: SERVICE_ID ? '✓ Set' : '✗ Missing',
-  TEMPLATE_ID: TEMPLATE_ID ? '✓ Set' : '✗ Missing',
-  PUBLIC_KEY: PUBLIC_KEY ? '✓ Set' : '✗ Missing'
-});
-
 if (PUBLIC_KEY) {
   try {
     emailjs.init(PUBLIC_KEY);
-    console.log('EmailJS initialized successfully');
   } catch (err) {
     console.error('EmailJS init failed:', err);
   }
