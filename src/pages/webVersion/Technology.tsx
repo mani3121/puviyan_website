@@ -231,7 +231,7 @@ const Technology = () => {
 
   // Return main Technology component for desktop view
   return (
-    <div className="w-full h-screen flex justify-center items-center overflow-hidden">
+    <div className="w-full h-screen flex justify-center items-center">
       <div className="relative w-full h-full flex justify-center items-center">
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
