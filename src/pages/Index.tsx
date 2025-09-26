@@ -43,23 +43,20 @@ const Index = () => {
                 image2={parallaxImages.second}
                 mobileImage1={parallaxImages.mobileFirst}
                 mobileImage2={parallaxImages.mobileSecond}
-                loading="lazy"
               />
             </section>
 
             {/* Next section that appears after scroll */}
-            <section id="animated-split-images" className="w-full bg-black text-gray-300 m-0 p-0">
-              <div className="w-full">
+            <section id="animated-split-images" className="w-full min-h-[105vh] bg-black text-gray-300 m-0 p-0">
+              <div className="w-full h-full">
                 <Technology />
               </div>
             </section>
-
             <section id="services" className="w-full bg-black text-gray-300">
               <div className="w-full px-2 py-8">
                 <ServicesLatest />
               </div>
             </section>
-                 {/* Gallery Section */}
             <section id="gallery" className="w-full bg-black text-gray-300">
               <div className="w-full px-2 py-8">
                 <Gallery />
