@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import { Suspense, lazy } from 'react';
 import { Helmet } from 'react-helmet';
-import Technology from './webVersion/Technology';
+import Technology from './Technology';
 
 const AboutUs = lazy(() => import('@/components/AboutUs'));
 const CarbonFootprintBanner = lazy(() => import('@/components/CarbonFootprintBanner'));
@@ -47,7 +47,7 @@ const Index = () => {
             </section>
 
             {/* Next section that appears after scroll */}
-            <section id="animated-split-images" className="w-full min-h-[105vh] bg-black text-gray-300 m-0 p-0">
+            <section id="animated-split-images" className="w-full min-h-[100vh] bg-black text-gray-300 m-0 p-0">
               <div className="w-full h-full">
                 <Technology />
               </div>

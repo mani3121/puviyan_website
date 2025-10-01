@@ -2,9 +2,9 @@ import { useAnimation, useInView } from "framer-motion";
 import gsap from "gsap";
 import React, { useEffect, useRef, useState } from "react";
 import Modal from "react-modal";
-import { handleProductSubmit } from "../../utils/handleProductSubmit";
+import { handleProductSubmit } from "../utils/handleProductSubmit";
 
-import Header from "../../components/Header";
+import Header from "../components/Header";
 
 Modal.setAppElement('#root');
 

@@ -1,7 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import { useMediaQuery } from "react-responsive";
 import Header from "./Header";
-import MobileGallery from "../pages/mobileVersion/MobileGallery";
+import MobileGallery from "../pages/MobileGallery";
 
 const Gallery = () => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
