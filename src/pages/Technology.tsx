@@ -2,7 +2,7 @@ import { motion, useAnimation, useInView } from 'framer-motion';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import AnimatedSplitImages from '../mobileVersion/AnimatedSplitImages';
+import AnimatedSplitImages from './AnimatedSplitImages';
 import { handleProductSubmit } from '../utils/handleProductSubmit';
 
 const Technology = () => {
