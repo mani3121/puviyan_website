@@ -231,14 +231,14 @@ const Technology = () => {
 
   // Return main Technology component for desktop view
   return (
-    <div className="w-full h-screen flex justify-center items-center overflow-hidden">
+    <div className="w-full h-[105vh] flex justify-center items-center">
       <div className="relative w-full h-full flex justify-center items-center">
         <div className="relative -translate-x-[95%] w-[28vw]">
           <img
             ref={imageRef}
             src="/images/MobileImage.jpeg"
             alt="Technology Image"
-            className="rounded-2xl w-full h-screen -mt-[2vh]" 
+            className="rounded-2xl w-full h-[105vh] -mt-[2vh]" 
             loading="lazy"
             style={{
               transform: "scale(1.1)",
