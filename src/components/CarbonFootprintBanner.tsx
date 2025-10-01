@@ -58,7 +58,7 @@ const CarbonFootprintBanner = () => {
       <div
         className="co2-badge items-center justify-center gap-1.5 px-2 py-1.5 bg-gray-900 relative hidden md:flex shadow-lg"
         style={{
-          border: '2px solid transparent',
+          border: '3px solid transparent',
           backgroundImage:
             'linear-gradient(#1f2937,rgb(12, 12, 12)), linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)',
           backgroundOrigin: 'border-box',
