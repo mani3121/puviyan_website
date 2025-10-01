@@ -28,7 +28,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
       </Helmet>
       <div className="w-full overflow-x-hidden bg-black">
         <Header />

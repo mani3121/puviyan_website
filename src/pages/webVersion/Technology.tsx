@@ -33,7 +33,6 @@ const Technology = () => {
     email: false,
     message: false
   });
-  const [originalScrollPosition, setOriginalScrollPosition] = useState(0);
 
   useEffect(() => {
     const image = imageRef.current;
@@ -156,28 +155,6 @@ const Technology = () => {
     }));
   };
 
-  const handleShareIdeasClick = () => {
-    // Store current scroll position
-    setOriginalScrollPosition(window.scrollY);
-    
-    // Show form
-    setShowForm(true);
-    
-    // Scroll down a little (200px)
-    window.scrollTo({
-      top: window.scrollY + 200,
-      behavior: 'smooth'
-    });
-  };
-
-  const scrollBackToOriginalPosition = () => {
-    // Scroll back to original position
-    window.scrollTo({
-      top: originalScrollPosition,
-      behavior: 'smooth'
-    });
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -220,16 +197,15 @@ const Technology = () => {
           setTouched({ name: false, email: false, message: false });
         },
         setShowForm: () => {
-          // Hide submit button and show toast in place
+          // Hide submit button and show toast in its place
           setShowSubmitButton(false);
           setShowToastInPlace(true);
           
-          // After 3 seconds, close form, restore submit button, and scroll back
+          // After 3 seconds, close form and restore submit button
           setTimeout(() => {
             setShowToastInPlace(false);
             setShowSubmitButton(true);
             setShowForm(false);
-            scrollBackToOriginalPosition();
           }, 3000);
         },
       });
@@ -305,7 +281,7 @@ ECOSTORY`.split("\n").map((line, index) => (
                 transition={{ duration: 0.2, delay: 0.1 }}
               >
                 <button
-                  onClick={handleShareIdeasClick}
+                  onClick={() => setShowForm(true)}
                   className="w-full sm:w-auto px-6 py-2 min-[1600px]:py-3 rounded-lg text-base font-semibold hover:opacity-90 transition-all duration-200 min-w-[240px] sm:min-w-[280px] text-center"
                   style={{
                     background: "linear-gradient(to right, #F9BB18, #74CFE6, #5ABA52)",
@@ -347,7 +323,6 @@ ECOSTORY`.split("\n").map((line, index) => (
                       // Clear validation states so red borders/backgrounds don't persist
                       setErrors({ name: '', email: '', message: '' });
                       setTouched({ name: false, email: false, message: false });
-                      scrollBackToOriginalPosition();
                     }}
                   >
                     &times;
